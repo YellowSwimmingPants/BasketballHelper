@@ -64,19 +64,27 @@
 		710D366B223238A3008A683C /* BasketballHelper */ = {
 			isa = PBXGroup;
 			children = (
+				714B473C223B757F00134AA0 /* Recordlist */,
+			);
+			path = BasketballHelper;
+			sourceTree = "<group>";
+		};
+		714B473C223B757F00134AA0 /* Recordlist */ = {
+			isa = PBXGroup;
+			children = (
 				710D366C223238A3008A683C /* AppDelegate.swift */,
-				711FB65722374F9000AD7483 /* GameRecordTableViewController.swift */,
 				71D4EDEF223B19CF005A05D0 /* CreateGameViewController.swift */,
 				710D368222323AFD008A683C /* PlayerListViewController.swift */,
 				710D3670223238A3008A683C /* Main.storyboard */,
-				714B473A223B366200134AA0 /* Game.swift */,
 				714B4738223B1F3E00134AA0 /* PlayerDataTableViewController.swift */,
+				711FB65722374F9000AD7483 /* GameRecordTableViewController.swift */,
+				714B473A223B366200134AA0 /* Game.swift */,
 				71D4EDF1223B1DB0005A05D0 /* StartingLineupTableViewController.swift */,
 				710D3673223238A3008A683C /* Assets.xcassets */,
 				710D3675223238A3008A683C /* LaunchScreen.storyboard */,
 				710D3678223238A3008A683C /* Info.plist */,
 			);
-			path = BasketballHelper;
+			path = Recordlist;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
