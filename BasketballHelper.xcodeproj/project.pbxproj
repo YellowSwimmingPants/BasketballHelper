@@ -18,6 +18,8 @@
 		714B473E223B7F6B00134AA0 /* RecordList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 714B473D223B7F6B00134AA0 /* RecordList.storyboard */; };
 		71D4EDF0223B19CF005A05D0 /* CreateGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D4EDEF223B19CF005A05D0 /* CreateGameViewController.swift */; };
 		71D4EDF2223B1DB0005A05D0 /* StartingLineupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D4EDF1223B1DB0005A05D0 /* StartingLineupTableViewController.swift */; };
+		C7421417223B84FF000D3E0E /* BillBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7421416223B84FF000D3E0E /* BillBoard.storyboard */; };
+		C7421419223B9196000D3E0E /* BillBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7421418223B9196000D3E0E /* BillBoardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,8 @@
 		714B473D223B7F6B00134AA0 /* RecordList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordList.storyboard; sourceTree = "<group>"; };
 		71D4EDEF223B19CF005A05D0 /* CreateGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameViewController.swift; sourceTree = "<group>"; };
 		71D4EDF1223B1DB0005A05D0 /* StartingLineupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingLineupTableViewController.swift; sourceTree = "<group>"; };
+		C7421416223B84FF000D3E0E /* BillBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BillBoard.storyboard; sourceTree = "<group>"; };
+		C7421418223B9196000D3E0E /* BillBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillBoardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 		710D366B223238A3008A683C /* BasketballHelper */ = {
 			isa = PBXGroup;
 			children = (
+				C7421415223B84E2000D3E0E /* BillBoard */,
 				710D3673223238A3008A683C /* Assets.xcassets */,
 				710D366C223238A3008A683C /* AppDelegate.swift */,
 				710D3670223238A3008A683C /* Main.storyboard */,
@@ -88,6 +93,15 @@
 				714B4738223B1F3E00134AA0 /* PlayerDataTableViewController.swift */,
 			);
 			path = Recordlist;
+			sourceTree = "<group>";
+		};
+		C7421415223B84E2000D3E0E /* BillBoard */ = {
+			isa = PBXGroup;
+			children = (
+				C7421416223B84FF000D3E0E /* BillBoard.storyboard */,
+				C7421418223B9196000D3E0E /* BillBoardViewController.swift */,
+			);
+			path = BillBoard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +165,7 @@
 				710D3677223238A3008A683C /* LaunchScreen.storyboard in Resources */,
 				710D3674223238A3008A683C /* Assets.xcassets in Resources */,
 				710D3672223238A3008A683C /* Main.storyboard in Resources */,
+				C7421417223B84FF000D3E0E /* BillBoard.storyboard in Resources */,
 				714B473E223B7F6B00134AA0 /* RecordList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -164,6 +179,7 @@
 			files = (
 				710D368322323AFD008A683C /* PlayerListViewController.swift in Sources */,
 				710D366D223238A3008A683C /* AppDelegate.swift in Sources */,
+				C7421419223B9196000D3E0E /* BillBoardViewController.swift in Sources */,
 				714B473B223B366200134AA0 /* Game.swift in Sources */,
 				714B4739223B1F3E00134AA0 /* PlayerDataTableViewController.swift in Sources */,
 				71D4EDF2223B1DB0005A05D0 /* StartingLineupTableViewController.swift in Sources */,
