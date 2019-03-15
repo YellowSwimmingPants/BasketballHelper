@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		710D366D223238A3008A683C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D366C223238A3008A683C /* AppDelegate.swift */; };
-		710D3672223238A3008A683C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 710D3670223238A3008A683C /* Main.storyboard */; };
+		710D3672223238A3008A683C /* RecordList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 710D3670223238A3008A683C /* RecordList.storyboard */; };
 		710D3674223238A3008A683C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 710D3673223238A3008A683C /* Assets.xcassets */; };
 		710D3677223238A3008A683C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 710D3675223238A3008A683C /* LaunchScreen.storyboard */; };
 		710D368322323AFD008A683C /* PlayerListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D368222323AFD008A683C /* PlayerListViewController.swift */; };
@@ -22,7 +22,7 @@
 /* Begin PBXFileReference section */
 		710D3669223238A3008A683C /* BasketballHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasketballHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		710D366C223238A3008A683C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		710D3671223238A3008A683C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		710D3671223238A3008A683C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/RecordList.storyboard; sourceTree = "<group>"; };
 		710D3673223238A3008A683C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		710D3676223238A3008A683C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		710D3678223238A3008A683C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -64,6 +64,10 @@
 		710D366B223238A3008A683C /* BasketballHelper */ = {
 			isa = PBXGroup;
 			children = (
+				710D366C223238A3008A683C /* AppDelegate.swift */,
+				710D3673223238A3008A683C /* Assets.xcassets */,
+				710D3675223238A3008A683C /* LaunchScreen.storyboard */,
+				710D3678223238A3008A683C /* Info.plist */,
 				714B473C223B757F00134AA0 /* Recordlist */,
 			);
 			path = BasketballHelper;
@@ -72,17 +76,13 @@
 		714B473C223B757F00134AA0 /* Recordlist */ = {
 			isa = PBXGroup;
 			children = (
-				710D366C223238A3008A683C /* AppDelegate.swift */,
 				71D4EDEF223B19CF005A05D0 /* CreateGameViewController.swift */,
 				710D368222323AFD008A683C /* PlayerListViewController.swift */,
-				710D3670223238A3008A683C /* Main.storyboard */,
+				710D3670223238A3008A683C /* RecordList.storyboard */,
 				714B4738223B1F3E00134AA0 /* PlayerDataTableViewController.swift */,
 				711FB65722374F9000AD7483 /* GameRecordTableViewController.swift */,
 				714B473A223B366200134AA0 /* Game.swift */,
 				71D4EDF1223B1DB0005A05D0 /* StartingLineupTableViewController.swift */,
-				710D3673223238A3008A683C /* Assets.xcassets */,
-				710D3675223238A3008A683C /* LaunchScreen.storyboard */,
-				710D3678223238A3008A683C /* Info.plist */,
 			);
 			path = Recordlist;
 			sourceTree = "<group>";
@@ -147,7 +147,7 @@
 			files = (
 				710D3677223238A3008A683C /* LaunchScreen.storyboard in Resources */,
 				710D3674223238A3008A683C /* Assets.xcassets in Resources */,
-				710D3672223238A3008A683C /* Main.storyboard in Resources */,
+				710D3672223238A3008A683C /* RecordList.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,12 +171,12 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		710D3670223238A3008A683C /* Main.storyboard */ = {
+		710D3670223238A3008A683C /* RecordList.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				710D3671223238A3008A683C /* Base */,
 			);
-			name = Main.storyboard;
+			name = RecordList.storyboard;
 			sourceTree = "<group>";
 		};
 		710D3675223238A3008A683C /* LaunchScreen.storyboard */ = {
