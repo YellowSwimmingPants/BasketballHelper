@@ -20,6 +20,7 @@
 		71D4EDF2223B1DB0005A05D0 /* StartingLineupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71D4EDF1223B1DB0005A05D0 /* StartingLineupTableViewController.swift */; };
 		C7421417223B84FF000D3E0E /* BillBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7421416223B84FF000D3E0E /* BillBoard.storyboard */; };
 		C7421419223B9196000D3E0E /* BillBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7421418223B9196000D3E0E /* BillBoardViewController.swift */; };
+		C742141B223B99C9000D3E0E /* BillBoardEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C742141A223B99C9000D3E0E /* BillBoardEditTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		71D4EDF1223B1DB0005A05D0 /* StartingLineupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingLineupTableViewController.swift; sourceTree = "<group>"; };
 		C7421416223B84FF000D3E0E /* BillBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BillBoard.storyboard; sourceTree = "<group>"; };
 		C7421418223B9196000D3E0E /* BillBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillBoardViewController.swift; sourceTree = "<group>"; };
+		C742141A223B99C9000D3E0E /* BillBoardEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillBoardEditTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				C7421416223B84FF000D3E0E /* BillBoard.storyboard */,
+				C742141A223B99C9000D3E0E /* BillBoardEditTableViewController.swift */,
 				C7421418223B9196000D3E0E /* BillBoardViewController.swift */,
 			);
 			path = BillBoard;
@@ -178,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				710D368322323AFD008A683C /* PlayerListViewController.swift in Sources */,
+				C742141B223B99C9000D3E0E /* BillBoardEditTableViewController.swift in Sources */,
 				710D366D223238A3008A683C /* AppDelegate.swift in Sources */,
 				C7421419223B9196000D3E0E /* BillBoardViewController.swift in Sources */,
 				714B473B223B366200134AA0 /* Game.swift in Sources */,
