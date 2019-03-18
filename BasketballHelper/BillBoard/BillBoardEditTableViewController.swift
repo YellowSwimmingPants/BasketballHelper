@@ -87,7 +87,10 @@ class BillBoardEditTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func clickSave(_ sender: Any) {
+        
+    }
+    
     @IBAction func clickCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

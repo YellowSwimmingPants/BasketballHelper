@@ -390,7 +390,11 @@
                                             <action selector="clickCancel:" destination="0UZ-rP-4jl" id="vog-NM-Nhx"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem key="rightBarButtonItem" systemItem="save" id="Hgi-t2-08U"/>
+                                    <barButtonItem key="rightBarButtonItem" systemItem="save" id="Hgi-t2-08U">
+                                        <connections>
+                                            <action selector="clickSave:" destination="0UZ-rP-4jl" id="Gbo-rl-zKY"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
