@@ -22,6 +22,14 @@
 		C7421419223B9196000D3E0E /* BillBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7421418223B9196000D3E0E /* BillBoardViewController.swift */; };
 		C742141B223B99C9000D3E0E /* BillBoardEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C742141A223B99C9000D3E0E /* BillBoardEditTableViewController.swift */; };
 		C742141D223BA1EC000D3E0E /* BillBoardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C742141C223BA1EC000D3E0E /* BillBoardTableViewController.swift */; };
+		C7421420223BA638000D3E0E /* Managerment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C742141F223BA638000D3E0E /* Managerment.storyboard */; };
+		C7421422223BA68A000D3E0E /* ManagermentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7421421223BA68A000D3E0E /* ManagermentTableViewController.swift */; };
+		C7DE4CF8223F7D360013E7AB /* UserInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4CF7223F7D360013E7AB /* UserInfoTableViewController.swift */; };
+		C7DE4CFA223F802D0013E7AB /* UserInfoEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4CF9223F802D0013E7AB /* UserInfoEditTableViewController.swift */; };
+		C7DE4CFC223F81CC0013E7AB /* UserPasswordEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4CFB223F81CC0013E7AB /* UserPasswordEditTableViewController.swift */; };
+		C7DE4CFE223F82FA0013E7AB /* TeamManagermentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4CFD223F82FA0013E7AB /* TeamManagermentTableViewController.swift */; };
+		C7DE4D00223F83FB0013E7AB /* TeamMemberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4CFF223F83FB0013E7AB /* TeamMemberTableViewController.swift */; };
+		C7DE4D02223F8E140013E7AB /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4D01223F8E140013E7AB /* InviteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +50,14 @@
 		C7421418223B9196000D3E0E /* BillBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillBoardViewController.swift; sourceTree = "<group>"; };
 		C742141A223B99C9000D3E0E /* BillBoardEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillBoardEditTableViewController.swift; sourceTree = "<group>"; };
 		C742141C223BA1EC000D3E0E /* BillBoardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillBoardTableViewController.swift; sourceTree = "<group>"; };
+		C742141F223BA638000D3E0E /* Managerment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Managerment.storyboard; sourceTree = "<group>"; };
+		C7421421223BA68A000D3E0E /* ManagermentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagermentTableViewController.swift; sourceTree = "<group>"; };
+		C7DE4CF7223F7D360013E7AB /* UserInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewController.swift; sourceTree = "<group>"; };
+		C7DE4CF9223F802D0013E7AB /* UserInfoEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEditTableViewController.swift; sourceTree = "<group>"; };
+		C7DE4CFB223F81CC0013E7AB /* UserPasswordEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPasswordEditTableViewController.swift; sourceTree = "<group>"; };
+		C7DE4CFD223F82FA0013E7AB /* TeamManagermentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManagermentTableViewController.swift; sourceTree = "<group>"; };
+		C7DE4CFF223F83FB0013E7AB /* TeamMemberTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberTableViewController.swift; sourceTree = "<group>"; };
+		C7DE4D01223F8E140013E7AB /* InviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +90,7 @@
 		710D366B223238A3008A683C /* BasketballHelper */ = {
 			isa = PBXGroup;
 			children = (
+				C742141E223BA60D000D3E0E /* Managerment */,
 				C7421415223B84E2000D3E0E /* BillBoard */,
 				710D3673223238A3008A683C /* Assets.xcassets */,
 				710D366C223238A3008A683C /* AppDelegate.swift */,
@@ -108,6 +125,21 @@
 				C7421418223B9196000D3E0E /* BillBoardViewController.swift */,
 			);
 			path = BillBoard;
+			sourceTree = "<group>";
+		};
+		C742141E223BA60D000D3E0E /* Managerment */ = {
+			isa = PBXGroup;
+			children = (
+				C742141F223BA638000D3E0E /* Managerment.storyboard */,
+				C7DE4D01223F8E140013E7AB /* InviteViewController.swift */,
+				C7DE4CFF223F83FB0013E7AB /* TeamMemberTableViewController.swift */,
+				C7DE4CFD223F82FA0013E7AB /* TeamManagermentTableViewController.swift */,
+				C7DE4CFB223F81CC0013E7AB /* UserPasswordEditTableViewController.swift */,
+				C7DE4CF9223F802D0013E7AB /* UserInfoEditTableViewController.swift */,
+				C7DE4CF7223F7D360013E7AB /* UserInfoTableViewController.swift */,
+				C7421421223BA68A000D3E0E /* ManagermentTableViewController.swift */,
+			);
+			path = Managerment;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +200,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7421420223BA638000D3E0E /* Managerment.storyboard in Resources */,
 				710D3677223238A3008A683C /* LaunchScreen.storyboard in Resources */,
 				710D3674223238A3008A683C /* Assets.xcassets in Resources */,
 				710D3672223238A3008A683C /* Main.storyboard in Resources */,
@@ -183,16 +216,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7DE4CFA223F802D0013E7AB /* UserInfoEditTableViewController.swift in Sources */,
+				C7DE4D02223F8E140013E7AB /* InviteViewController.swift in Sources */,
 				710D368322323AFD008A683C /* PlayerListViewController.swift in Sources */,
 				C742141D223BA1EC000D3E0E /* BillBoardTableViewController.swift in Sources */,
 				C742141B223B99C9000D3E0E /* BillBoardEditTableViewController.swift in Sources */,
+				C7DE4D00223F83FB0013E7AB /* TeamMemberTableViewController.swift in Sources */,
 				710D366D223238A3008A683C /* AppDelegate.swift in Sources */,
 				C7421419223B9196000D3E0E /* BillBoardViewController.swift in Sources */,
 				714B473B223B366200134AA0 /* Game.swift in Sources */,
 				714B4739223B1F3E00134AA0 /* PlayerDataTableViewController.swift in Sources */,
+				C7421422223BA68A000D3E0E /* ManagermentTableViewController.swift in Sources */,
 				71D4EDF2223B1DB0005A05D0 /* StartingLineupTableViewController.swift in Sources */,
 				71D4EDF0223B19CF005A05D0 /* CreateGameViewController.swift in Sources */,
+				C7DE4CF8223F7D360013E7AB /* UserInfoTableViewController.swift in Sources */,
 				711FB65822374F9000AD7483 /* GameRecordTableViewController.swift in Sources */,
+				C7DE4CFC223F81CC0013E7AB /* UserPasswordEditTableViewController.swift in Sources */,
+				C7DE4CFE223F82FA0013E7AB /* TeamManagermentTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
