@@ -10,6 +10,9 @@ import UIKit
 
 class InviteViewController: UIViewController {
 
+
+    @IBOutlet weak var qrCodeImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,5 +29,8 @@ class InviteViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func clickDone(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

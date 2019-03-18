@@ -30,6 +30,7 @@
 		C7DE4CFE223F82FA0013E7AB /* TeamManagermentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4CFD223F82FA0013E7AB /* TeamManagermentTableViewController.swift */; };
 		C7DE4D00223F83FB0013E7AB /* TeamMemberTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4CFF223F83FB0013E7AB /* TeamMemberTableViewController.swift */; };
 		C7DE4D02223F8E140013E7AB /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4D01223F8E140013E7AB /* InviteViewController.swift */; };
+		C7DE4D04223F96AE0013E7AB /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4D03223F96AE0013E7AB /* MemberTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		C7DE4CFD223F82FA0013E7AB /* TeamManagermentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamManagermentTableViewController.swift; sourceTree = "<group>"; };
 		C7DE4CFF223F83FB0013E7AB /* TeamMemberTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberTableViewController.swift; sourceTree = "<group>"; };
 		C7DE4D01223F8E140013E7AB /* InviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
+		C7DE4D03223F96AE0013E7AB /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				C742141F223BA638000D3E0E /* Managerment.storyboard */,
+				C7DE4D03223F96AE0013E7AB /* MemberTableViewCell.swift */,
 				C7DE4D01223F8E140013E7AB /* InviteViewController.swift */,
 				C7DE4CFF223F83FB0013E7AB /* TeamMemberTableViewController.swift */,
 				C7DE4CFD223F82FA0013E7AB /* TeamManagermentTableViewController.swift */,
@@ -229,6 +232,7 @@
 				C7421422223BA68A000D3E0E /* ManagermentTableViewController.swift in Sources */,
 				71D4EDF2223B1DB0005A05D0 /* StartingLineupTableViewController.swift in Sources */,
 				71D4EDF0223B19CF005A05D0 /* CreateGameViewController.swift in Sources */,
+				C7DE4D04223F96AE0013E7AB /* MemberTableViewCell.swift in Sources */,
 				C7DE4CF8223F7D360013E7AB /* UserInfoTableViewController.swift in Sources */,
 				711FB65822374F9000AD7483 /* GameRecordTableViewController.swift in Sources */,
 				C7DE4CFC223F81CC0013E7AB /* UserPasswordEditTableViewController.swift in Sources */,

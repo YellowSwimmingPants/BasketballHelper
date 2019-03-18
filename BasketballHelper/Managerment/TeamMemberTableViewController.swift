@@ -9,7 +9,10 @@
 import UIKit
 
 class TeamMemberTableViewController: UITableViewController {
-
+    
+    
+    @IBOutlet weak var memberSegment: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
