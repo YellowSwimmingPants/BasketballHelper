@@ -603,7 +603,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BSN-IG-Nix" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="270" y="834"/>
+            <point key="canvasLocation" x="225" y="943"/>
         </scene>
         <!--成員管理-->
         <scene sceneID="HBV-EK-kXt">

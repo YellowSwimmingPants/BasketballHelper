@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		334E441E223FB9640055D0EC /* PlayerInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334E441D223FB9640055D0EC /* PlayerInfo.storyboard */; };
+		334E4420223FD13E0055D0EC /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E441F223FD13E0055D0EC /* PlayerDetail.swift */; };
+		334E4422223FD7EC0055D0EC /* PlayerInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E4421223FD7EC0055D0EC /* PlayerInformation.swift */; };
+		334E4424223FD8B60055D0EC /* InsertPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E4423223FD8B60055D0EC /* InsertPlayer.swift */; };
 		710D366D223238A3008A683C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D366C223238A3008A683C /* AppDelegate.swift */; };
 		710D3672223238A3008A683C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 710D3670223238A3008A683C /* Main.storyboard */; };
 		710D3674223238A3008A683C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 710D3673223238A3008A683C /* Assets.xcassets */; };
@@ -34,6 +38,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		334E441D223FB9640055D0EC /* PlayerInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayerInfo.storyboard; sourceTree = "<group>"; };
+		334E441F223FD13E0055D0EC /* PlayerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetail.swift; sourceTree = "<group>"; };
+		334E4421223FD7EC0055D0EC /* PlayerInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInformation.swift; sourceTree = "<group>"; };
+		334E4423223FD8B60055D0EC /* InsertPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertPlayer.swift; sourceTree = "<group>"; };
 		710D3669223238A3008A683C /* BasketballHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasketballHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		710D366C223238A3008A683C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		710D3671223238A3008A683C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,6 +81,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		334E441C223FB9270055D0EC /* PlayerInfo */ = {
+			isa = PBXGroup;
+			children = (
+				334E4423223FD8B60055D0EC /* InsertPlayer.swift */,
+				334E441D223FB9640055D0EC /* PlayerInfo.storyboard */,
+				334E4421223FD7EC0055D0EC /* PlayerInformation.swift */,
+				334E441F223FD13E0055D0EC /* PlayerDetail.swift */,
+			);
+			path = PlayerInfo;
+			sourceTree = "<group>";
+		};
 		710D3660223238A3008A683C = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +111,7 @@
 		710D366B223238A3008A683C /* BasketballHelper */ = {
 			isa = PBXGroup;
 			children = (
+				334E441C223FB9270055D0EC /* PlayerInfo */,
 				C742141E223BA60D000D3E0E /* Managerment */,
 				C7421415223B84E2000D3E0E /* BillBoard */,
 				710D3673223238A3008A683C /* Assets.xcassets */,
@@ -206,6 +226,7 @@
 				C7421420223BA638000D3E0E /* Managerment.storyboard in Resources */,
 				710D3677223238A3008A683C /* LaunchScreen.storyboard in Resources */,
 				710D3674223238A3008A683C /* Assets.xcassets in Resources */,
+				334E441E223FB9640055D0EC /* PlayerInfo.storyboard in Resources */,
 				710D3672223238A3008A683C /* Main.storyboard in Resources */,
 				C7421417223B84FF000D3E0E /* BillBoard.storyboard in Resources */,
 				714B473E223B7F6B00134AA0 /* RecordList.storyboard in Resources */,
@@ -220,13 +241,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7DE4CFA223F802D0013E7AB /* UserInfoEditTableViewController.swift in Sources */,
+				334E4424223FD8B60055D0EC /* InsertPlayer.swift in Sources */,
 				C7DE4D02223F8E140013E7AB /* InviteViewController.swift in Sources */,
 				710D368322323AFD008A683C /* PlayerListViewController.swift in Sources */,
+				334E4420223FD13E0055D0EC /* PlayerDetail.swift in Sources */,
 				C742141D223BA1EC000D3E0E /* BillBoardTableViewController.swift in Sources */,
 				C742141B223B99C9000D3E0E /* BillBoardEditTableViewController.swift in Sources */,
 				C7DE4D00223F83FB0013E7AB /* TeamMemberTableViewController.swift in Sources */,
 				710D366D223238A3008A683C /* AppDelegate.swift in Sources */,
 				C7421419223B9196000D3E0E /* BillBoardViewController.swift in Sources */,
+				334E4422223FD7EC0055D0EC /* PlayerInformation.swift in Sources */,
 				714B473B223B366200134AA0 /* Game.swift in Sources */,
 				714B4739223B1F3E00134AA0 /* PlayerDataTableViewController.swift in Sources */,
 				C7421422223BA68A000D3E0E /* ManagermentTableViewController.swift in Sources */,
