@@ -141,8 +141,16 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <items>
                                     <navigationItem title="新增球員" id="RCR-Ob-dZ4">
-                                        <barButtonItem key="leftBarButtonItem" title="儲存" id="UHL-he-jni"/>
-                                        <barButtonItem key="rightBarButtonItem" title="取消" id="C4j-Mu-m6o"/>
+                                        <barButtonItem key="leftBarButtonItem" title="儲存" id="UHL-he-jni">
+                                            <connections>
+                                                <action selector="clickSave:" destination="IlJ-kX-w9G" id="DEB-2E-IoS"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="取消" id="C4j-Mu-m6o">
+                                            <connections>
+                                                <action selector="clickCancel:" destination="IlJ-kX-w9G" id="8fa-mB-kUh"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -208,6 +216,22 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XIq-ch-Rt2">
                                 <rect key="frame" x="217" y="108" width="142" height="110"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYy-Lc-ONE">
+                                <rect key="frame" x="324" y="226" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="briefcase"/>
+                                <connections>
+                                    <action selector="imagePicker:" destination="IlJ-kX-w9G" eventType="touchUpInside" id="iTx-sa-H0a"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AmH-1E-Uk6">
+                                <rect key="frame" x="217" y="226" width="33" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="camera"/>
+                                <connections>
+                                    <action selector="clickTackPicture:" destination="IlJ-kX-w9G" eventType="touchUpInside" id="U59-uw-sc2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -238,6 +262,17 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oSj-cP-U4s"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="XIq-ch-Rt2" id="jIE-hK-NFp"/>
+                        <outlet property="tfBirthday" destination="92T-Z3-hAS" id="rBO-01-wTk"/>
+                        <outlet property="tfEmail" destination="GqI-wf-Cx7" id="gV9-fu-TSr"/>
+                        <outlet property="tfName" destination="4V9-sH-DCV" id="Qdm-B6-sa7"/>
+                        <outlet property="tfNickName" destination="lQX-2d-574" id="uxR-Mw-NyM"/>
+                        <outlet property="tfNumber" destination="ane-cv-Org" id="YTx-zI-tm2"/>
+                        <outlet property="tfPhone" destination="pnK-wI-j3T" id="oeo-KF-hco"/>
+                        <outlet property="tfPosition" destination="RRb-ST-Sz9" id="cW1-Jl-Cyh"/>
+                        <outlet property="tvResult" destination="2Oc-7c-UQb" id="uLJ-a1-28s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgj-6i-apO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -383,4 +418,8 @@
             <point key="canvasLocation" x="2642" y="1187"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="briefcase" width="30" height="30"/>
+        <image name="camera" width="30" height="30"/>
+    </resources>
 </document>
