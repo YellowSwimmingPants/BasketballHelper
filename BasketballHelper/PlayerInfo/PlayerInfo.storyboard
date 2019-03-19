@@ -13,7 +13,7 @@
         <!--成員資料-->
         <scene sceneID="VzA-jB-1Mx">
             <objects>
-                <tableViewController id="Poe-eu-7GI" sceneMemberID="viewController">
+                <tableViewController id="Poe-eu-7GI" customClass="PlayerList" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="88y-xo-Ecz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -341,6 +341,7 @@
                             <constraint firstItem="Ivk-cf-g7p" firstAttribute="centerY" secondItem="OHr-qI-o7W" secondAttribute="centerY" id="TVf-3d-sZz"/>
                             <constraint firstItem="RVW-SC-xF4" firstAttribute="trailing" secondItem="OHr-qI-o7W" secondAttribute="trailingMargin" id="TxW-iA-GOj"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="Chb-aV-YGK"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="RVW-SC-xF4" id="a2M-ee-Wpg"/>
@@ -374,6 +375,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="w5K-SV-MSE"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Uz-b0-qHq" userLabel="First Responder" sceneMemberID="firstResponder"/>
