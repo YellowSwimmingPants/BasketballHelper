@@ -14,7 +14,7 @@ class BillBoardTableViewController: UITableViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
-    var billBoard: billBoard!
+    var billBoard: BillBoard!
     
     override func viewWillAppear(_ animated: Bool) {
         

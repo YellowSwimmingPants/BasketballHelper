@@ -31,7 +31,7 @@
 		C7421420223BA638000D3E0E /* Managerment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C742141F223BA638000D3E0E /* Managerment.storyboard */; };
 		C7421422223BA68A000D3E0E /* ManagermentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7421421223BA68A000D3E0E /* ManagermentTableViewController.swift */; };
 		C77F5DF82240DE4800BDBE42 /* BillBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77F5DF72240DE4800BDBE42 /* BillBoard.swift */; };
-		C77F5DFB2240E83A00BDBE42 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77F5DFA2240E83A00BDBE42 /* Common.swift */; };
+		C77F5DFB2240E83A00BDBE42 /* Common_user.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77F5DFA2240E83A00BDBE42 /* Common_user.swift */; };
 		C7DE4CF8223F7D360013E7AB /* UserInfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4CF7223F7D360013E7AB /* UserInfoTableViewController.swift */; };
 		C7DE4CFA223F802D0013E7AB /* UserInfoEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4CF9223F802D0013E7AB /* UserInfoEditTableViewController.swift */; };
 		C7DE4CFC223F81CC0013E7AB /* UserPasswordEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4CFB223F81CC0013E7AB /* UserPasswordEditTableViewController.swift */; };
@@ -68,7 +68,7 @@
 		C742141F223BA638000D3E0E /* Managerment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Managerment.storyboard; sourceTree = "<group>"; };
 		C7421421223BA68A000D3E0E /* ManagermentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagermentTableViewController.swift; sourceTree = "<group>"; };
 		C77F5DF72240DE4800BDBE42 /* BillBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillBoard.swift; sourceTree = "<group>"; };
-		C77F5DFA2240E83A00BDBE42 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		C77F5DFA2240E83A00BDBE42 /* Common_user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common_user.swift; sourceTree = "<group>"; };
 		C7DE4CF7223F7D360013E7AB /* UserInfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoTableViewController.swift; sourceTree = "<group>"; };
 		C7DE4CF9223F802D0013E7AB /* UserInfoEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoEditTableViewController.swift; sourceTree = "<group>"; };
 		C7DE4CFB223F81CC0013E7AB /* UserPasswordEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPasswordEditTableViewController.swift; sourceTree = "<group>"; };
@@ -180,7 +180,7 @@
 		C77F5DF92240E81200BDBE42 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				C77F5DFA2240E83A00BDBE42 /* Common.swift */,
+				C77F5DFA2240E83A00BDBE42 /* Common_user.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -276,7 +276,7 @@
 				714B4739223B1F3E00134AA0 /* PlayerDataTableViewController.swift in Sources */,
 				C7421422223BA68A000D3E0E /* ManagermentTableViewController.swift in Sources */,
 				71D4EDF2223B1DB0005A05D0 /* StartingLineupTableViewController.swift in Sources */,
-				C77F5DFB2240E83A00BDBE42 /* Common.swift in Sources */,
+				C77F5DFB2240E83A00BDBE42 /* Common_user.swift in Sources */,
 				71D4EDF0223B19CF005A05D0 /* CreateGameViewController.swift in Sources */,
 				33FD82D92240DA3100DB2B95 /* Common.swift in Sources */,
 				33FD82D72240A01300DB2B95 /* PlayerList.swift in Sources */,
@@ -438,6 +438,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CharlesLee.BasketballHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ENABLE_BATCH_MODE = no;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -455,6 +456,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = CharlesLee.BasketballHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ENABLE_BATCH_MODE = no;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
