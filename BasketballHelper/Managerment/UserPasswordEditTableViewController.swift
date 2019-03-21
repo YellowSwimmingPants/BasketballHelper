@@ -14,6 +14,7 @@ class UserPasswordEditTableViewController: UITableViewController {
     @IBOutlet weak var newPasswordTextField: UITextField!
     @IBOutlet weak var confirmTextField: UITextField!
     var userInfo: UserInfo!
+    let url_server = URL(string: common_url + "UserInfoServlet")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +37,25 @@ class UserPasswordEditTableViewController: UITableViewController {
         var requestParam = [String: String]()
         requestParam["action"] = "updatePassword"
         requestParam["user"] = try! String(data: JSONEncoder().encode(user), encoding: .utf8)
-        
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    if let result = String(data: data!, encoding: .utf8) {
+                        if let count = Int(result) {
+                            DispatchQueue.main.async {
+                                if count != 0 {
+                                    self.navigationController?.popViewController(animated: true)
+                                } else {
+                                    showToast(view: self.view, message: "更新失敗")
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
     }
     
     @IBAction func didEndOnExit(_ sender: Any) {

@@ -12,6 +12,8 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var memberTableView: UITableView!
+    var userInfo = [UserInfo]()
+    let url_server = URL(string: common_url + "UserInfoServlet")
     
     let privateList:[String] = ["Private item 1","Private item 2"]
     let friendsAndFamily:[String] = ["Friend item 1","Friend item 2", "Friends item 3"]
@@ -50,6 +52,33 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
             break
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "退出球隊") { (action, indexPath) in
+            var requestParam = [String: Any]()
+            requestParam["action"] = "memberDelete"
+            requestParam["userAccount"] = self.userInfo[indexPath.row].userAccount
+            executeTask(self.url_server!, requestParam, completionHandler: { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        if let result = String(data: data!, encoding: .utf8) {
+                            if let count = Int(result) {
+                                if count != 0 {
+                                    self.userInfo.remove(at: indexPath.row)
+                                    DispatchQueue.main.async {
+                                        tableView.deleteRows(at: [indexPath], with: .fade)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    print(error!.localizedDescription)
+                }
+            })
+        }
+        return [delete]
     }
 
     

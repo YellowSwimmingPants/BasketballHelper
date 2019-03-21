@@ -38,7 +38,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="jaj-Ih-CXt" kind="show" id="ONp-jC-NfR"/>
+                                            <segue destination="jaj-Ih-CXt" kind="show" identifier="userInfo" id="ONp-jC-NfR"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="0OE-DC-gCY" style="IBUITableViewCellStyleDefault" id="0Du-1Q-AXw">
@@ -58,7 +58,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="bzs-la-acR" kind="show" id="ws3-PJ-y9B"/>
+                                            <segue destination="bzs-la-acR" kind="show" identifier="userInfoEdit" id="ws3-PJ-y9B"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="YmG-uu-aNK" style="IBUITableViewCellStyleDefault" id="DUd-ve-TL9">
@@ -78,7 +78,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="beV-Dq-oI3" kind="show" id="ySX-BI-Y2j"/>
+                                            <segue destination="beV-Dq-oI3" kind="show" identifier="passwordEdit" id="ySX-BI-Y2j"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="omE-jM-zZz" style="IBUITableViewCellStyleDefault" id="xpo-BU-Jqi">
@@ -98,7 +98,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="znx-v1-JYW" kind="show" id="71i-DG-Nxr"/>
+                                            <segue destination="znx-v1-JYW" kind="show" identifier="memberManagerment" id="71i-DG-Nxr"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="NiW-YV-WVv" style="IBUITableViewCellStyleDefault" id="hVl-Nh-BZT">
@@ -118,7 +118,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="9jx-Pf-PcQ" kind="show" id="mGK-l6-Uvn"/>
+                                            <segue destination="9jx-Pf-PcQ" kind="show" identifier="teamManagerment" id="mGK-l6-Uvn"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -129,7 +129,9 @@
                             <outlet property="delegate" destination="pwH-H6-qYD" id="67b-Cx-ZCo"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="管理" id="x0f-A1-zgx"/>
+                    <navigationItem key="navigationItem" title="管理" id="x0f-A1-zgx">
+                        <barButtonItem key="rightBarButtonItem" title="登出" id="Ok3-f0-5MF"/>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epS-WJ-jew" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
