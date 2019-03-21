@@ -10,6 +10,8 @@ import UIKit
 
 class StartingLineupTableViewController: UITableViewController {
 
+    let players = ["王小平", "蔡小甫", "李小銓", "陳小志", "黃老師"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,12 +26,16 @@ class StartingLineupTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return 5
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return players[row]
     }
 
     /*

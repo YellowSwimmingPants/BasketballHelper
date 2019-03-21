@@ -1,28 +1,21 @@
-//
-//  CreateGameViewController.swift
-//  BasketballHelper
-//
-//  Created by 李宜銓 on 2019/3/15.
-//  Copyright © 2019 李宜銓. All rights reserved.
-//
+
 
 import UIKit
 
-class CreateGameViewController: UIViewController {
+class CreateGameTableViewController: UITableViewController {
+    
+    @IBOutlet weak var tfGameName: UITextField!
     var dateString: String?
     let players = ["王小平", "蔡小甫", "李小銓", "陳小志", "黃老師"]
-    @IBOutlet weak var tfGameName: UITextField!
-    @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
-    
-
+    var datePickerHidden = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
     }
     
-    @IBAction func datePickerValueChanged(_ datePicker: UIDatePicker) {
+    @IBAction func datePickerValueChanged(_ sender: Any) {
         /* 準備格式化物件(中日期、短時間格式) */
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
@@ -45,16 +38,26 @@ class CreateGameViewController: UIViewController {
         userDefaults.synchronize()
     }
     
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func toggleDatePicker() {
+        datePickerHidden = !datePickerHidden
+        
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
-    */
-
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if datePickerHidden && indexPath.section == 0 && indexPath.row == 3 {
+            return 0
+        }
+        else {
+            return super.tableView(tableView, heightForRowAt: indexPath)
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 && indexPath.row == 2 {
+            toggleDatePicker()
+        }
+    }
+    
 }
