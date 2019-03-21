@@ -9,27 +9,25 @@
 import UIKit
 
 class ManagerTableViewController: UITableViewController {
+    
+    let userDefault = UserDefaults()
+    var userInfos = [UserInfo]()
+    var users: UserInfo!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+        }
     }
 
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "userInfo" || segue.identifier == "userInfoEdit" || segue.identifier == "passwordEdit" || segue.identifier == "memberManagerment" || segue.identifier == "teamManagerment" {
+            let user = users
+            let userInfoTableViewController = segue.destination as! UserInfoTableViewController
+            userInfoTableViewController.userInfo = user
+        }
     }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    
-
-    
-    
-    
-    
     
 }

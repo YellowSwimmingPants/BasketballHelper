@@ -20,11 +20,11 @@ class UserInfoTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = userInfo.userName
-        accountLabel.text = userInfo.userAccount
-        nameLabel.text = userInfo.userName
-        emailLabel.text = userInfo.email
-        showImage()
+//        self.title = userInfo.userName
+//        accountLabel.text = userInfo.userAccount
+//        nameLabel.text = userInfo.userName
+//        emailLabel.text = userInfo.email
+//        showImage()
     }
     
     func showImage() {
