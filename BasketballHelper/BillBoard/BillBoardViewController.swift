@@ -8,19 +8,29 @@
 
 import UIKit
 
-class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var calendarCollectionView: UICollectionView!
+    @IBOutlet weak var billBoardTableView: UITableView!
     
     let now = Date()
     var callendar = Calendar.current
     let dateFmatter = DateFormatter()
     var components = DateComponents()
     let weekArray = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    var userInfo = [UserInfo]()
+    var users: UserInfo!
+    var billBoards = [BillBoard]()
+    let url_server = URL(string: common_url + "UserInfoServlet")
+    let userDefault = UserDefaults()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+        }
         
         callendar.locale = Locale(identifier: "zh")
         dateFmatter.locale = Locale(identifier: "zh_TW")
@@ -30,6 +40,25 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
         components.day = 1
         calculation()
         createGesture()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        var requestParam = [String: Any]()
+        requestParam["action"] = "getBillBoard"
+//        requestParam["id"] = billBoard.id
+        
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    if let result = try? JSONDecoder().decode([BillBoard].self, from: data!) {
+                        self.billBoards = result
+                        DispatchQueue.main.async {
+                            self.billBoardTableView.reloadData()
+                        }
+                    }
+                }
+            }
+        }
     }
     
     func calculation() {
@@ -131,4 +160,21 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return billBoards.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellId = "billBoardCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId)!
+        let billBoard = billBoards[indexPath.row]
+        
+        cell.textLabel?.text = billBoard.type
+        cell.detailTextLabel?.text = billBoard.title
+        
+        return cell
+    }
+
+    
 }

@@ -10,25 +10,44 @@ import UIKit
 
 class InviteViewController: UIViewController {
 
-
+    let url_server = URL(string: common_url + "TeamInfoServlet")
+    let userDefault = UserDefaults()
+    var userInfos = [UserInfo]()
+    var users: UserInfo!
+    
     @IBOutlet weak var qrCodeImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+        }
+        showQRCode()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func showQRCode() {
+        var requestParam = [String: Any]()
+        requestParam["action"] = "getQRCode"
+        requestParam["userAccount"] = users.userAccount
+        var image: UIImage?
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    image = UIImage(data: data!)
+                }
+                if image == nil {
+                    image = UIImage(named: "noImage.jpg")
+                }
+                DispatchQueue.main.async {
+                    self.qrCodeImageView.image = image
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
     }
-    */
+    
     @IBAction func clickDone(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }

@@ -103,12 +103,28 @@
                                             <constraint firstAttribute="height" constant="175" id="dNp-iq-V55"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="3XF-W3-yPM">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="billBoardCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="billBoardCell" textLabel="uqe-Gd-BIM" detailTextLabel="0Dr-iN-sC4" style="IBUITableViewCellStyleValue2" id="3XF-W3-yPM">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3XF-W3-yPM" id="C4c-YM-NbG">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uqe-Gd-BIM">
+                                                            <rect key="frame" x="15" y="10" width="91" height="24"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Dr-iN-sC4">
+                                                            <rect key="frame" x="112" y="12" width="46.5" height="21.5"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
                                         </prototypes>
@@ -143,6 +159,7 @@
                         <viewLayoutGuide key="safeArea" id="ACn-Y6-jYt"/>
                     </view>
                     <connections>
+                        <outlet property="billBoardTableView" destination="pKk-Re-Qm7" id="6bA-ZN-DMI"/>
                         <outlet property="calendarCollectionView" destination="8Or-I0-pkE" id="0Ai-Bf-jVu"/>
                         <outlet property="dateLabel" destination="SNZ-wL-fAs" id="LZC-Lk-rQG"/>
                     </connections>
