@@ -217,7 +217,7 @@
         <!--Item-->
         <scene sceneID="shT-iU-7Z3">
             <objects>
-                <tableViewController id="1UF-jL-4bY" sceneMemberID="viewController">
+                <tableViewController id="1UF-jL-4bY" customClass="BuildTeamTableViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4M8-tK-kNr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -296,7 +296,7 @@
         <!--Item-->
         <scene sceneID="L9Z-1w-EhX">
             <objects>
-                <viewController id="D3k-or-y2M" sceneMemberID="viewController">
+                <viewController id="D3k-or-y2M" customClass="ScanQRViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tTl-tl-Dhf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -344,6 +344,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="MWb-y4-Lit" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ixw-uX-f90">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
