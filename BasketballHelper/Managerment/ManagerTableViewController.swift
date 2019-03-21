@@ -1,18 +1,15 @@
 //
-//  TeamMemberTableViewController.swift
+//  ManagerTableViewController.swift
 //  BasketballHelper
 //
-//  Created by 王克平 on 2019/3/18.
+//  Created by 王克平 on 2019/3/21.
 //  Copyright © 2019 李宜銓. All rights reserved.
 //
 
 import UIKit
 
-class TeamMemberTableViewController: UITableViewController {
-    
-    
-    @IBOutlet weak var memberSegment: UISegmentedControl!
-    
+class ManagerTableViewController: UITableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -15,76 +15,46 @@ class UserInfoEditTableViewController: UITableViewController {
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextView: UITextField!
+    var userInfo: UserInfo!
+    var image: UIImage?
+    let url_server = URL(string: common_url + "UserInfoServlet")
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
     }
 
-    // MARK: - Table view data source
-
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        return 0
-//    }
-
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 0
-//    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+    @IBAction func clickSave(_ sender: Any) {
+        let userName = userNameTextField.text == nil ? "" : userNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = emailTextField.text == nil ? "" : emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let userPassword = passwordTextView.text == nil ? "" : passwordTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let user = UserInfo(userId: 0, userInfo.userAccount, userPassword, userName, email, userInfo.priority)
+        var requestParam = [String: String]()
+        requestParam["action"] = "update"
+        requestParam["userInfo"] = try! String(data: JSONEncoder().encode(user), encoding: .utf8)
+        if self.image != nil {
+            requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
+        }
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    if let result = String(data: data!, encoding: .utf8) {
+                        if let count = Int(result) {
+                            DispatchQueue.main.async {
+                                if count != 0 {                                            self.navigationController?.popViewController(animated: true)
+                                } else {
+                                    showSimpleAlert(message: "修改失敗", viewController: self)
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    @IBAction func didEndOnExit(_ sender: Any) {
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

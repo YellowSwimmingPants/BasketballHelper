@@ -21,7 +21,7 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yDP-Db-Bmn">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Title" id="vLu-dt-smm">
+                                    <navigationItem title="我的球隊" id="vLu-dt-smm">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="u7P-EX-XFx">
                                             <connections>
                                                 <segue destination="0UZ-rP-4jl" kind="presentation" id="da1-EL-9wl"/>
@@ -169,7 +169,11 @@
                                             <action selector="clickDone:" destination="FiN-6X-aN2" id="quu-vu-0qx"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem key="rightBarButtonItem" systemItem="trash" id="3rw-LN-3ni"/>
+                                    <barButtonItem key="rightBarButtonItem" systemItem="trash" id="3rw-LN-3ni">
+                                        <connections>
+                                            <action selector="clickDelete:" destination="FiN-6X-aN2" id="iFx-5G-szC"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
