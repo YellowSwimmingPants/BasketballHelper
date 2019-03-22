@@ -24,6 +24,8 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     var billBoards = [BillBoard]()
     let url_server = URL(string: common_url + "UserInfoServlet")
     let userDefault = UserDefaults()
+    
+    let billBoardList: [BillBoard] = [BillBoard(1,Date(),"公告","Hello","公告")]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -162,13 +164,13 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return billBoards.count
+        return billBoardList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellId = "billBoardCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId)!
-        let billBoard = billBoards[indexPath.row]
+        let billBoard = billBoardList[indexPath.row]
         
         cell.textLabel?.text = billBoard.type
         cell.detailTextLabel?.text = billBoard.title
@@ -176,5 +178,13 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
         return cell
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "billBoardDetail" {
+            let indexPath = self.billBoardTableView.indexPath(for: sender as! UITableViewCell)
+            let billBoard = billBoardList[indexPath!.row]
+            let billBoardTableViewController = segue.destination as! BillBoardTableViewController
+            billBoardTableViewController.billBoard = billBoard
+        }
+    }
     
 }

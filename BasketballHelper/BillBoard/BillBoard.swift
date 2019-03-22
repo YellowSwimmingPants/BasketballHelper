@@ -15,7 +15,7 @@ class BillBoard: Codable {
     var content: String
     var type: String
     
-    public init(_ id: Int, _ date: Date, _ title: String, _ content: String, type: String) {
+    public init(_ id: Int, _ date: Date, _ title: String, _ content: String, _ type: String) {
         self.id = id
         self.date = date
         self.title = title

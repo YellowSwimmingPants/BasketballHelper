@@ -60,7 +60,7 @@ class BillBoardEditTableViewController: UITableViewController {
         let title = titleTextField.text == nil ? "" : titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         let content = contextTextView.text == nil ? "" : contextTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         let type = ""
-        let billBoard = BillBoard(0, date, title!, content!, type: type)
+        let billBoard = BillBoard(0, date, title!, content!, type)
         var requestParam = [String: String]()
         requestParam["action"] = "billBoardInsert"
         requestParam["billBoard"] = try! String(data: JSONEncoder().encode(billBoard), encoding: .utf8)

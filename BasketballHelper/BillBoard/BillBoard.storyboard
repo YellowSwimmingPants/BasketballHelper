@@ -103,11 +103,11 @@
                                             <constraint firstAttribute="height" constant="175" id="dNp-iq-V55"/>
                                         </constraints>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="billBoardCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="billBoardCell" textLabel="uqe-Gd-BIM" detailTextLabel="0Dr-iN-sC4" style="IBUITableViewCellStyleValue2" id="3XF-W3-yPM">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="billBoardCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="billBoardCell" textLabel="uqe-Gd-BIM" detailTextLabel="0Dr-iN-sC4" style="IBUITableViewCellStyleValue2" id="3XF-W3-yPM">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3XF-W3-yPM" id="C4c-YM-NbG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uqe-Gd-BIM">
@@ -126,8 +126,15 @@
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
+                                                <connections>
+                                                    <segue destination="FiN-6X-aN2" kind="show" identifier="billBoardDetail" id="Kng-cp-42E"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="mZc-A9-gD8" id="ScR-du-V7Z"/>
+                                            <outlet property="delegate" destination="mZc-A9-gD8" id="rhu-Oj-XuY"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <constraints>
@@ -346,7 +353,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ooX-Uo-3aP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="148" y="767.76611694152928"/>
+            <point key="canvasLocation" x="148" y="835"/>
         </scene>
         <!--Bill Board Edit Table View Controller-->
         <scene sceneID="IgG-13-rGh">
