@@ -10,7 +10,6 @@ import UIKit
 
 class UserInfoEditTableViewController: UITableViewController {
     
-    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!

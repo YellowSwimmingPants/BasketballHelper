@@ -130,7 +130,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="管理" id="x0f-A1-zgx">
-                        <barButtonItem key="rightBarButtonItem" title="登出" id="Ok3-f0-5MF"/>
+                        <barButtonItem key="rightBarButtonItem" title="登出" id="Ok3-f0-5MF">
+                            <connections>
+                                <action selector="clickLogout:" destination="pwH-H6-qYD" id="YSJ-jC-Zg4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="epS-WJ-jew" userLabel="First Responder" sceneMemberID="firstResponder"/>

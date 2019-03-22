@@ -15,21 +15,27 @@ class UserInfoTableViewController: UITableViewController {
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    let userDefault = UserDefaults()
+    var users: UserInfo!
     var userInfo: UserInfo!
     let url_server = URL(string: common_url + "UserInfoServlet")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.title = userInfo.userName
-//        accountLabel.text = userInfo.userAccount
-//        nameLabel.text = userInfo.userName
-//        emailLabel.text = userInfo.email
-//        showImage()
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+            self.title = users.userName
+            accountLabel.text = users.userAccount
+            nameLabel.text = users.userName
+            emailLabel.text = users.email
+            showImage()
+
+        }
     }
     
     func showImage() {
         var requestParam = [String: String]()
-        let userAccount = userInfo.userAccount
+        let userAccount = users.userAccount
         requestParam = ["action" : "getImage"]
         requestParam["userAccount"] = userAccount
         var image: UIImage?
