@@ -9,19 +9,21 @@ class CreateGameTableViewController: UITableViewController {
     let players = ["王小平", "蔡小甫", "李小銓", "陳小志", "黃老師"]
     @IBOutlet weak var datePicker: UIDatePicker!
     var datePickerHidden = true
+    @IBOutlet weak var lbShowDate: UILabel!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        datePickerChanged()
     }
     
     @IBAction func datePickerValueChanged(_ sender: Any) {
-        /* 準備格式化物件(中日期、短時間格式) */
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .short
-        /* date屬性可以取得/設定datePicker目前的日期 */
-        dateString = dateFormatter.string(from: datePicker.date)
+        datePickerChanged()
+    }
+    
+    func datePickerChanged() {
+        lbShowDate.text = DateFormatter.localizedString(from: datePicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
     }
     
     @IBAction func clickDone(_ sender: Any) {
@@ -40,7 +42,6 @@ class CreateGameTableViewController: UITableViewController {
     
     func toggleDatePicker() {
         datePickerHidden = !datePickerHidden
-        
         tableView.beginUpdates()
         tableView.endUpdates()
     }

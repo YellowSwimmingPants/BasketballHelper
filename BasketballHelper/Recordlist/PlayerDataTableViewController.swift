@@ -8,40 +8,76 @@
 
 import UIKit
 
-class PlayerDataTableViewController: UITableViewController {
+var actions = [Action]()
 
+class PlayerDataTableViewController: UITableViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        actions.append(Action("罰球進球", 0))
+        actions.append(Action("罰球不進", 0))
+        actions.append(Action("2分進球", 0))
+        actions.append(Action("2分不進", 0))
+        actions.append(Action("3分進球", 0))
+        actions.append(Action("3分不進", 0))
+        actions.append(Action("犯規", 0))
+        actions.append(Action("進攻籃板", 0))
+        actions.append(Action("防守籃板", 0))
+        actions.append(Action("失誤", 0))
+        actions.append(Action("抄截", 0))
+        actions.append(Action("助攻", 0))
+        actions.append(Action("阻攻", 0))
     }
 
-    // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return actions.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cellID = "actionCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! ActionTableViewCell
+        cell.lbActionName.text = actions[indexPath.row].actionName
+        cell.tag = indexPath.row
+        
+//        cell.textLabel?.text = action
         return cell
     }
-    */
-
+    
+    @IBAction func clickMinus(_ sender: UIButton) {
+        print(sender.superview?.superview?.tag)
+        if sender.superview?.superview?.tag == 0{
+            print(0)
+        }else if sender.superview?.superview?.tag == 1{
+            print(1)
+        }else if sender.superview?.superview?.tag == 2{
+            print(2)
+        }else if sender.superview?.superview?.tag == 3{
+            print(3)
+        }else if sender.superview?.superview?.tag == 4{
+            print(4)
+        }else if sender.superview?.superview?.tag == 5{
+            print(5)
+        }else if sender.superview?.superview?.tag == 6{
+            print(6)
+        }else if sender.superview?.superview?.tag == 7{
+            print(7)
+        }
+        
+    }
+    
+    @IBAction func clickPlus(_ sender: Any) {
+        
+    }
+    
+    @IBAction func clickSave(_ sender: Any) {
+        
+    }
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
