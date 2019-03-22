@@ -53,7 +53,7 @@
         <!--Homepage View Controller-->
         <scene sceneID="pbx-cJ-oEq">
             <objects>
-                <viewController id="31p-4b-WL0" customClass="HomepageViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Sign" id="31p-4b-WL0" customClass="HomepageViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1jt-bu-TBy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

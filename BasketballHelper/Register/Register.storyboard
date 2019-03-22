@@ -13,7 +13,7 @@
         <!--註冊-->
         <scene sceneID="JJu-QR-R4J">
             <objects>
-                <tableViewController storyboardIdentifier="Register" id="PHb-1a-2tc" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="Register" id="PHb-1a-2tc" customClass="RegisterTableViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Fbn-CE-TDW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -55,6 +55,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="didEndOnExit:" destination="PHb-1a-2tc" eventType="editingDidEndOnExit" id="lSl-3z-KwN"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -99,6 +102,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    <connections>
+                                                        <action selector="didEndOnExit:" destination="PHb-1a-2tc" eventType="editingDidEndOnExit" id="Ze1-kH-Ose"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -143,6 +149,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="didEndOnExit:" destination="PHb-1a-2tc" eventType="editingDidEndOnExit" id="w4v-Jk-AJu"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -187,6 +196,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="didEndOnExit:" destination="PHb-1a-2tc" eventType="editingDidEndOnExit" id="Gjx-Ft-6So"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -206,9 +218,23 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="註冊" id="IP2-DG-0lP">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="mP2-yb-0n2"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="SjM-OU-HRf"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="mP2-yb-0n2">
+                            <connections>
+                                <action selector="clickCancel:" destination="PHb-1a-2tc" id="hrB-kN-iyB"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="SjM-OU-HRf">
+                            <connections>
+                                <action selector="clickDone:" destination="PHb-1a-2tc" id="YXY-79-uAW"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="accountTextField" destination="B3j-31-6aG" id="K6M-4e-NZg"/>
+                        <outlet property="emailTextField" destination="buP-PI-Niz" id="g0O-EH-hxH"/>
+                        <outlet property="nameTextField" destination="5G6-PS-cCG" id="Obo-zh-mR3"/>
+                        <outlet property="passwordTextField" destination="U1J-Rs-H7v" id="oh6-fd-ydV"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sy7-Aq-TBg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -227,8 +253,16 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="建立球隊" id="WbK-Q8-i5a">
-                                    <barButtonItem key="leftBarButtonItem" title="略過" id="0pi-8H-hoT"/>
-                                    <barButtonItem key="rightBarButtonItem" systemItem="done" id="fG7-M4-CPG"/>
+                                    <barButtonItem key="leftBarButtonItem" title="略過" id="0pi-8H-hoT">
+                                        <connections>
+                                            <action selector="clickSkip:" destination="1UF-jL-4bY" id="BQE-EE-CnY"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem key="rightBarButtonItem" systemItem="done" id="fG7-M4-CPG">
+                                        <connections>
+                                            <action selector="clickDone:" destination="1UF-jL-4bY" id="EVd-Ku-ViM"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </navigationItem>
                             </items>
                         </navigationBar>
@@ -269,6 +303,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="didEndOnExit:" destination="1UF-jL-4bY" eventType="editingDidEndOnExit" id="DLI-Nu-HEV"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -288,6 +325,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="NQx-FM-Arf"/>
+                    <connections>
+                        <outlet property="teamNameTextField" destination="lUz-qQ-d78" id="USo-mF-cI4"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZbI-DT-BdH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -341,7 +381,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="zQ2-jx-L6Y">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="MWb-y4-Lit" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="JoinTeam" automaticallyAdjustsScrollViewInsets="NO" id="MWb-y4-Lit" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ixw-uX-f90">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

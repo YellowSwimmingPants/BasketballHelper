@@ -16,7 +16,7 @@ class UserInfo: Codable {
     var email: String
     var priority: Int
     
-    public init(userId: Int, _ userAccount: String, _ userPassword: String, _ userName: String, _ email: String, _ priority: Int) {
+    public init(_ userId: Int, _ userAccount: String, _ userPassword: String, _ userName: String, _ email: String, _ priority: Int) {
         self.userId = userId
         self.userAccount = userAccount
         self.userPassword = userPassword

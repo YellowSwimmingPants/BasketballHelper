@@ -33,6 +33,7 @@
 		C736BB062243AEE400D84AD6 /* BuildTeamTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BB052243AEE400D84AD6 /* BuildTeamTableViewController.swift */; };
 		C736BB082243AF1600D84AD6 /* ScanQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BB072243AF1600D84AD6 /* ScanQRViewController.swift */; };
 		C736BB0A2243B9AE00D84AD6 /* TeamInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BB092243B9AE00D84AD6 /* TeamInfo.swift */; };
+		C736BB0C2243C2BD00D84AD6 /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BB0B2243C2BD00D84AD6 /* RegisterTableViewController.swift */; };
 		C7421417223B84FF000D3E0E /* BillBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7421416223B84FF000D3E0E /* BillBoard.storyboard */; };
 		C7421419223B9196000D3E0E /* BillBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7421418223B9196000D3E0E /* BillBoardViewController.swift */; };
 		C742141B223B99C9000D3E0E /* BillBoardEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C742141A223B99C9000D3E0E /* BillBoardEditTableViewController.swift */; };
@@ -78,6 +79,7 @@
 		C736BB052243AEE400D84AD6 /* BuildTeamTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildTeamTableViewController.swift; sourceTree = "<group>"; };
 		C736BB072243AF1600D84AD6 /* ScanQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRViewController.swift; sourceTree = "<group>"; };
 		C736BB092243B9AE00D84AD6 /* TeamInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfo.swift; sourceTree = "<group>"; };
+		C736BB0B2243C2BD00D84AD6 /* RegisterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
 		C7421416223B84FF000D3E0E /* BillBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BillBoard.storyboard; sourceTree = "<group>"; };
 		C7421418223B9196000D3E0E /* BillBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillBoardViewController.swift; sourceTree = "<group>"; };
 		C742141A223B99C9000D3E0E /* BillBoardEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillBoardEditTableViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				C736BB0322439CD900D84AD6 /* Register.storyboard */,
+				C736BB0B2243C2BD00D84AD6 /* RegisterTableViewController.swift */,
 				C736BB072243AF1600D84AD6 /* ScanQRViewController.swift */,
 				C736BB052243AEE400D84AD6 /* BuildTeamTableViewController.swift */,
 				C736BB01224398F700D84AD6 /* HomepageViewController.swift */,
@@ -303,6 +306,7 @@
 				334E4420223FD13E0055D0EC /* PlayerDetail.swift in Sources */,
 				C736BAFF224362FE00D84AD6 /* ManagerTableViewController.swift in Sources */,
 				C742141D223BA1EC000D3E0E /* BillBoardTableViewController.swift in Sources */,
+				C736BB0C2243C2BD00D84AD6 /* RegisterTableViewController.swift in Sources */,
 				C742141B223B99C9000D3E0E /* BillBoardEditTableViewController.swift in Sources */,
 				C77F5DFD2241E0A100BDBE42 /* UserInfo.swift in Sources */,
 				C736BAFD2243628400D84AD6 /* TeamMemberViewController.swift in Sources */,

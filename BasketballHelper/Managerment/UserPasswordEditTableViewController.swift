@@ -33,7 +33,7 @@ class UserPasswordEditTableViewController: UITableViewController {
         } else if newPassword != confirm {
             showToast(view: self.view, message: "請確認密碼是否正確" )
         }
-        let user = UserInfo(userId: userInfo.userId, userInfo.userAccount, newPassword, userInfo.userName, userInfo.email, userInfo.priority)
+        let user = UserInfo(userInfo.userId, userInfo.userAccount, newPassword, userInfo.userName, userInfo.email, userInfo.priority)
         var requestParam = [String: String]()
         requestParam["action"] = "updatePassword"
         requestParam["user"] = try! String(data: JSONEncoder().encode(user), encoding: .utf8)

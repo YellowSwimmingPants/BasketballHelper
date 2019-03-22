@@ -118,8 +118,7 @@ class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
                         let count = result!["count"]
                         DispatchQueue.main.async {
                             if count != "0" {
-                                let requestParam = TeamInfo(Int(count!)!, name)
-                                let teamInfo = try! JSONEncoder().encode(requestParam)
+                                let teamInfo = try! JSONEncoder().encode(name)
                                 self.userDefault.set(teamInfo, forKey: "teamInfo")
                                 self.userDefault.synchronize()
                                 self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Homepage")
