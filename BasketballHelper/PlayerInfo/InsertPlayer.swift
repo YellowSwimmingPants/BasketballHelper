@@ -81,14 +81,14 @@ class InsertPlayer: UIViewController,UIImagePickerControllerDelegate, UINavigati
         requestParam["position"] = position
         requestParam["email"] = email
         if self.image != nil {
-            requestParam["photo"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()//把image轉為base64字串
+            requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()//把image轉為base64字串
         }
         executeTask(url_server!, requestParam)
     }
     
     func executeTask(_ url_server: URL, _ requestParam: [String: String]){
         // 將輸出資料列印出來除錯用
-        print("output: \(requestParam)")
+        print("output: OK")
         let jsonData = try! JSONEncoder().encode(requestParam)
         var request = URLRequest(url: url_server)
         request.httpMethod = "POST"
@@ -102,7 +102,7 @@ class InsertPlayer: UIViewController,UIImagePickerControllerDelegate, UINavigati
             if error == nil {
                 if data != nil {
                     // 將輸入資料列印出來除錯用
-                    print("input: \(String(data: data!, encoding: .utf8)!)")
+//                    print("input: \(String(data: data!, encoding: .utf8)!)")
                     // 將結果顯示在UI元件上必須轉給main thread
                     DispatchQueue.main.async {
                         self.showResult(data!)
