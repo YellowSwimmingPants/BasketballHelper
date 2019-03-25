@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8X4-pe-Pso">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="avo-4K-yoy">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Item-->
         <scene sceneID="kzy-6S-zBg">
             <objects>
-                <tableViewController id="xWh-Wl-U1a" sceneMemberID="viewController">
+                <tableViewController id="xWh-Wl-U1a" customClass="ChangePlayerTableViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="k5M-c4-raq">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -25,7 +26,7 @@
                             </items>
                         </navigationBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" textLabel="Jg0-yr-ZvW" rowHeight="78" style="IBUITableViewCellStyleDefault" id="fkW-Cb-jE9">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="changePlayerID" textLabel="Jg0-yr-ZvW" rowHeight="78" style="IBUITableViewCellStyleDefault" id="fkW-Cb-jE9">
                                 <rect key="frame" x="0.0" y="72" width="375" height="78"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fkW-Cb-jE9" id="zCW-wU-C7Z">
@@ -52,7 +53,38 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sSn-Fg-j8p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2361" y="528"/>
+            <point key="canvasLocation" x="2236" y="475"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="iA2-Xg-1XB">
+            <objects>
+                <viewController id="Q0h-dg-Moe" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="zT0-5C-gCw">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUM-9z-YUx">
+                                <rect key="frame" x="78" y="269" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="vSa-cT-rHf" kind="embed" id="KkI-Ca-hgY"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hlI-9z-H0v">
+                                <rect key="frame" x="88" y="269" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="HGf-Q2-jM1" kind="embed" id="LVf-U3-0Dj"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="RR0-Ae-PEc"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SMV-A1-zMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2137" y="1216"/>
         </scene>
         <!--場上五人-->
         <scene sceneID="rf8-kt-cj7">
@@ -62,16 +94,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="2uW-BU-kGy">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="場上五人"/>
+                                <segment title="替換球員"/>
+                            </segments>
+                        </segmentedControl>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="0Db-IY-DDz" style="IBUITableViewCellStyleDefault" id="3Bz-K1-dWU">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="startLinePlayerCell" textLabel="0Db-IY-DDz" style="IBUITableViewCellStyleDefault" id="3Bz-K1-dWU">
+                                <rect key="frame" x="0.0" y="58" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3Bz-K1-dWU" id="fid-WR-Xvp">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Db-IY-DDz">
-                                            <rect key="frame" x="16" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="324" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -79,6 +119,9 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="8X4-pe-Pso" kind="show" id="HnA-xV-V5p"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -91,7 +134,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZpF-rR-GZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3094" y="-188"/>
+            <point key="canvasLocation" x="2236" y="-207"/>
         </scene>
         <!--球員數據-->
         <scene sceneID="OYG-qh-vTK">
@@ -101,22 +144,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="J5p-TZ-6Eu">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="數據統計" id="VaS-24-hzP">
-                                    <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="Jxx-Cy-BZU">
-                                        <connections>
-                                            <action selector="clickSave:" destination="8X4-pe-Pso" id="kt4-JV-XNe"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </navigationItem>
-                            </items>
-                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="actionCell" rowHeight="113" id="Arc-5E-VkE" customClass="ActionTableViewCell" customModule="BasketballHelper" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="72" width="375" height="113"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="113"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Arc-5E-VkE" id="LDu-7X-xcl">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="112.5"/>
@@ -180,12 +210,18 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="球員數據" id="C06-uP-K7r"/>
+                    <navigationItem key="navigationItem" title="球員數據" id="C06-uP-K7r">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="m4d-W4-lQq">
+                            <connections>
+                                <action selector="clickSave:" destination="8X4-pe-Pso" id="bkT-eH-mdI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5H2-YM-qFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3740" y="-188"/>
+            <point key="canvasLocation" x="3009" y="-207"/>
         </scene>
         <!--建立比賽-->
         <scene sceneID="rsI-Ke-d17">
@@ -383,24 +419,6 @@
             </objects>
             <point key="canvasLocation" x="708" y="564.46776611694156"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="aqf-7X-C1L">
-            <objects>
-                <tabBarController id="YGU-lj-7tc" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="VkJ-h9-YzM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="avo-4K-yoy" kind="relationship" relationship="viewControllers" id="DdY-0N-gTU"/>
-                        <segue destination="xWh-Wl-U1a" kind="relationship" relationship="viewControllers" id="Hea-dn-R2k"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="J4t-AH-QPi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1527" y="158"/>
-        </scene>
         <!--場上五人-->
         <scene sceneID="Sq6-rZ-osW">
             <objects>
@@ -418,7 +436,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fTR-fk-Tge" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2360.8695652173915" y="-188.16964285714286"/>
+            <point key="canvasLocation" x="1498" y="-199"/>
         </scene>
         <!--比賽紀錄-->
         <scene sceneID="6xU-de-47p">
@@ -506,21 +524,40 @@
             </objects>
             <point key="canvasLocation" x="-148" y="-188"/>
         </scene>
-        <!--場上五人-->
-        <scene sceneID="SWi-1D-i84">
+        <!--View Controller-->
+        <scene sceneID="Q4e-28-nrO">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ihU-FI-aWy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="場上五人" selectedImage="players" id="GP8-bQ-QFD"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2sF-82-DGB">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EUd-Cs-K9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="vSa-cT-rHf" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aGG-uN-LVO">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qwm-6L-chD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2360.8695652173915" y="-188.16964285714286"/>
+            <point key="canvasLocation" x="1483" y="1234"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="20j-Gu-TCN">
+            <objects>
+                <viewController id="HGf-Q2-jM1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JZe-jL-6Q6">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="63b-wx-xQn">
+                                <rect key="frame" x="16" y="0.0" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bwh-lU-bB7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2686" y="1188"/>
         </scene>
     </scenes>
     <resources>
