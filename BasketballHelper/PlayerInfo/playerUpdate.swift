@@ -58,8 +58,9 @@ class PlayerUpdate: UIViewController,UIImagePickerControllerDelegate, UINavigati
         player.number = tfNumber.text == nil ? "" : tfNumber.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         player.position = tfPosition.text == nil ? "" : tfPosition.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         player.email = tfEmail.text == nil ? "" : tfEmail.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         var requestParam = [String: String]()
-        requestParam["action"] = "playUpdate"
+        requestParam["action"] = "playerUpdate"
         requestParam["player"] = try! String(data: JSONEncoder().encode(self.player), encoding: .utf8)
         if self.imageUpload != nil {
         requestParam["imageBase64"] = self.imageUpload!.jpegData(compressionQuality: 1.0)!.base64EncodedString()

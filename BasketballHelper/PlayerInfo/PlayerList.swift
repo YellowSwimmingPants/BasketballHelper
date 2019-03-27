@@ -95,10 +95,10 @@ class PlayerList: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         // 左滑時顯示Edit按鈕
         let edit = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
-            let playerUpdateVC = self.storyboard?.instantiateViewController(withIdentifier: "playerUpdateVC") as! PlayerList
+            let playerUpdate = self.storyboard?.instantiateViewController(withIdentifier: "playerUpdate") as! PlayerUpdate
             let player = self.players[indexPath.row]
-            playerUpdateVC.players = [player]
-            self.navigationController?.pushViewController(playerUpdateVC, animated: true)
+            playerUpdate.player = player
+            self.navigationController?.pushViewController(playerUpdate, animated: true)
         })
         edit.backgroundColor = UIColor.lightGray
 
