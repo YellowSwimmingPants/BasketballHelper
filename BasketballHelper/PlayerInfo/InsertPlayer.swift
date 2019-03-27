@@ -1,18 +1,8 @@
-//
-//  InsertPlayer.swift
-//  BasketballHelper
-//
-//  Created by 陳南宇 on 2019/3/18.
-//  Copyright © 2019 李宜銓. All rights reserved.
-//
 
 import UIKit
+import CoreLocation
 
 class InsertPlayer: UIViewController,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-   let url_server = URL(string: common_url + "PlayerInsert")
-   var image: UIImage?
-    
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tfName: UITextField!
     @IBOutlet weak var tfNickName: UITextField!
@@ -21,7 +11,10 @@ class InsertPlayer: UIViewController,UIImagePickerControllerDelegate, UINavigati
     @IBOutlet weak var tfNumber: UITextField!
     @IBOutlet weak var tfPosition: UITextField!
     @IBOutlet weak var tfEmail: UITextField!
-    @IBOutlet weak var tvResult: UITextView!
+    @IBOutlet weak var label: UILabel!
+    
+    let url_server = URL(string: common_url + "PlayerServlet")
+    var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,81 +47,46 @@ class InsertPlayer: UIViewController,UIImagePickerControllerDelegate, UINavigati
     
     
     @IBAction func clickSave(_ sender: Any) {
-        let name = tfName.text == nil ? "" :
-            tfName.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let nickname = tfNickName.text == nil ? "" :
-            tfNickName.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let phone = tfPhone.text == nil ? "" :
-            tfPhone.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let birthday = tfBirthday.text == nil ? "" :
-            tfBirthday.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let number = tfNumber.text == nil ? "" :
-            tfNumber.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let position = tfPosition.text == nil ? "" :
-            tfPosition.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let email = tfEmail.text == nil ? "" :
-            tfEmail.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        if name!.isEmpty{
-            tvResult.text = "Name is nvalid"
-            return
-        }
+        let name = tfName.text == nil ? "" : tfName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let nickname = tfNickName.text == nil ? "" : tfNickName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let phone = tfPhone.text == nil ? "" : tfPhone.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let birthday = tfBirthday.text == nil ? "" : tfBirthday.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let number = tfNumber.text == nil ? "" : tfNumber.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let position = tfPosition.text == nil ? "" : tfPosition.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = tfEmail.text == nil ? "" : tfEmail.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        let player = Page_playerList(0, name, nickname, phone, birthday, number, position, email )
+        
         var requestParam = [String: String]()
-        requestParam["name"] = name
-        requestParam["nickname"] = nickname
-        requestParam["phone"] = phone
-        requestParam["birthday"] = birthday
-        requestParam["number"] = number
-        requestParam["position"] = position
-        requestParam["email"] = email
+        requestParam["action"] = "playerInsert"
+        requestParam["player"] = try! String(data: JSONEncoder().encode(player), encoding: .utf8)
+        // 有圖才上傳
         if self.image != nil {
             requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()//把image轉為base64字串
         }
-        executeTask(url_server!, requestParam)
-    }
-    
-    func executeTask(_ url_server: URL, _ requestParam: [String: String]){
-        // 將輸出資料列印出來除錯用
-        print("output: OK")
-        let jsonData = try! JSONEncoder().encode(requestParam)
-        var request = URLRequest(url: url_server)
-        request.httpMethod = "POST"
-        // 不使用cache
-        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringLocalCacheData
-        // 請求參數為JSON data，無需再轉成JSON字串
-        request.httpBody = jsonData
-        let session = URLSession.shared
-        // 建立連線並發出請求，取得結果後會呼叫closure執行後續處理
-        let task = session.dataTask(with: request) { (data, response, error) in//傳送跟接收
+        executeTask(self.url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
-                    // 將輸入資料列印出來除錯用
-//                    print("input: \(String(data: data!, encoding: .utf8)!)")
-                    // 將結果顯示在UI元件上必須轉給main thread
-                    DispatchQueue.main.async {
-                        self.showResult(data!)
+                    if let result = String(data: data!, encoding: .utf8) {
+                        if let count = Int(result) {
+                            DispatchQueue.main.async {
+                                // 新增成功則回前頁
+                                if count != 0 {
+                                    self.navigationController?.popViewController(animated: true)
+                                } else {
+                                    self.label.text = "insert fail"
+                                }
+                            }
+                        }
                     }
                 }
             } else {
                 print(error!.localizedDescription)
             }
         }
-        task.resume()
-        
-    }
-    
-    func showResult(_ jsonData: Data) {
-        if let result = try? JSONDecoder().decode([String: String].self, from: jsonData) {
-            let user = result["KEY"]
-            tvResult.text = user
-        } else {
-            self.tvResult.text = "get nothing"
-        }
-    }
-    
-    
-    
-    @IBAction func clickCancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
+      }
 }
+    
+
+
+
