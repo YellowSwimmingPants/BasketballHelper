@@ -1,45 +1,36 @@
 //
-//  StartingLineupTableViewController.swift
+//  ChangePlayerTableViewController.swift
 //  BasketballHelper
 //
-//  Created by 李宜銓 on 2019/3/15.
+//  Created by 李宜銓 on 2019/3/25.
 //  Copyright © 2019 李宜銓. All rights reserved.
 //
 
 import UIKit
 
-class StartingLineupTableViewController: UITableViewController {
+class ChangePlayerTableViewController: UITableViewController {
 
-    let players = ["王小平", "蔡小甫", "李小銓", "陳小志", "黃老師"]
+    var players = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return players.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellId = "startLinePlayerCell"
+        let cellId = "changePlayerID"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
         let player = players[indexPath.row]
         cell.textLabel?.text = player
-
         return cell
     }
     

@@ -41,6 +41,7 @@ class PlayerDataTableViewController: UITableViewController {
         let cellID = "actionCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! ActionTableViewCell
         cell.lbActionName.text = actions[indexPath.row].actionName
+        
         cell.tag = indexPath.row
         
 //        cell.textLabel?.text = action
@@ -48,29 +49,52 @@ class PlayerDataTableViewController: UITableViewController {
     }
     
     @IBAction func clickMinus(_ sender: UIButton) {
+        let n = sender.superview?.superview?.tag
         print(sender.superview?.superview?.tag)
-        if sender.superview?.superview?.tag == 0{
-            print(0)
-        }else if sender.superview?.superview?.tag == 1{
-            print(1)
-        }else if sender.superview?.superview?.tag == 2{
-            print(2)
-        }else if sender.superview?.superview?.tag == 3{
-            print(3)
-        }else if sender.superview?.superview?.tag == 4{
-            print(4)
-        }else if sender.superview?.superview?.tag == 5{
-            print(5)
-        }else if sender.superview?.superview?.tag == 6{
-            print(6)
-        }else if sender.superview?.superview?.tag == 7{
-            print(7)
-        }
+        actions[n!].actionCount += 1
+        let tableViewCell = sender.superview?.superview as! ActionTableViewCell
+        tableViewCell.lbActionCount.text = String(actions[n!].actionCount)
+        
+//        if n == 0{
+//            actions[n!].actionCount += 1
+//            print(actions[n!].actionCount)
+//
+//
+//        }else if n == 2{
+//
+//        }else if n == 3{
+//
+//        }else if n == 4{
+//
+//        }else if n == 5{
+//
+//        }else if n == 6{
+//
+//        }else if n == 7{
+//
+//        }
         
     }
     
-    @IBAction func clickPlus(_ sender: Any) {
-        
+    @IBAction func clickPlus(_ sender: UIButton) {
+//        print(sender.superview?.superview?.tag)
+        if sender.superview?.superview?.tag == 0{
+           
+        }else if sender.superview?.superview?.tag == 1{
+            
+        }else if sender.superview?.superview?.tag == 2{
+            
+        }else if sender.superview?.superview?.tag == 3{
+            
+        }else if sender.superview?.superview?.tag == 4{
+            
+        }else if sender.superview?.superview?.tag == 5{
+            
+        }else if sender.superview?.superview?.tag == 6{
+            
+        }else if sender.superview?.superview?.tag == 7{
+            
+        }
     }
     
     @IBAction func clickSave(_ sender: Any) {
