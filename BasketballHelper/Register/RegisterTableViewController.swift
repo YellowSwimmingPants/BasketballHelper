@@ -50,7 +50,7 @@ class RegisterTableViewController: UITableViewController {
         executeTask(url_server!, userInfo) { (data, response, error) in
             if error == nil {
                 if data != nil {
-                    let user = UserInfo(0, account!, password!, name!, email!, 0)
+                    let user = UserInfo(0, account!, password!, name!, email!, 0, "")
                     let result = try! JSONEncoder().encode(user)
                     let success = try? JSONDecoder().decode([String : String].self, from: data!)
                     DispatchQueue.main.async {

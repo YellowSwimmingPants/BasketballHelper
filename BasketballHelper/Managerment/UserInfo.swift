@@ -15,13 +15,15 @@ class UserInfo: Codable {
     var userName: String
     var email: String
     var priority: Int
+    var teamInfo: String
     
-    public init(_ userId: Int, _ userAccount: String, _ userPassword: String, _ userName: String, _ email: String, _ priority: Int) {
+    public init(_ userId: Int, _ userAccount: String, _ userPassword: String, _ userName: String, _ email: String, _ priority: Int, _ teamInfo: String) {
         self.userId = userId
         self.userAccount = userAccount
         self.userPassword = userPassword
         self.userName = userName
         self.email = email
         self.priority = priority
+        self.teamInfo = teamInfo
     }
 }

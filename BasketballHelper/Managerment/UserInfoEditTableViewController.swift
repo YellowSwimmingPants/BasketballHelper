@@ -52,7 +52,7 @@ class UserInfoEditTableViewController: UITableViewController, UIImagePickerContr
         let userName = userNameTextField.text == nil ? "" : userNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let email = emailTextField.text == nil ? "" : emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let userPassword = passwordTextView.text == nil ? "" : passwordTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let user = UserInfo(0, userInfo.userAccount, userPassword, userName, email, userInfo.priority)
+        let user = UserInfo(0, userInfo.userAccount, userPassword, userName, email, userInfo.priority, userInfo.teamInfo)
         var requestParam = [String: String]()
         requestParam["action"] = "update"
         requestParam["userInfo"] = try! String(data: JSONEncoder().encode(user), encoding: .utf8)

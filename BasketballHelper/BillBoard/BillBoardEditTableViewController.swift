@@ -16,6 +16,9 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
+    var users: UserInfo!
+    var user = [UserInfo]()
+    let userDefault = UserDefaults()
     
     var datePickerHidden = true
     let url_server = URL(string: common_url_user + "BillBoardServlet")
@@ -23,6 +26,8 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        contextTextView.text = ""
+        typeLabel.text = ""
         types.append("活動")
         types.append("請假")
         datePickerChaged()
@@ -80,7 +85,10 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
         let title = titleTextField.text == nil ? "" : titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         let content = contextTextView.text == nil ? "" : contextTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         let type = typeLabel.text
-        let billBoard = BillBoard(0, date, title!, content!, type!)
+        let userInfo = userDefault.data(forKey: "userDefault")
+        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
+        let teamInfo = users.teamInfo
+        let billBoard = BillBoard(0, date, title!, content!, type!, teamInfo)
         var requestParam = [String: String]()
         requestParam["action"] = "billBoardInsert"
         requestParam["billBoard"] = try! String(data: JSONEncoder().encode(billBoard), encoding: .utf8)

@@ -11,15 +11,17 @@ import Foundation
 
 class BillBoardTableViewController: UITableViewController {
     
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
+    
     var billBoard: BillBoard!
     let url_server = URL(string: common_url_user + "BillBoardServlet")
     
     override func viewWillAppear(_ animated: Bool) {
-        self.title = billBoard.title
-        dateLabel.text = DateFormatter().string(for: billBoard.date)
+        self.navigationBar.topItem?.title = billBoard.title
+        dateLabel.text = billBoard.dateStr
         typeLabel.text = billBoard.type
         contentTextView.text = billBoard.content
     }
@@ -43,7 +45,7 @@ class BillBoardTableViewController: UITableViewController {
     func deleteBillBoard() {
         var requestParam = [String: String]()
         requestParam["action"] = "delete"
-        requestParam["billBoardId"] = "\(billBoard.id)"
+        requestParam["billBoardId"] = "\(billBoard.billBoardId)"
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {

@@ -25,34 +25,49 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     let url_server = URL(string: common_url_user + "BillBoardServlet")
     let userDefault = UserDefaults()
     
-    let billBoardList: [BillBoard] = [BillBoard(1,Date(),"公告","Hello","公告")]
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let userInfo = userDefault.data(forKey: "userDefault") {
-            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
-        }
-        
-        callendar.locale = Locale(identifier: "zh")
-        dateFmatter.locale = Locale(identifier: "zh_TW")
-        dateFmatter.dateFormat = "yyyy年M月"
-        components.year = callendar.component(.year, from: now)
-        components.month = callendar.component(.month, from: now)
-        components.day = 1
-        calculation()
-        createGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let userInfo = userDefault.data(forKey: "userDefault")
+        if (userInfo != nil) {
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
+            showBillBoard(teamInfo: users.teamInfo)
+            callendar.locale = Locale(identifier: "zh")
+            dateFmatter.locale = Locale(identifier: "zh_TW")
+            dateFmatter.dateFormat = "yyyy年M月"
+            components.year = callendar.component(.year, from: now)
+            components.month = callendar.component(.month, from: now)
+            components.day = 1
+            calculation()
+            createGesture()
+        } else {
+            callendar.locale = Locale(identifier: "zh")
+            dateFmatter.locale = Locale(identifier: "zh_TW")
+            dateFmatter.dateFormat = "yyyy年M月"
+            components.year = callendar.component(.year, from: now)
+            components.month = callendar.component(.month, from: now)
+            components.day = 1
+            calculation()
+            createGesture()
+        }
+    }
+    
+    func showBillBoard(teamInfo: String) {
         var requestParam = [String: Any]()
         requestParam["action"] = "getBillBoard"
-//        requestParam["id"] = billBoard.id
-        
+        requestParam["teamInfo"] = teamInfo
         executeTask(url_server!, requestParam) { (data, response, error) in
+            let decoder = JSONDecoder()
+            // JSON含有日期時間，解析必須指定日期時間格式
+            let format = DateFormatter()
+            format.dateFormat = "yyyy-MM-dd"
+            decoder.dateDecodingStrategy = .formatted(format)
             if error == nil {
                 if data != nil {
-                    if let result = try? JSONDecoder().decode([BillBoard].self, from: data!) {
+                    if let result = try? decoder.decode([BillBoard].self, from: data!) {
                         self.billBoards = result
                         DispatchQueue.main.async {
                             self.billBoardTableView.reloadData()
@@ -164,15 +179,15 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return billBoardList.count
+        return billBoards.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellId = "billBoardCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId)!
-        let billBoard = billBoardList[indexPath.row]
+        let billBoard = billBoards[indexPath.row]
         
-        cell.textLabel?.text = billBoard.type
+        cell.textLabel?.text = billBoard.dateStr
         cell.detailTextLabel?.text = billBoard.title
         
         return cell
@@ -181,10 +196,9 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "billBoardDetail" {
             let indexPath = self.billBoardTableView.indexPath(for: sender as! UITableViewCell)
-            let billBoard = billBoardList[indexPath!.row]
+            let billBoard = billBoards[indexPath!.row]
             let billBoardTableViewController = segue.destination as! BillBoardTableViewController
             billBoardTableViewController.billBoard = billBoard
         }
     }
-    
 }
