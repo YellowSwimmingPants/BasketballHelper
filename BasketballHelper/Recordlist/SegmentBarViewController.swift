@@ -2,8 +2,8 @@ import UIKit
 
 class SegmentBarViewController: UIViewController {
 
-    @IBOutlet weak var StartingLineupView: UIView!
     @IBOutlet weak var ChangePlayerView: UIView!
+    @IBOutlet weak var StartingLineupView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -104,8 +104,8 @@
                         </segmentedControl>
                     </navigationItem>
                     <connections>
-                        <outlet property="ChangePlayerView" destination="hlI-9z-H0v" id="iB2-Wk-mEn"/>
-                        <outlet property="StartingLineupView" destination="ZUM-9z-YUx" id="pNm-am-aeg"/>
+                        <outlet property="ChangePlayerView" destination="ZUM-9z-YUx" id="77J-mt-Yr0"/>
+                        <outlet property="StartingLineupView" destination="hlI-9z-H0v" id="BKK-2d-C8j"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMV-A1-zMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -595,7 +595,6 @@
         <!--Starting Lineup View Controller-->
         <scene sceneID="20j-Gu-TCN">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bwh-lU-bB7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="HGf-Q2-jM1" customClass="StartingLineupViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JZe-jL-6Q6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
@@ -637,6 +636,7 @@
                         <viewLayoutGuide key="safeArea" id="B4E-ga-QLa"/>
                     </view>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bwh-lU-bB7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3217" y="-207"/>
         </scene>
