@@ -18,5 +18,6 @@ class SegmentBarViewController: UIViewController {
             ChangePlayerView.alpha = 1
         }
     }
+    //hhh
     
 }
