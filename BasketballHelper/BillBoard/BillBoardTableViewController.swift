@@ -44,19 +44,17 @@ class BillBoardTableViewController: UITableViewController {
     
     func deleteBillBoard() {
         var requestParam = [String: String]()
-        requestParam["action"] = "delete"
+        requestParam["action"] = "deleteBillBoard"
         requestParam["billBoardId"] = "\(billBoard.billBoardId)"
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
-                    if let result = String(data: data!, encoding: .utf8) {
-                        if let count = Int(result) {
-                            DispatchQueue.main.async {
-                                if count != 0 {
-                                   self.dismiss(animated: true, completion: nil)
-                                } else {
-                                    showSimpleAlert(message: "刪除失敗", viewController: self)
-                                }
+                    if let result = try? JSONDecoder().decode([String : String].self, from: data!) {
+                        DispatchQueue.main.async {
+                            if result["success"] == "Yes" {
+                                self.dismiss(animated: true, completion: nil)
+                            } else {
+                                showSimpleAlert(message: "刪除失敗", viewController: self)
                             }
                         }
                     }
@@ -66,5 +64,4 @@ class BillBoardTableViewController: UITableViewController {
             }
         }
     }
-    
 }

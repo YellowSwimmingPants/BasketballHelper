@@ -31,7 +31,6 @@ class HomepageViewController: UIViewController {
         userInfo["action"] = "login"
         userInfo["userAccount"] = account
         userInfo["userPassword"] = password
-        print(userInfo)
         executeTask(url_server!, userInfo) { (data, response, error) in
             if error == nil {
                 if data != nil {

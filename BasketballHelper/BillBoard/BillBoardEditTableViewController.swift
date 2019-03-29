@@ -85,24 +85,29 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
         let title = titleTextField.text == nil ? "" : titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         let content = contextTextView.text == nil ? "" : contextTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         let type = typeLabel.text
+        
+        let encoder = JSONEncoder()
+        // JSON含有日期時間，解析必須指定日期時間格式
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd"
+        encoder.dateEncodingStrategy = .formatted(format)
+        
         let userInfo = userDefault.data(forKey: "userDefault")
         users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
         let teamInfo = users.teamInfo
         let billBoard = BillBoard(0, date, title!, content!, type!, teamInfo)
         var requestParam = [String: String]()
-        requestParam["action"] = "billBoardInsert"
-        requestParam["billBoard"] = try! String(data: JSONEncoder().encode(billBoard), encoding: .utf8)
+        requestParam["action"] = "insertBillBoard"
+        requestParam["billBoard"] = try! String(data: encoder.encode(billBoard), encoding: .utf8)
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
-                    if let result = String(data: data!, encoding: .utf8) {
-                        if let count = Int(result) {
-                            DispatchQueue.main.async {
-                                if count != 0 {
-                                    self.dismiss(animated: true, completion: nil)
-                                } else {
-                                    showSimpleAlert(message: "新增失敗", viewController: self)
-                                }
+                    if let result = try? JSONDecoder().decode([String : String].self, from: data!) {
+                        DispatchQueue.main.async {
+                            if result["success"] == "Yes" {
+                                self.dismiss(animated: true, completion: nil)
+                            } else {
+                                showSimpleAlert(message: "新增失敗", viewController: self)
                             }
                         }
                     }
