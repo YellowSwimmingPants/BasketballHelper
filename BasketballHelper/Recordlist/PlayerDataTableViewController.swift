@@ -49,52 +49,24 @@ class PlayerDataTableViewController: UITableViewController {
     }
     
     @IBAction func clickMinus(_ sender: UIButton) {
-        let n = sender.superview?.superview?.tag
-        print(sender.superview?.superview?.tag)
-        actions[n!].actionCount += 1
+        let index = sender.superview?.superview?.tag
+//        print(sender.superview?.superview?.tag)
+        if(actions[index!].actionCount > 0){
+            actions[index!].actionCount -= 1
+        } else {
+            actions[index!].actionCount = 0
+        }
         let tableViewCell = sender.superview?.superview as! ActionTableViewCell
-        tableViewCell.lbActionCount.text = String(actions[n!].actionCount)
-        
-//        if n == 0{
-//            actions[n!].actionCount += 1
-//            print(actions[n!].actionCount)
-//
-//
-//        }else if n == 2{
-//
-//        }else if n == 3{
-//
-//        }else if n == 4{
-//
-//        }else if n == 5{
-//
-//        }else if n == 6{
-//
-//        }else if n == 7{
-//
-//        }
+        tableViewCell.lbActionCount.text = String(actions[index!].actionCount)
         
     }
     
     @IBAction func clickPlus(_ sender: UIButton) {
 //        print(sender.superview?.superview?.tag)
-        if sender.superview?.superview?.tag == 0{
-           
-        }else if sender.superview?.superview?.tag == 1{
-            
-        }else if sender.superview?.superview?.tag == 2{
-            
-        }else if sender.superview?.superview?.tag == 3{
-            
-        }else if sender.superview?.superview?.tag == 4{
-            
-        }else if sender.superview?.superview?.tag == 5{
-            
-        }else if sender.superview?.superview?.tag == 6{
-            
-        }else if sender.superview?.superview?.tag == 7{
-            
-        }
+        let index = sender.superview?.superview?.tag
+        actions[index!].actionCount += 1
+        let tableViewCell = sender.superview?.superview as! ActionTableViewCell
+        tableViewCell.lbActionCount.text = String(actions[index!].actionCount)
     }
     
     @IBAction func clickSave(_ sender: Any) {

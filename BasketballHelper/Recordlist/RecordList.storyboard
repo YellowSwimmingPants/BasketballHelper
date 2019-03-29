@@ -53,38 +53,64 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sSn-Fg-j8p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2236" y="475"/>
+            <point key="canvasLocation" x="3679" y="-962"/>
         </scene>
-        <!--View Controller-->
+        <!--Segment Bar View Controller-->
         <scene sceneID="iA2-Xg-1XB">
             <objects>
-                <viewController id="Q0h-dg-Moe" sceneMemberID="viewController">
+                <viewController id="Q0h-dg-Moe" customClass="SegmentBarViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zT0-5C-gCw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZUM-9z-YUx">
-                                <rect key="frame" x="78" y="269" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZUM-9z-YUx">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <connections>
-                                    <segue destination="vSa-cT-rHf" kind="embed" id="KkI-Ca-hgY"/>
+                                    <segue destination="0Hi-qg-Fhp" kind="embed" id="OL8-V6-Uza"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hlI-9z-H0v">
-                                <rect key="frame" x="88" y="269" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hlI-9z-H0v">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <connections>
                                     <segue destination="HGf-Q2-jM1" kind="embed" id="LVf-U3-0Dj"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="hlI-9z-H0v" firstAttribute="leading" secondItem="RR0-Ae-PEc" secondAttribute="leading" id="2DF-hh-1Dd"/>
+                            <constraint firstItem="ZUM-9z-YUx" firstAttribute="bottom" secondItem="RR0-Ae-PEc" secondAttribute="bottom" id="74L-qS-Gvq"/>
+                            <constraint firstItem="ZUM-9z-YUx" firstAttribute="top" secondItem="RR0-Ae-PEc" secondAttribute="top" id="GcP-6D-U3x"/>
+                            <constraint firstItem="ZUM-9z-YUx" firstAttribute="trailing" secondItem="RR0-Ae-PEc" secondAttribute="trailing" id="J4m-MW-a96"/>
+                            <constraint firstItem="hlI-9z-H0v" firstAttribute="trailing" secondItem="RR0-Ae-PEc" secondAttribute="trailing" id="S8r-Hz-7qq"/>
+                            <constraint firstItem="hlI-9z-H0v" firstAttribute="top" secondItem="RR0-Ae-PEc" secondAttribute="top" id="hgQ-Xi-hX0"/>
+                            <constraint firstItem="hlI-9z-H0v" firstAttribute="bottom" secondItem="RR0-Ae-PEc" secondAttribute="bottom" id="iqR-YB-Xzg"/>
+                            <constraint firstItem="ZUM-9z-YUx" firstAttribute="leading" secondItem="RR0-Ae-PEc" secondAttribute="leading" id="zm1-8n-nty"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="RR0-Ae-PEc"/>
                     </view>
+                    <navigationItem key="navigationItem" id="2Bi-zp-CbV">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Qao-Do-cNu">
+                            <rect key="frame" x="8" y="7" width="359" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="場上五人"/>
+                                <segment title="替換球員"/>
+                            </segments>
+                            <connections>
+                                <action selector="SwitchView:" destination="Q0h-dg-Moe" eventType="valueChanged" id="4pn-4a-SzR"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="ChangePlayerView" destination="hlI-9z-H0v" id="iB2-Wk-mEn"/>
+                        <outlet property="StartingLineupView" destination="ZUM-9z-YUx" id="pNm-am-aeg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMV-A1-zMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2137" y="1216"/>
+            <point key="canvasLocation" x="2312.8000000000002" y="182.15892053973016"/>
         </scene>
         <!--場上五人-->
         <scene sceneID="rf8-kt-cj7">
@@ -119,9 +145,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="8X4-pe-Pso" kind="show" id="HnA-xV-V5p"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <sections/>
@@ -134,14 +157,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZpF-rR-GZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2236" y="-207"/>
+            <point key="canvasLocation" x="2951" y="-962"/>
         </scene>
         <!--球員數據-->
         <scene sceneID="OYG-qh-vTK">
             <objects>
                 <tableViewController id="8X4-pe-Pso" customClass="PlayerDataTableViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MRP-n7-n4B">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
@@ -221,7 +244,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5H2-YM-qFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3009" y="-207"/>
+            <point key="canvasLocation" x="4060" y="-207"/>
         </scene>
         <!--建立比賽-->
         <scene sceneID="rsI-Ke-d17">
@@ -431,7 +454,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="sJP-LG-G8I" kind="relationship" relationship="rootViewController" id="vmT-6O-AXt"/>
+                        <segue destination="Q0h-dg-Moe" kind="relationship" relationship="rootViewController" id="xGg-4F-HJ4"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fTR-fk-Tge" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -524,40 +547,98 @@
             </objects>
             <point key="canvasLocation" x="-148" y="-188"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="Q4e-28-nrO">
+        <!--Change Player View Controller-->
+        <scene sceneID="qDY-aU-k1K">
             <objects>
-                <viewController id="vSa-cT-rHf" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="aGG-uN-LVO">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qwm-6L-chD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1483" y="1234"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="20j-Gu-TCN">
-            <objects>
-                <viewController id="HGf-Q2-jM1" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="JZe-jL-6Q6">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                <viewController id="0Hi-qg-Fhp" customClass="ChangePlayerViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2bW-hI-nOD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="63b-wx-xQn">
-                                <rect key="frame" x="16" y="0.0" width="240" height="128"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="RPh-01-Bp7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="changePlayerCellID" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="changePlayerCellID" textLabel="brP-jz-VYh" style="IBUITableViewCellStyleDefault" id="HzR-KW-6J7">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="HzR-KW-6J7" id="Iwb-4H-ZHJ">
+                                            <rect key="frame" x="0.0" y="0.0" width="336" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="球員姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="brP-jz-VYh">
+                                                    <rect key="frame" x="15" y="0.0" width="321" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="0Hi-qg-Fhp" id="1XD-co-Uhy"/>
+                                    <outlet property="delegate" destination="0Hi-qg-Fhp" id="9ez-3b-l6x"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="dam-CC-E4X"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bwh-lU-bB7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4WH-RY-4W7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2686" y="1188"/>
+            <point key="canvasLocation" x="3217" y="622"/>
+        </scene>
+        <!--Starting Lineup View Controller-->
+        <scene sceneID="20j-Gu-TCN">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bwh-lU-bB7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="HGf-Q2-jM1" customClass="StartingLineupViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JZe-jL-6Q6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="63b-wx-xQn">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="startLinePlayerCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="startLinePlayerCell" textLabel="5I6-QS-AX0" style="IBUITableViewCellStyleDefault" id="3h4-3S-K0b">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3h4-3S-K0b" id="zrJ-YL-upL">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="球員姓名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5I6-QS-AX0">
+                                                    <rect key="frame" x="15" y="0.0" width="325" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="8X4-pe-Pso" kind="show" id="dvx-ZD-bL7"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="HGf-Q2-jM1" id="mMN-Ho-9e5"/>
+                                    <outlet property="delegate" destination="HGf-Q2-jM1" id="PbO-Gg-n8X"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="B4E-ga-QLa"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="3217" y="-207"/>
         </scene>
     </scenes>
     <resources>
