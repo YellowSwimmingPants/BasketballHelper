@@ -15,7 +15,7 @@ class BillBoardTableViewController: UITableViewController {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
     var billBoard: BillBoard!
-    let url_server = URL(string: common_url + "BillBoardServlet")
+    let url_server = URL(string: common_url_user + "BillBoardServlet")
     
     override func viewWillAppear(_ animated: Bool) {
         self.title = billBoard.title

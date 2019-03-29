@@ -14,7 +14,7 @@ class RegisterTableViewController: UITableViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    let url_server = URL(string: common_url + "UserInfoServlet")
+    let url_server = URL(string: common_url_user + "UserServlet")
     let userDefault = UserDefaults()
     var viewController = UIViewController()
     

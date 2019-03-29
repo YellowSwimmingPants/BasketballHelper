@@ -16,7 +16,7 @@ class UserInfoEditTableViewController: UITableViewController, UIImagePickerContr
     @IBOutlet weak var passwordTextView: UITextField!
     var userInfo: UserInfo!
     var image: UIImage?
-    let url_server = URL(string: common_url + "UserInfoServlet")
+    let url_server = URL(string: common_url_user + "UserServlet")
     
     override func viewDidLoad() {
         super.viewDidLoad()

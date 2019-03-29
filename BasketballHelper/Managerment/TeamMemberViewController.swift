@@ -13,7 +13,7 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var memberTableView: UITableView!
     var userInfo = [UserInfo]()
-    let url_server = URL(string: common_url + "UserInfoServlet")
+    let url_server = URL(string: common_url_user + "ManagersServlet")
     
     let privateList:[String] = ["Private item 1","Private item 2"]
     let friendsAndFamily:[String] = ["Friend item 1","Friend item 2", "Friends item 3"]

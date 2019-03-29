@@ -10,10 +10,10 @@ import Foundation
 
 class TeamInfo: Codable {
     var id: Int
-    var teamName: String
+    var teamInfo: String
     
     public init(_ id: Int, _ teamName: String) {
         self.id = id
-        self.teamName = teamName
+        self.teamInfo = teamName
     }
 }

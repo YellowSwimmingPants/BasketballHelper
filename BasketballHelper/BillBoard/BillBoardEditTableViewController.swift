@@ -8,23 +8,26 @@
 
 import UIKit
 
-class BillBoardEditTableViewController: UITableViewController {
+class BillBoardEditTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
-
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var contextTextView: UITextView!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    
     var datePickerHidden = true
-    let url_server = URL(string: common_url + "BillBoardServlet")
+    let url_server = URL(string: common_url_user + "BillBoardServlet")
+    var types = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        types.append("活動")
+        types.append("請假")
         datePickerChaged()
-        
     }
-    
+
     func datePickerChaged() {
         dateLabel.text = DateFormatter.localizedString(from: datePicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
     }
@@ -54,13 +57,30 @@ class BillBoardEditTableViewController: UITableViewController {
         datePickerChaged()
     }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return types.count
+    }
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return types[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let type = types[row]
+        typeLabel.text = type
+    }
+    
     
     @IBAction func clickSave(_ sender: Any) {
         let date = datePicker.date
         let title = titleTextField.text == nil ? "" : titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         let content = contextTextView.text == nil ? "" : contextTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let type = ""
-        let billBoard = BillBoard(0, date, title!, content!, type)
+        let type = typeLabel.text
+        let billBoard = BillBoard(0, date, title!, content!, type!)
         var requestParam = [String: String]()
         requestParam["action"] = "billBoardInsert"
         requestParam["billBoard"] = try! String(data: JSONEncoder().encode(billBoard), encoding: .utf8)

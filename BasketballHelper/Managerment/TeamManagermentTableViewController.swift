@@ -10,7 +10,7 @@ import UIKit
 
 class TeamManagermentTableViewController: UITableViewController {
     
-    let url_server = URL(string: common_url + "UserInfoServlet")
+    let url_server = URL(string: common_url_user + "ManagersServlet")
     let userDefault = UserDefaults()
     var userInfos = [UserInfo]()
     var users: UserInfo!

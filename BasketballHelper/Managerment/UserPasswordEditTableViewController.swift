@@ -14,7 +14,7 @@ class UserPasswordEditTableViewController: UITableViewController {
     @IBOutlet weak var newPasswordTextField: UITextField!
     @IBOutlet weak var confirmTextField: UITextField!
     var userInfo: UserInfo!
-    let url_server = URL(string: common_url + "UserInfoServlet")
+    let url_server = URL(string: common_url_user + "UserServlet")
     
     override func viewDidLoad() {
         super.viewDidLoad()

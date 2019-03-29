@@ -152,18 +152,27 @@
                         <sections>
                             <tableViewSection id="fUg-BM-Zv0">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="220" id="kUf-KC-Ng3">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="220" id="kUf-KC-Ng3">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kUf-KC-Ng3" id="Z3D-lt-RxM">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kUf-KC-Ng3" id="Z3D-lt-RxM">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="34m-In-kex">
-                                                    <rect key="frame" x="87" y="9" width="200" height="200"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="34m-In-kex">
+                                                    <rect key="frame" x="87" y="10.5" width="200" height="200"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="200" id="So3-TU-rss"/>
+                                                        <constraint firstAttribute="height" constant="200" id="qeF-Z5-Nod"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="34m-In-kex" firstAttribute="leading" secondItem="Z3D-lt-RxM" secondAttribute="leading" constant="87" id="Fkt-pQ-vl1"/>
+                                                <constraint firstAttribute="bottom" secondItem="34m-In-kex" secondAttribute="bottom" constant="10" id="HN6-2o-xew"/>
+                                                <constraint firstAttribute="trailing" secondItem="34m-In-kex" secondAttribute="trailing" constant="88" id="KPw-LG-aHD"/>
+                                                <constraint firstItem="34m-In-kex" firstAttribute="top" secondItem="Z3D-lt-RxM" secondAttribute="top" constant="10" id="UAX-jv-yQi"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Gxd-Ar-HA7">
@@ -173,8 +182,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="選擇圖片" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IH1-lI-Uhp">
-                                                    <rect key="frame" x="20" y="10" width="301" height="23.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="    選 擇 圖 片" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IH1-lI-Uhp">
+                                                    <rect key="frame" x="20" y="10" width="321" height="23.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -184,7 +193,7 @@
                                                 <constraint firstItem="IH1-lI-Uhp" firstAttribute="leading" secondItem="yyA-mT-X8y" secondAttribute="leading" constant="20" id="5Ui-Ta-0Ry"/>
                                                 <constraint firstItem="IH1-lI-Uhp" firstAttribute="top" secondItem="yyA-mT-X8y" secondAttribute="top" constant="10" id="7uM-yC-Wks"/>
                                                 <constraint firstAttribute="bottom" secondItem="IH1-lI-Uhp" secondAttribute="bottom" constant="10" id="KbZ-kR-3Av"/>
-                                                <constraint firstAttribute="trailing" secondItem="IH1-lI-Uhp" secondAttribute="trailing" constant="20" id="lYs-Hp-21f"/>
+                                                <constraint firstAttribute="trailing" secondItem="IH1-lI-Uhp" secondAttribute="trailing" id="lYs-Hp-21f"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

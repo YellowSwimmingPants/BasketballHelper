@@ -22,7 +22,7 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     var userInfo = [UserInfo]()
     var users: UserInfo!
     var billBoards = [BillBoard]()
-    let url_server = URL(string: common_url + "UserInfoServlet")
+    let url_server = URL(string: common_url_user + "BillBoardServlet")
     let userDefault = UserDefaults()
     
     let billBoardList: [BillBoard] = [BillBoard(1,Date(),"公告","Hello","公告")]

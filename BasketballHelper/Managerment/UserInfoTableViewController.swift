@@ -18,7 +18,7 @@ class UserInfoTableViewController: UITableViewController {
     let userDefault = UserDefaults()
     var users: UserInfo!
     var userInfo: UserInfo!
-    let url_server = URL(string: common_url + "UserInfoServlet")
+    let url_server = URL(string: common_url_user + "UserServlet")
     
     override func viewDidLoad() {
         super.viewDidLoad()

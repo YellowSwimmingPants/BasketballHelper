@@ -19,7 +19,7 @@ class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     var qrFrameView: UIView!
     // 當user決定加好友時呼叫
     var completionHandler:((String) -> Void)?
-    let url_server = URL(string: common_url + "UserInfoServlet")
+    let url_server = URL(string: common_url_user + "UserServlet")
     let userDefault = UserDefaults()
     var userInfos = [UserInfo]()
     var users: UserInfo!
