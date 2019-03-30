@@ -2,12 +2,14 @@
 import UIKit
 
 class PlayerList: UITableViewController {
-    let url_server = URL(string: common_url + "PlayerServlet")
+    let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
     var players = [Page_playerList]()
     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewAddRefreshControl()
+        
     }
     
       /** tableView加上下拉更新功能 */
@@ -34,6 +36,7 @@ class PlayerList: UITableViewController {
                     if let result = try? JSONDecoder().decode([Page_playerList].self, from: data!) {
                         self.players = result
                         DispatchQueue.main.async {
+                            print("1+\(self.players)")
                             if let control = self.tableView.refreshControl {
                                 if control.isRefreshing {
                                     // 停止下拉更新動作
@@ -132,18 +135,23 @@ class PlayerList: UITableViewController {
         return [delete, edit]
     }
 
-  //   因為拉UITableViewCell與detail頁面連結，所以sender是UITableViewCell
+// 因為拉UITableViewCell與detail頁面連結，所以sender是UITableViewCell
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "playerDetail" {
-//            /* indexPath(for:)可以取得UITableViewCell的indexPath */
+//        if segue.identifier == "playDetail" {
 //            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
 //            let player = players[indexPath!.row]
-//            let detailVC = segue.destination as! PlayerDetail
-//            detailVC.player = player
+//            let PlayerDetail = segue.destination as! PlayerDetail
+//            PlayerDetail.playerList = player
 //        }
 //    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let controller = segue.destination as? PlayerDetail
+        if let row = tableView.indexPathForSelectedRow?.row {
+            controller?.playerList = players[row]
+        }
+    }
 
 
-
+ 
 
 }

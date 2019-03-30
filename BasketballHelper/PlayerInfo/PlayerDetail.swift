@@ -2,11 +2,11 @@
 
 import UIKit
 
+
 class PlayerDetail: UIViewController {
-    @IBOutlet weak var PlayerDetail: UIView!
-    @IBOutlet weak var PlayerData: UIView!
-    
-    
+    @IBOutlet weak var plyaerDetail: UIView!
+    @IBOutlet weak var playerData: UIView!
+    var playerList : Page_playerList!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -14,12 +14,24 @@ class PlayerDetail: UIViewController {
     }
     @IBAction func switchViews(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 0{
-            PlayerDetail.alpha = 1
-            PlayerData.alpha = 0
+            plyaerDetail.alpha = 1
+            playerData.alpha = 0
         }else{
-            PlayerDetail.alpha = 0
-            PlayerData.alpha = 1
+            plyaerDetail.alpha = 0
+            playerData.alpha = 1
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "information"{
+//            _ = self.plyaerDetail
+            let Detail = segue.destination as! PlayerInformation
+            Detail.playerInformation = playerList
+            print("2\(playerList)")
+            
+        }
+        
+    }
+    
     
 }

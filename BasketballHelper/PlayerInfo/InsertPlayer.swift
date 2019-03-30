@@ -13,7 +13,7 @@ class InsertPlayer: UIViewController,UIImagePickerControllerDelegate, UINavigati
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var label: UILabel!
     
-    let url_server = URL(string: common_url + "PlayerServlet")
+    let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
     var image: UIImage?
     
     override func viewDidLoad() {

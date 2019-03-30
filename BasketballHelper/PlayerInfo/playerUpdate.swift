@@ -15,7 +15,7 @@ class PlayerUpdate: UIViewController,UIImagePickerControllerDelegate, UINavigati
     @IBOutlet weak var tfPosition: UITextField!
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var label: UILabel!
-    let url_server = URL(string: common_url + "PlayerServlet")
+    let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
     var player: Page_playerList!
     var imageUpload: UIImage?
     
@@ -89,6 +89,11 @@ class PlayerUpdate: UIViewController,UIImagePickerControllerDelegate, UINavigati
     func showPlayer() {
         tfName.text = player.name
         tfNickName.text = player.nickname
+        tfPhone.text = player.phone
+        tfBirthday.text = player.birthday
+        tfNumber.text = player.number
+        tfPosition.text = player.position
+        tfEmail.text = player.email
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
         requestParam["id"] = player.id
