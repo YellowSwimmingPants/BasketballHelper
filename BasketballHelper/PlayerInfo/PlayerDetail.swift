@@ -24,10 +24,8 @@ class PlayerDetail: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "information"{
-//            _ = self.plyaerDetail
             let Detail = segue.destination as! PlayerInformation
             Detail.playerInformation = playerList
-            print("2\(playerList)")
             
         }
         

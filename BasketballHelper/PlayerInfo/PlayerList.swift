@@ -135,15 +135,7 @@ class PlayerList: UITableViewController {
         return [delete, edit]
     }
 
-// 因為拉UITableViewCell與detail頁面連結，所以sender是UITableViewCell
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "playDetail" {
-//            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
-//            let player = players[indexPath!.row]
-//            let PlayerDetail = segue.destination as! PlayerDetail
-//            PlayerDetail.playerList = player
-//        }
-//    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let controller = segue.destination as? PlayerDetail
         if let row = tableView.indexPathForSelectedRow?.row {

@@ -9,7 +9,10 @@
 import UIKit
 
 class PlayerData: UIViewController {
-
+    @IBOutlet weak var TotalScore: UILabel!
+    @IBOutlet weak var TurnOver: UILabel!
+    @IBOutlet weak var Assist: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

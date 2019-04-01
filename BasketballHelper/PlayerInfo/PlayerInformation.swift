@@ -16,9 +16,7 @@ class PlayerInformation: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.title? = playerInformation.name!
         showplayer()
-//        print("3+\(playerInformation)")
     }
     func showplayer(){
         lbName.text = playerInformation.name!
