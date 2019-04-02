@@ -1,22 +1,28 @@
-
+//
+//  UpdateGameTableViewController.swift
+//  BasketballHelper
+//
+//  Created by 李宜銓 on 2019/4/1.
+//  Copyright © 2019 李宜銓. All rights reserved.
+//
 
 import UIKit
 
-class CreateGameTableViewController: UITableViewController, UINavigationControllerDelegate {
-    
+class UpdateGameTableViewController: UITableViewController {
     @IBOutlet weak var tfGameName: UITextField!
-    var dateString: String?
-//    let players = ["王小平", "蔡小甫", "李小銓", "陳小志", "黃老師"]
     @IBOutlet weak var datePicker: UIDatePicker!
-    var datePickerHidden = true
     @IBOutlet weak var lbShowDate: UILabel!
-    
-    let url_server = URL(string: common_url + "GameServlet")
-    
+    var datePickerHidden = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
         datePickerChanged()
+    }
+    
+    @IBAction func clickSave(_ sender: Any) {
+        let gameName = tfGameName.text == nil ? "" : tfGameName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let gameDate = lbShowDate.text == nil ? "" : lbShowDate.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let game = Game(gameName, gameDate)
     }
     
     @IBAction func datePickerValueChanged(_ sender: Any) {
@@ -25,13 +31,6 @@ class CreateGameTableViewController: UITableViewController, UINavigationControll
     
     func datePickerChanged() {
         lbShowDate.text = DateFormatter.localizedString(from: datePicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
-    }
-    
-    @IBAction func clickDone(_ sender: Any) {
-        let gameName = tfGameName.text == nil ? "" : tfGameName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let gameDate = lbShowDate.text == nil ? "" : lbShowDate.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let game = Game(gameName, gameDate)
-        
     }
     
     func toggleDatePicker() {
@@ -54,5 +53,4 @@ class CreateGameTableViewController: UITableViewController, UINavigationControll
             toggleDatePicker()
         }
     }
-    
 }
