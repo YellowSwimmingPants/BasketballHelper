@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330840B122521F450025E6A5 /* GameDataCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330840B022521F450025E6A5 /* GameDataCount.swift */; };
 		334E441E223FB9640055D0EC /* PlayerInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334E441D223FB9640055D0EC /* PlayerInfo.storyboard */; };
 		334E4420223FD13E0055D0EC /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E441F223FD13E0055D0EC /* PlayerDetail.swift */; };
 		334E4422223FD7EC0055D0EC /* PlayerInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E4421223FD7EC0055D0EC /* PlayerInformation.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		330840B022521F450025E6A5 /* GameDataCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDataCount.swift; sourceTree = "<group>"; };
 		334E441D223FB9640055D0EC /* PlayerInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayerInfo.storyboard; sourceTree = "<group>"; };
 		334E441F223FD13E0055D0EC /* PlayerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetail.swift; sourceTree = "<group>"; };
 		334E4421223FD7EC0055D0EC /* PlayerInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInformation.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				33FD82D62240A01300DB2B95 /* PlayerList.swift */,
 				33E5618F2246188C00936171 /* PlayerCell.swift */,
 				33E5618D22460CC100936171 /* Page_playerList.swift */,
+				330840B022521F450025E6A5 /* GameDataCount.swift */,
 				33D165242244E68600E6D94A /* playerUpdate.swift */,
 				334E441F223FD13E0055D0EC /* PlayerDetail.swift */,
 				334E4421223FD7EC0055D0EC /* PlayerInformation.swift */,
@@ -345,6 +348,7 @@
 				71FBA32A224DB61400752520 /* ChangePlayerViewController.swift in Sources */,
 				334E4422223FD7EC0055D0EC /* PlayerInformation.swift in Sources */,
 				714B473B223B366200134AA0 /* Game.swift in Sources */,
+				330840B122521F450025E6A5 /* GameDataCount.swift in Sources */,
 				714B4739223B1F3E00134AA0 /* PlayerDataTableViewController.swift in Sources */,
 				C7421422223BA68A000D3E0E /* ManagermentTableViewController.swift in Sources */,
 				71D4EDF2223B1DB0005A05D0 /* StartingLineupTableViewController.swift in Sources */,
