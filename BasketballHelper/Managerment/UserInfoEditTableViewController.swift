@@ -14,13 +14,14 @@ class UserInfoEditTableViewController: UITableViewController, UIImagePickerContr
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextView: UITextField!
-    var userInfo: UserInfo!
     var image: UIImage?
     let url_server = URL(string: common_url_user + "UserServlet")
+    let userDefault = UserDefaults()
+    var userInfo = [UserInfo]()
+    var users: UserInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -47,28 +48,34 @@ class UserInfoEditTableViewController: UITableViewController, UIImagePickerContr
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
     }
-
+    
     @IBAction func clickSave(_ sender: Any) {
         let userName = userNameTextField.text == nil ? "" : userNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let email = emailTextField.text == nil ? "" : emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let userPassword = passwordTextView.text == nil ? "" : passwordTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let user = UserInfo(0, userInfo.userAccount, userPassword, userName, email, userInfo.priority, userInfo.teamInfo)
+        let userInfo = userDefault.data(forKey: "userDefault")
+        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
+        let user = UserInfo(0, users.userAccount, userPassword, userName, email, users.priority, users.teamInfo)
         var requestParam = [String: String]()
-        requestParam["action"] = "update"
-        requestParam["userInfo"] = try! String(data: JSONEncoder().encode(user), encoding: .utf8)
+        requestParam["action"] = "userUpdate"
+        requestParam["user"] = try! String(data: JSONEncoder().encode(user), encoding: .utf8)
         if self.image != nil {
             requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
         }
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
-                    if let result = String(data: data!, encoding: .utf8) {
-                        if let count = Int(result) {
-                            DispatchQueue.main.async {
-                                if count != 0 {                                            self.navigationController?.popViewController(animated: true)
-                                } else {
-                                    showSimpleAlert(message: "修改失敗", viewController: self)
-                                }
+                    if let result = try? JSONDecoder().decode([String : String].self, from: data!) {
+                        DispatchQueue.main.async {
+                            if result["success"] == "Yes" {
+                                let userLogin = result["userInfo"]
+                                let login = try? JSONDecoder().decode(UserInfo.self, from: userLogin!.data(using: .utf8)!)
+                                let loginOK = try! JSONEncoder().encode(login)
+                                self.userDefault.set(loginOK, forKey: "userDefault")
+                                self.userDefault.synchronize()
+                                self.navigationController?.popViewController(animated: true)
+                            } else {
+                                showSimpleAlert(message: "修改失敗", viewController: self)
                             }
                         }
                     }

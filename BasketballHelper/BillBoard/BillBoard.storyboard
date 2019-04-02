@@ -72,7 +72,7 @@
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8Or-I0-pkE">
-                                        <rect key="frame" x="0.0" y="30" width="375" height="400"/>
+                                        <rect key="frame" x="0.0" y="30" width="375" height="398"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bMW-5G-NrT">
                                             <size key="itemSize" width="50" height="50"/>
@@ -100,7 +100,7 @@
                                         <rect key="frame" x="0.0" y="428" width="375" height="175"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="175" id="dNp-iq-V55"/>
+                                            <constraint firstAttribute="height" constant="175" id="4SD-bN-1PF"/>
                                         </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="billBoardCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="billBoardCell" textLabel="uqe-Gd-BIM" detailTextLabel="0Dr-iN-sC4" style="IBUITableViewCellStyleValue1" id="3XF-W3-yPM">
@@ -140,13 +140,14 @@
                                 <constraints>
                                     <constraint firstItem="8Or-I0-pkE" firstAttribute="leading" secondItem="U8y-Fw-hUP" secondAttribute="leading" id="0XJ-LL-OBR"/>
                                     <constraint firstItem="pKk-Re-Qm7" firstAttribute="leading" secondItem="U8y-Fw-hUP" secondAttribute="leading" id="3Me-OG-rNZ"/>
+                                    <constraint firstItem="pKk-Re-Qm7" firstAttribute="top" secondItem="8Or-I0-pkE" secondAttribute="bottom" id="4Hg-CG-SM8"/>
                                     <constraint firstItem="oOH-R6-HA5" firstAttribute="leading" secondItem="U8y-Fw-hUP" secondAttribute="leading" id="5gV-My-qKA"/>
-                                    <constraint firstItem="pKk-Re-Qm7" firstAttribute="top" secondItem="8Or-I0-pkE" secondAttribute="bottom" constant="-2" id="Cpy-5H-8en"/>
-                                    <constraint firstAttribute="bottom" secondItem="pKk-Re-Qm7" secondAttribute="bottom" id="HIJ-qa-Vkn"/>
                                     <constraint firstItem="oOH-R6-HA5" firstAttribute="centerX" secondItem="U8y-Fw-hUP" secondAttribute="centerX" id="ROw-e4-TaE"/>
                                     <constraint firstItem="8Or-I0-pkE" firstAttribute="top" secondItem="oOH-R6-HA5" secondAttribute="bottom" id="VVK-2y-OnX"/>
+                                    <constraint firstItem="pKk-Re-Qm7" firstAttribute="top" secondItem="8Or-I0-pkE" secondAttribute="bottom" id="XOC-ul-yKm"/>
                                     <constraint firstAttribute="bottom" secondItem="oOH-R6-HA5" secondAttribute="bottom" constant="573" id="Z9D-8V-qfg"/>
                                     <constraint firstAttribute="trailing" secondItem="8Or-I0-pkE" secondAttribute="trailing" id="dBT-H6-690"/>
+                                    <constraint firstAttribute="bottom" secondItem="pKk-Re-Qm7" secondAttribute="bottom" id="kFi-CI-V3E"/>
                                     <constraint firstAttribute="trailing" secondItem="oOH-R6-HA5" secondAttribute="trailing" id="lNR-l2-VJf"/>
                                     <constraint firstItem="oOH-R6-HA5" firstAttribute="top" secondItem="U8y-Fw-hUP" secondAttribute="top" id="o75-ic-A1F"/>
                                     <constraint firstAttribute="trailing" secondItem="pKk-Re-Qm7" secondAttribute="trailing" id="peL-2Z-dYV"/>
@@ -366,7 +367,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="0ir-HX-o8m">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="336" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <items>
                                 <navigationItem title="新增公告" id="VcS-f2-lZD">

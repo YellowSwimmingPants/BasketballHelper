@@ -186,7 +186,6 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
         let cellId = "billBoardCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId)!
         let billBoard = billBoards[indexPath.row]
-        
         cell.textLabel?.text = billBoard.dateStr
         cell.detailTextLabel?.text = billBoard.title
         
