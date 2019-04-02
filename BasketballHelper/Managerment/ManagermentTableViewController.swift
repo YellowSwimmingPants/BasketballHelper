@@ -24,9 +24,13 @@ class ManagermentTableViewController: UITableViewController {
     }
 
     @IBAction func clickLogout(_ sender: Any) {
-        self.userDefault.set("", forKey: "userDefault")
-        self.userDefault.set("", forKey: "teamInfo")
-        self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Login")
+        let userDefault = UserDefaults.standard
+        let dics = userDefault.dictionaryRepresentation()
+        for key in dics {
+            userDefault.removeObject(forKey: key.key)
+        }
+        userDefault.synchronize()
+        dismiss(animated: true, completion: nil)
     }
     
 }
