@@ -12,18 +12,18 @@ class InviteViewController: UIViewController {
 
 //    let url_server = URL(string: common_url + "TeamInfoServlet")
     let userDefault = UserDefaults()
-//    var userInfos = [UserInfo]()
-//    var users: UserInfo!
+    var userInfos = [UserInfo]()
+    var users: UserInfo!
     
     @IBOutlet weak var qrCodeImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let teamInfo = userDefault.data(forKey: "teamInfo") {
-//            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
             guard let ciFilter = CIFilter(name: "CIQRCodeGenerator") else { return }
-            ciFilter.setValue(teamInfo, forKey: "inputMessage")
+            ciFilter.setValue(users.teamInfo, forKey: "inputMessage")
             guard let ciImage_smallQR = ciFilter.outputImage else { return }
             // QR code圖片很小，需要放大
             let transform = CGAffineTransform(scaleX: 10, y: 10)
@@ -58,9 +58,4 @@ class InviteViewController: UIViewController {
 //            }
 //        }
 //    }
-    
-    @IBAction func clickDone(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
 }
