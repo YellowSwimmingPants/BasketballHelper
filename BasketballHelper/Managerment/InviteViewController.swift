@@ -22,8 +22,9 @@ class InviteViewController: UIViewController {
         
         if let userInfo = userDefault.data(forKey: "userDefault") {
             users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+            let data = users.teamInfo.data(using: String.Encoding.ascii)
             guard let ciFilter = CIFilter(name: "CIQRCodeGenerator") else { return }
-            ciFilter.setValue(users.teamInfo, forKey: "inputMessage")
+            ciFilter.setValue(data, forKey: "inputMessage")
             guard let ciImage_smallQR = ciFilter.outputImage else { return }
             // QR code圖片很小，需要放大
             let transform = CGAffineTransform(scaleX: 10, y: 10)
