@@ -79,15 +79,13 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                         if let result = String(data: data!, encoding: .utf8) {
                             if let count = Int(result) {
                                 if count != 0 {
-                                    if self.segmentControl.selectedSegmentIndex == 0 {
-                                        self.managerList.remove(at: indexPath.row)
-                                        DispatchQueue.main.async {
+                                    DispatchQueue.main.async {
+                                        if self.segmentControl.selectedSegmentIndex == 0 {
+                                            self.managerList.remove(at: indexPath.row)
                                             tableView.deleteRows(at: [indexPath], with: .fade)
                                         }
-                                    }
-                                    if self.segmentControl.selectedSegmentIndex == 1 {
-                                        self.memberList.remove(at: indexPath.row)
-                                        DispatchQueue.main.async {
+                                        if self.segmentControl.selectedSegmentIndex == 1 {
+                                            self.memberList.remove(at: indexPath.row)
                                             tableView.deleteRows(at: [indexPath], with: .fade)
                                         }
                                     }
