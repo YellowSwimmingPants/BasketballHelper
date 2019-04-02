@@ -12,15 +12,24 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var memberTableView: UITableView!
+    let userDefault = UserDefaults()
     var userInfo = [UserInfo]()
-    let url_server = URL(string: common_url_user + "ManagersServlet")
-    
-    let privateList:[String] = ["Private item 1","Private item 2"]
-    let friendsAndFamily:[String] = ["Friend item 1","Friend item 2", "Friends item 3"]
+    var users: UserInfo!
+    let url_server = URL(string: common_url_user + "UserServlet")
+    let url_server_manager = URL(string: common_url_user + "ManagersServlet")
+    var managerList = [UserInfo]()
+    var memberList = [UserInfo]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let userInfo = userDefault.data(forKey: "userDefault")
+        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
+        let teamInfo = users.teamInfo
+        showManager(teamInfo: teamInfo)
+        showMember(teamInfo: teamInfo)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,10 +37,10 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
         
         switch (segmentControl.selectedSegmentIndex) {
         case 0:
-            returnValue = privateList.count
+            returnValue = managerList.count
             break
         case 1:
-            returnValue = friendsAndFamily.count
+            returnValue = memberList.count
             break
         default:
             break
@@ -43,10 +52,10 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath)
         switch (segmentControl.selectedSegmentIndex) {
         case 0:
-            cell.textLabel?.text = privateList[indexPath.row]
+            cell.textLabel?.text = managerList[indexPath.row].userAccount
             break
         case 1:
-            cell.textLabel?.text = friendsAndFamily[indexPath.row]
+            cell.textLabel?.text = memberList[indexPath.row].userAccount
             break
         default:
             break
@@ -57,17 +66,30 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "退出球隊") { (action, indexPath) in
             var requestParam = [String: Any]()
-            requestParam["action"] = "memberDelete"
-            requestParam["userAccount"] = self.userInfo[indexPath.row].userAccount
-            executeTask(self.url_server!, requestParam, completionHandler: { (data, response, error) in
+            requestParam["action"] = "quitTeam"
+            if self.segmentControl.selectedSegmentIndex == 0 {
+                requestParam["userAccount"] = self.managerList[indexPath.row].userAccount
+            }
+            if self.segmentControl.selectedSegmentIndex == 1 {
+                requestParam["userAccount"] = self.memberList[indexPath.row].userAccount
+            }
+            executeTask(self.url_server_manager!, requestParam, completionHandler: { (data, response, error) in
                 if error == nil {
                     if data != nil {
                         if let result = String(data: data!, encoding: .utf8) {
                             if let count = Int(result) {
                                 if count != 0 {
-                                    self.userInfo.remove(at: indexPath.row)
-                                    DispatchQueue.main.async {
-                                        tableView.deleteRows(at: [indexPath], with: .fade)
+                                    if self.segmentControl.selectedSegmentIndex == 0 {
+                                        self.managerList.remove(at: indexPath.row)
+                                        DispatchQueue.main.async {
+                                            tableView.deleteRows(at: [indexPath], with: .fade)
+                                        }
+                                    }
+                                    if self.segmentControl.selectedSegmentIndex == 1 {
+                                        self.memberList.remove(at: indexPath.row)
+                                        DispatchQueue.main.async {
+                                            tableView.deleteRows(at: [indexPath], with: .fade)
+                                        }
                                     }
                                 }
                             }
@@ -80,7 +102,50 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         return [delete]
     }
-
+    
+    func showManager(teamInfo: String) {
+        var requestParam = [String: Any]()
+        requestParam["action"] = "getManager"
+        requestParam["teamInfo"] = teamInfo
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    if let result = try? JSONDecoder().decode([UserInfo].self, from: data!) {
+                        self.managerList = result
+                        DispatchQueue.main.async {
+                            self.memberTableView.reloadData()
+                        }
+                    }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
+    func showMember(teamInfo: String) {
+        var requestParam = [String: Any]()
+        requestParam["action"] = "getMember"
+        requestParam["teamInfo"] = teamInfo
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    if let result = try? JSONDecoder().decode([UserInfo].self, from: data!) {
+                        self.memberList = result
+                        DispatchQueue.main.async {
+                            self.memberTableView.reloadData()
+                        }
+                    }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
+    func deleteMember() {
+        
+    }
     
     override func didReceiveMemoryWarning() {
         didReceiveMemoryWarning()
