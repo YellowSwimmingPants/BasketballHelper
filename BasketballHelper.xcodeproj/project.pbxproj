@@ -35,6 +35,7 @@
 		71FBA328224DB5E700752520 /* StartingLineupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBA327224DB5E700752520 /* StartingLineupViewController.swift */; };
 		71FBA32A224DB61400752520 /* ChangePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBA329224DB61400752520 /* ChangePlayerViewController.swift */; };
 		71FBA32C224DC03F00752520 /* SegmentBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBA32B224DC03F00752520 /* SegmentBarViewController.swift */; };
+		AB998C2EA1057D165C73B174 /* Pods_BasketballHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8830AE505326EF04EE531A3B /* Pods_BasketballHelper.framework */; };
 		C736BAFD2243628400D84AD6 /* TeamMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BAFC2243628400D84AD6 /* TeamMemberViewController.swift */; };
 		C736BAFF224362FE00D84AD6 /* ManagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BAFE224362FE00D84AD6 /* ManagerTableViewController.swift */; };
 		C736BB02224398F700D84AD6 /* HomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BB01224398F700D84AD6 /* HomepageViewController.swift */; };
@@ -59,6 +60,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		17CAF3D021CEB336836C4D6B /* Pods-BasketballHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasketballHelper.release.xcconfig"; path = "Target Support Files/Pods-BasketballHelper/Pods-BasketballHelper.release.xcconfig"; sourceTree = "<group>"; };
 		330840B022521F450025E6A5 /* GameDataCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDataCount.swift; sourceTree = "<group>"; };
 		334E441D223FB9640055D0EC /* PlayerInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayerInfo.storyboard; sourceTree = "<group>"; };
 		334E441F223FD13E0055D0EC /* PlayerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetail.swift; sourceTree = "<group>"; };
@@ -89,6 +91,8 @@
 		71FBA327224DB5E700752520 /* StartingLineupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingLineupViewController.swift; sourceTree = "<group>"; };
 		71FBA329224DB61400752520 /* ChangePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlayerViewController.swift; sourceTree = "<group>"; };
 		71FBA32B224DC03F00752520 /* SegmentBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentBarViewController.swift; sourceTree = "<group>"; };
+		8830AE505326EF04EE531A3B /* Pods_BasketballHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BasketballHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		893504A0D6DB3F174200F6C0 /* Pods-BasketballHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasketballHelper.debug.xcconfig"; path = "Target Support Files/Pods-BasketballHelper/Pods-BasketballHelper.debug.xcconfig"; sourceTree = "<group>"; };
 		C736BAFC2243628400D84AD6 /* TeamMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberViewController.swift; sourceTree = "<group>"; };
 		C736BAFE224362FE00D84AD6 /* ManagerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTableViewController.swift; sourceTree = "<group>"; };
 		C736BB01224398F700D84AD6 /* HomepageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB998C2EA1057D165C73B174 /* Pods_BasketballHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,11 +147,31 @@
 			path = PlayerInfo;
 			sourceTree = "<group>";
 		};
+		443B14FB1D3C8EC65888431E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				893504A0D6DB3F174200F6C0 /* Pods-BasketballHelper.debug.xcconfig */,
+				17CAF3D021CEB336836C4D6B /* Pods-BasketballHelper.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		6A4212063B14FFC0A8C39AD6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8830AE505326EF04EE531A3B /* Pods_BasketballHelper.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		710D3660223238A3008A683C = {
 			isa = PBXGroup;
 			children = (
 				710D366B223238A3008A683C /* BasketballHelper */,
 				710D366A223238A3008A683C /* Products */,
+				443B14FB1D3C8EC65888431E /* Pods */,
+				6A4212063B14FFC0A8C39AD6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -253,9 +278,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 710D367B223238A3008A683C /* Build configuration list for PBXNativeTarget "BasketballHelper" */;
 			buildPhases = (
+				5120D072EB2188E8B4D90C49 /* [CP] Check Pods Manifest.lock */,
 				710D3665223238A3008A683C /* Sources */,
 				710D3666223238A3008A683C /* Frameworks */,
 				710D3667223238A3008A683C /* Resources */,
+				00651DA4AC4F70395361A640 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -316,6 +343,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		00651DA4AC4F70395361A640 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BasketballHelper/Pods-BasketballHelper-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BasketballHelper/Pods-BasketballHelper-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5120D072EB2188E8B4D90C49 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BasketballHelper-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		710D3665223238A3008A683C /* Sources */ = {
@@ -506,6 +580,7 @@
 		};
 		710D367C223238A3008A683C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 893504A0D6DB3F174200F6C0 /* Pods-BasketballHelper.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -524,6 +599,7 @@
 		};
 		710D367D223238A3008A683C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17CAF3D021CEB336836C4D6B /* Pods-BasketballHelper.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
