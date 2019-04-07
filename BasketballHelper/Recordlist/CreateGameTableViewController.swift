@@ -30,8 +30,29 @@ class CreateGameTableViewController: UITableViewController, UINavigationControll
     @IBAction func clickDone(_ sender: Any) {
         let gameName = tfGameName.text == nil ? "" : tfGameName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let gameDate = lbShowDate.text == nil ? "" : lbShowDate.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let game = Game(gameName, gameDate)
-        
+        let game = Game(0, gameName, gameDate)
+        var requestParam = [String: String]()
+        requestParam["action"] = "gameInsert"
+        requestParam["game"] = try! String(data: JSONEncoder().encode(game), encoding: .utf8)
+        executeTask(self.url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    if let result = String(data: data!, encoding: .utf8) {
+                        if let count = Int(result) {
+                            DispatchQueue.main.async {
+                                // 新增成功則回前頁
+                                if count != 0 {                                            self.navigationController?.popViewController(animated: true)
+                                } else {
+                                    showSimpleAlert(message: "insert failed", viewController: self)
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
     }
     
     func toggleDatePicker() {
