@@ -17,7 +17,7 @@ class PeriodTableViewController: UITableViewController {
     
     @IBAction func clickCancel(_ sender: Any) {
          let gameRecordTVC = self.storyboard?.instantiateViewController(withIdentifier: "gameRecordTVC") as! GameRecordTableViewController
-        self.navigationController?.pushViewController(gameRecordTVC, animated: true)
+        self.navigationController?.popToViewController(gameRecordTVC, animated: true)
     }
     
     @IBAction func clickDone(_ sender: Any) {

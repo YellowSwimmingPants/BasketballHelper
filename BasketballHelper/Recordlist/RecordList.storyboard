@@ -154,6 +154,43 @@
             </objects>
             <point key="canvasLocation" x="4060" y="-207"/>
         </scene>
+        <!--Choose Starting Lineup Table View Controller-->
+        <scene sceneID="1OX-0y-sSR">
+            <objects>
+                <tableViewController id="t8S-lg-mkR" customClass="ChooseStartingLineupTableViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="QsK-Q3-4Hp">
+                        <rect key="frame" x="0.0" y="0.0" width="343" height="545"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" textLabel="mpg-C5-0Db" style="IBUITableViewCellStyleDefault" id="lpy-V7-rLz">
+                                <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lpy-V7-rLz" id="l4N-Oy-hvi">
+                                    <rect key="frame" x="0.0" y="0.0" width="303" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="球員" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mpg-C5-0Db">
+                                            <rect key="frame" x="16" y="0.0" width="287" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="t8S-lg-mkR" id="9ay-vd-TKG"/>
+                            <outlet property="delegate" destination="t8S-lg-mkR" id="v89-mG-q6T"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="whd-15-shC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-44" y="618"/>
+        </scene>
         <!--建立比賽-->
         <scene sceneID="rsI-Ke-d17">
             <objects>
@@ -293,35 +330,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="296.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MDf-Iv-8Ui">
-                                                    <rect key="frame" x="15" y="10" width="345" height="276.5"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" id="49O-ix-eU4">
-                                                            <rect key="frame" x="0.0" y="28" width="345" height="44"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="49O-ix-eU4" id="TaJ-Dl-YyD">
-                                                                <rect key="frame" x="0.0" y="0.0" width="306" height="43.5"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="球員名稱" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K4B-to-xM1">
-                                                                        <rect key="frame" x="21" y="0.0" width="300" height="44"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                                        <nil key="textColor"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                            </tableViewCellContentView>
-                                                        </tableViewCell>
-                                                    </prototypes>
-                                                </tableView>
+                                                <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R4A-j8-bJs">
+                                                    <rect key="frame" x="16" y="0.0" width="343" height="545"/>
+                                                    <connections>
+                                                        <segue destination="t8S-lg-mkR" kind="embed" id="qZR-Zq-Eiu"/>
+                                                    </connections>
+                                                </containerView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="MDf-Iv-8Ui" firstAttribute="top" secondItem="heP-aJ-HsG" secondAttribute="top" constant="10" id="Bma-r4-XIP"/>
-                                                <constraint firstItem="MDf-Iv-8Ui" firstAttribute="leading" secondItem="heP-aJ-HsG" secondAttribute="leading" constant="15" id="Cye-RF-lTq"/>
-                                                <constraint firstAttribute="bottom" secondItem="MDf-Iv-8Ui" secondAttribute="bottom" constant="10" id="cKH-1P-jlv"/>
-                                                <constraint firstAttribute="trailing" secondItem="MDf-Iv-8Ui" secondAttribute="trailing" constant="15" id="mS9-KV-MOC"/>
+                                                <constraint firstAttribute="trailing" secondItem="R4A-j8-bJs" secondAttribute="trailing" constant="16" id="6ao-Gb-STY"/>
+                                                <constraint firstItem="R4A-j8-bJs" firstAttribute="leading" secondItem="heP-aJ-HsG" secondAttribute="leading" constant="16" id="87n-3v-cxz"/>
+                                                <constraint firstItem="R4A-j8-bJs" firstAttribute="top" secondItem="heP-aJ-HsG" secondAttribute="top" id="EyR-Gg-5Ba"/>
+                                                <constraint firstAttribute="bottom" secondItem="R4A-j8-bJs" secondAttribute="bottom" constant="-248.5" id="P6p-vD-xXw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -337,7 +357,7 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="YRV-0n-zpe">
                             <connections>
                                 <action selector="clickDone:" destination="E0X-bc-7WX" id="UL1-Tk-kSM"/>
-                                <segue destination="avo-4K-yoy" kind="show" id="gFD-cL-N6t"/>
+                                <segue destination="mPc-Ga-2n4" kind="show" id="rOx-oc-GXS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -349,26 +369,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VfU-wt-tOa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708" y="564"/>
-        </scene>
-        <!--場上五人-->
-        <scene sceneID="Sq6-rZ-osW">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="avo-4K-yoy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="場上五人" image="players" selectedImage="players" id="ERL-IT-Mxt"/>
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jcp-1f-FbU">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="mPc-Ga-2n4" kind="relationship" relationship="rootViewController" id="YOO-qh-7ed"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fTR-fk-Tge" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1497" y="-207"/>
+            <point key="canvasLocation" x="1476" y="-207"/>
         </scene>
         <!--Period Table View Controller-->
         <scene sceneID="6LG-6c-HYu">
@@ -490,11 +491,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="dWW-kv-RHa">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="iVg-KY-frb">
-                            <connections>
-                                <action selector="clickCancel:" destination="mPc-Ga-2n4" id="5zA-hd-iVF"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="auu-jq-gCs">
                             <connections>
                                 <action selector="clickDone:" destination="mPc-Ga-2n4" id="gcr-25-2ZN"/>
@@ -577,7 +573,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Z5b-tg-m11">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cVR-RQ-9ig" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="navStart" automaticallyAdjustsScrollViewInsets="NO" id="cVR-RQ-9ig" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="vgM-Ej-6q1">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -827,9 +823,6 @@
             <point key="canvasLocation" x="1497" y="564"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="players" width="24" height="24"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="BFq-3M-Hvo"/>
     </inferredMetricsTieBreakers>
