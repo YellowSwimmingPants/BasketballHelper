@@ -20,6 +20,7 @@
 		33FD82D92240DA3100DB2B95 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FD82D82240DA3100DB2B95 /* Common.swift */; };
 		710139472243AAD9005B6028 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710139462243AAD9005B6028 /* Player.swift */; };
 		710139492243AAFE005B6028 /* CreateGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710139482243AAFE005B6028 /* CreateGameTableViewController.swift */; };
+		710791A6225A089000CA8FF6 /* PeriodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710791A5225A089000CA8FF6 /* PeriodTableViewController.swift */; };
 		710D366D223238A3008A683C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D366C223238A3008A683C /* AppDelegate.swift */; };
 		710D3672223238A3008A683C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 710D3670223238A3008A683C /* Main.storyboard */; };
 		710D3674223238A3008A683C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 710D3673223238A3008A683C /* Assets.xcassets */; };
@@ -75,6 +76,7 @@
 		33FD82D82240DA3100DB2B95 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		710139462243AAD9005B6028 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		710139482243AAFE005B6028 /* CreateGameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameTableViewController.swift; sourceTree = "<group>"; };
+		710791A5225A089000CA8FF6 /* PeriodTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodTableViewController.swift; sourceTree = "<group>"; };
 		710D3669223238A3008A683C /* BasketballHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasketballHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		710D366C223238A3008A683C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		710D3671223238A3008A683C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				714B473D223B7F6B00134AA0 /* RecordList.storyboard */,
+				710791A5225A089000CA8FF6 /* PeriodTableViewController.swift */,
 				713F94582252021A0011A1D7 /* UpdateGameTableViewController.swift */,
 				71FBA32B224DC03F00752520 /* SegmentBarViewController.swift */,
 				71FBA329224DB61400752520 /* ChangePlayerViewController.swift */,
@@ -411,6 +414,7 @@
 				C736BB0C2243C2BD00D84AD6 /* RegisterTableViewController.swift in Sources */,
 				33E561902246188C00936171 /* PlayerCell.swift in Sources */,
 				C742141B223B99C9000D3E0E /* BillBoardEditTableViewController.swift in Sources */,
+				710791A6225A089000CA8FF6 /* PeriodTableViewController.swift in Sources */,
 				C77F5DFD2241E0A100BDBE42 /* UserInfo.swift in Sources */,
 				C736BAFD2243628400D84AD6 /* TeamMemberViewController.swift in Sources */,
 				71FBA32C224DC03F00752520 /* SegmentBarViewController.swift in Sources */,
