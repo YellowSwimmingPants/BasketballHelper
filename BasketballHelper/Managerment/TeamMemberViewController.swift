@@ -100,7 +100,49 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             })
         }
-        return [delete]
+        let priority = UITableViewRowAction(style: .destructive, title: "修改權限") { (action, indexPath) in
+            var requestParam = [String: Any]()
+            requestParam["action"] = "changePriority"
+            if self.segmentControl.selectedSegmentIndex == 0 {
+                requestParam["userAccount"] = self.managerList[indexPath.row].userAccount
+            }
+            if self.segmentControl.selectedSegmentIndex == 1 {
+                requestParam["userAccount"] = self.memberList[indexPath.row].userAccount
+            }
+            executeTask(self.url_server!, requestParam, completionHandler: { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        if let result = String(data: data!, encoding: .utf8) {
+                            if let count = Int(result) {
+                                DispatchQueue.main.async {
+                                    if count != 0 {
+                                        if self.segmentControl.selectedSegmentIndex == 0 {
+                                            self.managerList.remove(at: indexPath.row)
+                                            DispatchQueue.main.async {
+                                                tableView.backgroundColor = UIColor.green
+                                                tableView.deleteRows(at: [indexPath], with: .fade)
+                                            }
+                                        }
+                                        if self.segmentControl.selectedSegmentIndex == 1 {
+                                            self.memberList.remove(at: indexPath.row)
+                                            DispatchQueue.main.async {
+                                                tableView.deleteRows(at: [indexPath], with: .fade)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    print(error!.localizedDescription)
+                }
+            })
+        }
+        if users.priority == 1 {
+            return [delete, priority]
+        }
+        return []
     }
     
     func showManager(teamInfo: String) {

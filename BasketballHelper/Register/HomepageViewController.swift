@@ -22,7 +22,6 @@ class HomepageViewController: UIViewController {
         super.viewDidLoad()
         if let userInfo = userDefault.data(forKey: "userDefault") {
             users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
-//            let teamInfo = users.teamInfo
             login(account: users.userAccount, password: users.userPassword)
         }
         accountTextField.text = ""

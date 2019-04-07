@@ -11,19 +11,17 @@ import UIKit
 class BuildTeamTableViewController: UITableViewController {
     
     @IBOutlet weak var teamNameTextField: UITextField!
-    let url_server = URL(string: common_url_user + "UserServlet")
+    let url_server = URL(string: common_url_user + "ManagersServlet")
     let userDefault = UserDefaults()
     var userInfos = [UserInfo]()
     var users: UserInfo!
     var viewController = UIViewController()
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let userInfo = userDefault.data(forKey: "userDefault") {
-            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
-        }
-        
+        let userInfo = userDefault.data(forKey: "userDefault")
+        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
     }
     
     @IBAction func clickDone(_ sender: Any) {
@@ -32,23 +30,25 @@ class BuildTeamTableViewController: UITableViewController {
             showToast(view: self.view, message: "請輸入隊名")
             return
         }
-        let userAccount = users.userAccount
         var teamInfo = [String : String]()
-        teamInfo["action"] = "create"
-        teamInfo["teamName"] = name
-        teamInfo["userAccount"] = userAccount
+        teamInfo["action"] = "joinTeam"
+        teamInfo["teamInfo"] = name
+        teamInfo["userAccount"] = users.userAccount
+        teamInfo["userPassword"] = users.userPassword
         executeTask(url_server!, teamInfo) { (data, response, error) in
             if error == nil {
                 if data != nil {
-                    if let result = String(data: data!, encoding: .utf8) {
-                        if let count = Int(result) {
-                            DispatchQueue.main.async {
-                                if count != 0 {
-                                    self.userDefault.set(name, forKey: "teamInfo")
-                                    self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Homepage")
-                                } else {
-                                    showToast(view: self.view, message: "建立失敗")
-                                }
+                    if let result = try? JSONDecoder().decode([String : String].self, from: data!) {
+                        DispatchQueue.main.async {
+                            if result["success"] == "Yes" {
+                                let userInfo = result["userInfo"]
+                                let login = try? JSONDecoder().decode(UserInfo.self, from: userInfo!.data(using: .utf8)!)
+                                let loginOK = try! JSONEncoder().encode(login)
+                                self.userDefault.set(loginOK, forKey: "userDefault")
+                                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Homepage")
+                                self.present(self.viewController, animated: true, completion: nil)
+                            } else {
+                                showToast(view: self.view, message: "建立失敗")
                             }
                         }
                     }
@@ -66,5 +66,6 @@ class BuildTeamTableViewController: UITableViewController {
     
     @IBAction func clickSkip(_ sender: Any) {
         self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Homepage")
+        self.present(self.viewController, animated: true, completion: nil)
     }
 }

@@ -106,21 +106,22 @@ class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     
     func joinTeam(name: String) {
         let alert = UIAlertController(title: "是否加入\(name)?", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { (action) in
+        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { (_) in
             var requestParam = [String: Any]()
-            requestParam["action"] = "join"
+            requestParam["action"] = "joinTeam"
             requestParam["userAccount"] = self.users.userAccount
-            requestParam["teamName"] = name
+            requestParam["userPassword"] = self.users.userPassword
+            requestParam["teamInfo"] = name
             executeTask(self.url_server!, requestParam, completionHandler: { (data, response, error) in
                 if error == nil {
                     if data != nil {
                         let result = try? JSONDecoder().decode([String: String].self, from: data!)
-                        let count = result!["count"]
                         DispatchQueue.main.async {
-                            if count != "0" {
-                                let teamInfo = try! JSONEncoder().encode(name)
-                                self.userDefault.set(teamInfo, forKey: "teamInfo")
-                                self.userDefault.synchronize()
+                            if result!["success"] == "Yes" {
+                                let userInfo = result!["userInfo"]
+                                let login = try? JSONDecoder().decode(UserInfo.self, from: userInfo!.data(using: .utf8)!)
+                                let loginOK = try! JSONEncoder().encode(login)
+                                self.userDefault.set(loginOK, forKey: "userDefault")
                                 self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Homepage")
                                 self.present(self.viewController, animated: true, completion: nil)
                             } else {

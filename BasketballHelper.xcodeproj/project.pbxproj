@@ -57,6 +57,7 @@
 		C7DE4CFC223F81CC0013E7AB /* UserPasswordEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4CFB223F81CC0013E7AB /* UserPasswordEditTableViewController.swift */; };
 		C7DE4CFE223F82FA0013E7AB /* TeamManagermentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4CFD223F82FA0013E7AB /* TeamManagermentTableViewController.swift */; };
 		C7DE4D02223F8E140013E7AB /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7DE4D01223F8E140013E7AB /* InviteViewController.swift */; };
+		C7F562862259BC3300D806AB /* BuildTeamTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BB052243AEE400D84AD6 /* BuildTeamTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -153,7 +154,6 @@
 				893504A0D6DB3F174200F6C0 /* Pods-BasketballHelper.debug.xcconfig */,
 				17CAF3D021CEB336836C4D6B /* Pods-BasketballHelper.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -305,6 +305,7 @@
 				TargetAttributes = {
 					710D3668223238A3008A683C = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -433,6 +434,7 @@
 				C7DE4CF8223F7D360013E7AB /* UserInfoTableViewController.swift in Sources */,
 				711FB65822374F9000AD7483 /* GameRecordTableViewController.swift in Sources */,
 				C736BB0A2243B9AE00D84AD6 /* TeamInfo.swift in Sources */,
+				C7F562862259BC3300D806AB /* BuildTeamTableViewController.swift in Sources */,
 				C7DE4CFC223F81CC0013E7AB /* UserPasswordEditTableViewController.swift in Sources */,
 				33D165252244E68600E6D94A /* playerUpdate.swift in Sources */,
 				C7DE4CFE223F82FA0013E7AB /* TeamManagermentTableViewController.swift in Sources */,
@@ -592,7 +594,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = CharlesLee.BasketballHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ENABLE_BATCH_MODE = no;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -611,7 +613,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = CharlesLee.BasketballHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ENABLE_BATCH_MODE = no;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -24,9 +24,29 @@ class TeamManagermentTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            exitTeam()
+            let alertController = UIAlertController(title: "注意", message: "請是否要離開球隊", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .destructive) { (_) in
+                self.exitTeam()
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+            alertController.addAction(cancel)
+            alertController.addAction(ok)
+            /* 呼叫present()才會跳出Alert Controller */
+            self.present(alertController, animated: true, completion:nil)
         } else {
-            quitTeam()
+            let alertController = UIAlertController(title: "注意", message: "請是否要解散球隊", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .destructive) { (_) in
+                if self.users.priority == 1 {
+                    self.quitTeam()
+                } else {
+                    showToast(view: self.view, message: "沒有權限")
+                }
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+            alertController.addAction(cancel)
+            alertController.addAction(ok)
+            /* 呼叫present()才會跳出Alert Controller */
+            self.present(alertController, animated: true, completion:nil)
         }
     }
     
@@ -41,8 +61,13 @@ class TeamManagermentTableViewController: UITableViewController {
                         if let count = Int(result) {
                             DispatchQueue.main.async {
                                 if count != 0 {
-                                    self.userDefault.set("", forKey: "teamInfo")
-                                    self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Login")
+                                    let userDefault = UserDefaults.standard
+                                    let dics = userDefault.dictionaryRepresentation()
+                                    for key in dics {
+                                        userDefault.removeObject(forKey: key.key)
+                                    }
+                                    userDefault.synchronize()
+                                    self.dismiss(animated: true, completion: nil)
                                 } else {
                                     showToast(view: self.view, message: "退出球隊失敗")
                                 }
@@ -59,7 +84,7 @@ class TeamManagermentTableViewController: UITableViewController {
     func quitTeam() {
         var teamInfo = [String: String]()
         teamInfo["action"] = "quitTeam"
-        teamInfo["userAccount"] = users.userAccount
+        teamInfo["teamInfo"] = users.teamInfo
         executeTask(url_server!, teamInfo) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -67,7 +92,13 @@ class TeamManagermentTableViewController: UITableViewController {
                         if let count = Int(result) {
                             DispatchQueue.main.async {
                                 if count != 0 {
-                                    self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Login")
+                                    let userDefault = UserDefaults.standard
+                                    let dics = userDefault.dictionaryRepresentation()
+                                    for key in dics {
+                                        userDefault.removeObject(forKey: key.key)
+                                    }
+                                    userDefault.synchronize()
+                                    self.dismiss(animated: true, completion: nil)
                                 } else {
                                     showToast(view: self.view, message: "解散球隊失敗")
                                 }
