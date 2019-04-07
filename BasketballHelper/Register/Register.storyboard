@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wjg-Gy-2MZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wjg-Gy-2MZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -240,10 +240,18 @@
             </objects>
             <point key="canvasLocation" x="975.20000000000005" y="44.527736131934034"/>
         </scene>
+        <!--Main-->
+        <scene sceneID="rlb-y0-j4S">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Homepage" storyboardName="Main" id="JIt-zy-fhC" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="66c-m9-8Y0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3136" y="-699"/>
+        </scene>
         <!--Item-->
         <scene sceneID="shT-iU-7Z3">
             <objects>
-                <tableViewController id="1UF-jL-4bY" customClass="BuildTeamTableViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CreateTeam" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1UF-jL-4bY" customClass="BuildTeamTableViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4M8-tK-kNr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -256,6 +264,7 @@
                                     <barButtonItem key="leftBarButtonItem" title="略過" id="0pi-8H-hoT">
                                         <connections>
                                             <action selector="clickSkip:" destination="1UF-jL-4bY" id="BQE-EE-CnY"/>
+                                            <segue destination="JIt-zy-fhC" kind="show" id="NxQ-4H-RWY"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem key="rightBarButtonItem" systemItem="done" id="fG7-M4-CPG">
@@ -381,7 +390,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="zQ2-jx-L6Y">
             <objects>
-                <tabBarController storyboardIdentifier="JoinTeam" automaticallyAdjustsScrollViewInsets="NO" id="MWb-y4-Lit" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="JoinTeam" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="MWb-y4-Lit" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ixw-uX-f90">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>

@@ -50,6 +50,14 @@
             </objects>
             <point key="canvasLocation" x="1675" y="-556"/>
         </scene>
+        <!--Register-->
+        <scene sceneID="VKe-g3-OA4">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="JoinTeam" storyboardName="Register" id="w8n-bR-vkT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YLA-hp-Vf3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-254" y="-968"/>
+        </scene>
         <!--Homepage View Controller-->
         <scene sceneID="pbx-cJ-oEq">
             <objects>
@@ -140,7 +148,7 @@
         <!--Register-->
         <scene sceneID="sBi-dO-k3h">
             <objects>
-                <viewControllerPlaceholder storyboardName="Register" id="HhB-kH-JXB" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="Register" storyboardName="Register" id="HhB-kH-JXB" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cPp-6V-RgY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="655" y="-1089"/>

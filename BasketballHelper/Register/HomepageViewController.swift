@@ -22,8 +22,11 @@ class HomepageViewController: UIViewController {
         super.viewDidLoad()
         if let userInfo = userDefault.data(forKey: "userDefault") {
             users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+//            let teamInfo = users.teamInfo
             login(account: users.userAccount, password: users.userPassword)
         }
+        accountTextField.text = ""
+        passwordTextField.text = ""
     }
     
     func login(account: String, password: String) {
@@ -42,8 +45,13 @@ class HomepageViewController: UIViewController {
                                 let loginOK = try! JSONEncoder().encode(login)
                                 self.userDefault.set(loginOK, forKey: "userDefault")
                                 self.userDefault.synchronize()
-                                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Homepage")
-                                self.present(self.viewController, animated: true, completion: nil)
+                                if login?.teamInfo != "" {
+                                    self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Homepage")
+                                    self.present(self.viewController, animated: true, completion: nil)
+                                } else {
+                                    self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "JoinTeam")
+                                    self.present(self.viewController, animated: true, completion: nil)
+                                }
                             } else {
                                 showToast(view: self.view, message: "登入失敗")
                             }

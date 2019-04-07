@@ -17,10 +17,22 @@ class RegisterTableViewController: UITableViewController {
     let url_server = URL(string: common_url_user + "UserServlet")
     let userDefault = UserDefaults()
     var viewController = UIViewController()
+    var userInfos = [UserInfo]()
+    var users: UserInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+            if users.teamInfo.isEmpty {
+                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "CreateTeam")
+                self.present(self.viewController, animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func clickCancel(_ sender: Any) {
@@ -41,21 +53,20 @@ class RegisterTableViewController: UITableViewController {
         } else if email == "" {
             showToast(view: self.view, message: "請輸入信箱")
         }
+        let user = UserInfo(0, account!, password!, name!, email!, 0 , "")
         var userInfo = [String: String]()
-        userInfo["action"] = "userInsert"
-        userInfo["account"] = account
-        userInfo["password"] = password
-        userInfo["name"] = name
-        userInfo["email"] = email
+        userInfo["action"] = "insertUser"
+        userInfo["user"] = String(data: try! JSONEncoder().encode(user), encoding: .utf8)
         executeTask(url_server!, userInfo) { (data, response, error) in
             if error == nil {
                 if data != nil {
-                    let user = UserInfo(0, account!, password!, name!, email!, 0, "")
-                    let result = try! JSONEncoder().encode(user)
-                    let success = try? JSONDecoder().decode([String : String].self, from: data!)
+                    let result = try! JSONDecoder().decode([String : String].self, from: data!)
                     DispatchQueue.main.async {
-                        if success?["success"] == "Yes" {
-                            self.userDefault.set(result, forKey: "userDefault")
+                        if result["success"] == "Yes" {
+                            let newUser = result["userInfo"]
+                            let login = try? JSONDecoder().decode(UserInfo.self, from: newUser!.data(using: .utf8)!)
+                            let loginOK = try! JSONEncoder().encode(login)
+                            self.userDefault.set(loginOK, forKey: "userDefault")
                             self.userDefault.synchronize()
                             self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "JoinTeam")
                         } else {
