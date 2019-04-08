@@ -2,7 +2,7 @@ import UIKit
 
 class GameRecordTableViewController: UITableViewController {
     @IBOutlet weak var searchBar: UISearchBar!
-    let url_server = URL(string: common_url + "GameServlet")
+    let url_server = URL(string: common_url_game + "GameServlet")
     var games = [Game]()
     
     override func viewDidLoad() {
@@ -92,7 +92,7 @@ class GameRecordTableViewController: UITableViewController {
             // 尚未刪除server資料
             var requestParam = [String: Any]()
             requestParam["action"] = "gameDelete"
-            requestParam["gameId"] = self.games[indexPath.row].id
+            requestParam["gameID"] = self.games[indexPath.row].id
             executeTask(self.url_server!, requestParam
                 , completionHandler: { (data, response, error) in
                     if error == nil {

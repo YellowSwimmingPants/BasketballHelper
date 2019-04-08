@@ -11,7 +11,7 @@ class CreateGameTableViewController: UITableViewController, UINavigationControll
     var datePickerHidden = true
     @IBOutlet weak var lbShowDate: UILabel!
     
-    let url_server = URL(string: common_url + "GameServlet")
+    let url_server = URL(string: common_url_game + "GameServlet")
     
     
     override func viewDidLoad() {
