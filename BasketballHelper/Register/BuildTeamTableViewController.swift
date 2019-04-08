@@ -31,7 +31,7 @@ class BuildTeamTableViewController: UITableViewController {
             return
         }
         var teamInfo = [String : String]()
-        teamInfo["action"] = "joinTeam"
+        teamInfo["action"] = "createTeam"
         teamInfo["teamInfo"] = name
         teamInfo["userAccount"] = users.userAccount
         teamInfo["userPassword"] = users.userPassword

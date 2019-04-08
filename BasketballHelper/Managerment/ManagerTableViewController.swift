@@ -21,13 +21,4 @@ class ManagerTableViewController: UITableViewController {
             users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
         }
     }
-
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "userInfo" || segue.identifier == "userInfoEdit" || segue.identifier == "passwordEdit" || segue.identifier == "memberManagerment" || segue.identifier == "teamManagerment" {
-//            let user = users
-//            let userInfoTableViewController = segue.destination as! UserInfoTableViewController
-//            userInfoTableViewController.userInfo = user
-//        }
-//    }
-    
 }

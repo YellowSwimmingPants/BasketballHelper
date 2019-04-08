@@ -171,7 +171,7 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                     if let result = try? JSONDecoder().decode([UserInfo].self, from: data!) {
                         self.managerList = result
                         DispatchQueue.main.async {
-//                            self.memberTableView.reloadData()
+                            //                            self.memberTableView.reloadData()
                             if let control = self.memberTableView.refreshControl {
                                 if control.isRefreshing {
                                     // 停止下拉更新動作
@@ -199,7 +199,7 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                     if let result = try? JSONDecoder().decode([UserInfo].self, from: data!) {
                         self.memberList = result
                         DispatchQueue.main.async {
-//                            self.memberTableView.reloadData()
+                            //                            self.memberTableView.reloadData()
                             if let control = self.memberTableView.refreshControl {
                                 if control.isRefreshing {
                                     // 停止下拉更新動作
@@ -216,19 +216,13 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    func deleteMember() {
-        
-    }
-    
     override func didReceiveMemoryWarning() {
         didReceiveMemoryWarning()
     }
     
     @IBAction func segmentedControlActionChanged(_ sender: Any) {
+        showManager(teamInfo: users.teamInfo)
+        showMember(teamInfo: users.teamInfo)
         memberTableView.reloadData()
     }
-    
-    @IBAction func clickInvite(_ sender: Any) {
-    }
-    
 }

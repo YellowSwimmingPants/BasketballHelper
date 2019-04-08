@@ -9,8 +9,7 @@
 import UIKit
 
 class InviteViewController: UIViewController {
-
-//    let url_server = URL(string: common_url + "TeamInfoServlet")
+    
     let userDefault = UserDefaults()
     var userInfos = [UserInfo]()
     var users: UserInfo!
@@ -34,29 +33,5 @@ class InviteViewController: UIViewController {
         } else {
             showToast(view: self.view, message: "沒有找到QRCode")
         }
-        
-//        showQRCode()
     }
-    
-//    func showQRCode() {
-//        var requestParam = [String: Any]()
-//        requestParam["action"] = "getQRCode"
-//        requestParam["userAccount"] = users.userAccount
-//        var image: UIImage?
-//        executeTask(url_server!, requestParam) { (data, response, error) in
-//            if error == nil {
-//                if data != nil {
-//                    image = UIImage(data: data!)
-//                }
-//                if image == nil {
-//                    image = UIImage(named: "noImage.jpg")
-//                }
-//                DispatchQueue.main.async {
-//                    self.qrCodeImageView.image = image
-//                }
-//            } else {
-//                print(error!.localizedDescription)
-//            }
-//        }
-//    }
 }

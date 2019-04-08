@@ -10,21 +10,16 @@ import UIKit
 import AVFoundation
 
 class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
-    
-    // 預覽時管理擷取影像的物件
     var captureSession: AVCaptureSession!
-    // 預覽畫面
     var previewLayer: AVCaptureVideoPreviewLayer!
-    // 偵測到QR code時需要加框
     var qrFrameView: UIView!
-    // 當user決定加好友時呼叫
     var completionHandler:((String) -> Void)?
-    let url_server = URL(string: common_url_user + "UserServlet")
+    let url_server = URL(string: common_url_user + "ManagersServlet")
     let userDefault = UserDefaults()
     var userInfos = [UserInfo]()
     var users: UserInfo!
     var viewController = UIViewController()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let userInfo = userDefault.data(forKey: "userDefault") {
@@ -34,14 +29,10 @@ class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     }
     
     func startPreviewAndScanQR() {
-        // 管理影像擷取期間的輸入與輸出
         captureSession = AVCaptureSession()
-        // 負責擷取影像的預設裝置
         guard let captureDevice = AVCaptureDevice.default(for: .video) else { return }
-        // 建立輸入物件
         guard let input = try? AVCaptureDeviceInput(device: captureDevice) else { return }
         if (captureSession.canAddInput(input)) {
-            // 設定擷取期間的輸入
             captureSession.addInput(input)
         } else {
             showSimpleAlert(message: "請開啟相機功能", viewController: self)
@@ -51,28 +42,22 @@ class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         
         let metadataOutput = AVCaptureMetadataOutput()
         if (captureSession.canAddOutput(metadataOutput)) {
-            // 設定擷取期間的輸出
             captureSession.addOutput(metadataOutput)
             metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-            // 欲處理的類型為QR code
             metadataOutput.metadataObjectTypes = [.qr]
         } else {
             showSimpleAlert(message: "請開啟相機功能", viewController: self)
             captureSession = nil
             return
         }
-        
-        // 建立擷取期間所需顯示的預覽圖層
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         previewLayer.frame = view.layer.bounds
         previewLayer.videoGravity = .resizeAspectFill
         view.layer.addSublayer(previewLayer)
-        
         createQRFrame()
         preview(true)
     }
     
-    // 建立QR code掃描框
     func createQRFrame() {
         qrFrameView = UIView()
         qrFrameView.layer.borderColor = UIColor.yellow.cgColor
@@ -80,33 +65,29 @@ class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
         view.addSubview(qrFrameView)
         view.bringSubviewToFront(qrFrameView)
     }
-
+    
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
-        // 將取得的資訊轉成條碼資訊
         if let metadataObject = metadataObjects.first as? AVMetadataMachineReadableCodeObject {
             guard let qrString = metadataObject.stringValue else { return }
             AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
             scanSuccess(qrCode: qrString)
             if let barCodeObject = previewLayer.transformedMetadataObject(for: metadataObject) {
-                // 成功解析就將QR code圖片框起來
                 qrFrameView.frame = barCodeObject.bounds
             }
         } else {
-            // 無法轉成條碼資訊就將圖框隱藏
             qrFrameView.frame = CGRect.zero
         }
     }
     
     func scanSuccess(qrCode: String) {
         print(qrCode)
-        // 停止預覽
         preview(false)
         joinTeam(name: qrCode)
     }
     
     func joinTeam(name: String) {
         let alert = UIAlertController(title: "是否加入\(name)?", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { (_) in
+        alert.addAction(UIAlertAction(title: "YES", style: .default, handler: { (action) in
             var requestParam = [String: Any]()
             requestParam["action"] = "joinTeam"
             requestParam["userAccount"] = self.users.userAccount
@@ -136,8 +117,11 @@ class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
                 }
             })
         }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action) in
+            self.preview(true)
+        }))
+        present(alert, animated: true)
     }
-
     // 是否開啟預覽畫面
     func preview(_ yes: Bool) {
         if yes {
@@ -152,7 +136,7 @@ class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
             }
         }
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let delegate = UIApplication.shared.delegate as? AppDelegate {
@@ -176,5 +160,5 @@ class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }
-
+    
 }
