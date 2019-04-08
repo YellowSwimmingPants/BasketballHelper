@@ -6,5 +6,6 @@ target 'BasketballHelper' do
   use_frameworks!
 
   pod 'Charts'
+  pod 'Starscream', '~> 3.0.2'
 
 end
