@@ -27,7 +27,6 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,6 +52,7 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
             calculation()
             createGesture()
         }
+        calendarCollectionView.reloadData()
     }
     
     func showBillBoard(teamInfo: String) {
@@ -103,7 +103,6 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
         for subview in cell.contentView.subviews {
             subview.removeFromSuperview()
         }
-        
         if (indexPath.row % 7 == 0) {
             cell.backgroundColor = UIColor.red
         } else if (indexPath.row % 7 == 6) {
@@ -111,7 +110,6 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
         } else {
             cell.backgroundColor = UIColor.white
         }
-
         let daysCountInMonth = callendar.range(of: .day, in: .month, for: firstDayOfMonth!)?.count
         if indexPath.section == 0 {
             label.text = weekArray[indexPath.row]
@@ -126,6 +124,20 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
             label.sizeToFit()
             label.center = cell.contentView.center
             cell.contentView.addSubview(label)
+            if billBoards.count != 0 {
+                for events in 0...billBoards.count - 1 {
+                    let eventdays = callendar.component(.day, from: billBoards[events].date!)
+                    if dateFmatter.string(from: billBoards[events].date!) == dateLabel.text {
+                        if eventdays == (indexPath.row + weekdayAdding) {
+                            label.textColor = UIColor.black
+                            label.text = "🏀"
+                            label.sizeToFit()
+                            label.center = cell.contentView.center
+                            cell.contentView.addSubview(label)
+                        }
+                    }
+                }
+            }
         } else {
             cell.backgroundColor = UIColor.white
         }

@@ -19,7 +19,7 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
     var users: UserInfo!
     var user = [UserInfo]()
     let userDefault = UserDefaults()
-    
+    var viewController = UIViewController()
     var datePickerHidden = true
     let url_server = URL(string: common_url_user + "BillBoardServlet")
     var types = [String]()
@@ -28,7 +28,8 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
         super.viewDidLoad()
         contextTextView.text = ""
         typeLabel.text = ""
-        types.append("活動")
+        types.append("公告")
+        types.append("球賽")
         types.append("請假")
         datePickerChaged()
     }
@@ -87,7 +88,6 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
         let type = typeLabel.text
         
         let encoder = JSONEncoder()
-        // JSON含有日期時間，解析必須指定日期時間格式
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd"
         encoder.dateEncodingStrategy = .formatted(format)
@@ -106,6 +106,8 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
                         DispatchQueue.main.async {
                             if result["success"] == "Yes" {
                                 self.dismiss(animated: true, completion: nil)
+//                                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Homepage")
+//                                self.present(self.viewController, animated: true, completion: nil)
                             } else {
                                 showSimpleAlert(message: "新增失敗", viewController: self)
                             }

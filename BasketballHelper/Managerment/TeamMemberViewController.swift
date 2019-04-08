@@ -22,6 +22,7 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableViewAddRefreshControl()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +35,6 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var returnValue = 0
-        
         switch (segmentControl.selectedSegmentIndex) {
         case 0:
             returnValue = managerList.count
@@ -83,12 +83,14 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                                         self.managerList.remove(at: indexPath.row)
                                         DispatchQueue.main.async {
                                             tableView.deleteRows(at: [indexPath], with: .fade)
+                                            self.memberTableView.reloadData()
                                         }
                                     }
                                     if self.segmentControl.selectedSegmentIndex == 1 {
                                         self.memberList.remove(at: indexPath.row)
                                         DispatchQueue.main.async {
                                             tableView.deleteRows(at: [indexPath], with: .fade)
+                                            self.memberTableView.reloadData()
                                         }
                                     }
                                 }
@@ -105,9 +107,11 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
             requestParam["action"] = "changePriority"
             if self.segmentControl.selectedSegmentIndex == 0 {
                 requestParam["userAccount"] = self.managerList[indexPath.row].userAccount
+                requestParam["priority"] = 1
             }
             if self.segmentControl.selectedSegmentIndex == 1 {
                 requestParam["userAccount"] = self.memberList[indexPath.row].userAccount
+                requestParam["priority"] = 0
             }
             executeTask(self.url_server!, requestParam, completionHandler: { (data, response, error) in
                 if error == nil {
@@ -121,12 +125,14 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                                             DispatchQueue.main.async {
                                                 tableView.backgroundColor = UIColor.green
                                                 tableView.deleteRows(at: [indexPath], with: .fade)
+                                                self.memberTableView.reloadData()
                                             }
                                         }
                                         if self.segmentControl.selectedSegmentIndex == 1 {
                                             self.memberList.remove(at: indexPath.row)
                                             DispatchQueue.main.async {
                                                 tableView.deleteRows(at: [indexPath], with: .fade)
+                                                self.memberTableView.reloadData()
                                             }
                                         }
                                     }
@@ -139,13 +145,23 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                 }
             })
         }
+        priority.backgroundColor = UIColor.lightGray
         if users.priority == 1 {
             return [delete, priority]
         }
         return []
     }
     
-    func showManager(teamInfo: String) {
+    /** tableView加上下拉更新功能 */
+    func tableViewAddRefreshControl() {
+        let refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(showManager(teamInfo:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(showMember(teamInfo:)), for: .valueChanged)
+        self.memberTableView.refreshControl = refreshControl
+    }
+    
+    @objc func showManager(teamInfo: String) {
         var requestParam = [String: Any]()
         requestParam["action"] = "getManager"
         requestParam["teamInfo"] = teamInfo
@@ -155,6 +171,14 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                     if let result = try? JSONDecoder().decode([UserInfo].self, from: data!) {
                         self.managerList = result
                         DispatchQueue.main.async {
+//                            self.memberTableView.reloadData()
+                            if let control = self.memberTableView.refreshControl {
+                                if control.isRefreshing {
+                                    // 停止下拉更新動作
+                                    control.endRefreshing()
+                                }
+                            }
+                            /* 抓到資料後重刷table view */
                             self.memberTableView.reloadData()
                         }
                     }
@@ -165,7 +189,7 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    func showMember(teamInfo: String) {
+    @objc func showMember(teamInfo: String) {
         var requestParam = [String: Any]()
         requestParam["action"] = "getMember"
         requestParam["teamInfo"] = teamInfo
@@ -175,6 +199,13 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                     if let result = try? JSONDecoder().decode([UserInfo].self, from: data!) {
                         self.memberList = result
                         DispatchQueue.main.async {
+//                            self.memberTableView.reloadData()
+                            if let control = self.memberTableView.refreshControl {
+                                if control.isRefreshing {
+                                    // 停止下拉更新動作
+                                    control.endRefreshing()
+                                }
+                            }
                             self.memberTableView.reloadData()
                         }
                     }
