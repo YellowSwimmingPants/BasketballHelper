@@ -29,15 +29,15 @@ class UserInfoTableViewController: UITableViewController {
             nameLabel.text = users.userName
             emailLabel.text = users.email
             showImage()
-
         }
     }
     
     func showImage() {
-        var requestParam = [String: String]()
+        var requestParam = [String: Any]()
         let userAccount = users.userAccount
-        requestParam = ["action" : "getImage"]
+        requestParam["action"] = "getImage"
         requestParam["userAccount"] = userAccount
+        requestParam["imageSize"] = userImageView.frame.width
         var image: UIImage?
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
