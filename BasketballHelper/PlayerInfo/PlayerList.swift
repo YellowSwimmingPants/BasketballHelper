@@ -74,7 +74,7 @@ class PlayerList: UITableViewController {
         requestParam["action"] = "getImage"
         requestParam["id"] = player.id
         // 圖片寬度為tableViewCell的1/4，ImageView的寬度也建議在storyboard加上比例設定的constraint
-        requestParam["imageSize"] = cell.frame.width / 4//圖片顯示寬度除4
+        requestParam["imageSize"] = cell.frame.width / 5//圖片顯示寬度除5
         var image: UIImage?
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Charts
 
 class PlayerData: UIViewController {
     @IBOutlet weak var lbFT: UILabel!
@@ -27,15 +28,14 @@ class PlayerData: UIViewController {
     @IBOutlet weak var A3: UILabel!
     var hundred:Double=100
     
+    
     let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
     var dataSegue : Page_playerList!
     var playdata : GameDataCount!
     override func viewDidLoad() {
         super.viewDidLoad()
         showData()
-        
     }
-    
     
     @objc func showData(){
         var requestParam = [String : Any]()
@@ -50,7 +50,6 @@ class PlayerData: UIViewController {
                     DispatchQueue.main.async {
                         self.dataShow(data!)
                     }
-                    
                 }
             } else {
                 print(error!.localizedDescription)
@@ -62,7 +61,7 @@ class PlayerData: UIViewController {
     
     func dataShow(_ data: Data) {
         let playdata = try? JSONDecoder().decode(GameDataCount.self, from: data)
-        print(String(describing: playdata!.Assist!))
+//        print(String(describing: playdata!.Assist!))
         lbFT.text = String(describing: playdata!.FT!)
         lbFTL.text = String(describing: playdata!.FTL!)
         lbFG.text = String(describing: playdata!.FG!)
@@ -82,9 +81,8 @@ class PlayerData: UIViewController {
         A2.text = String(describing: (playdata!.FG!/playdata!.FGL!*(hundred)))
         //A3 = 三分總平均
         A3.text = String(describing: (playdata!.TPM!/playdata!.TPL!*(hundred)))
-        
-        
     }
+ 
     
 }
 

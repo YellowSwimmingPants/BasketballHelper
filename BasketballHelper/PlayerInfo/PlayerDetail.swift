@@ -30,7 +30,6 @@ class PlayerDetail: UIViewController {
         if segue.identifier == "dataSegue"{
             let Detail = segue.destination as! PlayerData
             Detail.dataSegue = playerList
-            
         }
     }
     

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		330840B122521F450025E6A5 /* GameDataCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330840B022521F450025E6A5 /* GameDataCount.swift */; };
+		333A7722225B2A2D005E50F3 /* PlayerBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333A7721225B2A2D005E50F3 /* PlayerBarChart.swift */; };
 		334E441E223FB9640055D0EC /* PlayerInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 334E441D223FB9640055D0EC /* PlayerInfo.storyboard */; };
 		334E4420223FD13E0055D0EC /* PlayerDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E441F223FD13E0055D0EC /* PlayerDetail.swift */; };
 		334E4422223FD7EC0055D0EC /* PlayerInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 334E4421223FD7EC0055D0EC /* PlayerInformation.swift */; };
@@ -62,9 +63,23 @@
 		C7F562862259BC3300D806AB /* BuildTeamTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BB052243AEE400D84AD6 /* BuildTeamTableViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		33E3480D2254B5530014B5D2 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		17CAF3D021CEB336836C4D6B /* Pods-BasketballHelper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasketballHelper.release.xcconfig"; path = "Target Support Files/Pods-BasketballHelper/Pods-BasketballHelper.release.xcconfig"; sourceTree = "<group>"; };
 		330840B022521F450025E6A5 /* GameDataCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDataCount.swift; sourceTree = "<group>"; };
+		333A7721225B2A2D005E50F3 /* PlayerBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBarChart.swift; sourceTree = "<group>"; };
 		334E441D223FB9640055D0EC /* PlayerInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlayerInfo.storyboard; sourceTree = "<group>"; };
 		334E441F223FD13E0055D0EC /* PlayerDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDetail.swift; sourceTree = "<group>"; };
 		334E4421223FD7EC0055D0EC /* PlayerInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerInformation.swift; sourceTree = "<group>"; };
@@ -141,6 +156,7 @@
 				334E441D223FB9640055D0EC /* PlayerInfo.storyboard */,
 				334E4423223FD8B60055D0EC /* InsertPlayer.swift */,
 				33FD82D62240A01300DB2B95 /* PlayerList.swift */,
+				333A7721225B2A2D005E50F3 /* PlayerBarChart.swift */,
 				33E5618F2246188C00936171 /* PlayerCell.swift */,
 				33E5618D22460CC100936171 /* Page_playerList.swift */,
 				330840B022521F450025E6A5 /* GameDataCount.swift */,
@@ -289,6 +305,7 @@
 				710D3666223238A3008A683C /* Frameworks */,
 				710D3667223238A3008A683C /* Resources */,
 				00651DA4AC4F70395361A640 /* [CP] Embed Pods Frameworks */,
+				33E3480D2254B5530014B5D2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -305,6 +322,9 @@
 		710D3661223238A3008A683C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					New,
+				);
 				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "李宜銓";
@@ -437,6 +457,7 @@
 				713F94592252021A0011A1D7 /* UpdateGameTableViewController.swift in Sources */,
 				7141F1A22244BE8B00A83C36 /* ActionTableViewCell.swift in Sources */,
 				33FD82D72240A01300DB2B95 /* PlayerList.swift in Sources */,
+				333A7722225B2A2D005E50F3 /* PlayerBarChart.swift in Sources */,
 				33D37FCE224DFEA5000A3DE6 /* PlayerData.swift in Sources */,
 				C7DE4CF8223F7D360013E7AB /* UserInfoTableViewController.swift in Sources */,
 				711FB65822374F9000AD7483 /* GameRecordTableViewController.swift in Sources */,
