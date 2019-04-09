@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Starscream
 
 class BillBoardEditTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -23,15 +24,21 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
     var datePickerHidden = true
     let url_server = URL(string: common_url_user + "BillBoardServlet")
     var types = [String]()
+    var socket: WebSocket!
+    let url_server_ws = "ws://127.0.0.1:8080/myBasketballHelper_Web/BillBoardWebsocketServer/"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let userInfo = userDefault.data(forKey: "userDefault")
+        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
         contextTextView.text = ""
         typeLabel.text = ""
         types.append("公告")
         types.append("球賽")
         types.append("請假")
         datePickerChaged()
+        socket = WebSocket(url: URL(string: url_server_ws + users.teamInfo)!)
+        socket.connect()
     }
 
     func datePickerChaged() {
@@ -92,8 +99,6 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
         format.dateFormat = "yyyy-MM-dd"
         encoder.dateEncodingStrategy = .formatted(format)
         
-        let userInfo = userDefault.data(forKey: "userDefault")
-        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
         let teamInfo = users.teamInfo
         let billBoard = BillBoard(0, date, title!, content!, type!, teamInfo)
         var requestParam = [String: String]()
@@ -105,6 +110,13 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
                     if let result = try? JSONDecoder().decode([String : String].self, from: data!) {
                         DispatchQueue.main.async {
                             if result["success"] == "Yes" {
+                                var newBillBoard = [String: String]()
+                                newBillBoard["userAccount"] = self.users.userAccount
+                                newBillBoard["message"] = "Yes"
+                                if let jsonData = try? JSONEncoder().encode(newBillBoard) {
+                                    let text = String(data: jsonData, encoding: .utf8)
+                                    self.socket.write(string: text!)
+                                }
                                 self.dismiss(animated: true, completion: nil)
 //                                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Homepage")
 //                                self.present(self.viewController, animated: true, completion: nil)

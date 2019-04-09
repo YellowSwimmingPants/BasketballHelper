@@ -10,7 +10,6 @@ import UIKit
 
 class UserInfoTableViewController: UITableViewController {
     
-    
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!

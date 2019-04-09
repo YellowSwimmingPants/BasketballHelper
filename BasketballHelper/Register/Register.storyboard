@@ -263,13 +263,13 @@
                                 <navigationItem title="建立球隊" id="WbK-Q8-i5a">
                                     <barButtonItem key="leftBarButtonItem" title="略過" id="0pi-8H-hoT">
                                         <connections>
-                                            <action selector="clickSkip:" destination="1UF-jL-4bY" id="BQE-EE-CnY"/>
+                                            <action selector="clickSkip:" destination="1UF-jL-4bY" id="TSM-OX-3zG"/>
                                             <segue destination="JIt-zy-fhC" kind="show" id="NxQ-4H-RWY"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem key="rightBarButtonItem" systemItem="done" id="fG7-M4-CPG">
                                         <connections>
-                                            <action selector="clickDone:" destination="1UF-jL-4bY" id="EVd-Ku-ViM"/>
+                                            <action selector="clickDone:" destination="1UF-jL-4bY" id="bhI-5H-0Ky"/>
                                         </connections>
                                     </barButtonItem>
                                 </navigationItem>
@@ -314,6 +314,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="didEndOnExit:" destination="1UF-jL-4bY" eventType="editingDidEndOnExit" id="DLI-Nu-HEV"/>
+                                                        <action selector="didEndOnExit:" destination="1UF-jL-4bY" eventType="editingDidEnd" id="dip-6n-RMd"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
@@ -335,7 +336,7 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="NQx-FM-Arf"/>
                     <connections>
-                        <outlet property="teamNameTextField" destination="lUz-qQ-d78" id="USo-mF-cI4"/>
+                        <outlet property="teamNameTextField" destination="lUz-qQ-d78" id="GRA-ar-fCh"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZbI-DT-BdH" userLabel="First Responder" sceneMemberID="firstResponder"/>

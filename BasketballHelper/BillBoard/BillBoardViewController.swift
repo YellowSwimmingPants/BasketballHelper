@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Starscream
 
 class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource {
     
@@ -24,9 +25,14 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     var billBoards = [BillBoard]()
     let url_server = URL(string: common_url_user + "BillBoardServlet")
     let userDefault = UserDefaults()
+    var socket: WebSocket!
+    let url_server_ws = "ws://127.0.0.1:8080/myBasketballHelper_Web/BillBoardWebsocketServer/"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        socket = WebSocket(url: URL(string: url_server_ws + users.teamInfo)!)
+        addSocketCallBacks()
+        socket.connect()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -203,13 +209,32 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
         
         return cell
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "billBoardDetail" {
             let indexPath = self.billBoardTableView.indexPath(for: sender as! UITableViewCell)
             let billBoard = billBoards[indexPath!.row]
             let billBoardTableViewController = segue.destination as! BillBoardTableViewController
             billBoardTableViewController.billBoard = billBoard
+        }
+    }
+    
+    func addSocketCallBacks() {
+        socket.onConnect = {
+            print("websocket is connected")
+        }
+        
+        socket.onDisconnect = { (error: Error?) in
+            print("websocket is disconnected: \(error?.localizedDescription ?? "")")
+        }
+        
+        socket.onText = { (text: String) in
+            if let newBillBoard = try? JSONDecoder().decode([String : String].self, from: text.data(using: .utf8)!) {
+                if newBillBoard["message"] == "Yes" {
+                    self.billBoardTableView.reloadData()
+                    self.calendarCollectionView.reloadData()
+                }
+            }
         }
     }
 }
