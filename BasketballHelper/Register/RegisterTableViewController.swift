@@ -25,15 +25,15 @@ class RegisterTableViewController: UITableViewController {
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        if let userInfo = userDefault.data(forKey: "userDefault") {
-            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
-            if users.teamInfo.isEmpty {
-                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "CreateTeam")
-                self.present(self.viewController, animated: true, completion: nil)
-            }
-        }
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        if let userInfo = userDefault.data(forKey: "userDefault") {
+//            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+//            if users.teamInfo.isEmpty {
+//                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "JoinTeam")
+//                self.present(self.viewController, animated: true, completion: nil)
+//            }
+//        }
+//    }
     
     @IBAction func clickCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -69,6 +69,7 @@ class RegisterTableViewController: UITableViewController {
                             self.userDefault.set(loginOK, forKey: "userDefault")
                             self.userDefault.synchronize()
                             self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "JoinTeam")
+                            self.present(self.viewController, animated: true, completion: nil)
                         } else {
                             showSimpleAlert(message: "註冊失敗", viewController: self)
                         }

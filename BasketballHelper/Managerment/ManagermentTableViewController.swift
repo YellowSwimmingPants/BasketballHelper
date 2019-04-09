@@ -31,6 +31,7 @@ class ManagermentTableViewController: UITableViewController {
         }
         userDefault.synchronize()
         viewController = storyboard!.instantiateViewController(withIdentifier: "Login")
+        present(viewController, animated: true, completion: nil)
     }
     
 }

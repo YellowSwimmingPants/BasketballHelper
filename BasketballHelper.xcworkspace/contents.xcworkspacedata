@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:PeriodDetailTableViewController.swift">
-   </FileRef>
-   <FileRef
       location = "group:BasketballHelper.xcodeproj">
    </FileRef>
    <FileRef

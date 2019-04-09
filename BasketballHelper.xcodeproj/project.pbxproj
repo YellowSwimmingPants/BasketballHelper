@@ -40,6 +40,8 @@
 		71FBA32A224DB61400752520 /* ChangePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBA329224DB61400752520 /* ChangePlayerViewController.swift */; };
 		71FBA32C224DC03F00752520 /* SegmentBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBA32B224DC03F00752520 /* SegmentBarViewController.swift */; };
 		AB998C2EA1057D165C73B174 /* Pods_BasketballHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8830AE505326EF04EE531A3B /* Pods_BasketballHelper.framework */; };
+		C70EC83C225CC7A300CCBEAF /* JoinTeam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C70EC83B225CC7A300CCBEAF /* JoinTeam.storyboard */; };
+		C70EC83E225CCBE100CCBEAF /* Homepage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C70EC83D225CCBE100CCBEAF /* Homepage.storyboard */; };
 		C7221B90225B82C0004101C5 /* BuildTeamTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7221B8F225B82C0004101C5 /* BuildTeamTableViewController.swift */; };
 		C736BAFD2243628400D84AD6 /* TeamMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BAFC2243628400D84AD6 /* TeamMemberViewController.swift */; };
 		C736BAFF224362FE00D84AD6 /* ManagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BAFE224362FE00D84AD6 /* ManagerTableViewController.swift */; };
@@ -115,6 +117,8 @@
 		71FBA32B224DC03F00752520 /* SegmentBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentBarViewController.swift; sourceTree = "<group>"; };
 		8830AE505326EF04EE531A3B /* Pods_BasketballHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BasketballHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		893504A0D6DB3F174200F6C0 /* Pods-BasketballHelper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BasketballHelper.debug.xcconfig"; path = "Target Support Files/Pods-BasketballHelper/Pods-BasketballHelper.debug.xcconfig"; sourceTree = "<group>"; };
+		C70EC83B225CC7A300CCBEAF /* JoinTeam.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JoinTeam.storyboard; sourceTree = "<group>"; };
+		C70EC83D225CCBE100CCBEAF /* Homepage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Homepage.storyboard; sourceTree = "<group>"; };
 		C7221B8F225B82C0004101C5 /* BuildTeamTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildTeamTableViewController.swift; sourceTree = "<group>"; };
 		C736BAFC2243628400D84AD6 /* TeamMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberViewController.swift; sourceTree = "<group>"; };
 		C736BAFE224362FE00D84AD6 /* ManagerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTableViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +220,7 @@
 				710D3673223238A3008A683C /* Assets.xcassets */,
 				710D366C223238A3008A683C /* AppDelegate.swift */,
 				710D3670223238A3008A683C /* Main.storyboard */,
+				C70EC83D225CCBE100CCBEAF /* Homepage.storyboard */,
 				710D3675223238A3008A683C /* LaunchScreen.storyboard */,
 				710D3678223238A3008A683C /* Info.plist */,
 				714B473C223B757F00134AA0 /* Recordlist */,
@@ -250,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				C736BB0322439CD900D84AD6 /* Register.storyboard */,
+				C70EC83B225CC7A300CCBEAF /* JoinTeam.storyboard */,
 				C736BB0B2243C2BD00D84AD6 /* RegisterTableViewController.swift */,
 				C736BB072243AF1600D84AD6 /* ScanQRViewController.swift */,
 				C736BB01224398F700D84AD6 /* HomepageViewController.swift */,
@@ -361,7 +367,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C70EC83C225CC7A300CCBEAF /* JoinTeam.storyboard in Resources */,
 				C7421420223BA638000D3E0E /* Managerment.storyboard in Resources */,
+				C70EC83E225CCBE100CCBEAF /* Homepage.storyboard in Resources */,
 				710D3677223238A3008A683C /* LaunchScreen.storyboard in Resources */,
 				710D3674223238A3008A683C /* Assets.xcassets in Resources */,
 				334E441E223FB9640055D0EC /* PlayerInfo.storyboard in Resources */,
