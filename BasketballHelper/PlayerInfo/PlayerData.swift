@@ -26,12 +26,15 @@ class PlayerData: UIViewController {
     @IBOutlet weak var A1: UILabel!
     @IBOutlet weak var A2: UILabel!
     @IBOutlet weak var A3: UILabel!
+    
     var hundred:Double=100
     
     
     let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
     var dataSegue : Page_playerList!
     var playdata : GameDataCount!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         showData()

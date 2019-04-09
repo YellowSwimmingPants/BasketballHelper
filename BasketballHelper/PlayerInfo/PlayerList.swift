@@ -97,16 +97,16 @@ class PlayerList: UITableViewController {
     // 左滑修改與刪除資料
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         // 左滑時顯示Edit按鈕
-        let edit = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
+        let edit = UITableViewRowAction(style: .default, title: "\u{2600}\n edit", handler: { (action, indexPath) in
             let playerUpdate = self.storyboard?.instantiateViewController(withIdentifier: "playerUpdate") as! PlayerUpdate
             let player = self.players[indexPath.row]
             playerUpdate.player = player
             self.navigationController?.pushViewController(playerUpdate, animated: true)
         })
-        edit.backgroundColor = UIColor.lightGray
+        edit.backgroundColor = UIColor(red: 189/255, green: 255/255, blue: 255/255, alpha: 1)
 
         // 左滑時顯示Delete按鈕
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
+        let delete = UITableViewRowAction(style: .destructive, title: "\u{267A}\n Delete", handler: { (action, indexPath) in
             // 尚未刪除server資料
             var requestParam = [String: Any]()
             requestParam["action"] = "playerDelete"

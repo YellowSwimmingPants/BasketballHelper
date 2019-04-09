@@ -41,22 +41,22 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0tM-la-LLT">
-                                            <rect key="frame" x="16" y="7" width="115" height="76.5"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0tM-la-LLT">
+                                            <rect key="frame" x="16" y="5" width="80" height="80"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="115" id="Nmg-nu-TvC"/>
+                                                <constraint firstAttribute="width" constant="80" id="bZh-Wx-ydK"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="0tM-la-LLT" firstAttribute="top" secondItem="g3u-Fg-nWh" secondAttribute="topMargin" constant="-4" id="FyK-IK-Clc"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Hhs-ly-yA5" secondAttribute="bottom" constant="10" id="Wfs-dY-IAp"/>
                                         <constraint firstItem="Gco-En-h6X" firstAttribute="top" secondItem="g3u-Fg-nWh" secondAttribute="topMargin" id="bBg-qZ-Act"/>
-                                        <constraint firstItem="0tM-la-LLT" firstAttribute="leading" secondItem="g3u-Fg-nWh" secondAttribute="leadingMargin" id="dfF-oc-VmC"/>
-                                        <constraint firstItem="Gco-En-h6X" firstAttribute="leading" secondItem="0tM-la-LLT" secondAttribute="trailing" constant="42" id="gWy-mg-Wqq"/>
+                                        <constraint firstItem="0tM-la-LLT" firstAttribute="leading" secondItem="g3u-Fg-nWh" secondAttribute="leadingMargin" id="d8u-fn-C2V"/>
+                                        <constraint firstItem="0tM-la-LLT" firstAttribute="top" secondItem="g3u-Fg-nWh" secondAttribute="topMargin" constant="-6" id="d9h-UL-Jpr"/>
+                                        <constraint firstItem="0tM-la-LLT" firstAttribute="centerY" secondItem="g3u-Fg-nWh" secondAttribute="centerY" id="f5L-ot-Wr2"/>
                                         <constraint firstItem="Hhs-ly-yA5" firstAttribute="top" secondItem="Gco-En-h6X" secondAttribute="bottom" constant="17" id="pqQ-5a-9D9"/>
-                                        <constraint firstItem="0tM-la-LLT" firstAttribute="centerY" secondItem="g3u-Fg-nWh" secondAttribute="centerY" id="tAk-L4-7SU"/>
                                         <constraint firstItem="Gco-En-h6X" firstAttribute="leading" secondItem="Hhs-ly-yA5" secondAttribute="leading" id="wqa-5z-tFA"/>
+                                        <constraint firstItem="Gco-En-h6X" firstAttribute="leading" secondItem="0tM-la-LLT" secondAttribute="trailing" constant="77" id="xdu-0J-0Kd"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -84,7 +84,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2M9-Pd-ZLo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="991" y="105"/>
+            <point key="canvasLocation" x="989.60000000000002" y="104.7976011994003"/>
         </scene>
         <!--Player Detail-->
         <scene sceneID="07j-9o-v6o">
@@ -367,7 +367,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="防守位置" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="avl-fl-DPP">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="守備位置" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="avl-fl-DPP">
                                         <rect key="frame" x="0.0" y="138" width="335" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
