@@ -20,7 +20,7 @@ class PeriodTableViewController: UITableViewController {
         self.navigationController?.popToViewController(gameRecordTVC, animated: true)
     }
     
-    @IBAction func clickDone(_ sender: Any) {
+    @IBAction func clickSave(_ sender: Any) {
         
     }
     

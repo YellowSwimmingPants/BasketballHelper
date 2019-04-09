@@ -77,6 +77,7 @@ class ChooseStartingLineupTableViewController: UITableViewController {
             let cell = self.tableView?.cellForRow(at: indexPath)
             cell?.accessoryType = .checkmark
             startingLineup.append((cell?.textLabel?.text)!)
+            saveData()
         } else {
             count = 5
             showSimpleAlert(message: "只能選取5人！", viewController: self)
@@ -92,16 +93,14 @@ class ChooseStartingLineupTableViewController: UITableViewController {
         cell?.accessoryType = .none
         count -= 1
         startingLineup = startingLineup.filter{$0 != cell?.textLabel?.text}
+        saveData()
 //        print(startingLineup)
     }
     
-//    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-//        if let selectedIndex = self.tableView.indexPathForSelectedRow {
-//            self.tableView.deselectRow(at: selectedIndex, animated: false)
-//            // Remove the visual selection indication.
-//            self.tableView.cellForRow(at: selectedIndex)?.accessoryType = .none
-//        }
-//        return indexPath
-//    }
+    func saveData() {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(startingLineup, forKey: "startingLineup")
+        userDefaults.synchronize()
+    }
     
 }

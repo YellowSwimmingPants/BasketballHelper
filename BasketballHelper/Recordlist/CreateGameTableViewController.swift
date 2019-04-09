@@ -28,7 +28,9 @@ class CreateGameTableViewController: UITableViewController, UINavigationControll
     }
     
     @IBAction func clickDone(_ sender: Any) {
-       
+        saveData()
+        let controller = storyboard?.instantiateViewController(withIdentifier: "PeriodTVC");
+        present(controller!, animated: true, completion: nil)
         
 //        var requestParam = [String: String]()
 //        requestParam["action"] = "gameInsert"
@@ -80,12 +82,8 @@ class CreateGameTableViewController: UITableViewController, UINavigationControll
         let userDefaults = UserDefaults.standard
         let gameName = tfGameName.text == nil ? "" : tfGameName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let gameDate = lbShowDate.text == nil ? "" : lbShowDate.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-//        let name = tfName.text ?? ""
-//        let address = tfAddress.text ?? ""
-//        let phone = tfPhone.text ?? ""
         userDefaults.set(gameName, forKey: "gameName")
         userDefaults.set(gameDate, forKey: "gameDate")
-
         userDefaults.synchronize()
     }
     
