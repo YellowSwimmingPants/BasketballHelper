@@ -28,31 +28,31 @@ class CreateGameTableViewController: UITableViewController, UINavigationControll
     }
     
     @IBAction func clickDone(_ sender: Any) {
-        let gameName = tfGameName.text == nil ? "" : tfGameName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let gameDate = lbShowDate.text == nil ? "" : lbShowDate.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let game = Game(0, gameName, gameDate)
-        var requestParam = [String: String]()
-        requestParam["action"] = "gameInsert"
-        requestParam["game"] = try! String(data: JSONEncoder().encode(game), encoding: .utf8)
-        executeTask(self.url_server!, requestParam) { (data, response, error) in
-            if error == nil {
-                if data != nil {
-                    if let result = String(data: data!, encoding: .utf8) {
-                        if let count = Int(result) {
-                            DispatchQueue.main.async {
-                                // 新增成功則回前頁
-                                if count != 0 {                                            self.navigationController?.popViewController(animated: true)
-                                } else {
-                                    showSimpleAlert(message: "insert failed", viewController: self)
-                                }
-                            }
-                        }
-                    }
-                }
-            } else {
-                print(error!.localizedDescription)
-            }
-        }
+       
+        
+//        var requestParam = [String: String]()
+//        requestParam["action"] = "gameInsert"
+//        requestParam["game"] = try! String(data: JSONEncoder().encode(game), encoding: .utf8)
+//        executeTask(self.url_server!, requestParam) { (data, response, error) in
+//            if error == nil {
+//                if data != nil {
+//                    if let result = String(data: data!, encoding: .utf8) {
+//                        if let count = Int(result) {
+//                            DispatchQueue.main.async {
+//                                // 新增成功則回前頁
+//                                if count != 0 {                                            self.navigationController?.popViewController(animated: true)
+//                                } else {
+//                                    showSimpleAlert(message: "insert failed", viewController: self)
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
+//            } else {
+//                print(error!.localizedDescription)
+//            }
+//        }
+        
     }
     
     func toggleDatePicker() {
@@ -74,6 +74,19 @@ class CreateGameTableViewController: UITableViewController, UINavigationControll
         if indexPath.section == 0 && indexPath.row == 2 {
             toggleDatePicker()
         }
+    }
+    
+    func saveData() {
+        let userDefaults = UserDefaults.standard
+        let gameName = tfGameName.text == nil ? "" : tfGameName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let gameDate = lbShowDate.text == nil ? "" : lbShowDate.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//        let name = tfName.text ?? ""
+//        let address = tfAddress.text ?? ""
+//        let phone = tfPhone.text ?? ""
+        userDefaults.set(gameName, forKey: "gameName")
+        userDefaults.set(gameDate, forKey: "gameDate")
+
+        userDefaults.synchronize()
     }
     
 }

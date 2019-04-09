@@ -11,9 +11,14 @@ class GameRecordTableViewController: UITableViewController {
         tableViewAddRefreshControl()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        showAllGames()
+    }
+    
     func tableViewAddRefreshControl() {
         let refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "下拉更新")//attributedTitle標題屬性
+        refreshControl.attributedTitle = NSAttributedString(string: "下拉更新")
+            //attributedTitle標題屬性
         refreshControl.addTarget(self, action: #selector(showAllGames), for: .valueChanged)
         //addTarget 指下拉動作做觸發
         self.tableView.refreshControl = refreshControl
@@ -47,12 +52,6 @@ class GameRecordTableViewController: UITableViewController {
             }
         }
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        showAllGames()
-    }
-    
-
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -118,7 +117,7 @@ class GameRecordTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let controller = segue.destination as? GameDetail
+//        let controller = segue.destination as? Gamed
 //        if let row = tableView.indexPathForSelectedRow?.row {
 //            controller?.playerList = games[row]
 //        }

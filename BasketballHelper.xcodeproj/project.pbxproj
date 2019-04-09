@@ -35,6 +35,7 @@
 		714B473B223B366200134AA0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B473A223B366200134AA0 /* Game.swift */; };
 		714B473E223B7F6B00134AA0 /* RecordList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 714B473D223B7F6B00134AA0 /* RecordList.storyboard */; };
 		71C078CA225A1E0400536766 /* ChooseStartingLineupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C078C9225A1E0400536766 /* ChooseStartingLineupTableViewController.swift */; };
+		71F17B1B225C6A8900D3E321 /* GameDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F17B1A225C6A8900D3E321 /* GameDetailTableViewController.swift */; };
 		71FBA328224DB5E700752520 /* StartingLineupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBA327224DB5E700752520 /* StartingLineupViewController.swift */; };
 		71FBA32A224DB61400752520 /* ChangePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBA329224DB61400752520 /* ChangePlayerViewController.swift */; };
 		71FBA32C224DC03F00752520 /* SegmentBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBA32B224DC03F00752520 /* SegmentBarViewController.swift */; };
@@ -108,6 +109,7 @@
 		714B473A223B366200134AA0 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		714B473D223B7F6B00134AA0 /* RecordList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordList.storyboard; sourceTree = "<group>"; };
 		71C078C9225A1E0400536766 /* ChooseStartingLineupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStartingLineupTableViewController.swift; sourceTree = "<group>"; };
+		71F17B1A225C6A8900D3E321 /* GameDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailTableViewController.swift; sourceTree = "<group>"; };
 		71FBA327224DB5E700752520 /* StartingLineupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingLineupViewController.swift; sourceTree = "<group>"; };
 		71FBA329224DB61400752520 /* ChangePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlayerViewController.swift; sourceTree = "<group>"; };
 		71FBA32B224DC03F00752520 /* SegmentBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentBarViewController.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				714B473D223B7F6B00134AA0 /* RecordList.storyboard */,
+				71F17B1A225C6A8900D3E321 /* GameDetailTableViewController.swift */,
 				71C078C9225A1E0400536766 /* ChooseStartingLineupTableViewController.swift */,
 				710791A5225A089000CA8FF6 /* PeriodTableViewController.swift */,
 				713F94582252021A0011A1D7 /* UpdateGameTableViewController.swift */,
@@ -458,6 +461,7 @@
 				710139492243AAFE005B6028 /* CreateGameTableViewController.swift in Sources */,
 				33FD82D92240DA3100DB2B95 /* Common.swift in Sources */,
 				713F94592252021A0011A1D7 /* UpdateGameTableViewController.swift in Sources */,
+				71F17B1B225C6A8900D3E321 /* GameDetailTableViewController.swift in Sources */,
 				7141F1A22244BE8B00A83C36 /* ActionTableViewCell.swift in Sources */,
 				33FD82D72240A01300DB2B95 /* PlayerList.swift in Sources */,
 				333A7722225B2A2D005E50F3 /* PlayerBarChart.swift in Sources */,

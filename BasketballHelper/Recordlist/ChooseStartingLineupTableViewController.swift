@@ -1,90 +1,107 @@
-//
-//  ChooseStartingLineupTableViewController.swift
-//  BasketballHelper
-//
-//  Created by 李宜銓 on 2019/4/7.
-//  Copyright © 2019 李宜銓. All rights reserved.
-//
-
 import UIKit
 
 class ChooseStartingLineupTableViewController: UITableViewController {
-
+    let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
+//    var players = [Page_playerList]()
+    var count = 0
+    var startingLineup = [String]()
+    var players = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+//        tableViewAddRefreshControl()
+        tableView.allowsMultipleSelection = true
     }
+    
+    /** tableView加上下拉更新功能 */
+//    func tableViewAddRefreshControl() {
+//        let refreshControl = UIRefreshControl()
+//        refreshControl.attributedTitle = NSAttributedString(string: "下拉更新")//attributedTitle標題屬性
+//        refreshControl.addTarget(self, action: #selector(showAllPlayers), for: .valueChanged)
+//        //addTarget 指下拉動作做觸發
+//        self.tableView.refreshControl = refreshControl
+//    }
 
-    // MARK: - Table view data source
+//    override func viewWillAppear(_ animated: Bool) {
+//        showAllPlayers()
+//    }
 
+//    @objc func showAllPlayers(){
+//        let requestParam = ["action" : "getAll"]
+//        executeTask(url_server!, requestParam) { (data, response, error) in
+//            if error == nil {
+//                if data != nil {
+//                    // 將輸入資料列印出來除錯用
+//                    print("input: \(String(data: data!, encoding: .utf8)!)")
+//
+//                    if let result = try? JSONDecoder().decode([Page_playerList].self, from: data!) {
+//                        self.players = result
+//                        DispatchQueue.main.async {
+//                            print("1+\(self.players)")
+//                            if let control = self.tableView.refreshControl {
+//                                if control.isRefreshing {
+//                                    // 停止下拉更新動作
+//                                    control.endRefreshing()
+//                                }
+//                            }
+//                            /* 抓到資料後重刷table view */
+//                            self.tableView.reloadData()
+//                        }
+//                    }
+//                }
+//            } else {
+//                print(error!.localizedDescription)
+//            }
+//        }
+//    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return players.count
     }
-
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
+        let cellId = "playerCell"
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId)
+        let player = players[indexPath.row]
+//        cell?.textLabel?.text = player.name
+        cell?.textLabel?.text = player
+        return cell!
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        count += 1
+        if count <= 5 {
+            let cell = self.tableView?.cellForRow(at: indexPath)
+            cell?.accessoryType = .checkmark
+            startingLineup.append((cell?.textLabel?.text)!)
+        } else {
+            count = 5
+            showSimpleAlert(message: "只能選取5人！", viewController: self)
+            self.tableView.deselectRow(at: indexPath, animated: true)
+            return
+        }
+//        print(startingLineup)
+        
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        let cell = self.tableView?.cellForRow(at: indexPath)
+        cell?.accessoryType = .none
+        count -= 1
+        startingLineup = startingLineup.filter{$0 != cell?.textLabel?.text}
+//        print(startingLineup)
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+//    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+//        if let selectedIndex = self.tableView.indexPathForSelectedRow {
+//            self.tableView.deselectRow(at: selectedIndex, animated: false)
+//            // Remove the visual selection indication.
+//            self.tableView.cellForRow(at: selectedIndex)?.accessoryType = .none
+//        }
+//        return indexPath
+//    }
+    
 }
