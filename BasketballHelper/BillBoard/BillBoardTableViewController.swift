@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import Starscream
 
 class BillBoardTableViewController: UITableViewController {
     
@@ -15,15 +16,27 @@ class BillBoardTableViewController: UITableViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
-    
+    var users: UserInfo!
+    var user = [UserInfo]()
+    let userDefault = UserDefaults()
     var billBoard: BillBoard!
     let url_server = URL(string: common_url_user + "BillBoardServlet")
+    var socket: WebSocket!
+    let url_server_ws = "ws://127.0.0.1:8080/myBasketballHelper_Web/BillBoardWebsocketServer/"
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationBar.topItem?.title = billBoard.title
         dateLabel.text = billBoard.dateStr
         typeLabel.text = billBoard.type
         contentTextView.text = billBoard.content
+    }
+    
+    override func viewDidLoad() {
+        let userInfo = userDefault.data(forKey: "userDefault")
+        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
+        let teamInfo = billBoard.teamInfo
+        socket = WebSocket(url: URL(string: url_server_ws + teamInfo)!)
+        socket.connect()
     }
     
     @IBAction func clickDone(_ sender: Any) {
@@ -52,6 +65,13 @@ class BillBoardTableViewController: UITableViewController {
                     if let result = try? JSONDecoder().decode([String : String].self, from: data!) {
                         DispatchQueue.main.async {
                             if result["success"] == "Yes" {
+                                var newBillBoard = [String: String]()
+                                newBillBoard["userAccount"] = self.users.userAccount
+                                newBillBoard["message"] = "Yes"
+                                if let jsonData = try? JSONEncoder().encode(newBillBoard) {
+                                    let text = String(data: jsonData, encoding: .utf8)
+                                    self.socket.write(string: text!)
+                                }
                                 self.dismiss(animated: true, completion: nil)
                             } else {
                                 showSimpleAlert(message: "刪除失敗", viewController: self)

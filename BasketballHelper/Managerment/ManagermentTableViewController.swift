@@ -30,7 +30,7 @@ class ManagermentTableViewController: UITableViewController {
             userDefault.removeObject(forKey: key.key)
         }
         userDefault.synchronize()
-        dismiss(animated: true, completion: nil)
+        viewController = storyboard!.instantiateViewController(withIdentifier: "Login")
     }
     
 }

@@ -37,7 +37,8 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
         types.append("球賽")
         types.append("請假")
         datePickerChaged()
-        socket = WebSocket(url: URL(string: url_server_ws + users.teamInfo)!)
+        let teamInfo = users.teamInfo
+        socket = WebSocket(url: URL(string: url_server_ws + teamInfo)!)
         socket.connect()
     }
 

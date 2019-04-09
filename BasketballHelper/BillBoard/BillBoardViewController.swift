@@ -28,13 +28,6 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     var socket: WebSocket!
     let url_server_ws = "ws://127.0.0.1:8080/myBasketballHelper_Web/BillBoardWebsocketServer/"
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        socket = WebSocket(url: URL(string: url_server_ws + users.teamInfo)!)
-        addSocketCallBacks()
-        socket.connect()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
         let userInfo = userDefault.data(forKey: "userDefault")
         if (userInfo != nil) {
@@ -58,7 +51,16 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
             calculation()
             createGesture()
         }
-        calendarCollectionView.reloadData()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let userInfo = userDefault.data(forKey: "userDefault")
+        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
+        let teamInfo = users.teamInfo
+        socket = WebSocket(url: URL(string: url_server_ws + teamInfo)!)
+        addSocketCallBacks()
+        socket.connect()
     }
     
     func showBillBoard(teamInfo: String) {
@@ -77,6 +79,7 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
                         self.billBoards = result
                         DispatchQueue.main.async {
                             self.billBoardTableView.reloadData()
+                            self.calendarCollectionView.reloadData()
                         }
                     }
                 }
@@ -148,6 +151,10 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
             cell.backgroundColor = UIColor.white
         }
         return cell
+    }
+    
+    func showEvent(_ indexPath: IndexPath, _ cell: UICollectionViewCell, _ weekdayAdding: Int) {
+        
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -230,9 +237,12 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
         
         socket.onText = { (text: String) in
             if let newBillBoard = try? JSONDecoder().decode([String : String].self, from: text.data(using: .utf8)!) {
+                print(newBillBoard)
                 if newBillBoard["message"] == "Yes" {
-                    self.billBoardTableView.reloadData()
-                    self.calendarCollectionView.reloadData()
+                    DispatchQueue.main.async {
+                        self.showBillBoard(teamInfo: self.users.teamInfo)
+                        self.calendarCollectionView.reloadData()
+                    }
                 }
             }
         }
