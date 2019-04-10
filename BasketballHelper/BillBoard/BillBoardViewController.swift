@@ -159,7 +159,7 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let myBoundSize: CGFloat = UIScreen.main.bounds.size.width
-        let cellSize: CGFloat = myBoundSize / 7
+        let cellSize: CGFloat = myBoundSize / 7.5
         return CGSize(width: cellSize, height: cellSize)
     }
     

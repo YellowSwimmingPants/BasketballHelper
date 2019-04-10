@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Bill Board View Controller-->
+        <!--我的球隊-->
         <scene sceneID="kf6-5E-k82">
             <objects>
                 <viewController storyboardIdentifier="BillBoard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mZc-A9-gD8" customClass="BillBoardViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,7 +33,7 @@
                                 </items>
                             </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U8y-Fw-hUP">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oOH-R6-HA5">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
@@ -43,7 +43,9 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ya-bG-yRC">
                                                         <rect key="frame" x="0.0" y="0.0" width="108.5" height="30"/>
-                                                        <state key="normal" title="&lt;PREV"/>
+                                                        <state key="normal" title="&lt;PREV">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="clickPrev:" destination="mZc-A9-gD8" eventType="touchUpInside" id="bnS-TU-buF"/>
                                                         </connections>
@@ -51,12 +53,14 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SNZ-wL-fAs">
                                                         <rect key="frame" x="133.5" y="0.0" width="108" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zqC-aM-vix">
                                                         <rect key="frame" x="266.5" y="0.0" width="108.5" height="30"/>
-                                                        <state key="normal" title="NEXT&gt;"/>
+                                                        <state key="normal" title="NEXT&gt;">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
                                                         <connections>
                                                             <action selector="clickNext:" destination="mZc-A9-gD8" eventType="touchUpInside" id="ltU-qU-En9"/>
                                                         </connections>
@@ -64,7 +68,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.58384615179999999" green="0.29403522609999999" blue="0.49805587530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="G2d-dE-VQg" firstAttribute="leading" secondItem="oOH-R6-HA5" secondAttribute="leading" id="0Mx-Id-WuQ"/>
                                             <constraint firstItem="G2d-dE-VQg" firstAttribute="top" secondItem="oOH-R6-HA5" secondAttribute="top" id="9f3-uO-THx"/>
@@ -102,11 +106,8 @@
                                         </connections>
                                     </collectionView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pKk-Re-Qm7">
-                                        <rect key="frame" x="0.0" y="428" width="375" height="346"/>
+                                        <rect key="frame" x="0.0" y="428" width="375" height="175"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="346" id="oOf-gx-eQo"/>
-                                        </constraints>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="billBoardCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="billBoardCell" textLabel="uqe-Gd-BIM" detailTextLabel="0Dr-iN-sC4" style="IBUITableViewCellStyleValue1" id="3XF-W3-yPM">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -155,6 +156,7 @@
                                     <constraint firstAttribute="trailing" secondItem="oOH-R6-HA5" secondAttribute="trailing" id="lNR-l2-VJf"/>
                                     <constraint firstItem="oOH-R6-HA5" firstAttribute="top" secondItem="U8y-Fw-hUP" secondAttribute="top" id="o75-ic-A1F"/>
                                     <constraint firstAttribute="trailing" secondItem="pKk-Re-Qm7" secondAttribute="trailing" id="peL-2Z-dYV"/>
+                                    <constraint firstAttribute="bottom" secondItem="pKk-Re-Qm7" secondAttribute="bottom" id="vg1-Nx-brB"/>
                                     <constraint firstItem="pKk-Re-Qm7" firstAttribute="top" secondItem="8Or-I0-pkE" secondAttribute="bottom" id="yYa-PM-tIu"/>
                                 </constraints>
                             </scrollView>
@@ -171,6 +173,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ACn-Y6-jYt"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="我的球隊" image="event" id="YWh-PJ-RPT"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="billBoardTableView" destination="pKk-Re-Qm7" id="6bA-ZN-DMI"/>
                         <outlet property="calendarCollectionView" destination="8Or-I0-pkE" id="0Ai-Bf-jVu"/>
@@ -603,4 +607,7 @@
             <point key="canvasLocation" x="1393" y="-164"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="event" width="36" height="36"/>
+    </resources>
 </document>

@@ -48,7 +48,6 @@
 		C736BB02224398F700D84AD6 /* HomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BB01224398F700D84AD6 /* HomepageViewController.swift */; };
 		C736BB0422439CD900D84AD6 /* Register.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C736BB0322439CD900D84AD6 /* Register.storyboard */; };
 		C736BB082243AF1600D84AD6 /* ScanQRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BB072243AF1600D84AD6 /* ScanQRViewController.swift */; };
-		C736BB0A2243B9AE00D84AD6 /* TeamInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BB092243B9AE00D84AD6 /* TeamInfo.swift */; };
 		C736BB0C2243C2BD00D84AD6 /* RegisterTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BB0B2243C2BD00D84AD6 /* RegisterTableViewController.swift */; };
 		C7421417223B84FF000D3E0E /* BillBoard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C7421416223B84FF000D3E0E /* BillBoard.storyboard */; };
 		C7421419223B9196000D3E0E /* BillBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7421418223B9196000D3E0E /* BillBoardViewController.swift */; };
@@ -125,7 +124,6 @@
 		C736BB01224398F700D84AD6 /* HomepageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageViewController.swift; sourceTree = "<group>"; };
 		C736BB0322439CD900D84AD6 /* Register.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Register.storyboard; sourceTree = "<group>"; };
 		C736BB072243AF1600D84AD6 /* ScanQRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRViewController.swift; sourceTree = "<group>"; };
-		C736BB092243B9AE00D84AD6 /* TeamInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamInfo.swift; sourceTree = "<group>"; };
 		C736BB0B2243C2BD00D84AD6 /* RegisterTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterTableViewController.swift; sourceTree = "<group>"; };
 		C7421416223B84FF000D3E0E /* BillBoard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BillBoard.storyboard; sourceTree = "<group>"; };
 		C7421418223B9196000D3E0E /* BillBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillBoardViewController.swift; sourceTree = "<group>"; };
@@ -259,7 +257,6 @@
 				C736BB0B2243C2BD00D84AD6 /* RegisterTableViewController.swift */,
 				C736BB072243AF1600D84AD6 /* ScanQRViewController.swift */,
 				C736BB01224398F700D84AD6 /* HomepageViewController.swift */,
-				C736BB092243B9AE00D84AD6 /* TeamInfo.swift */,
 				C7221B8F225B82C0004101C5 /* BuildTeamTableViewController.swift */,
 			);
 			path = Register;
@@ -477,7 +474,6 @@
 				C7DE4CF8223F7D360013E7AB /* UserInfoTableViewController.swift in Sources */,
 				711FB65822374F9000AD7483 /* GameRecordTableViewController.swift in Sources */,
 				71C078CA225A1E0400536766 /* ChooseStartingLineupTableViewController.swift in Sources */,
-				C736BB0A2243B9AE00D84AD6 /* TeamInfo.swift in Sources */,
 				C7DE4CFC223F81CC0013E7AB /* UserPasswordEditTableViewController.swift in Sources */,
 				33D165252244E68600E6D94A /* playerUpdate.swift in Sources */,
 				C7DE4CFE223F82FA0013E7AB /* TeamManagermentTableViewController.swift in Sources */,

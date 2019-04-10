@@ -589,11 +589,13 @@
             </objects>
             <point key="canvasLocation" x="1854" y="-292"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--管理-->
         <scene sceneID="xsb-kJ-DNQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sKd-j8-boc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="管理" image="managerment" id="6lt-WA-APc"/>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2fY-TX-G5o">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -705,7 +707,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="s9h-bh-6yt">
-                                <rect key="frame" x="0.0" y="132" width="375" height="535"/>
+                                <rect key="frame" x="0.0" y="132" width="375" height="486"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="memberCell" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="memberCell" textLabel="5PC-fP-LAM" detailTextLabel="CP7-Rk-l7o" rowHeight="50" style="IBUITableViewCellStyleSubtitle" id="YTd-5a-q8P">
@@ -802,4 +804,7 @@
             <point key="canvasLocation" x="1854" y="1067"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="managerment" width="36" height="36"/>
+    </resources>
 </document>

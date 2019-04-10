@@ -32,7 +32,7 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
         let userInfo = userDefault.data(forKey: "userDefault")
         users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
         contextTextView.text = ""
-        typeLabel.text = ""
+        typeLabel.text = "🗓"
         types.append("公告")
         types.append("球賽")
         types.append("請假")
@@ -85,7 +85,15 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let type = types[row]
-        typeLabel.text = type
+        if type == "公告" {
+            typeLabel.text = "🗓"
+        } else if type == "球賽" {
+            typeLabel.text = "🏀"
+        } else if type == "請假" {
+            typeLabel.text = "🌡"
+        } else {
+            typeLabel.text = ""
+        }
     }
     
     

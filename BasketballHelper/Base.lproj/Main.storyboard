@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="31p-4b-WL0">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -23,47 +23,47 @@
             <objects>
                 <viewController storyboardIdentifier="Login" id="31p-4b-WL0" customClass="HomepageViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1jt-bu-TBy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SmU-mm-4Ta">
-                                <rect key="frame" x="112.5" y="70" width="150" height="150"/>
+                                <rect key="frame" x="132" y="94" width="150" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="Dyv-Jn-RrE"/>
                                     <constraint firstAttribute="width" constant="150" id="mq1-H1-Spb"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="my8-JB-2lZ">
-                                <rect key="frame" x="30.5" y="270" width="314" height="314"/>
+                                <rect key="frame" x="50" y="294" width="314" height="314"/>
                                 <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="basketball" translatesAutoresizingMaskIntoConstraints="NO" id="m7P-un-xeE">
+                                        <rect key="frame" x="-0.5" y="0.0" width="314" height="314"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1WJ-6B-r9P">
-                                        <rect key="frame" x="20" y="80" width="274" height="40"/>
+                                        <rect key="frame" x="30" y="135" width="254" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="帳號" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K50-Kc-djh">
-                                        <rect key="frame" x="20" y="20" width="274" height="40"/>
+                                        <rect key="frame" x="30" y="75" width="254" height="40"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Qe-VM-YcE">
-                                        <rect key="frame" x="20" y="140" width="49" height="41"/>
+                                        <rect key="frame" x="20" y="195" width="49" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="登入">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
+                                        <state key="normal" title="登入"/>
                                         <connections>
                                             <action selector="clickLogin:" destination="31p-4b-WL0" eventType="touchUpInside" id="1Vt-Bc-Ect"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LhP-HR-KJV">
-                                        <rect key="frame" x="245" y="140" width="49" height="41"/>
+                                        <rect key="frame" x="245" y="195" width="49" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="註冊">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
+                                        <state key="normal" title="註冊"/>
                                         <connections>
                                             <segue destination="HhB-kH-JXB" kind="show" id="ilI-8g-I4S"/>
                                         </connections>
@@ -71,32 +71,26 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPg-W1-YS4">
                                         <rect key="frame" x="245" y="253" width="49" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <state key="normal" title="略過">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
+                                        <state key="normal" title="略過"/>
                                         <connections>
                                             <segue destination="dIq-Xe-E4S" kind="show" id="VVN-Qd-7Tu"/>
                                         </connections>
                                     </button>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m7P-un-xeE">
-                                        <rect key="frame" x="0.0" y="0.0" width="314" height="314"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.58384615179999999" green="0.29403522609999999" blue="0.49805587530000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="1WJ-6B-r9P" secondAttribute="trailing" constant="20" id="3ZA-qd-gAp"/>
+                                    <constraint firstAttribute="trailing" secondItem="1WJ-6B-r9P" secondAttribute="trailing" constant="30" id="3ZA-qd-gAp"/>
                                     <constraint firstAttribute="bottom" secondItem="gPg-W1-YS4" secondAttribute="bottom" constant="20" id="5hf-Ld-BV9"/>
                                     <constraint firstAttribute="trailing" secondItem="gPg-W1-YS4" secondAttribute="trailing" constant="20" id="7Jc-Ex-lP6"/>
                                     <constraint firstItem="8Qe-VM-YcE" firstAttribute="leading" secondItem="my8-JB-2lZ" secondAttribute="leading" constant="20" id="A81-hI-7Wz"/>
                                     <constraint firstItem="LhP-HR-KJV" firstAttribute="top" secondItem="1WJ-6B-r9P" secondAttribute="bottom" constant="20" id="Bkv-Hn-Eob"/>
-                                    <constraint firstAttribute="trailing" secondItem="K50-Kc-djh" secondAttribute="trailing" constant="20" id="Edo-jj-9JA"/>
+                                    <constraint firstAttribute="trailing" secondItem="K50-Kc-djh" secondAttribute="trailing" constant="30" id="Edo-jj-9JA"/>
                                     <constraint firstItem="8Qe-VM-YcE" firstAttribute="top" secondItem="1WJ-6B-r9P" secondAttribute="bottom" constant="20" id="Q4B-EF-pdm"/>
                                     <constraint firstItem="1WJ-6B-r9P" firstAttribute="top" secondItem="K50-Kc-djh" secondAttribute="bottom" constant="20" id="SiX-R9-Mh0"/>
                                     <constraint firstAttribute="height" constant="314" id="gWc-uL-BRq"/>
-                                    <constraint firstItem="K50-Kc-djh" firstAttribute="top" secondItem="my8-JB-2lZ" secondAttribute="top" constant="20" id="kHY-Lk-be0"/>
-                                    <constraint firstItem="K50-Kc-djh" firstAttribute="leading" secondItem="my8-JB-2lZ" secondAttribute="leading" constant="20" id="orv-Q8-6CA"/>
-                                    <constraint firstItem="1WJ-6B-r9P" firstAttribute="leading" secondItem="my8-JB-2lZ" secondAttribute="leading" constant="20" id="qcm-Te-911"/>
+                                    <constraint firstItem="K50-Kc-djh" firstAttribute="top" secondItem="my8-JB-2lZ" secondAttribute="top" constant="75" id="kHY-Lk-be0"/>
+                                    <constraint firstItem="K50-Kc-djh" firstAttribute="leading" secondItem="my8-JB-2lZ" secondAttribute="leading" constant="30" id="orv-Q8-6CA"/>
+                                    <constraint firstItem="1WJ-6B-r9P" firstAttribute="leading" secondItem="my8-JB-2lZ" secondAttribute="leading" constant="30" id="qcm-Te-911"/>
                                     <constraint firstAttribute="width" constant="314" id="tjn-rG-fEg"/>
                                     <constraint firstAttribute="trailing" secondItem="LhP-HR-KJV" secondAttribute="trailing" constant="20" id="zbb-ys-cGt"/>
                                 </constraints>
@@ -137,4 +131,7 @@
             <point key="canvasLocation" x="846" y="-839"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="basketball" width="512" height="512"/>
+    </resources>
 </document>
