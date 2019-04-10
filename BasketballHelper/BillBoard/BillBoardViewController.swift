@@ -153,17 +153,13 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
         return cell
     }
     
-    func showEvent(_ indexPath: IndexPath, _ cell: UICollectionViewCell, _ weekdayAdding: Int) {
-        
-    }
-
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let myBoundSize: CGFloat = UIScreen.main.bounds.size.width
-        let cellSize: CGFloat = myBoundSize / 7.5
+        let cellSize: CGFloat = myBoundSize / 7
         return CGSize(width: cellSize, height: cellSize)
     }
     

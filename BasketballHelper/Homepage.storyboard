@@ -33,7 +33,7 @@
         <scene sceneID="v7a-fh-83A">
             <objects>
                 <viewControllerPlaceholder storyboardName="BillBoard" id="uqI-p3-sFu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="ZGb-ah-OEq"/>
+                    <tabBarItem key="tabBarItem" title="我的球隊" image="event" id="ZGb-ah-OEq"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Llh-wh-vTB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,7 +43,7 @@
         <scene sceneID="ugj-cx-Pt3">
             <objects>
                 <viewControllerPlaceholder storyboardName="Managerment" id="E06-UG-7Ai" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="KsB-Kc-buv"/>
+                    <tabBarItem key="tabBarItem" title="管理" image="managerment" id="KsB-Kc-buv"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b0D-Le-WQL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -58,6 +58,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.99747234579999999" green="0.47775173189999998" blue="0.18419095869999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBar>
                     <connections>
                         <segue destination="kKk-vK-BMx" kind="relationship" relationship="viewControllers" id="YK4-wk-5IA"/>
@@ -71,4 +72,8 @@
             <point key="canvasLocation" x="1061" y="-711"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="event" width="36" height="36"/>
+        <image name="managerment" width="36" height="36"/>
+    </resources>
 </document>
