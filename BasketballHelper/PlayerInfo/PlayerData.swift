@@ -85,6 +85,12 @@ class PlayerData: UIViewController {
         //A3 = 三分總平均
         A3.text = String(describing: (playdata!.TPM!/playdata!.TPL!*(hundred)))
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "barchart" {
+            let Detail = segue.destination as! PlayerBarChart
+            Detail.playdatabarchart = playdata
+        }
+    }
  
     
 }
