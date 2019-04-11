@@ -13,13 +13,13 @@ class PlayerBarChart: UIViewController {
     @IBOutlet weak var barChartView: BarChartView!
     var item: [String]!
     var axisFormatDelgate: IAxisValueFormatter?
-    var playdatabarchart : GameDataCount!
+    var chart : GameDataCount!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let item = ["罰球命中", "兩分命中", "三分命中", "犯規數", "進攻籃板", "防守籃板", "失誤", "抄截", " 火鍋", "助攻"]
-        let playerdata: [Double] = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 4.0, 10.0, 3.0]
+        let item = ["罰球中", "F", "兩分中", "F", "三分中", "F", "犯規", "Ofn", "Def", "失誤", "抄截", " 火鍋", "助攻"]
+        let playerdata: [Double] = [chart.FT!, chart.FTL!, chart.FG!, chart.FGL!, chart.TPM!, chart.TPL!, chart.Foul!, chart.OfnReb!, chart.DefReb!, chart.TurnOver!,chart.Steal!, chart.Block!, chart.Assist!]
         setChar(dataPoints: item, values: playerdata)
        
     }
@@ -36,7 +36,7 @@ class PlayerBarChart: UIViewController {
         let charData = BarChartData(dataSet: chartDataSet)
         charData.barWidth = 0.9
         let xAxis = barChartView.xAxis
-        xAxis.labelCount = 10
+        xAxis.labelCount = 13
         barChartView.notifyDataSetChanged()
         barChartView.data = charData
         barChartView.xAxis.valueFormatter = IndexAxisValueFormatter(values: dataPoints)

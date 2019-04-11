@@ -42,7 +42,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0tM-la-LLT">
-                                            <rect key="frame" x="16" y="5" width="80" height="80"/>
+                                            <rect key="frame" x="16" y="5" width="80" height="80.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="bZh-Wx-ydK"/>
                                             </constraints>
@@ -799,7 +799,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="統計圖"/>
                                 <connections>
-                                    <segue destination="f1J-4J-jbX" kind="show" id="GPF-BZ-ckA"/>
+                                    <segue destination="f1J-4J-jbX" kind="show" identifier="barchart" id="GPF-BZ-ckA"/>
                                 </connections>
                             </button>
                         </subviews>

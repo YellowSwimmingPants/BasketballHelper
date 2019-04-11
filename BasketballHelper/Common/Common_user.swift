@@ -8,11 +8,11 @@ import Foundation
 import UIKit
 
 // 實機
-let common_url_user = "http://192.168.196.189:8080/myBasketballHelper_Web/"
-let common_url_playerInfo = "http://192.168.196.189:8080/myBasketballHelper_Web/"
+//let common_url_user = "http://192.168.196.189:8080/myBasketballHelper_Web/"
+//let common_url_playerInfo = "http://192.168.196.189:8080/myBasketballHelper_Web/"
 
-//let common_url_user = "http://127.0.0.1:8080/myBasketballHelper_Web/"
-//let common_url_playerInfo = "http://127.0.0.1:8080/myBasketballHelper_Web/"
+let common_url_user = "http://127.0.0.1:8080/myBasketballHelper_Web/"
+let common_url_playerInfo = "http://127.0.0.1:8080/myBasketballHelper_Web/"
 func executeTask(_ url_server: URL, _ requestParam: [String: Any], completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
     // requestParam值為Any就必須使用JSONSerialization.data()，而非JSONEncoder.encode()
     let jsonData = try! JSONSerialization.data(withJSONObject: requestParam)

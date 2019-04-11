@@ -6,15 +6,15 @@ class GameDataCount: Codable {
     var FGL: Double?
     var TPM: Double?
     var TPL: Double?
-    var Foul: Int?
-    var OfnReb: Int?
-    var DefReb: Int?
-    var TurnOver: Int?
-    var Steal: Int?
-    var Block: Int?
-    var Assist: Int?
+    var Foul: Double?
+    var OfnReb: Double?
+    var DefReb: Double?
+    var TurnOver: Double?
+    var Steal: Double?
+    var Block: Double?
+    var Assist: Double?
     
-    init(_ PeriodID: Int, _ FT:Double,_ FTL:Double,_ FG:Double,_ FGL:Double,_ TPM:Double,_ TPL:Double,_ Foul:Int,_ OfnReb:Int,_ DefReb:Int,_ TurnOver:Int,_ Steal:Int,_ Block:Int,_ Assist:Int){
+    init(_ PeriodID: Int, _ FT:Double,_ FTL:Double,_ FG:Double,_ FGL:Double,_ TPM:Double,_ TPL:Double,_ Foul:Double,_ OfnReb:Double,_ DefReb:Double,_ TurnOver:Double,_ Steal:Double,_ Block:Double,_ Assist:Double){
         self.PeriodID = PeriodID
         self.FT = FT
         self.FTL = FTL
