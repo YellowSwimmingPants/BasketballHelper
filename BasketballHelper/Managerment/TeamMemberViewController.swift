@@ -52,10 +52,20 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath)
         switch (segmentControl.selectedSegmentIndex) {
         case 0:
-            cell.textLabel?.text = managerList[indexPath.row].userAccount
+            let userAccount = managerList[indexPath.row].userAccount
+            let userImageView = cell.imageView
+            userImageView?.frame = CGRect(x: 0, y: 0, width: 56, height: 56)
+            cell.textLabel?.text = userAccount
+            cell.detailTextLabel?.text = managerList[indexPath.row].userName
+            showImage(userAccount, userImageView!)
             break
         case 1:
-            cell.textLabel?.text = memberList[indexPath.row].userAccount
+            let userAccount = memberList[indexPath.row].userAccount
+            let userImageView = cell.imageView
+            userImageView?.frame = CGRect(x: 0, y: 0, width: 56, height: 56)
+            cell.textLabel?.text = userAccount
+            cell.detailTextLabel?.text = memberList[indexPath.row].userName
+            showImage(userAccount, userImageView!)
             break
         default:
             break
@@ -83,14 +93,12 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                                         self.managerList.remove(at: indexPath.row)
                                         DispatchQueue.main.async {
                                             tableView.deleteRows(at: [indexPath], with: .fade)
-                                            self.memberTableView.reloadData()
                                         }
                                     }
                                     if self.segmentControl.selectedSegmentIndex == 1 {
                                         self.memberList.remove(at: indexPath.row)
                                         DispatchQueue.main.async {
                                             tableView.deleteRows(at: [indexPath], with: .fade)
-                                            self.memberTableView.reloadData()
                                         }
                                     }
                                 }
@@ -123,16 +131,13 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                                         if self.segmentControl.selectedSegmentIndex == 0 {
                                             self.managerList.remove(at: indexPath.row)
                                             DispatchQueue.main.async {
-                                                tableView.backgroundColor = UIColor.green
                                                 tableView.deleteRows(at: [indexPath], with: .fade)
-                                                self.memberTableView.reloadData()
                                             }
                                         }
                                         if self.segmentControl.selectedSegmentIndex == 1 {
                                             self.memberList.remove(at: indexPath.row)
                                             DispatchQueue.main.async {
                                                 tableView.deleteRows(at: [indexPath], with: .fade)
-                                                self.memberTableView.reloadData()
                                             }
                                         }
                                     }
@@ -155,9 +160,9 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
     /** tableView加上下拉更新功能 */
     func tableViewAddRefreshControl() {
         let refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(showManager(teamInfo:)), for: .valueChanged)
-        refreshControl.addTarget(self, action: #selector(showMember(teamInfo:)), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "下拉更新")
+        refreshControl.addTarget(self, action: #selector(showManager), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(showMember), for: .valueChanged)
         self.memberTableView.refreshControl = refreshControl
     }
     
@@ -171,7 +176,6 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                     if let result = try? JSONDecoder().decode([UserInfo].self, from: data!) {
                         self.managerList = result
                         DispatchQueue.main.async {
-                            //                            self.memberTableView.reloadData()
                             if let control = self.memberTableView.refreshControl {
                                 if control.isRefreshing {
                                     // 停止下拉更新動作
@@ -199,7 +203,6 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                     if let result = try? JSONDecoder().decode([UserInfo].self, from: data!) {
                         self.memberList = result
                         DispatchQueue.main.async {
-                            //                            self.memberTableView.reloadData()
                             if let control = self.memberTableView.refreshControl {
                                 if control.isRefreshing {
                                     // 停止下拉更新動作
@@ -209,6 +212,29 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                             self.memberTableView.reloadData()
                         }
                     }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
+    func showImage(_ userAccount: String, _ userImageView: UIImageView) {
+        var requestParam = [String: Any]()
+        requestParam["action"] = "getImage"
+        requestParam["userAccount"] = userAccount
+        requestParam["imageSize"] = userImageView.frame.width
+        var image: UIImage?
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    image = UIImage(data: data!)
+                }
+                if image == nil {
+                    image = UIImage(named: "managerment")
+                }
+                DispatchQueue.main.async {
+                    userImageView.image = image
                 }
             } else {
                 print(error!.localizedDescription)

@@ -101,15 +101,21 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
         let date = datePicker.date
         let title = titleTextField.text == nil ? "" : titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         let content = contextTextView.text == nil ? "" : contextTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
-        let type = typeLabel.text
-        
+        var type = ""
+        if typeLabel.text == "🗓" {
+            type = "公告"
+        } else if typeLabel.text == "🏀" {
+            type = "球賽"
+        } else if typeLabel.text == "🌡" {
+            type = "請假"
+        }
         let encoder = JSONEncoder()
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd"
         encoder.dateEncodingStrategy = .formatted(format)
         
         let teamInfo = users.teamInfo
-        let billBoard = BillBoard(0, date, title!, content!, type!, teamInfo)
+        let billBoard = BillBoard(0, date, title!, content!, type, teamInfo)
         var requestParam = [String: String]()
         requestParam["action"] = "insertBillBoard"
         requestParam["billBoard"] = try! String(data: encoder.encode(billBoard), encoding: .utf8)

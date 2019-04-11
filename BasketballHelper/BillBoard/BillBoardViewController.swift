@@ -109,6 +109,9 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
         let firstWeekday = callendar.component(.weekday, from: firstDayOfMonth!)
         let weekdayAdding = 2 - firstWeekday
         let label = UILabel()
+        let eventLabel = UILabel()
+        let gameLabel = UILabel()
+        let dayoffLabel = UILabel()
         for subview in cell.contentView.subviews {
             subview.removeFromSuperview()
         }
@@ -121,8 +124,9 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         let daysCountInMonth = callendar.range(of: .day, in: .month, for: firstDayOfMonth!)?.count
         if indexPath.section == 0 {
+            cell.backgroundColor = UIColor.lightGray
             label.text = weekArray[indexPath.row]
-            label.textColor = UIColor.black
+            label.textColor = UIColor.white
             label.sizeToFit()
             label.center = cell.contentView.center
             cell.contentView.addSubview(label)
@@ -132,17 +136,33 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
             label.text = "\(indexPath.row + weekdayAdding)"
             label.sizeToFit()
             label.center = cell.contentView.center
+            gameLabel.text = "🏀"
+            gameLabel.isHidden = true
+            gameLabel.sizeToFit()
+            gameLabel.center = CGPoint(x: cell.contentView.bounds.width/1.25, y: cell.contentView.bounds.height/1.25)
+            eventLabel.text = "🗓"
+            eventLabel.isHidden = true
+            eventLabel.sizeToFit()
+            dayoffLabel.text = "🌡"
+            dayoffLabel.isHidden = true
+            dayoffLabel.sizeToFit()
+            dayoffLabel.center = CGPoint(x: cell.contentView.bounds.width/1.25, y: cell.contentView.bounds.height/4)
             cell.contentView.addSubview(label)
+            cell.contentView.addSubview(gameLabel)
+            cell.contentView.addSubview(eventLabel)
+            cell.contentView.addSubview(dayoffLabel)
             if billBoards.count != 0 {
                 for events in 0...billBoards.count - 1 {
                     let eventdays = callendar.component(.day, from: billBoards[events].date!)
                     if dateFmatter.string(from: billBoards[events].date!) == dateLabel.text {
                         if eventdays == (indexPath.row + weekdayAdding) {
-                            label.textColor = UIColor.black
-                            label.text = "🏀"
-                            label.sizeToFit()
-                            label.center = cell.contentView.center
-                            cell.contentView.addSubview(label)
+                            if billBoards[events].type == "球賽" {
+                                gameLabel.isHidden = false
+                            } else if billBoards[events].type == "公告" {
+                                eventLabel.isHidden = false
+                            } else if billBoards[events].type == "請假" {
+                                dayoffLabel.isHidden = false
+                            }
                         }
                     }
                 }
@@ -164,11 +184,11 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 1
+        return 0
     }
     
     @IBAction func clickPrev(_ sender: Any) {

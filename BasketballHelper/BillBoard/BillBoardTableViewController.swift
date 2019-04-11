@@ -15,6 +15,7 @@ class BillBoardTableViewController: UITableViewController {
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var typeDetailLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
     var users: UserInfo!
     var user = [UserInfo]()
@@ -28,6 +29,15 @@ class BillBoardTableViewController: UITableViewController {
         self.navigationBar.topItem?.title = billBoard.title
         dateLabel.text = billBoard.dateStr
         typeLabel.text = billBoard.type
+        if typeLabel.text == "公告"{
+            typeDetailLabel.text = "🗓"
+        } else if typeLabel.text == "球賽" {
+            typeDetailLabel.text = "🏀"
+        } else if typeLabel.text == "請假" {
+            typeDetailLabel.text = "🌡"
+        } else {
+            typeDetailLabel.text = ""
+        }
         contentTextView.text = billBoard.content
     }
     

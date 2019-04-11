@@ -37,6 +37,7 @@ class HomepageViewController: UIViewController {
             if error == nil {
                 if data != nil {
                     if let result = try? JSONDecoder().decode([String : String].self, from: data!) {
+                        print(result)
                         DispatchQueue.main.async {
                             if result["success"] == "Yes" {
                                 let userLogin = result["userInfo"]

@@ -156,12 +156,12 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="220" id="kUf-KC-Ng3">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kUf-KC-Ng3" id="Z3D-lt-RxM">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kUf-KC-Ng3" id="Z3D-lt-RxM">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="34m-In-kex">
-                                                    <rect key="frame" x="87" y="10.5" width="200" height="200"/>
+                                                    <rect key="frame" x="87.5" y="10" width="200" height="200"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="So3-TU-rss"/>
                                                         <constraint firstAttribute="height" constant="200" id="qeF-Z5-Nod"/>
@@ -169,10 +169,8 @@
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="34m-In-kex" firstAttribute="leading" secondItem="Z3D-lt-RxM" secondAttribute="leading" constant="87" id="Fkt-pQ-vl1"/>
-                                                <constraint firstAttribute="bottom" secondItem="34m-In-kex" secondAttribute="bottom" constant="10" id="HN6-2o-xew"/>
-                                                <constraint firstAttribute="trailing" secondItem="34m-In-kex" secondAttribute="trailing" constant="88" id="KPw-LG-aHD"/>
-                                                <constraint firstItem="34m-In-kex" firstAttribute="top" secondItem="Z3D-lt-RxM" secondAttribute="top" constant="10" id="UAX-jv-yQi"/>
+                                                <constraint firstItem="34m-In-kex" firstAttribute="centerY" secondItem="Z3D-lt-RxM" secondAttribute="centerY" id="EBF-g3-6co"/>
+                                                <constraint firstItem="34m-In-kex" firstAttribute="centerX" secondItem="Z3D-lt-RxM" secondAttribute="centerX" id="XX5-QN-Ub8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -430,11 +428,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UyG-XI-Gfz">
-                                                    <rect key="frame" x="87" y="9" width="200" height="200"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UyG-XI-Gfz">
+                                                    <rect key="frame" x="87.5" y="10" width="200" height="200"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="200" id="gMW-TY-V03"/>
+                                                        <constraint firstAttribute="width" constant="200" id="yJf-Pv-Bym"/>
+                                                    </constraints>
                                                 </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="UyG-XI-Gfz" firstAttribute="centerY" secondItem="JSf-2q-EVT" secondAttribute="centerY" id="79d-D4-Hj5"/>
+                                                <constraint firstItem="UyG-XI-Gfz" firstAttribute="centerX" secondItem="JSf-2q-EVT" secondAttribute="centerX" id="WhN-pL-N2O"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="kMb-i0-Pry">
@@ -757,7 +762,6 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6GE-eT-Xf9">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <action selector="clickInvite:" destination="znx-v1-JYW" id="Ie4-en-Q4l"/>
                                 <segue destination="Bnm-26-DNZ" kind="show" id="XeF-A7-9Qv"/>
                             </connections>
                         </barButtonItem>
