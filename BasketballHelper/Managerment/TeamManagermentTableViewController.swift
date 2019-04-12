@@ -12,14 +12,15 @@ class TeamManagermentTableViewController: UITableViewController {
     
     let url_server = URL(string: common_url_user + "ManagersServlet")
     let userDefault = UserDefaults()
-    var userInfos = [UserInfo]()
+    var userInfo = [UserInfo]()
     var users: UserInfo!
     var viewController = UIViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let userInfo = userDefault.data(forKey: "userDefault")
-        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -32,7 +33,12 @@ class TeamManagermentTableViewController: UITableViewController {
             alertController.addAction(cancel)
             alertController.addAction(ok)
             /* 呼叫present()才會跳出Alert Controller */
-            self.present(alertController, animated: true, completion:nil)
+            if userDefault.data(forKey: "userDefault") == nil {
+                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Register")
+                self.present(self.viewController, animated: true, completion: nil)
+            } else {
+                self.present(alertController, animated: true, completion:nil)
+            }
         } else {
             let alertController = UIAlertController(title: "注意", message: "請是否要解散球隊", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .destructive) { (_) in
@@ -46,7 +52,12 @@ class TeamManagermentTableViewController: UITableViewController {
             alertController.addAction(cancel)
             alertController.addAction(ok)
             /* 呼叫present()才會跳出Alert Controller */
-            self.present(alertController, animated: true, completion:nil)
+            if userDefault.data(forKey: "userDefault") == nil {
+                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Register")
+                self.present(self.viewController, animated: true, completion: nil)
+            } else {
+                self.present(alertController, animated: true, completion:nil)
+            }
         }
     }
     
@@ -67,7 +78,8 @@ class TeamManagermentTableViewController: UITableViewController {
                                         userDefault.removeObject(forKey: key.key)
                                     }
                                     userDefault.synchronize()
-                                    self.dismiss(animated: true, completion: nil)
+                                    self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Login")
+                                    self.present(self.viewController, animated: true, completion: nil)
                                 } else {
                                     showToast(view: self.view, message: "退出球隊失敗")
                                 }
@@ -98,7 +110,8 @@ class TeamManagermentTableViewController: UITableViewController {
                                         userDefault.removeObject(forKey: key.key)
                                     }
                                     userDefault.synchronize()
-                                    self.dismiss(animated: true, completion: nil)
+                                    self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Login")
+                                    self.present(self.viewController, animated: true, completion: nil)
                                 } else {
                                     showToast(view: self.view, message: "解散球隊失敗")
                                 }

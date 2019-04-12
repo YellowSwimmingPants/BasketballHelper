@@ -22,6 +22,12 @@ class UserInfoEditTableViewController: UITableViewController, UIImagePickerContr
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+            userNameTextField.text = users.userName
+            emailTextField.text = users.email
+            showImage()
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -79,6 +85,30 @@ class UserInfoEditTableViewController: UITableViewController, UIImagePickerContr
                             }
                         }
                     }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
+    func showImage() {
+        var requestParam = [String: Any]()
+        let userAccount = users.userAccount
+        requestParam["action"] = "getImage"
+        requestParam["userAccount"] = userAccount
+        requestParam["imageSize"] = userImageView.frame.width
+        var image: UIImage?
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    image = UIImage(data: data!)
+                }
+                if image == nil {
+                    image = UIImage(named: "noImage.jpg")
+                }
+                DispatchQueue.main.async {
+                    self.userImageView.image = image
                 }
             } else {
                 print(error!.localizedDescription)

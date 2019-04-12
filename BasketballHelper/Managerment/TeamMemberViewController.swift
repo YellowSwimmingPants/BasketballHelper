@@ -22,14 +22,19 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableViewAddRefreshControl()
+        if userDefault.data(forKey: "userDefault") == nil {
+            
+        } else {
+            tableViewAddRefreshControl()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let userInfo = userDefault.data(forKey: "userDefault")
-        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
-        showManager()
-        showMember()
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+            showManager()
+            showMember()
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -170,7 +175,6 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
         var requestParam = [String: Any]()
         requestParam["action"] = "getManager"
         requestParam["teamInfo"] = users.teamInfo
-        
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -247,8 +251,12 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func segmentedControlActionChanged(_ sender: Any) {
-        showManager()
-        showMember()
-        memberTableView.reloadData()
+        if userDefault.data(forKey: "userDefault") == nil {
+            
+        } else {
+            showManager()
+            showMember()
+            memberTableView.reloadData()
+        }
     }
 }

@@ -594,6 +594,14 @@
             </objects>
             <point key="canvasLocation" x="1854" y="-292"/>
         </scene>
+        <!--Register-->
+        <scene sceneID="CF9-4W-VMa">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Register" storyboardName="Register" id="gzk-uc-18m" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2LB-tg-Pmj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-426" y="532"/>
+        </scene>
         <!--管理-->
         <scene sceneID="xsb-kJ-DNQ">
             <objects>

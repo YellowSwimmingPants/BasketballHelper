@@ -56,12 +56,13 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let userInfo = userDefault.data(forKey: "userDefault")
-        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
         let teamInfo = users.teamInfo
         socket = WebSocket(url: URL(string: url_server_ws + teamInfo)!)
         addSocketCallBacks()
         socket.connect()
+        }
     }
     
     func showBillBoard(teamInfo: String) {

@@ -20,8 +20,9 @@ class UserPasswordEditTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let userInfo = userDefault.data(forKey: "userDefault")
-        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+        }
     }
     
     @IBAction func clickSave(_ sender: Any) {
