@@ -21,6 +21,9 @@
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yDP-Db-Bmn">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <color key="barTintColor" red="0.99747234579999999" green="0.47775173189999998" blue="0.18419095869999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </textAttributes>
                                 <items>
                                     <navigationItem title="我的球隊" id="vLu-dt-smm">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="u7P-EX-XFx">
@@ -200,6 +203,9 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="barTintColor" red="0.99747234579999999" green="0.47775173189999998" blue="0.18419095869999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
                             <items>
                                 <navigationItem title="Title" id="Zdf-i4-7XV">
                                     <barButtonItem key="leftBarButtonItem" systemItem="done" id="bfk-Bh-BWN">
@@ -388,6 +394,9 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="barTintColor" red="0.99747234579999999" green="0.47775173189999998" blue="0.18419095869999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
                             <items>
                                 <navigationItem title="新增公告" id="VcS-f2-lZD">
                                     <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="TZe-17-SJq">

@@ -28,7 +28,6 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewWillAppear(_ animated: Bool) {
         let userInfo = userDefault.data(forKey: "userDefault")
         users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
-        let teamInfo = users.teamInfo
         showManager()
         showMember()
     }
@@ -207,7 +206,6 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                         DispatchQueue.main.async {
                             if let control = self.memberTableView.refreshControl {
                                 if control.isRefreshing {
-                                    // 停止下拉更新動作
                                     control.endRefreshing()
                                 }
                             }

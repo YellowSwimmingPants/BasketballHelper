@@ -27,9 +27,10 @@ class BillBoardTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationBar.topItem?.title = billBoard.title
+        
         dateLabel.text = billBoard.dateStr
         typeLabel.text = billBoard.type
-        if typeLabel.text == "公告"{
+        if typeLabel.text == "公告" {
             typeDetailLabel.text = "🗓"
         } else if typeLabel.text == "球賽" {
             typeDetailLabel.text = "🏀"

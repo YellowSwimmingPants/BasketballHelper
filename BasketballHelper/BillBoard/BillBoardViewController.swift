@@ -55,6 +55,7 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let userInfo = userDefault.data(forKey: "userDefault")
         users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
         let teamInfo = users.teamInfo
