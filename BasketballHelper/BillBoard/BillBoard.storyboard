@@ -68,7 +68,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="G2d-dE-VQg" firstAttribute="leading" secondItem="oOH-R6-HA5" secondAttribute="leading" id="0Mx-Id-WuQ"/>
                                             <constraint firstItem="G2d-dE-VQg" firstAttribute="top" secondItem="oOH-R6-HA5" secondAttribute="top" id="9f3-uO-THx"/>
@@ -106,7 +106,7 @@
                                         </connections>
                                     </collectionView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pKk-Re-Qm7">
-                                        <rect key="frame" x="0.0" y="428" width="414" height="175"/>
+                                        <rect key="frame" x="0.0" y="428" width="414" height="297"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="billBoardCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="billBoardCell" textLabel="uqe-Gd-BIM" detailTextLabel="0Dr-iN-sC4" style="IBUITableViewCellStyleValue1" id="3XF-W3-yPM">
@@ -143,6 +143,7 @@
                                         </connections>
                                     </tableView>
                                 </subviews>
+                                <color key="backgroundColor" red="0.93666875360000001" green="0.56378209589999995" blue="0.83139610289999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstItem="8Or-I0-pkE" firstAttribute="leading" secondItem="U8y-Fw-hUP" secondAttribute="leading" id="0XJ-LL-OBR"/>
                                     <constraint firstItem="pKk-Re-Qm7" firstAttribute="leading" secondItem="U8y-Fw-hUP" secondAttribute="leading" id="3Me-OG-rNZ"/>
@@ -150,7 +151,7 @@
                                     <constraint firstItem="oOH-R6-HA5" firstAttribute="leading" secondItem="U8y-Fw-hUP" secondAttribute="leading" id="5gV-My-qKA"/>
                                     <constraint firstItem="oOH-R6-HA5" firstAttribute="centerX" secondItem="U8y-Fw-hUP" secondAttribute="centerX" id="ROw-e4-TaE"/>
                                     <constraint firstItem="8Or-I0-pkE" firstAttribute="top" secondItem="oOH-R6-HA5" secondAttribute="bottom" id="VVK-2y-OnX"/>
-                                    <constraint firstAttribute="bottom" secondItem="oOH-R6-HA5" secondAttribute="bottom" constant="573" id="Z9D-8V-qfg"/>
+                                    <constraint firstAttribute="bottom" secondItem="oOH-R6-HA5" secondAttribute="bottom" constant="695" id="W5x-yt-Pbu"/>
                                     <constraint firstAttribute="trailing" secondItem="pKk-Re-Qm7" secondAttribute="trailing" id="bgm-GN-PKJ"/>
                                     <constraint firstAttribute="trailing" secondItem="8Or-I0-pkE" secondAttribute="trailing" id="dBT-H6-690"/>
                                     <constraint firstAttribute="trailing" secondItem="oOH-R6-HA5" secondAttribute="trailing" id="lNR-l2-VJf"/>

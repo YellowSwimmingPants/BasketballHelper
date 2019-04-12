@@ -29,8 +29,8 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
         let userInfo = userDefault.data(forKey: "userDefault")
         users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
         let teamInfo = users.teamInfo
-        showManager(teamInfo: teamInfo)
-        showMember(teamInfo: teamInfo)
+        showManager()
+        showMember()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -50,22 +50,23 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath)
+        let userAccountLabel = cell.viewWithTag(102) as! UILabel
+        let userNameLabel = cell.viewWithTag(103) as! UILabel
+        let userImageView = cell.viewWithTag(101) as! UIImageView
         switch (segmentControl.selectedSegmentIndex) {
         case 0:
             let userAccount = managerList[indexPath.row].userAccount
-            let userImageView = cell.imageView
-            userImageView?.frame = CGRect(x: 0, y: 0, width: 56, height: 56)
-            cell.textLabel?.text = userAccount
-            cell.detailTextLabel?.text = managerList[indexPath.row].userName
-            showImage(userAccount, userImageView!)
+            let userName = managerList[indexPath.row].userName
+            userAccountLabel.text = userAccount
+            userNameLabel.text = userName
+            showImage(userAccount, userImageView)
             break
         case 1:
-            let userAccount = memberList[indexPath.row].userAccount
-            let userImageView = cell.imageView
-            userImageView?.frame = CGRect(x: 0, y: 0, width: 56, height: 56)
-            cell.textLabel?.text = userAccount
-            cell.detailTextLabel?.text = memberList[indexPath.row].userName
-            showImage(userAccount, userImageView!)
+            let userAccount =  memberList[indexPath.row].userAccount
+            let userName = memberList[indexPath.row].userName
+            userAccountLabel.text = userAccount
+            userNameLabel.text = userName
+            showImage(userAccount, userImageView)
             break
         default:
             break
@@ -156,7 +157,7 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         return []
     }
-    
+
     /** tableView加上下拉更新功能 */
     func tableViewAddRefreshControl() {
         let refreshControl = UIRefreshControl()
@@ -166,10 +167,11 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
         self.memberTableView.refreshControl = refreshControl
     }
     
-    @objc func showManager(teamInfo: String) {
+    @objc func showManager() {
         var requestParam = [String: Any]()
         requestParam["action"] = "getManager"
-        requestParam["teamInfo"] = teamInfo
+        requestParam["teamInfo"] = users.teamInfo
+        
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -182,7 +184,7 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                                     control.endRefreshing()
                                 }
                             }
-                            /* 抓到資料後重刷table view */
+                           //  抓到資料後重刷table view 
                             self.memberTableView.reloadData()
                         }
                     }
@@ -193,10 +195,10 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    @objc func showMember(teamInfo: String) {
+    @objc func showMember() {
         var requestParam = [String: Any]()
         requestParam["action"] = "getMember"
-        requestParam["teamInfo"] = teamInfo
+        requestParam["teamInfo"] = users.teamInfo
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -247,8 +249,8 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @IBAction func segmentedControlActionChanged(_ sender: Any) {
-        showManager(teamInfo: users.teamInfo)
-        showMember(teamInfo: users.teamInfo)
+        showManager()
+        showMember()
         memberTableView.reloadData()
     }
 }

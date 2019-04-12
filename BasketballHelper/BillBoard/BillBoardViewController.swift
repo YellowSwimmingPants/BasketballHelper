@@ -116,7 +116,7 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
             subview.removeFromSuperview()
         }
         if (indexPath.row % 7 == 0) {
-            cell.backgroundColor = UIColor.red
+            cell.backgroundColor = UIColor(red: 239/255, green: 144/255, blue: 212/255, alpha: 1)
         } else if (indexPath.row % 7 == 6) {
             cell.backgroundColor = UIColor.green
         } else {
@@ -124,9 +124,9 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
         }
         let daysCountInMonth = callendar.range(of: .day, in: .month, for: firstDayOfMonth!)?.count
         if indexPath.section == 0 {
-            cell.backgroundColor = UIColor.lightGray
+            cell.backgroundColor = UIColor.white
             label.text = weekArray[indexPath.row]
-            label.textColor = UIColor.white
+            label.textColor = UIColor.black
             label.sizeToFit()
             label.center = cell.contentView.center
             cell.contentView.addSubview(label)
