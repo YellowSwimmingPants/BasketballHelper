@@ -1232,7 +1232,7 @@
         <!--詳細資訊-->
         <scene sceneID="Gf7-oN-RY9">
             <objects>
-                <tableViewController id="DHQ-8K-OB1" customClass="PeriodTableViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="DHQ-8K-OB1" customClass="PeriodFromDBTableViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="MXR-cr-K85">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1256,6 +1256,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="PNt-xu-euV" kind="show" id="z7M-Dy-nuj"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="JAH-qx-lWE" style="IBUITableViewCellStyleDefault" id="sEY-0l-c8d">
                                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
@@ -1273,6 +1276,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="PNt-xu-euV" kind="show" id="7Xh-er-ENf"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="kCt-Hl-Rlw" style="IBUITableViewCellStyleDefault" id="1oo-PI-Iwd">
                                         <rect key="frame" x="0.0" y="88" width="375" height="44"/>
@@ -1290,6 +1296,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="PNt-xu-euV" kind="show" id="uSh-Ft-gmM"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="sVp-k0-m4f" style="IBUITableViewCellStyleDefault" id="rO3-aw-MIW">
                                         <rect key="frame" x="0.0" y="132" width="375" height="44"/>
@@ -1307,6 +1316,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="PNt-xu-euV" kind="show" id="lKP-5x-EMx"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="LT4-6b-7GZ" style="IBUITableViewCellStyleDefault" id="DLa-WK-EHF">
                                         <rect key="frame" x="0.0" y="176" width="375" height="44"/>
@@ -1324,6 +1336,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="PNt-xu-euV" kind="show" id="Ffk-zd-WLx"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1339,10 +1354,10 @@
             </objects>
             <point key="canvasLocation" x="2278" y="-1961"/>
         </scene>
-        <!--Period Detail Table View Controller-->
+        <!--Players Each Period Table View Controller-->
         <scene sceneID="75w-Mz-Ycw">
             <objects>
-                <tableViewController id="PNt-xu-euV" customClass="PeriodDetailTableViewController" sceneMemberID="viewController">
+                <tableViewController id="PNt-xu-euV" customClass="PlayersEachPeriodTableViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="j5r-MD-JMH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1378,6 +1393,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="Ffk-zd-WLx"/>
         <segue reference="G1h-re-uNM"/>
     </inferredMetricsTieBreakers>
 </document>

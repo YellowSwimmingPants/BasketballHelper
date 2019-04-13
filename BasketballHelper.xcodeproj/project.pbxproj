@@ -34,6 +34,8 @@
 		714B473B223B366200134AA0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B473A223B366200134AA0 /* Game.swift */; };
 		714B473E223B7F6B00134AA0 /* RecordList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 714B473D223B7F6B00134AA0 /* RecordList.storyboard */; };
 		71C078CA225A1E0400536766 /* ChooseStartingLineupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C078C9225A1E0400536766 /* ChooseStartingLineupTableViewController.swift */; };
+		71DD0DED2261EF000019E8EC /* PeriodFromDBTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DD0DEC2261EF000019E8EC /* PeriodFromDBTableViewController.swift */; };
+		71DD0DEF2261EF860019E8EC /* PlayersEachPeriodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DD0DEE2261EF860019E8EC /* PlayersEachPeriodTableViewController.swift */; };
 		71F17B1B225C6A8900D3E321 /* GameDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71F17B1A225C6A8900D3E321 /* GameDetailTableViewController.swift */; };
 		71FBA328224DB5E700752520 /* StartingLineupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBA327224DB5E700752520 /* StartingLineupViewController.swift */; };
 		71FBA32A224DB61400752520 /* ChangePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71FBA329224DB61400752520 /* ChangePlayerViewController.swift */; };
@@ -109,6 +111,8 @@
 		714B473A223B366200134AA0 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		714B473D223B7F6B00134AA0 /* RecordList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordList.storyboard; sourceTree = "<group>"; };
 		71C078C9225A1E0400536766 /* ChooseStartingLineupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStartingLineupTableViewController.swift; sourceTree = "<group>"; };
+		71DD0DEC2261EF000019E8EC /* PeriodFromDBTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodFromDBTableViewController.swift; sourceTree = "<group>"; };
+		71DD0DEE2261EF860019E8EC /* PlayersEachPeriodTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersEachPeriodTableViewController.swift; sourceTree = "<group>"; };
 		71F17B1A225C6A8900D3E321 /* GameDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDetailTableViewController.swift; sourceTree = "<group>"; };
 		71FBA327224DB5E700752520 /* StartingLineupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartingLineupViewController.swift; sourceTree = "<group>"; };
 		71FBA329224DB61400752520 /* ChangePlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePlayerViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +234,8 @@
 			isa = PBXGroup;
 			children = (
 				714B473D223B7F6B00134AA0 /* RecordList.storyboard */,
+				71DD0DEC2261EF000019E8EC /* PeriodFromDBTableViewController.swift */,
+				71DD0DEE2261EF860019E8EC /* PlayersEachPeriodTableViewController.swift */,
 				71F17B1A225C6A8900D3E321 /* GameDetailTableViewController.swift */,
 				71C078C9225A1E0400536766 /* ChooseStartingLineupTableViewController.swift */,
 				710791A5225A089000CA8FF6 /* PeriodTableViewController.swift */,
@@ -437,6 +443,8 @@
 				33E5618E22460CC100936171 /* Page_playerList.swift in Sources */,
 				C736BB082243AF1600D84AD6 /* ScanQRViewController.swift in Sources */,
 				C77F5DF82240DE4800BDBE42 /* BillBoard.swift in Sources */,
+				71DD0DEF2261EF860019E8EC /* PlayersEachPeriodTableViewController.swift in Sources */,
+				71DD0DED2261EF000019E8EC /* PeriodFromDBTableViewController.swift in Sources */,
 				334E4424223FD8B60055D0EC /* InsertPlayer.swift in Sources */,
 				C795A19A22605021009556A6 /* MemberTableViewCell.swift in Sources */,
 				C7DE4D02223F8E140013E7AB /* InviteViewController.swift in Sources */,
