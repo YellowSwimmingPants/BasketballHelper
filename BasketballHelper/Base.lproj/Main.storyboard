@@ -34,12 +34,8 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="my8-JB-2lZ">
-                                <rect key="frame" x="30.5" y="270" width="314" height="314"/>
+                                <rect key="frame" x="30.5" y="280" width="314" height="314"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="basketball" translatesAutoresizingMaskIntoConstraints="NO" id="m7P-un-xeE">
-                                        <rect key="frame" x="-0.5" y="0.0" width="314" height="314"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密碼" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1WJ-6B-r9P">
                                         <rect key="frame" x="30" y="135" width="254" height="40"/>
                                         <nil key="textColor"/>
@@ -53,7 +49,7 @@
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Qe-VM-YcE">
-                                        <rect key="frame" x="20" y="195" width="49" height="41"/>
+                                        <rect key="frame" x="30" y="195" width="49" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="登入"/>
                                         <connections>
@@ -61,7 +57,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LhP-HR-KJV">
-                                        <rect key="frame" x="245" y="195" width="49" height="41"/>
+                                        <rect key="frame" x="235" y="195" width="49" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="註冊"/>
                                         <connections>
@@ -69,7 +65,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPg-W1-YS4">
-                                        <rect key="frame" x="245" y="253" width="49" height="41"/>
+                                        <rect key="frame" x="235" y="253" width="49" height="41"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <state key="normal" title="略過"/>
                                         <connections>
@@ -81,8 +77,8 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="1WJ-6B-r9P" secondAttribute="trailing" constant="30" id="3ZA-qd-gAp"/>
                                     <constraint firstAttribute="bottom" secondItem="gPg-W1-YS4" secondAttribute="bottom" constant="20" id="5hf-Ld-BV9"/>
-                                    <constraint firstAttribute="trailing" secondItem="gPg-W1-YS4" secondAttribute="trailing" constant="20" id="7Jc-Ex-lP6"/>
-                                    <constraint firstItem="8Qe-VM-YcE" firstAttribute="leading" secondItem="my8-JB-2lZ" secondAttribute="leading" constant="20" id="A81-hI-7Wz"/>
+                                    <constraint firstAttribute="trailing" secondItem="gPg-W1-YS4" secondAttribute="trailing" constant="30" id="7Jc-Ex-lP6"/>
+                                    <constraint firstItem="8Qe-VM-YcE" firstAttribute="leading" secondItem="my8-JB-2lZ" secondAttribute="leading" constant="30" id="A81-hI-7Wz"/>
                                     <constraint firstItem="LhP-HR-KJV" firstAttribute="top" secondItem="1WJ-6B-r9P" secondAttribute="bottom" constant="20" id="Bkv-Hn-Eob"/>
                                     <constraint firstAttribute="trailing" secondItem="K50-Kc-djh" secondAttribute="trailing" constant="30" id="Edo-jj-9JA"/>
                                     <constraint firstItem="8Qe-VM-YcE" firstAttribute="top" secondItem="1WJ-6B-r9P" secondAttribute="bottom" constant="20" id="Q4B-EF-pdm"/>
@@ -92,15 +88,19 @@
                                     <constraint firstItem="K50-Kc-djh" firstAttribute="leading" secondItem="my8-JB-2lZ" secondAttribute="leading" constant="30" id="orv-Q8-6CA"/>
                                     <constraint firstItem="1WJ-6B-r9P" firstAttribute="leading" secondItem="my8-JB-2lZ" secondAttribute="leading" constant="30" id="qcm-Te-911"/>
                                     <constraint firstAttribute="width" constant="314" id="tjn-rG-fEg"/>
-                                    <constraint firstAttribute="trailing" secondItem="LhP-HR-KJV" secondAttribute="trailing" constant="20" id="zbb-ys-cGt"/>
+                                    <constraint firstAttribute="trailing" secondItem="LhP-HR-KJV" secondAttribute="trailing" constant="30" id="zbb-ys-cGt"/>
                                 </constraints>
                             </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="basketball" translatesAutoresizingMaskIntoConstraints="NO" id="m7P-un-xeE">
+                                <rect key="frame" x="30" y="28" width="314" height="314"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.99747234579999999" green="0.47775173189999998" blue="0.18419095869999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="SmU-mm-4Ta" firstAttribute="centerX" secondItem="1jt-bu-TBy" secondAttribute="centerX" id="QgW-CM-EcV"/>
                             <constraint firstItem="my8-JB-2lZ" firstAttribute="centerX" secondItem="1jt-bu-TBy" secondAttribute="centerX" id="Rxa-Q9-irA"/>
-                            <constraint firstItem="my8-JB-2lZ" firstAttribute="top" secondItem="SmU-mm-4Ta" secondAttribute="bottom" constant="50" id="fCT-oB-e6b"/>
+                            <constraint firstItem="my8-JB-2lZ" firstAttribute="top" secondItem="SmU-mm-4Ta" secondAttribute="bottom" constant="60" id="fCT-oB-e6b"/>
                             <constraint firstItem="SmU-mm-4Ta" firstAttribute="top" secondItem="a0w-nq-bN0" secondAttribute="top" constant="50" id="qJW-88-lDF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="a0w-nq-bN0"/>

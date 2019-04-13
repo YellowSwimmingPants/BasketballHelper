@@ -64,7 +64,6 @@ class HomepageViewController: UIViewController {
         }
     }
     
-
     @IBAction func clickLogin(_ sender: Any) {
         let account = accountTextField.text == nil ? "" : accountTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         let password = passwordTextField.text == nil ? "" : passwordTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -74,4 +73,7 @@ class HomepageViewController: UIViewController {
         }
         login(account: account!, password: password!)
     }
+    
+    
+    
 }
