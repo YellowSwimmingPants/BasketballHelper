@@ -1,11 +1,3 @@
-//
-//  UpdateGameTableViewController.swift
-//  BasketballHelper
-//
-//  Created by 李宜銓 on 2019/4/1.
-//  Copyright © 2019 李宜銓. All rights reserved.
-//
-
 import UIKit
 
 class UpdateGameTableViewController: UITableViewController {
@@ -18,14 +10,16 @@ class UpdateGameTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addKeyboardObserver()
+        self.title = game.gameName
         datePickerChanged()
+        showGameInfo()
     }
     
     @IBAction func clickSave(_ sender: Any) {
-        let gameName = tfGameName.text == nil ? "" : tfGameName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let gameDate = lbShowDate.text == nil ? "" : lbShowDate.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let game = Game(0, gameName, gameDate)
-        
+        game.gameName = tfGameName.text == nil ? "" : tfGameName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        game.gameDate = lbShowDate.text == nil ? "" : lbShowDate.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        //TODO:
         var requestParam = [String: String]()
         requestParam["action"] = "gameUpdate"
         requestParam["game"] = try! String(data: JSONEncoder().encode(self.game), encoding: .utf8)
@@ -38,7 +32,7 @@ class UpdateGameTableViewController: UITableViewController {
                                 // 新增成功則回前頁
                                 if count != 0 {                                            self.navigationController?.popViewController(animated: true)
                                 } else {
-                                    showSimpleAlert(message: "update failed", viewController: self)
+                                    showToast(view: self.view, message: "update fail")
                                 }
                             }
                         }
@@ -82,5 +76,42 @@ class UpdateGameTableViewController: UITableViewController {
         if indexPath.section == 0 && indexPath.row == 2 {
             toggleDatePicker()
         }
+    }
+
+    @IBAction func didEndOnExit(_ sender: Any) {
+    }
+
+}
+
+extension UpdateGameTableViewController {
+    func hideKeyboard() {
+        tfGameName.resignFirstResponder()
+        lbShowDate.resignFirstResponder()
+    }
+    
+    func addKeyboardObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        // 能取得鍵盤高度就讓view上移鍵盤高度，否則上移view的1/3高度
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRect = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRect.height
+            view.frame.origin.y = -keyboardHeight / 2
+        } else {
+            view.frame.origin.y = -view.frame.height / 3
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        view.frame.origin.y = 0
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }

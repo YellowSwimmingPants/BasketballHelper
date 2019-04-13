@@ -66,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SMV-A1-zMR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2245.5999999999999" y="292.80359820089956"/>
+            <point key="canvasLocation" x="2246" y="211"/>
         </scene>
         <!--球員數據-->
         <scene sceneID="OYG-qh-vTK">
@@ -153,7 +153,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5H2-YM-qFW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4041" y="-207"/>
+            <point key="canvasLocation" x="3833" y="-243"/>
         </scene>
         <!--Choose Starting Lineup Table View Controller-->
         <scene sceneID="1OX-0y-sSR">
@@ -237,6 +237,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="didEndOnExit:" destination="E0X-bc-7WX" eventType="editingDidEndOnExit" id="WeT-30-a97"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -901,7 +904,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <searchBar key="tableHeaderView" contentMode="redraw" id="fJf-ug-eO9">
+                        <searchBar key="tableHeaderView" contentMode="redraw" text="" id="fJf-ug-eO9">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <textInputTraits key="textInputTraits"/>
@@ -1028,7 +1031,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WH-RY-4W7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3217" y="622"/>
+            <point key="canvasLocation" x="3046" y="596"/>
         </scene>
         <!--Starting Lineup View Controller-->
         <scene sceneID="20j-Gu-TCN">
@@ -1086,9 +1089,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bwh-lU-bB7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3217" y="-207"/>
+            <point key="canvasLocation" x="3046" y="-242"/>
         </scene>
-        <!--Update Game Table View Controller-->
+        <!--比賽名稱-->
         <scene sceneID="4rz-ZX-cCZ">
             <objects>
                 <tableViewController storyboardIdentifier="updateGameTVC" id="Bh7-Yj-JJ3" customClass="UpdateGameTableViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
@@ -1096,24 +1099,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="22E-N6-n6l">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="編輯比賽名稱＆日期" id="nKk-Pq-peD">
-                                    <barButtonItem key="rightBarButtonItem" systemItem="save" id="v7l-rI-lKL">
-                                        <connections>
-                                            <action selector="clickSave:" destination="Bh7-Yj-JJ3" id="xqb-k5-gQy"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </navigationItem>
-                            </items>
-                        </navigationBar>
                         <sections>
                             <tableViewSection id="gEx-aN-Ele">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="IcN-Sz-zUg">
-                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="IcN-Sz-zUg" id="lna-63-kFh">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1135,7 +1125,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="mXY-uy-6vb">
-                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mXY-uy-6vb" id="GOS-Te-iUa">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1146,6 +1136,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="didEndOnExit:" destination="Bh7-Yj-JJ3" eventType="editingDidEndOnExit" id="XUS-MI-p7c"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -1157,7 +1150,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Pcc-6e-Glp">
-                                        <rect key="frame" x="0.0" y="132" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Pcc-6e-Glp" id="haR-vk-aAJ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
@@ -1187,7 +1180,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="227" id="QPX-5O-YNY">
-                                        <rect key="frame" x="0.0" y="176" width="375" height="227"/>
+                                        <rect key="frame" x="0.0" y="132" width="375" height="227"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QPX-5O-YNY" id="qx4-9q-U0o">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="226.5"/>
@@ -1219,6 +1212,13 @@
                             <outlet property="delegate" destination="Bh7-Yj-JJ3" id="Yf7-Tx-dIL"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="比賽名稱" id="3aG-gg-L34">
+                        <barButtonItem key="rightBarButtonItem" title="存檔" id="qra-hE-sFe">
+                            <connections>
+                                <action selector="clickSave:" destination="Bh7-Yj-JJ3" id="xgV-dV-3im"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="datePicker" destination="aUu-zc-91a" id="waB-bI-qt7"/>
                         <outlet property="lbShowDate" destination="9Xz-ca-QnR" id="mCf-76-s3z"/>
@@ -1227,7 +1227,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ob-vJ-KB2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1497" y="564"/>
+            <point key="canvasLocation" x="1476" y="551"/>
         </scene>
         <!--詳細資訊-->
         <scene sceneID="Gf7-oN-RY9">

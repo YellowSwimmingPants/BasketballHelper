@@ -5,7 +5,6 @@ class PeriodTableViewController: UITableViewController {
     var gameName: String?
     var gameDate: String?
     var startingLineup: NSMutableArray?
-    //var gameDatas = [GameDataCount]()
     var gameDatas = NSMutableArray()
     var period: Int?
     

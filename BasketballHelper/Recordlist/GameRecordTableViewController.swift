@@ -1,14 +1,22 @@
 import UIKit
 
-class GameRecordTableViewController: UITableViewController {
+class GameRecordTableViewController: UITableViewController, UISearchBarDelegate {
     @IBOutlet weak var searchBar: UISearchBar!
     let url_server = URL(string: common_url_user + "GameServlet")
     var games = [Game]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        games.append(Game("name", "date"))
+        addKeyboardObserver()
+
         tableViewAddRefreshControl()
+        games.append(Game(0, "A", "a"))
+        games.append(Game(1, "B", "b"))
+        games.append(Game(2, "C", "c"))
+        games.append(Game(3, "D", "d"))
+        games.append(Game(4, "E", "e"))
+        games.append(Game(5, "F", "f"))
+        games.append(Game(6, "G", "g"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,6 +33,8 @@ class GameRecordTableViewController: UITableViewController {
     }
     
     @objc func showAllGames(){
+        
+        //TODO:
         let requestParam = ["action" : "getAll"]
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
@@ -127,3 +137,36 @@ class GameRecordTableViewController: UITableViewController {
     }
     
 }
+
+extension GameRecordTableViewController {
+    func hideKeyboard() {
+        searchBar.resignFirstResponder()
+    }
+    
+    func addKeyboardObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(notification: Notification) {
+        // 能取得鍵盤高度就讓view上移鍵盤高度，否則上移view的1/3高度
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRect = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRect.height
+            view.frame.origin.y = -keyboardHeight / 2
+        } else {
+            view.frame.origin.y = -view.frame.height / 3
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: Notification) {
+        view.frame.origin.y = 0
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+}
+
