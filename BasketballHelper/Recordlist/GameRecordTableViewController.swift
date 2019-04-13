@@ -133,6 +133,7 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate 
             let game = games[indexPath!.row]
             let gameDetailTVC = segue.destination as? GameDetailTableViewController
             gameDetailTVC!.game = game
+            
         }
     }
     

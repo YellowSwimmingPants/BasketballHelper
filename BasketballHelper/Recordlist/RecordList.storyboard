@@ -508,7 +508,7 @@
         <!--球員名稱-->
         <scene sceneID="tcB-gr-aoD">
             <objects>
-                <viewController id="QsB-IB-IUA" sceneMemberID="viewController">
+                <viewController id="QsB-IB-IUA" customClass="PlayerDataCountViewController" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nrA-lc-oK2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

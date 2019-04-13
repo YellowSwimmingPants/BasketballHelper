@@ -3,7 +3,6 @@ import UIKit
 class GameDetailTableViewController: UITableViewController {
     var game: Game!
     var players = [Page_playerList]()
-    var gameDatas = [GameDataCount]()
     let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
     
     override func viewDidLoad() {
