@@ -44,6 +44,7 @@
 		C70EC83C225CC7A300CCBEAF /* JoinTeam.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C70EC83B225CC7A300CCBEAF /* JoinTeam.storyboard */; };
 		C70EC83E225CCBE100CCBEAF /* Homepage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C70EC83D225CCBE100CCBEAF /* Homepage.storyboard */; };
 		C7221B90225B82C0004101C5 /* BuildTeamTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7221B8F225B82C0004101C5 /* BuildTeamTableViewController.swift */; };
+		C731966F2261F3B500E0519E /* CalendarCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C731966E2261F3B500E0519E /* CalendarCollectionView.swift */; };
 		C736BAFD2243628400D84AD6 /* TeamMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BAFC2243628400D84AD6 /* TeamMemberViewController.swift */; };
 		C736BAFF224362FE00D84AD6 /* ManagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BAFE224362FE00D84AD6 /* ManagerTableViewController.swift */; };
 		C736BB02224398F700D84AD6 /* HomepageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C736BB01224398F700D84AD6 /* HomepageViewController.swift */; };
@@ -122,6 +123,7 @@
 		C70EC83B225CC7A300CCBEAF /* JoinTeam.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = JoinTeam.storyboard; sourceTree = "<group>"; };
 		C70EC83D225CCBE100CCBEAF /* Homepage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Homepage.storyboard; sourceTree = "<group>"; };
 		C7221B8F225B82C0004101C5 /* BuildTeamTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildTeamTableViewController.swift; sourceTree = "<group>"; };
+		C731966E2261F3B500E0519E /* CalendarCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCollectionView.swift; sourceTree = "<group>"; };
 		C736BAFC2243628400D84AD6 /* TeamMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamMemberViewController.swift; sourceTree = "<group>"; };
 		C736BAFE224362FE00D84AD6 /* ManagerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagerTableViewController.swift; sourceTree = "<group>"; };
 		C736BB01224398F700D84AD6 /* HomepageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomepageViewController.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 				C742141A223B99C9000D3E0E /* BillBoardEditTableViewController.swift */,
 				C7421418223B9196000D3E0E /* BillBoardViewController.swift */,
 				C77F5DF72240DE4800BDBE42 /* BillBoard.swift */,
+				C731966E2261F3B500E0519E /* CalendarCollectionView.swift */,
 			);
 			path = BillBoard;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 				33FD82D72240A01300DB2B95 /* PlayerList.swift in Sources */,
 				333A7722225B2A2D005E50F3 /* PlayerBarChart.swift in Sources */,
 				33D37FCE224DFEA5000A3DE6 /* PlayerData.swift in Sources */,
+				C731966F2261F3B500E0519E /* CalendarCollectionView.swift in Sources */,
 				C7DE4CF8223F7D360013E7AB /* UserInfoTableViewController.swift in Sources */,
 				711FB65822374F9000AD7483 /* GameRecordTableViewController.swift in Sources */,
 				71C078CA225A1E0400536766 /* ChooseStartingLineupTableViewController.swift in Sources */,

@@ -83,6 +83,7 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
                         DispatchQueue.main.async {
                             self.billBoardTableView.reloadData()
                             self.calendarCollectionView.reloadData()
+                            self.calendarCollectionView.layoutIfNeeded()
                         }
                     }
                 }
@@ -198,12 +199,14 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
         components.month = components.month! - 1
         calculation()
         calendarCollectionView.reloadData()
+        calendarCollectionView.layoutIfNeeded()
     }
     
     @IBAction func clickNext(_ sender: Any) {
         components.month = components.month! + 1
         calculation()
         calendarCollectionView.reloadData()
+        calendarCollectionView.layoutIfNeeded()
     }
     
     func createGesture() {
@@ -261,6 +264,7 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
                     DispatchQueue.main.async {
                         self.showBillBoard(teamInfo: self.users.teamInfo)
                         self.calendarCollectionView.reloadData()
+                        self.calendarCollectionView.layoutIfNeeded()
                         showToast(view: self.view, message: "有新的公告")
                     }
                 }
