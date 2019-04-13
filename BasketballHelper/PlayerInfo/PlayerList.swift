@@ -109,7 +109,7 @@ class PlayerList: UITableViewController {
             playerUpdate.player = player
             self.navigationController?.pushViewController(playerUpdate, animated: true)
         })
-        edit.backgroundColor = UIColor(red: 189/255, green: 255/255, blue: 255/255, alpha: 1)
+        edit.backgroundColor = UIColor(red: 255/255, green: 134/255, blue: 0/255, alpha: 1)
 
         // 左滑時顯示Delete按鈕
         let delete = UITableViewRowAction(style: .destructive, title: "\u{1f5d1}\n Delete", handler: { (action, indexPath) in
@@ -138,6 +138,7 @@ class PlayerList: UITableViewController {
                     }
             })
         })
+        delete.backgroundColor = UIColor(red: 255/255, green: 134/255, blue: 0/255, alpha: 1)
         return [delete, edit]
     }
 

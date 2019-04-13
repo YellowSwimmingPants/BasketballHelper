@@ -23,6 +23,7 @@ class InsertPlayer: UIViewController,UIImagePickerControllerDelegate, UINavigati
         super.viewDidLoad()
         let userInfo = userDefault.data(forKey: "userDefault")
         users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
+        addKeyboardObserver()
     }
     @IBAction func clickTackPicture(_ sender: Any) {
         imagePicker(type: .camera)
@@ -51,6 +52,7 @@ class InsertPlayer: UIViewController,UIImagePickerControllerDelegate, UINavigati
     }
     
     
+ 
     @IBAction func clickSave(_ sender: Any) {
         let name = tfName.text == nil ? "" : tfName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let nickname = tfNickName.text == nil ? "" : tfNickName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -91,6 +93,40 @@ class InsertPlayer: UIViewController,UIImagePickerControllerDelegate, UINavigati
             }
         }
       }
+    
+    @IBAction func didEndOnExit(_ sender: Any) { }
+    
+    
+    
+   
+    func addKeyboardObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(notification: Notification) {
+        // 能取得鍵盤高度就讓view上移鍵盤高度，否則上移view的1/3高度
+        if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRect = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRect.height
+            view.frame.origin.y = -keyboardHeight / 2.9
+        } else {
+            view.frame.origin.y = -view.frame.height / 3
+        }
+    }
+
+    @objc func keyboardWillHide(notification: Notification) {
+        view.frame.origin.y = 0
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(true)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    
+  
 }
     
 

@@ -168,8 +168,8 @@
 				33FD82D62240A01300DB2B95 /* PlayerList.swift */,
 				333A7721225B2A2D005E50F3 /* PlayerBarChart.swift */,
 				33E5618F2246188C00936171 /* PlayerCell.swift */,
-				33D165242244E68600E6D94A /* playerUpdate.swift */,
 				334E441F223FD13E0055D0EC /* PlayerDetail.swift */,
+				33D165242244E68600E6D94A /* playerUpdate.swift */,
 				334E4421223FD7EC0055D0EC /* PlayerInformation.swift */,
 				33D37FCD224DFEA5000A3DE6 /* PlayerData.swift */,
 			);
