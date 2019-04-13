@@ -3,7 +3,10 @@
 import UIKit
 
 class CreateGameTableViewController: UITableViewController, UINavigationControllerDelegate {
-    
+    var gameName: String?
+    var gameDate: String?
+    var startingLineup = NSMutableArray()
+
     @IBOutlet weak var tfGameName: UITextField!
     var dateString: String?
 //    let players = ["王小平", "蔡小甫", "李小銓", "陳小志", "黃老師"]
@@ -27,34 +30,16 @@ class CreateGameTableViewController: UITableViewController, UINavigationControll
         lbShowDate.text = DateFormatter.localizedString(from: datePicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
     }
     
-    @IBAction func clickDone(_ sender: Any) {
-        saveData()
-        let controller = storyboard?.instantiateViewController(withIdentifier: "PeriodTVC");
-        present(controller!, animated: true, completion: nil)
-        
-//        var requestParam = [String: String]()
-//        requestParam["action"] = "gameInsert"
-//        requestParam["game"] = try! String(data: JSONEncoder().encode(game), encoding: .utf8)
-//        executeTask(self.url_server!, requestParam) { (data, response, error) in
-//            if error == nil {
-//                if data != nil {
-//                    if let result = String(data: data!, encoding: .utf8) {
-//                        if let count = Int(result) {
-//                            DispatchQueue.main.async {
-//                                // 新增成功則回前頁
-//                                if count != 0 {                                            self.navigationController?.popViewController(animated: true)
-//                                } else {
-//                                    showSimpleAlert(message: "insert failed", viewController: self)
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            } else {
-//                print(error!.localizedDescription)
-//            }
-//        }
-        
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+            if identifier == "segueDone" {
+                if tfGameName.text != "" && startingLineup.count > 0 {
+                    return true
+                } else {
+                    showToast(view: self.view, message: "請輸入比賽名稱並選擇至少一位場上球員")
+                    return false
+                }
+            }
+        return true
     }
     
     func toggleDatePicker() {
@@ -78,13 +63,15 @@ class CreateGameTableViewController: UITableViewController, UINavigationControll
         }
     }
     
-    func saveData() {
-        let userDefaults = UserDefaults.standard
-        let gameName = tfGameName.text == nil ? "" : tfGameName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let gameDate = lbShowDate.text == nil ? "" : lbShowDate.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        userDefaults.set(gameName, forKey: "gameName")
-        userDefaults.set(gameDate, forKey: "gameDate")
-        userDefaults.synchronize()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? PeriodTableViewController{
+            controller.gameName = tfGameName.text
+            controller.gameDate = lbShowDate.text
+            controller.startingLineup = startingLineup
+        } else if let controller = segue.destination as? ChooseStartingLineupTableViewController{
+                controller.startingLineup = self.startingLineup
+                controller.delegate = self
+        }
     }
     
 }

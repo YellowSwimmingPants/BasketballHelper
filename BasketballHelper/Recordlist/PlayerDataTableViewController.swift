@@ -1,34 +1,41 @@
-//
-//  PlayerDataTableViewController.swift
-//  BasketballHelper
-//
-//  Created by 李宜銓 on 2019/3/15.
-//  Copyright © 2019 李宜銓. All rights reserved.
-//
-
 import UIKit
 
-var actions = [Action]()
-
 class PlayerDataTableViewController: UITableViewController {
-    
+    var actions = [Action]()
+    var gameDatas: NSMutableArray?
+    var gameData: GameDataCount?
+    var playerName: String?
+    var controller: SegmentBarViewController!
+//    var delegate: StartingLineupViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
-        actions.append(Action("罰球進球", 0))
-        actions.append(Action("罰球不進", 0))
-        actions.append(Action("2分進球", 0))
-        actions.append(Action("2分不進", 0))
-        actions.append(Action("3分進球", 0))
-        actions.append(Action("3分不進", 0))
-        actions.append(Action("犯規", 0))
-        actions.append(Action("進攻籃板", 0))
-        actions.append(Action("防守籃板", 0))
-        actions.append(Action("失誤", 0))
-        actions.append(Action("抄截", 0))
-        actions.append(Action("助攻", 0))
-        actions.append(Action("阻攻", 0))
+        self.title = playerName
+        actions.append(Action("罰球進球", gameData!.FT!))
+        actions.append(Action("罰球不進", gameData!.FTL!))
+        actions.append(Action("2分進球", gameData!.FG!))
+        actions.append(Action("2分不進", gameData!.FGL!))
+        actions.append(Action("3分進球", gameData!.TPM!))
+        actions.append(Action("3分不進", gameData!.TPL!))
+        actions.append(Action("犯規", gameData!.Foul!))
+        actions.append(Action("進攻籃板", gameData!.OfnReb!))
+        actions.append(Action("防守籃板", gameData!.DefReb!))
+        actions.append(Action("失誤", gameData!.TurnOver!))
+        actions.append(Action("抄截", gameData!.Steal!))
+        actions.append(Action("助攻", gameData!.Assist!))
+        actions.append(Action("阻攻", gameData!.Block!))
+        tableView.reloadData()
     }
-
+    
+//    override func viewWillDisappear(_ animated: Bool) {
+//        var gameDatas = delegate!.gameDatas
+//        for i in 0..<gameDatas.count {
+//            if gameDatas[i].PlayerID == gameData?.PlayerID && gameDatas[i].Period == gameData?.Period{
+//                gameDatas[i] = gameData!
+//                break
+//            }
+//        }
+//    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -41,11 +48,41 @@ class PlayerDataTableViewController: UITableViewController {
         let cellID = "actionCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! ActionTableViewCell
         cell.lbActionName.text = actions[indexPath.row].actionName
-        
+        cell.lbActionCount.text = String(actions[indexPath.row].actionCount)
         cell.tag = indexPath.row
         
 //        cell.textLabel?.text = action
         return cell
+    }
+    
+    func updateData(_ index: Int?) {
+        if actions[index!].actionName == "罰球進球" {
+            gameData!.FT! = actions[index!].actionCount
+        } else if actions[index!].actionName == "罰球不進"{
+            gameData!.FTL! = actions[index!].actionCount
+        } else if actions[index!].actionName == "2分進球"{
+            gameData!.FG! = actions[index!].actionCount
+        } else if actions[index!].actionName == "2分不進"{
+            gameData!.FGL! = actions[index!].actionCount
+        } else if actions[index!].actionName == "3分進球"{
+            gameData!.TPM! = actions[index!].actionCount
+        } else if actions[index!].actionName == "3分不進"{
+            gameData!.TPL! = actions[index!].actionCount
+        } else if actions[index!].actionName == "犯規"{
+            gameData!.Foul! = actions[index!].actionCount
+        } else if actions[index!].actionName == "進攻籃板"{
+            gameData!.OfnReb! = actions[index!].actionCount
+        } else if actions[index!].actionName == "防守籃板"{
+            gameData!.DefReb! = actions[index!].actionCount
+        } else if actions[index!].actionName == "失誤"{
+            gameData!.TurnOver! = actions[index!].actionCount
+        } else if actions[index!].actionName == "抄截"{
+            gameData!.Steal! = actions[index!].actionCount
+        } else if actions[index!].actionName == "助攻"{
+            gameData!.Assist! = actions[index!].actionCount
+        } else if actions[index!].actionName == "阻攻"{
+            gameData!.Block! = actions[index!].actionCount
+        }
     }
     
     @IBAction func clickMinus(_ sender: UIButton) {
@@ -56,6 +93,9 @@ class PlayerDataTableViewController: UITableViewController {
         } else {
             actions[index!].actionCount = 0
         }
+        
+        updateData(index)
+        
         let tableViewCell = sender.superview?.superview as! ActionTableViewCell
         tableViewCell.lbActionCount.text = String(actions[index!].actionCount)
         
@@ -65,58 +105,27 @@ class PlayerDataTableViewController: UITableViewController {
 //        print(sender.superview?.superview?.tag)
         let index = sender.superview?.superview?.tag
         actions[index!].actionCount += 1
+        updateData(index)
         let tableViewCell = sender.superview?.superview as! ActionTableViewCell
         tableViewCell.lbActionCount.text = String(actions[index!].actionCount)
     }
     
-    @IBAction func clickSave(_ sender: Any) {
+    @IBAction func clickGiveup(_ sender: Any) {
+//        for i in 0..<gameDatas!.count {
+//            let gameDt = gameDatas![i] as! GameDataCount
+//            if gameDt.PlayerID == gameData!.PlayerID {
+//                gameDatas!.removeObject(at: i)
+//                break
+//            }
+//        }
         
+        gameDatas?.forEach({ (data) in
+            print(data)
+        })
+        print("remove", gameData)
+        
+        gameDatas?.remove(gameData!)
+//        controller = storyboard!.instantiateViewController(withIdentifier: "segController")
+        self.navigationController?.popViewController(animated: true)
     }
-    
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

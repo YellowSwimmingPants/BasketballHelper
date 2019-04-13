@@ -1,10 +1,18 @@
 import UIKit
 
 class PeriodTableViewController: UITableViewController {
-
+    let url_server = URL(string: common_url_user + "GameServlet")
+    var gameName: String?
+    var gameDate: String?
+    var startingLineup: NSMutableArray?
+    //var gameDatas = [GameDataCount]()
+    var gameDatas = NSMutableArray()
+    var period: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = gameName
+        
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -15,14 +23,56 @@ class PeriodTableViewController: UITableViewController {
         return 5
     }
     
-    @IBAction func clickCancel(_ sender: Any) {
-         let gameRecordTVC = self.storyboard?.instantiateViewController(withIdentifier: "gameRecordTVC") as! GameRecordTableViewController
-        self.navigationController?.popToViewController(gameRecordTVC, animated: true)
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? SegmentBarViewController {
+            if segue.identifier == "PeriodOne" {
+                period = 1
+            } else if segue.identifier == "PeriodTwo" {
+                period = 2
+            } else if segue.identifier == "PeriodThree" {
+                period = 3
+            } else if segue.identifier == "PeriodFour" {
+                period = 4
+            } else if segue.identifier == "OverTime" {
+                period = 5
+            }
+            controller.startingLineup = startingLineup
+            controller.gameDatas = gameDatas
+            controller.period = period
+        }
+    }
+ 
+    @IBAction func clickSave(_ sender: Any) {
+        let game = Game(0, gameName!, gameDate!)
+        var requestParam = [String: String]()
+        requestParam["action"] = "gameInsert"
+        requestParam["game"] = try! String(data: JSONEncoder().encode(game), encoding: .utf8)
+        executeTask(self.url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    if let result = String(data: data!, encoding: .utf8) {
+                        if let count = Int(result) {
+                            DispatchQueue.main.async {
+                                if count != 0 {
+                                    // 新增成功要做啥寫這
+                                    self.navigationController?.popToRootViewController(animated: true)
+                                } else {
+                                    showSimpleAlert(message: "存檔失敗，請檢察網路連線", viewController: self)
+                                }
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                }
+                
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
     }
     
-    @IBAction func clickSave(_ sender: Any) {
-        
-    }
     
     
 

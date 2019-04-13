@@ -117,10 +117,13 @@ class GameRecordTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        let controller = segue.destination as? Gamed
-//        if let row = tableView.indexPathForSelectedRow?.row {
-//            controller?.playerList = games[row]
-//        }
+        if segue.identifier == "gameDetail" {
+            /* indexPath(for:)可以取得UITableViewCell的indexPath */
+            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+            let game = games[indexPath!.row]
+            let gameDetailTVC = segue.destination as? GameDetailTableViewController
+            gameDetailTVC!.game = game
+        }
     }
     
 }

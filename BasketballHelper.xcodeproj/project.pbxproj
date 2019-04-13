@@ -19,7 +19,6 @@
 		33E561902246188C00936171 /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E5618F2246188C00936171 /* PlayerCell.swift */; };
 		33FD82D72240A01300DB2B95 /* PlayerList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FD82D62240A01300DB2B95 /* PlayerList.swift */; };
 		33FD82D92240DA3100DB2B95 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33FD82D82240DA3100DB2B95 /* Common.swift */; };
-		710139472243AAD9005B6028 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710139462243AAD9005B6028 /* Player.swift */; };
 		710139492243AAFE005B6028 /* CreateGameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710139482243AAFE005B6028 /* CreateGameTableViewController.swift */; };
 		710791A6225A089000CA8FF6 /* PeriodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710791A5225A089000CA8FF6 /* PeriodTableViewController.swift */; };
 		710D366D223238A3008A683C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710D366C223238A3008A683C /* AppDelegate.swift */; };
@@ -93,7 +92,6 @@
 		33E5618F2246188C00936171 /* PlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
 		33FD82D62240A01300DB2B95 /* PlayerList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerList.swift; sourceTree = "<group>"; };
 		33FD82D82240DA3100DB2B95 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
-		710139462243AAD9005B6028 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		710139482243AAFE005B6028 /* CreateGameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameTableViewController.swift; sourceTree = "<group>"; };
 		710791A5225A089000CA8FF6 /* PeriodTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodTableViewController.swift; sourceTree = "<group>"; };
 		710D3669223238A3008A683C /* BasketballHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BasketballHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,7 +240,6 @@
 				7141F19F22448C6900A83C36 /* Action.swift */,
 				7141F1A12244BE8B00A83C36 /* ActionTableViewCell.swift */,
 				714B473A223B366200134AA0 /* Game.swift */,
-				710139462243AAD9005B6028 /* Player.swift */,
 				710D368222323AFD008A683C /* PlayerListViewController.swift */,
 				710139482243AAFE005B6028 /* CreateGameTableViewController.swift */,
 				711FB65722374F9000AD7483 /* GameRecordTableViewController.swift */,
@@ -443,7 +440,6 @@
 				334E4424223FD8B60055D0EC /* InsertPlayer.swift in Sources */,
 				C795A19A22605021009556A6 /* MemberTableViewCell.swift in Sources */,
 				C7DE4D02223F8E140013E7AB /* InviteViewController.swift in Sources */,
-				710139472243AAD9005B6028 /* Player.swift in Sources */,
 				710D368322323AFD008A683C /* PlayerListViewController.swift in Sources */,
 				334E4420223FD13E0055D0EC /* PlayerDetail.swift in Sources */,
 				C736BAFF224362FE00D84AD6 /* ManagerTableViewController.swift in Sources */,
