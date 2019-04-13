@@ -844,6 +844,25 @@
                         <viewLayoutGuide key="safeArea" id="q0W-0C-0HB"/>
                     </view>
                     <navigationItem key="navigationItem" title="球員名稱" id="X3Y-lN-kUj"/>
+                    <connections>
+                        <outlet property="assist" destination="gyI-FC-S2s" id="5Vj-n7-Hur"/>
+                        <outlet property="block" destination="jDl-Ha-Ydz" id="M08-qT-QD6"/>
+                        <outlet property="defReb" destination="kNf-gq-egS" id="ytR-ff-CDo"/>
+                        <outlet property="fg" destination="48W-lL-rlS" id="A1c-HU-BXk"/>
+                        <outlet property="fgPecentage" destination="HoD-fj-qsN" id="ZYO-OU-nqt"/>
+                        <outlet property="fgl" destination="20w-Gs-1XN" id="yx5-aI-bcx"/>
+                        <outlet property="foul" destination="KvQ-W1-XBd" id="E3W-GF-Jru"/>
+                        <outlet property="ft" destination="vCJ-aa-Owf" id="eYR-g5-i4y"/>
+                        <outlet property="ftPercentage" destination="cKt-ZM-MVf" id="h5S-pm-EAP"/>
+                        <outlet property="ftl" destination="ZY4-oK-Ywa" id="kIq-ic-jNY"/>
+                        <outlet property="ofnReb" destination="4of-2A-a9k" id="mwp-ez-BcD"/>
+                        <outlet property="steal" destination="njm-wH-HUU" id="4m2-Qe-bRO"/>
+                        <outlet property="totalScore" destination="DIV-87-Gbe" id="PeK-Nu-VbP"/>
+                        <outlet property="tpPercentage" destination="Bz9-Wm-4t2" id="j4N-BC-PEv"/>
+                        <outlet property="tpl" destination="QRu-Az-xdX" id="d8o-BP-R2y"/>
+                        <outlet property="tpm" destination="3Pr-37-AsH" id="Qlg-ct-CId"/>
+                        <outlet property="turnOver" destination="Oga-h3-6WT" id="DEn-BL-tF1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XBm-vu-g2e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1261,7 +1280,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="PNt-xu-euV" kind="show" id="z7M-Dy-nuj"/>
+                                            <segue destination="PNt-xu-euV" kind="show" identifier="PeriodOne" id="z7M-Dy-nuj"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="JAH-qx-lWE" style="IBUITableViewCellStyleDefault" id="sEY-0l-c8d">
@@ -1281,7 +1300,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="PNt-xu-euV" kind="show" id="7Xh-er-ENf"/>
+                                            <segue destination="PNt-xu-euV" kind="show" identifier="PeriodTwo" id="7Xh-er-ENf"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="kCt-Hl-Rlw" style="IBUITableViewCellStyleDefault" id="1oo-PI-Iwd">
@@ -1301,7 +1320,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="PNt-xu-euV" kind="show" id="uSh-Ft-gmM"/>
+                                            <segue destination="PNt-xu-euV" kind="show" identifier="PeriodThree" id="uSh-Ft-gmM"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="sVp-k0-m4f" style="IBUITableViewCellStyleDefault" id="rO3-aw-MIW">
@@ -1321,7 +1340,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="PNt-xu-euV" kind="show" id="lKP-5x-EMx"/>
+                                            <segue destination="PNt-xu-euV" kind="show" identifier="PeriodFour" id="lKP-5x-EMx"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="LT4-6b-7GZ" style="IBUITableViewCellStyleDefault" id="DLa-WK-EHF">
@@ -1341,7 +1360,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="PNt-xu-euV" kind="show" id="Ffk-zd-WLx"/>
+                                            <segue destination="PNt-xu-euV" kind="show" identifier="OverTime" id="Ffk-zd-WLx"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1397,7 +1416,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Ffk-zd-WLx"/>
+        <segue reference="z7M-Dy-nuj"/>
         <segue reference="G1h-re-uNM"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
