@@ -10,13 +10,13 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate 
         addKeyboardObserver()
 
         tableViewAddRefreshControl()
-        games.append(Game(0, "A", "a"))
-        games.append(Game(1, "B", "b"))
-        games.append(Game(2, "C", "c"))
-        games.append(Game(3, "D", "d"))
-        games.append(Game(4, "E", "e"))
-        games.append(Game(5, "F", "f"))
-        games.append(Game(6, "G", "g"))
+//        games.append(Game(0, "A", "a"))
+//        games.append(Game(1, "B", "b"))
+//        games.append(Game(2, "C", "c"))
+//        games.append(Game(3, "D", "d"))
+//        games.append(Game(4, "E", "e"))
+//        games.append(Game(5, "F", "f"))
+//        games.append(Game(6, "G", "g"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
