@@ -55,10 +55,11 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         if let userInfo = userDefault.data(forKey: "userDefault") {
         users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
         let teamInfo = users.teamInfo
+        navigationItem.title = teamInfo
         socket = WebSocket(url: URL(string: url_server_ws + teamInfo)!)
         addSocketCallBacks()
         socket.connect()
@@ -260,6 +261,7 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
                     DispatchQueue.main.async {
                         self.showBillBoard(teamInfo: self.users.teamInfo)
                         self.calendarCollectionView.reloadData()
+                        showToast(view: self.view, message: "有新的公告")
                     }
                 }
             }

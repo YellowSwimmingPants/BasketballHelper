@@ -4,7 +4,6 @@
 //
 //  Created by 王克平 on 2019/4/8.
 //  Copyright © 2019 李宜銓. All rights reserved.
-//
 
 import UIKit
 
@@ -20,6 +19,8 @@ class BuildTeamTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+                guard let statusBar = UIApplication.shared.value(forKeyPath: "statusBarWindow.statusBar") as? UIView else { return }
+                statusBar.backgroundColor = UIColor(red: 254/255, green: 122/255, blue: 47/255, alpha: 1)
         let userInfo = userDefault.data(forKey: "userDefault")
         users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
     }

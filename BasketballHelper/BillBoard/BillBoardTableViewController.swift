@@ -12,7 +12,6 @@ import Starscream
 
 class BillBoardTableViewController: UITableViewController {
     
-    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var typeDetailLabel: UILabel!
@@ -26,8 +25,8 @@ class BillBoardTableViewController: UITableViewController {
     let url_server_ws = "ws://127.0.0.1:8080/myBasketballHelper_Web/BillBoardWebsocketServer/"
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationBar.topItem?.title = billBoard.title
         
+        navigationItem.title = billBoard.title
         dateLabel.text = billBoard.dateStr
         typeLabel.text = billBoard.type
         if typeLabel.text == "公告" {
@@ -49,11 +48,6 @@ class BillBoardTableViewController: UITableViewController {
         socket = WebSocket(url: URL(string: url_server_ws + teamInfo)!)
         socket.connect()
     }
-    
-    @IBAction func clickDone(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     
     @IBAction func clickDelete(_ sender: Any) {
         let alertController = UIAlertController(title: "", message: "是否確定刪除", preferredStyle: .alert)

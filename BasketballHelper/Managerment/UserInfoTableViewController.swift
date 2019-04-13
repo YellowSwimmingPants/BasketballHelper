@@ -36,7 +36,7 @@ class UserInfoTableViewController: UITableViewController {
         let userAccount = users.userAccount
         requestParam["action"] = "getImage"
         requestParam["userAccount"] = userAccount
-        requestParam["imageSize"] = userImageView.frame.width
+        requestParam["imageSize"] = userImageView.frame.width*2
         var image: UIImage?
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
