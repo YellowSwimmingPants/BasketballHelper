@@ -4,6 +4,9 @@ import UIKit
 class PlayerList: UITableViewController {
     let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
     var players = [Page_playerList]()
+    let userDefault = UserDefaults()
+    var users: UserInfo!
+    var userInfo: UserInfo!
     
    
     override func viewDidLoad() {
@@ -22,17 +25,20 @@ class PlayerList: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        let userInfo = userDefault.data(forKey: "userDefault")
+        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
         showAllPlayers()
     }
     
     @objc func showAllPlayers(){
-        let requestParam = ["action" : "getAll"]
+        var requestParam = [String:Any] ()
+        requestParam = ["action" : "getAll"]
+        requestParam["teamID"] = users.teamInfo
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
                     // 將輸入資料列印出來除錯用
                     print("input: \(String(data: data!, encoding: .utf8)!)")
-                    
                     if let result = try? JSONDecoder().decode([Page_playerList].self, from: data!) {
                         self.players = result
                         DispatchQueue.main.async {
@@ -72,9 +78,9 @@ class PlayerList: UITableViewController {
         // 尚未取得圖片，另外開啟task請求
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
-        requestParam["id"] = player.id
+        requestParam["playerID"] = player.playerID
         // 圖片寬度為tableViewCell的1/4，ImageView的寬度也建議在storyboard加上比例設定的constraint
-        requestParam["imageSize"] = cell.frame.width / 5//圖片顯示寬度除5
+        requestParam["imageSize"] = cell.frame.width / 4//圖片顯示寬度除5
         var image: UIImage?
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
@@ -97,7 +103,7 @@ class PlayerList: UITableViewController {
     // 左滑修改與刪除資料
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         // 左滑時顯示Edit按鈕
-        let edit = UITableViewRowAction(style: .default, title: "\u{2600}\n edit", handler: { (action, indexPath) in
+        let edit = UITableViewRowAction(style: .default, title: "\u{2699}\n edit", handler: { (action, indexPath) in
             let playerUpdate = self.storyboard?.instantiateViewController(withIdentifier: "playerUpdate") as! PlayerUpdate
             let player = self.players[indexPath.row]
             playerUpdate.player = player
@@ -106,11 +112,11 @@ class PlayerList: UITableViewController {
         edit.backgroundColor = UIColor(red: 189/255, green: 255/255, blue: 255/255, alpha: 1)
 
         // 左滑時顯示Delete按鈕
-        let delete = UITableViewRowAction(style: .destructive, title: "\u{267A}\n Delete", handler: { (action, indexPath) in
+        let delete = UITableViewRowAction(style: .destructive, title: "\u{1f5d1}\n Delete", handler: { (action, indexPath) in
             // 尚未刪除server資料
             var requestParam = [String: Any]()
             requestParam["action"] = "playerDelete"
-            requestParam["playerId"] = self.players[indexPath.row].id
+            requestParam["playerId"] = self.players[indexPath.row].playerID
             executeTask(self.url_server!, requestParam
                 , completionHandler: { (data, response, error) in
                     if error == nil {

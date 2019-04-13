@@ -19,16 +19,16 @@ class PlayerBarChart: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         let item = ["罰球中", "F", "兩分中", "F", "三分中", "F", "犯規", "Ofn", "Def", "失誤", "抄截", " 火鍋", "助攻"]
-        let playerdata: [Double] = [chart.FT!, chart.FTL!, chart.FG!, chart.FGL!, chart.TPM!, chart.TPL!, chart.Foul!, chart.OfnReb!, chart.DefReb!, chart.TurnOver!,chart.Steal!, chart.Block!, chart.Assist!]
+        let playerdata: [Int] = [chart.FT!, chart.FTL!, chart.FG!, chart.FGL!, chart.TPM!, chart.TPL!, chart.Foul!, chart.OfnReb!, chart.DefReb!, chart.TurnOver!,chart.Steal!, chart.Block!, chart.Assist!]
         setChar(dataPoints: item, values: playerdata)
        
     }
     
-    func setChar(dataPoints: [String], values: [Double]){
+    func setChar(dataPoints: [String], values: [Int]){
         var dataEntries: [BarChartDataEntry] = []
         
         for i in 0..<dataPoints.count {
-            let dataEntry = BarChartDataEntry(x:Double(i),  y:values[i])
+            let dataEntry = BarChartDataEntry(x:Double(Int(i)),  y:Double(values[i]))
             dataEntries.append(dataEntry)
     }
         

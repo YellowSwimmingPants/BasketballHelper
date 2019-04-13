@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--成員資料-->
+        <!--球員名單-->
         <scene sceneID="VzA-jB-1Mx">
             <objects>
                 <tableViewController id="Poe-eu-7GI" customClass="PlayerList" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
@@ -73,7 +73,7 @@
                             <outlet property="delegate" destination="Poe-eu-7GI" id="R9x-0z-YDF"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="成員資料" id="e4f-AR-mo4">
+                    <navigationItem key="navigationItem" title="球員名單" id="e4f-AR-mo4">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Xgd-AO-SGe">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -86,10 +86,10 @@
             </objects>
             <point key="canvasLocation" x="989.60000000000002" y="104.7976011994003"/>
         </scene>
-        <!--Player Detail-->
+        <!--個人球員資料-->
         <scene sceneID="07j-9o-v6o">
             <objects>
-                <viewController storyboardIdentifier="DetailVC" id="qfL-LW-zGM" customClass="PlayerDetail" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailVC" title="個人球員資料" id="qfL-LW-zGM" customClass="PlayerDetail" customModule="BasketballHelper" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wAA-6D-OMy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -206,19 +206,19 @@
                                     <constraint firstAttribute="width" constant="142" id="XH0-wS-tBD"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="FDt-bv-xDc">
-                                <rect key="frame" x="217" y="226" width="138" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="-15" translatesAutoresizingMaskIntoConstraints="NO" id="FDt-bv-xDc">
+                                <rect key="frame" x="217" y="226" width="135" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AmH-1E-Uk6">
-                                        <rect key="frame" x="0.0" y="0.0" width="84" height="30"/>
-                                        <state key="normal" title="Button" image="camera"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="102" height="48"/>
+                                        <state key="normal" title="Button" image="camera-icon"/>
                                         <connections>
                                             <action selector="clickTackPicture:" destination="IlJ-kX-w9G" eventType="touchUpInside" id="U59-uw-sc2"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VYy-Lc-ONE">
-                                        <rect key="frame" x="108" y="0.0" width="30" height="30"/>
-                                        <state key="normal" image="briefcase"/>
+                                        <rect key="frame" x="87" y="0.0" width="48" height="48"/>
+                                        <state key="normal" image="photos-icon"/>
                                         <connections>
                                             <action selector="imagePicker:" destination="IlJ-kX-w9G" eventType="touchUpInside" id="iTx-sa-H0a"/>
                                         </connections>
@@ -319,26 +319,26 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uhv-vU-Iit">
-                                <rect key="frame" x="217" y="78" width="142" height="92"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Uhv-vU-Iit">
+                                <rect key="frame" x="184" y="30" width="175" height="140"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="142" id="qvr-j0-2Wr"/>
+                                    <constraint firstAttribute="width" constant="175" id="JtC-GS-ENR"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="Az3-WD-keB">
-                                <rect key="frame" x="213" y="178" width="142" height="30"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Az3-WD-keB">
+                                <rect key="frame" x="205" y="178" width="150" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2mE-fI-3Vq">
-                                        <rect key="frame" x="0.0" y="0.0" width="84" height="30"/>
-                                        <state key="normal" title="Button" image="camera"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="102" height="48"/>
+                                        <state key="normal" title="Button" image="camera-icon"/>
                                         <connections>
                                             <action selector="clickTackPicture:" destination="IlJ-kX-w9G" eventType="touchUpInside" id="Klm-Ye-Pf3"/>
                                             <action selector="clickTakePicture:" destination="Kvf-vz-bIA" eventType="touchUpInside" id="D1f-OE-ASP"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2MF-b5-Er1">
-                                        <rect key="frame" x="112" y="0.0" width="30" height="30"/>
-                                        <state key="normal" image="briefcase"/>
+                                        <rect key="frame" x="102" y="0.0" width="48" height="48"/>
+                                        <state key="normal" image="photos-icon"/>
                                         <connections>
                                             <action selector="clickPickPicture:" destination="Kvf-vz-bIA" eventType="touchUpInside" id="hBZ-fd-fq3"/>
                                             <action selector="imagePicker:" destination="IlJ-kX-w9G" eventType="touchUpInside" id="dge-2w-AQ5"/>
@@ -401,17 +401,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Lz4-lv-ETo" firstAttribute="bottom" secondItem="Uhv-vU-Iit" secondAttribute="bottom" id="3k8-ek-Rdg"/>
                             <constraint firstItem="Az3-WD-keB" firstAttribute="trailing" secondItem="WVk-FX-WK2" secondAttribute="trailing" id="7dm-R1-gfZ"/>
-                            <constraint firstItem="Uhv-vU-Iit" firstAttribute="trailing" secondItem="yAL-78-PvC" secondAttribute="trailingMargin" id="82N-b9-gee"/>
-                            <constraint firstItem="Az3-WD-keB" firstAttribute="top" secondItem="Uhv-vU-Iit" secondAttribute="bottom" constant="8" symbolic="YES" id="Blb-NC-K2I"/>
                             <constraint firstItem="D27-Q8-PxV" firstAttribute="trailing" secondItem="Lz4-lv-ETo" secondAttribute="trailing" id="G8w-z7-ufC"/>
+                            <constraint firstItem="Uhv-vU-Iit" firstAttribute="bottom" secondItem="Lz4-lv-ETo" secondAttribute="bottom" id="I8S-Qk-79h"/>
+                            <constraint firstItem="Az3-WD-keB" firstAttribute="top" secondItem="Uhv-vU-Iit" secondAttribute="bottom" constant="8" symbolic="YES" id="JL5-tP-abt"/>
                             <constraint firstItem="D27-Q8-PxV" firstAttribute="leading" secondItem="Lz4-lv-ETo" secondAttribute="leading" id="MQQ-3r-5FO"/>
-                            <constraint firstItem="Uhv-vU-Iit" firstAttribute="top" secondItem="8fs-nm-7j9" secondAttribute="top" constant="58" id="MQb-YV-ZT6"/>
-                            <constraint firstItem="Uhv-vU-Iit" firstAttribute="leading" secondItem="D27-Q8-PxV" secondAttribute="trailing" constant="51" id="ObQ-T9-IT6"/>
                             <constraint firstItem="WVk-FX-WK2" firstAttribute="top" secondItem="yAL-78-PvC" secondAttribute="top" constant="234" id="Pvs-af-Dky"/>
+                            <constraint firstItem="Uhv-vU-Iit" firstAttribute="top" secondItem="8fs-nm-7j9" secondAttribute="top" constant="10" id="U0b-F6-ObP"/>
+                            <constraint firstItem="Uhv-vU-Iit" firstAttribute="trailing" secondItem="yAL-78-PvC" secondAttribute="trailingMargin" id="oGE-NZ-MfY"/>
                             <constraint firstItem="WVk-FX-WK2" firstAttribute="leading" secondItem="8fs-nm-7j9" secondAttribute="leading" constant="20" id="qOe-63-20Y"/>
                             <constraint firstItem="8fs-nm-7j9" firstAttribute="trailing" secondItem="WVk-FX-WK2" secondAttribute="trailing" constant="20" id="qrw-En-WpL"/>
+                            <constraint firstItem="Uhv-vU-Iit" firstAttribute="leading" secondItem="D27-Q8-PxV" secondAttribute="trailing" constant="18" id="rAk-dz-Mc1"/>
                             <constraint firstItem="Lz4-lv-ETo" firstAttribute="top" secondItem="D27-Q8-PxV" secondAttribute="bottom" constant="22" id="rJz-8c-kh2"/>
                             <constraint firstItem="WVk-FX-WK2" firstAttribute="top" secondItem="Lz4-lv-ETo" secondAttribute="bottom" constant="64" id="xXn-Ho-kHz"/>
                         </constraints>
@@ -431,13 +431,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rZT-l9-uMg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1625" y="-794"/>
+            <point key="canvasLocation" x="1624.8" y="-794.75262368815595"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--球員名單-->
         <scene sceneID="tf0-B5-pNC">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oaE-U2-H5e" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="pn4-uM-tE1"/>
+                    <tabBarItem key="tabBarItem" title="球員名單" image="friends-icon" id="pn4-uM-tE1"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="20S-l4-7FJ">
@@ -602,7 +602,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8j1-Zn-7kT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1533.5999999999999" y="789.35532233883066"/>
+            <point key="canvasLocation" x="1759" y="972"/>
         </scene>
         <!--球員數據-->
         <scene sceneID="8wk-2x-NOJ">
@@ -805,6 +805,34 @@
                                     <segue destination="f1J-4J-jbX" kind="show" identifier="barchart" id="GPF-BZ-ckA"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GC6-x2-kUO">
+                                <rect key="frame" x="318" y="59" width="14" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ybv-KC-ZhY">
+                                <rect key="frame" x="318" y="88" width="14" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQ1-Dq-9CX">
+                                <rect key="frame" x="318" y="117" width="14" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="球員個人生涯總數據" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMc-DW-fna">
+                                <rect key="frame" x="109" y="0.0" width="156" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="w5K-SV-MSE"/>
@@ -865,8 +893,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="briefcase" width="30" height="30"/>
-        <image name="camera" width="30" height="30"/>
+        <image name="camera-icon" width="48" height="48"/>
+        <image name="friends-icon" width="36" height="28"/>
+        <image name="photos-icon" width="48" height="48"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

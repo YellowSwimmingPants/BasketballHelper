@@ -96,7 +96,7 @@ class PlayerUpdate: UIViewController,UIImagePickerControllerDelegate, UINavigati
         tfEmail.text = player.email
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
-        requestParam["id"] = player.id
+        requestParam["id"] = player.playerID
         // 圖片寬度 = 螢幕寬度的
         requestParam["imageSize"] = view.frame.width
         executeTask(url_server!, requestParam) { (data, response, error) in

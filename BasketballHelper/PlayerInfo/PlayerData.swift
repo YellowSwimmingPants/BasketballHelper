@@ -42,8 +42,8 @@ class PlayerData: UIViewController {
     @objc func showData(){
         var requestParam = [String : Any]()
         requestParam["action"] = "getData"
-        requestParam["id"] = dataSegue.name!
-        print(dataSegue.name!)
+        requestParam["playerID"] = dataSegue.playerID
+        print(dataSegue.playerID)
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -64,25 +64,25 @@ class PlayerData: UIViewController {
     func dataShow(_ data: Data) {
         playdata = try? JSONDecoder().decode(GameDataCount.self, from: data)
         //        print(String(describing: playdata!.Assist!))
-        lbFT.text = String(format: "%.0f", playdata!.FT!)
-        lbFTL.text = String(format: "%.0f", playdata!.FTL!)
-        lbFG.text = String(format: "%.0f", playdata!.FG!)
-        lbFGL.text = String(format: "%.0f",playdata!.FGL!)
-        lbTPM.text = String(format: "%.0f",playdata!.TPM!)
-        lbTPL.text = String(format: "%.0f",playdata!.TPL!)
-        lbFOUL.text = String(format: "%.0f",playdata!.Foul!)
-        lbOfnReb.text = String(format: "%.0f",playdata!.OfnReb!)
-        lbDefReb.text = String(format: "%.0f", playdata!.DefReb!)
-        lbTurnOver.text = String(format: "%.0f", playdata!.Assist!)
-        lbSteal.text = String(format: "%.0f", playdata!.Steal!)
-        lbBlock.text = String(format: "%.0f", playdata!.Block!)
-        lbAssist.text = String(format: "%.0f", playdata!.Assist!)
+        lbFT.text = String(describing: playdata!.FT!)
+        lbFTL.text = String(describing: playdata!.FTL!)
+        lbFG.text = String(describing: playdata!.FG!)
+        lbFGL.text = String(describing:playdata!.FGL!)
+        lbTPM.text = String(describing:playdata!.TPM!)
+        lbTPL.text = String(describing:playdata!.TPL!)
+        lbFOUL.text = String(describing:playdata!.Foul!)
+        lbOfnReb.text = String(describing:playdata!.OfnReb!)
+        lbDefReb.text = String(describing: playdata!.DefReb!)
+        lbTurnOver.text = String(describing: playdata!.Assist!)
+        lbSteal.text = String(describing: playdata!.Steal!)
+        lbBlock.text = String(describing: playdata!.Block!)
+        lbAssist.text = String(describing: playdata!.Assist!)
         //A1 = 罰球總平均
-        A1.text = String(format: "%.1f",(playdata!.FT!/(playdata!.FT!+playdata!.FTL!))*(hundred))
+        A1.text = String(format: "%.1f",(Double(playdata!.FT!)/(Double(playdata!.FT!+playdata!.FTL!)))*(hundred))
         //A2 = 兩分總平均
-        A2.text = String(format: "%.1f",(playdata!.FG!/(playdata!.FG!+playdata!.FGL!))*(hundred))
+        A2.text = String(format: "%.1f",(Double(playdata!.FG!)/(Double(playdata!.FG!+playdata!.FGL!)))*(hundred))
         //A3 = 三分總平均
-        A3.text = String(format: "%.1f",(playdata!.TPM!/(playdata!.TPM!+playdata!.TPL!))*(hundred))
+        A3.text = String(format: "%.1f",(Double(playdata!.TPM!)/(Double(playdata!.TPM!+playdata!.TPL!)))*(hundred))
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){

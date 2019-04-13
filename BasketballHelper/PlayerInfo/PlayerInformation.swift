@@ -28,7 +28,7 @@ class PlayerInformation: UIViewController, UINavigationControllerDelegate {
         lbEmail.text = playerInformation.email!
         var requestParam = [String: Any]()
         requestParam["action"] = "getImage"
-        requestParam["id"] = playerInformation.id
+        requestParam["playerID"] = playerInformation.playerID
         // 圖片寬度 = 螢幕寬度的
         requestParam["imageSize"] = view.frame.width
         executeTask(url_server!, requestParam) { (data, response, error) in

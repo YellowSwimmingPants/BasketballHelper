@@ -13,11 +13,16 @@ class InsertPlayer: UIViewController,UIImagePickerControllerDelegate, UINavigati
     @IBOutlet weak var tfEmail: UITextField!
     @IBOutlet weak var label: UILabel!
     
+    let userDefault = UserDefaults()
+    var users: UserInfo!
+    var userInfo: UserInfo!
     let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
     var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let userInfo = userDefault.data(forKey: "userDefault")
+        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
     }
     @IBAction func clickTackPicture(_ sender: Any) {
         imagePicker(type: .camera)
@@ -54,8 +59,9 @@ class InsertPlayer: UIViewController,UIImagePickerControllerDelegate, UINavigati
         let number = tfNumber.text == nil ? "" : tfNumber.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let position = tfPosition.text == nil ? "" : tfPosition.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let email = tfEmail.text == nil ? "" : tfEmail.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+
         
-        let player = Page_playerList(0, name, nickname, phone, birthday, number, position, email )
+        let player = Page_playerList(0, name, nickname, phone, birthday, number, position, email, users.teamInfo)
         
         var requestParam = [String: String]()
         requestParam["action"] = "playerInsert"

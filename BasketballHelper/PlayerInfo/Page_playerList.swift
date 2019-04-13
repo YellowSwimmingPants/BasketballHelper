@@ -1,5 +1,5 @@
 class Page_playerList: Codable {
-    var id: Int
+    var playerID: Int
     var name: String?
     var nickname: String?
     var phone: String?
@@ -7,9 +7,10 @@ class Page_playerList: Codable {
     var number: String?
     var position: String?
     var email: String?
+    var teamID: String?
     
-    init(_ id: Int, _ name:String,_ nickname:String,_ phone:String,_ birthday:String,_ number:String,_ position:String,_ email:String) {
-        self.id = id
+    init(_ playerID: Int, _ name:String,_ nickname:String,_ phone:String,_ birthday:String,_ number:String,_ position:String,_ email:String,_ teamID:String) {
+        self.playerID = playerID
         self.name = name
         self.nickname = nickname
         self.phone = phone
@@ -17,6 +18,7 @@ class Page_playerList: Codable {
         self.number = number
         self.position = position
         self.email = email
+        self.teamID = teamID
     }
     
 }
