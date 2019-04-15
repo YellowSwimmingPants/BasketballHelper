@@ -12,7 +12,6 @@ class PlayerList: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewAddRefreshControl()
-        
     }
     
       /** tableView加上下拉更新功能 */

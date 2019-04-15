@@ -1,6 +1,6 @@
 import UIKit
 
-class PlayerDataCountViewController: UIViewController {
+class PlayerEachPeriodDataViewController: UIViewController {
     @IBOutlet weak var totalScore: UILabel!
     @IBOutlet weak var ft: UILabel!
     @IBOutlet weak var ftl: UILabel!
@@ -18,12 +18,13 @@ class PlayerDataCountViewController: UIViewController {
     @IBOutlet weak var defReb: UILabel!
     @IBOutlet weak var foul: UILabel!
     @IBOutlet weak var turnOver: UILabel!
-    
+    var playerName: String!
+    var playerData: GameDataCount!
+    //待修改
     let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
     var player: Page_playerList!
-    //待修改
-    var playerData: GameDataCount!
-    var playerName: String!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = playerName
@@ -32,9 +33,8 @@ class PlayerDataCountViewController: UIViewController {
     
     @objc func showData(){
         var requestParam = [String : Any]()
-        requestParam["action"] = "getSingleData"
+        requestParam["action"] = "getData"
         requestParam["playerID"] = player.playerID
-//        requestParam["gameID"] = 
         print(player.playerID)
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
@@ -54,7 +54,6 @@ class PlayerDataCountViewController: UIViewController {
     func dataShow(_ data: Data) {
         playerData = try? JSONDecoder().decode(GameDataCount.self, from: data)
         //        print(String(describing: playdata!.Assist!))
-        totalScore.text = String(describing: (playerData!.FT! + (playerData!.FG!*2) + (playerData!.TPM!*3)))
         ft.text = String(describing: playerData!.FT!)
         ftl.text = String(describing: playerData!.FTL!)
         fg.text = String(describing: playerData!.FG!)
@@ -74,5 +73,10 @@ class PlayerDataCountViewController: UIViewController {
         fgPecentage.text = String(format: "%.1f",((Double(playerData!.FG!) / (Double(playerData!.FG!+playerData!.FGL!))) * 100))
         
         tpPercentage.text = String(format: "%.1f",((Double(playerData!.TPM!) / (Double(playerData!.TPM!+playerData!.TPL!))) * 100))
+    }
+    
+    
+    @IBAction func editGameData(_ sender: Any) {
+        
     }
 }

@@ -1,8 +1,8 @@
 import UIKit
 
 class PeriodFromDBTableViewController: UITableViewController {
-    let url_server = URL(string: common_url_user + "GameServlet")
-    var gameDatas = [GameDataCount]()
+//    let url_server = URL(string: common_url_user + "GameServlet")
+//    var gameDatas = [GameDataCount]()
     var gameName: String?
     var period: Int?
     
@@ -34,7 +34,6 @@ class PeriodFromDBTableViewController: UITableViewController {
             } else if segue.identifier == "OverTime" {
                 period = 5
             }
-            
             controller.period = period
         }
     }

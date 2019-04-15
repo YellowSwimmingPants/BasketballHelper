@@ -4,10 +4,11 @@ class ChooseStartingLineupTableViewController: UITableViewController {
     let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
     var players = [Page_playerList]()
     var count = 0
-//    var startingLineup = [Page_playerList]()
     var startingLineup: NSMutableArray!
-//    var players = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
     var delegate: CreateGameTableViewController?
+    var users: UserInfo!
+    let userDefault = UserDefaults()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewAddRefreshControl()
@@ -24,23 +25,17 @@ class ChooseStartingLineupTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        let userInfo = userDefault.data(forKey: "userDefault")
+        //TODO:
+        users = UserInfo(2, "mark", "123", "mark", "k@gmail.com", 1, "CP103");
+//        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
         showAllPlayers()
     }
 
     @objc func showAllPlayers(){
-        self.players.append(Page_playerList(0, "A", "a", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(1, "B", "b", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(2, "C", "c", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(3, "D", "d", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(4, "E", "e", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(5, "F", "f", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(6, "G", "g", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(7, "H", "h", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(8, "I", "i", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(9, "J", "j", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.tableView.reloadData()
-        return //TODO:
-        let requestParam = ["action" : "getAll"]
+        var requestParam = [String:Any] ()
+        requestParam = ["action" : "getAll"]
+        requestParam["teamID"] = users.teamInfo
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {

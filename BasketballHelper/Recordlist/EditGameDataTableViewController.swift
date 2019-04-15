@@ -1,12 +1,12 @@
 import UIKit
 
-class PlayerDataTableViewController: UITableViewController {
+class EditGameDataTableViewController: UITableViewController {
     var actions = [Action]()
-    var gameDatas: NSMutableArray?
-    var gameData: GameDataCount?
     var playerName: String?
-    var controller: SegmentBarViewController!
-//    var delegate: StartingLineupViewController?
+    var gameData: GameDataCount?
+    let url_server = URL(string: common_url_user + "PlayerServlet")
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = playerName
@@ -24,23 +24,16 @@ class PlayerDataTableViewController: UITableViewController {
         actions.append(Action("助攻", gameData!.Assist!))
         actions.append(Action("阻攻", gameData!.Block!))
         tableView.reloadData()
+        showData()
     }
-    
-//    override func viewWillDisappear(_ animated: Bool) {
-//        var gameDatas = delegate!.gameDatas
-//        for i in 0..<gameDatas.count {
-//            if gameDatas[i].PlayerID == gameData?.PlayerID && gameDatas[i].Period == gameData?.Period{
-//                gameDatas[i] = gameData!
-//                break
-//            }
-//        }
-//    }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
         return actions.count
     }
 
@@ -52,7 +45,7 @@ class PlayerDataTableViewController: UITableViewController {
         cell.tag = indexPath.row
         return cell
     }
-    
+
     func updateData(_ index: Int?) {
         if actions[index!].actionName == "罰球進球" {
             gameData!.FT! = actions[index!].actionCount
@@ -83,9 +76,40 @@ class PlayerDataTableViewController: UITableViewController {
         }
     }
     
+    func loadCountData(_ index: Int?, _ data: Data) {
+        gameData = try? JSONDecoder().decode(GameDataCount.self, from: data)
+        if actions[index!].actionName == "罰球進球" {
+            actions[index!].actionCount = gameData!.FT!
+        } else if actions[index!].actionName == "罰球不進"{
+            actions[index!].actionCount = gameData!.FTL!
+        } else if actions[index!].actionName == "2分進球"{
+            actions[index!].actionCount = gameData!.FG!
+        } else if actions[index!].actionName == "2分不進"{
+            actions[index!].actionCount = gameData!.FGL!
+        } else if actions[index!].actionName == "3分進球"{
+            actions[index!].actionCount = gameData!.TPM!
+        } else if actions[index!].actionName == "3分不進"{
+            actions[index!].actionCount = gameData!.TPL!
+        } else if actions[index!].actionName == "犯規"{
+            actions[index!].actionCount = gameData!.Foul!
+        } else if actions[index!].actionName == "進攻籃板"{
+            actions[index!].actionCount = gameData!.OfnReb!
+        } else if actions[index!].actionName == "防守籃板"{
+            actions[index!].actionCount = gameData!.DefReb!
+        } else if actions[index!].actionName == "失誤"{
+            actions[index!].actionCount = gameData!.TurnOver!
+        } else if actions[index!].actionName == "抄截"{
+            actions[index!].actionCount = gameData!.Steal!
+        } else if actions[index!].actionName == "助攻"{
+            actions[index!].actionCount = gameData!.Assist!
+        } else if actions[index!].actionName == "阻攻"{
+            actions[index!].actionCount = gameData!.Block!
+        }
+    }
+    
     @IBAction func clickMinus(_ sender: UIButton) {
         let index = sender.superview?.superview?.tag
-//        print(sender.superview?.superview?.tag)
+        //        print(sender.superview?.superview?.tag)
         if(actions[index!].actionCount > 0){
             actions[index!].actionCount -= 1
         } else {
@@ -100,7 +124,7 @@ class PlayerDataTableViewController: UITableViewController {
     }
     
     @IBAction func clickPlus(_ sender: UIButton) {
-//        print(sender.superview?.superview?.tag)
+        //        print(sender.superview?.superview?.tag)
         let index = sender.superview?.superview?.tag
         actions[index!].actionCount += 1
         updateData(index)
@@ -108,22 +132,32 @@ class PlayerDataTableViewController: UITableViewController {
         tableViewCell.lbActionCount.text = String(actions[index!].actionCount)
     }
     
-    @IBAction func clickGiveup(_ sender: Any) {
-//        for i in 0..<gameDatas!.count {
-//            let gameDt = gameDatas![i] as! GameDataCount
-//            if gameDt.PlayerID == gameData!.PlayerID {
-//                gameDatas!.removeObject(at: i)
-//                break
-//            }
-//        }
+    @IBAction func clickSave(_ sender: Any) {
         
-        gameDatas?.forEach({ (data) in
-            print(data)
-        })
-        print("remove", gameData)
-        
-        gameDatas?.remove(gameData!)
-//        controller = storyboard!.instantiateViewController(withIdentifier: "segController")
-        self.navigationController?.popViewController(animated: true)
     }
+    
+    @objc func showData(){
+        var requestParam = [String : Any]()
+        requestParam["action"] = "getPeriodData"
+//        requestParam["playerID"] =
+//        requestParam["period"] =
+//        requestParam["game"] =
+        
+        executeTask(url_server!, requestParam) { (data, response, error) in
+            if error == nil {
+                if data != nil {
+                    // 將輸入資料列印出來除錯用
+                    print("input: \(String(data: data!, encoding: .utf8)!)")
+                    DispatchQueue.main.async {
+//                        self.loadCountData(<#T##index: Int?##Int?#>, data)
+                    }
+                }
+            } else {
+                print(error!.localizedDescription)
+            }
+        }
+        
+    }
+    
+    
 }

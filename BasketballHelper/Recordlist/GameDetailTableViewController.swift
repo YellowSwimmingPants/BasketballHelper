@@ -4,6 +4,9 @@ class GameDetailTableViewController: UITableViewController {
     var game: Game!
     var players = [Page_playerList]()
     let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
+    var users: UserInfo!
+    var userInfo: UserInfo!
+    let userDefault = UserDefaults()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -11,12 +14,18 @@ class GameDetailTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        let userInfo = userDefault.data(forKey: "userDefault")
+        //TODO:
+        users = UserInfo(2, "mark", "123", "mark", "k@gmail.com", 1, "CP103");
+        //        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
         showAllPlayers()
     }
 
     @objc func showAllPlayers(){
         //要改為只顯示該場比賽的
-        let requestParam = ["action" : "getAll"]
+        var requestParam = [String : Any]()
+        requestParam = ["action" : "getGamePlayer"]
+//        requestParam = ["gameID"] = 
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -54,6 +63,16 @@ class GameDetailTableViewController: UITableViewController {
         //        cell?.textLabel?.text = player.name
         cell?.textLabel?.text = player.name
         return cell!
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "playerGameDataSegue" {
+            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+            let player = players[indexPath!.row]
+            let playerDataCountVC = segue.destination as? PlayerDataCountViewController
+            playerDataCountVC!.playerName = player.name
+            
+        }
     }
     
 }

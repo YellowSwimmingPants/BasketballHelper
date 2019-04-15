@@ -1,14 +1,14 @@
 import UIKit
 
-class GameRecordTableViewController: UITableViewController, UISearchBarDelegate {
+class GameRecordTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
     @IBOutlet weak var searchBar: UISearchBar!
     let url_server = URL(string: common_url_user + "GameServlet")
     var games = [Game]()
+    var searchedGames = [Game]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addKeyboardObserver()
-
         tableViewAddRefreshControl()
 //        games.append(Game(0, "A", "a"))
 //        games.append(Game(1, "B", "b"))
@@ -33,7 +33,6 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate 
     }
     
     @objc func showAllGames(){
-        
         //TODO:
         let requestParam = ["action" : "getAll"]
         executeTask(url_server!, requestParam) { (data, response, error) in
@@ -41,7 +40,6 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate 
                 if data != nil {
                     // 將輸入資料列印出來除錯用
                     print("input: \(String(data: data!, encoding: .utf8)!)")
-                    
                     if let result = try? JSONDecoder().decode([Game].self, from: data!) {
                         self.games = result
                         DispatchQueue.main.async {
@@ -101,7 +99,7 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate 
             // 尚未刪除server資料
             var requestParam = [String: Any]()
             requestParam["action"] = "gameDelete"
-            requestParam["gameID"] = self.games[indexPath.row].id
+            requestParam["gameId"] = self.games[indexPath.row].id
             executeTask(self.url_server!, requestParam
                 , completionHandler: { (data, response, error) in
                     if error == nil {
@@ -135,6 +133,14 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate 
             gameDetailTVC!.game = game
             
         }
+    }
+    
+    func searchGame() {
+       
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
     
 }

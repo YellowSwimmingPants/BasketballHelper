@@ -6,10 +6,8 @@ class ChangePlayerViewController: UIViewController, UITableViewDataSource, UITab
     var players = [Page_playerList]()
     var isSelected = [Bool]()
     let url_server = URL(string: common_url + "PlayerServlet")
-//    var startingLineup = [Page_playerList]()
     var startingLineup: NSMutableArray?
     var count = 0
-//    var players = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17"]
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -81,9 +79,6 @@ class ChangePlayerViewController: UIViewController, UITableViewDataSource, UITab
                 }
             }
         }
-            
-            
-        
     }
     
     
@@ -103,22 +98,6 @@ class ChangePlayerViewController: UIViewController, UITableViewDataSource, UITab
     }
 
     @objc func showAllPlayers() {
-        self.players.append(Page_playerList(0, "A", "a", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(1, "B", "b", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(2, "C", "c", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(3, "D", "d", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(4, "E", "e", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(5, "F", "f", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(6, "G", "g", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(7, "H", "h", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(8, "I", "i", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        self.players.append(Page_playerList(9, "J", "j", "0344", "0101", "XXX", "7", "A@A.a", "0"))
-        setArrayValue()
-        print(players.count)
-        print(isSelected.count)
-
-        self.tableView.reloadData()
-        return //TODO:
         let requestParam = ["action" : "getAll"]
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {

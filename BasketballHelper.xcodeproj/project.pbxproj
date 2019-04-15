@@ -33,6 +33,8 @@
 		714B4739223B1F3E00134AA0 /* PlayerDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B4738223B1F3E00134AA0 /* PlayerDataTableViewController.swift */; };
 		714B473B223B366200134AA0 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714B473A223B366200134AA0 /* Game.swift */; };
 		714B473E223B7F6B00134AA0 /* RecordList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 714B473D223B7F6B00134AA0 /* RecordList.storyboard */; };
+		715685362263842F00C8E488 /* PlayerEachPeriodDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 715685352263842F00C8E488 /* PlayerEachPeriodDataViewController.swift */; };
+		71712BCF22638F7A0028AAE7 /* EditGameDataTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71712BCE22638F7A0028AAE7 /* EditGameDataTableViewController.swift */; };
 		71C078CA225A1E0400536766 /* ChooseStartingLineupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71C078C9225A1E0400536766 /* ChooseStartingLineupTableViewController.swift */; };
 		71DD0DED2261EF000019E8EC /* PeriodFromDBTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DD0DEC2261EF000019E8EC /* PeriodFromDBTableViewController.swift */; };
 		71DD0DEF2261EF860019E8EC /* PlayersEachPeriodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71DD0DEE2261EF860019E8EC /* PlayersEachPeriodTableViewController.swift */; };
@@ -112,6 +114,8 @@
 		714B4738223B1F3E00134AA0 /* PlayerDataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDataTableViewController.swift; sourceTree = "<group>"; };
 		714B473A223B366200134AA0 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		714B473D223B7F6B00134AA0 /* RecordList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RecordList.storyboard; sourceTree = "<group>"; };
+		715685352263842F00C8E488 /* PlayerEachPeriodDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerEachPeriodDataViewController.swift; sourceTree = "<group>"; };
+		71712BCE22638F7A0028AAE7 /* EditGameDataTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGameDataTableViewController.swift; sourceTree = "<group>"; };
 		71C078C9225A1E0400536766 /* ChooseStartingLineupTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseStartingLineupTableViewController.swift; sourceTree = "<group>"; };
 		71DD0DEC2261EF000019E8EC /* PeriodFromDBTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodFromDBTableViewController.swift; sourceTree = "<group>"; };
 		71DD0DEE2261EF860019E8EC /* PlayersEachPeriodTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayersEachPeriodTableViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				714B473D223B7F6B00134AA0 /* RecordList.storyboard */,
+				715685352263842F00C8E488 /* PlayerEachPeriodDataViewController.swift */,
 				71DD0DF02261FCE80019E8EC /* PlayerDataCountViewController.swift */,
 				71DD0DEC2261EF000019E8EC /* PeriodFromDBTableViewController.swift */,
 				71DD0DEE2261EF860019E8EC /* PlayersEachPeriodTableViewController.swift */,
@@ -255,6 +260,7 @@
 				710139482243AAFE005B6028 /* CreateGameTableViewController.swift */,
 				711FB65722374F9000AD7483 /* GameRecordTableViewController.swift */,
 				714B4738223B1F3E00134AA0 /* PlayerDataTableViewController.swift */,
+				71712BCE22638F7A0028AAE7 /* EditGameDataTableViewController.swift */,
 			);
 			path = Recordlist;
 			sourceTree = "<group>";
@@ -457,11 +463,13 @@
 				710D368322323AFD008A683C /* PlayerListViewController.swift in Sources */,
 				334E4420223FD13E0055D0EC /* PlayerDetail.swift in Sources */,
 				C736BAFF224362FE00D84AD6 /* ManagerTableViewController.swift in Sources */,
+				71712BCF22638F7A0028AAE7 /* EditGameDataTableViewController.swift in Sources */,
 				C742141D223BA1EC000D3E0E /* BillBoardTableViewController.swift in Sources */,
 				C736BB0C2243C2BD00D84AD6 /* RegisterTableViewController.swift in Sources */,
 				33E561902246188C00936171 /* PlayerCell.swift in Sources */,
 				C742141B223B99C9000D3E0E /* BillBoardEditTableViewController.swift in Sources */,
 				710791A6225A089000CA8FF6 /* PeriodTableViewController.swift in Sources */,
+				715685362263842F00C8E488 /* PlayerEachPeriodDataViewController.swift in Sources */,
 				C77F5DFD2241E0A100BDBE42 /* UserInfo.swift in Sources */,
 				C736BAFD2243628400D84AD6 /* TeamMemberViewController.swift in Sources */,
 				71FBA32C224DC03F00752520 /* SegmentBarViewController.swift in Sources */,
