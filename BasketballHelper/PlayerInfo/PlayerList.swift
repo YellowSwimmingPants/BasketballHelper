@@ -24,9 +24,10 @@ class PlayerList: UITableViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        let userInfo = userDefault.data(forKey: "userDefault")
-        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
-        showAllPlayers()
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+            showAllPlayers()
+        }
     }
     
     @objc func showAllPlayers(){

@@ -3,7 +3,7 @@ import UIKit
 class GameDetailTableViewController: UITableViewController {
     var game: Game!
     var players = [Page_playerList]()
-    let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
+    let url_server = URL(string: common_url_playerInfo + "GameServlet")
     var users: UserInfo!
     var userInfo: UserInfo!
     let userDefault = UserDefaults()
@@ -16,8 +16,8 @@ class GameDetailTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         let userInfo = userDefault.data(forKey: "userDefault")
         //TODO:
-        users = UserInfo(2, "mark", "123", "mark", "k@gmail.com", 1, "CP103");
-        //        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
+//        users = UserInfo(2, "mark", "123", "mark", "k@gmail.com", 1, "CP103");
+        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
         showAllPlayers()
     }
 
@@ -25,7 +25,7 @@ class GameDetailTableViewController: UITableViewController {
         //要改為只顯示該場比賽的
         var requestParam = [String : Any]()
         requestParam = ["action" : "getGamePlayer"]
-//        requestParam = ["gameID"] = 
+        requestParam["gameID"] = "\(game.id)"
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
