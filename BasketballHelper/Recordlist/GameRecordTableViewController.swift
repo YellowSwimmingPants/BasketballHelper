@@ -5,7 +5,7 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate{
     let url_server = URL(string: common_url_user + "GameServlet")
     var games = [Game]()
     var currentGames = [Game]()
-    //test again
+    //testtesttesttesttesttesttesttesttesttesttest
     
     override func viewDidLoad() {
         super.viewDidLoad()
