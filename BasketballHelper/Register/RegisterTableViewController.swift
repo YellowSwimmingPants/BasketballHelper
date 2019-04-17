@@ -22,18 +22,9 @@ class RegisterTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        if let userInfo = userDefault.data(forKey: "userDefault") {
-//            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
-//            if users.teamInfo.isEmpty {
-//                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "JoinTeam")
-//                self.present(self.viewController, animated: true, completion: nil)
-//            }
-//        }
-//    }
     
     @IBAction func clickCancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
@@ -52,31 +43,32 @@ class RegisterTableViewController: UITableViewController {
             showToast(view: self.view, message: "請輸入暱稱")
         } else if email == "" {
             showToast(view: self.view, message: "請輸入信箱")
-        }
-        let user = UserInfo(0, account!, password!, name!, email!, 0 , "")
-        var userInfo = [String: String]()
-        userInfo["action"] = "insertUser"
-        userInfo["user"] = String(data: try! JSONEncoder().encode(user), encoding: .utf8)
-        executeTask(url_server!, userInfo) { (data, response, error) in
-            if error == nil {
-                if data != nil {
-                    let result = try! JSONDecoder().decode([String : String].self, from: data!)
-                    DispatchQueue.main.async {
-                        if result["success"] == "Yes" {
-                            let newUser = result["userInfo"]
-                            let login = try? JSONDecoder().decode(UserInfo.self, from: newUser!.data(using: .utf8)!)
-                            let loginOK = try! JSONEncoder().encode(login)
-                            self.userDefault.set(loginOK, forKey: "userDefault")
-                            self.userDefault.synchronize()
-                            self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "JoinTeam")
-                            self.present(self.viewController, animated: true, completion: nil)
-                        } else {
-                            showSimpleAlert(message: "註冊失敗", viewController: self)
+        } else {
+            let user = UserInfo(0, account!, password!, name!, email!, 0 , "")
+            var userInfo = [String: String]()
+            userInfo["action"] = "insertUser"
+            userInfo["user"] = String(data: try! JSONEncoder().encode(user), encoding: .utf8)
+            executeTask(url_server!, userInfo) { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        let result = try! JSONDecoder().decode([String : String].self, from: data!)
+                        DispatchQueue.main.async {
+                            if result["success"] == "Yes" {
+                                let newUser = result["userInfo"]
+                                let login = try? JSONDecoder().decode(UserInfo.self, from: newUser!.data(using: .utf8)!)
+                                let loginOK = try! JSONEncoder().encode(login)
+                                self.userDefault.set(loginOK, forKey: "userDefault")
+                                self.userDefault.synchronize()
+                                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "JoinTeam")
+                                self.present(self.viewController, animated: true, completion: nil)
+                            } else {
+                                showSimpleAlert(message: "註冊失敗", viewController: self)
+                            }
                         }
                     }
+                } else {
+                    print(error!.localizedDescription)
                 }
-            } else {
-                print(error!.localizedDescription)
             }
         }
     }
