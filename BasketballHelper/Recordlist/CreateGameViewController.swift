@@ -6,7 +6,7 @@ class CreateGameViewController: UIViewController {
     @IBOutlet weak var tfGameName: UITextField!
     @IBOutlet weak var lbShowDate: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
-//dfbdfbfdbdfb
+//dfbdfbfdbdfbfgndfgdm
     var gameName: String?
     var gameDate: String?
     var startingLineup = NSMutableArray()
