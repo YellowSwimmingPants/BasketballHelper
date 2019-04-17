@@ -59,36 +59,40 @@ class UserInfoEditTableViewController: UITableViewController, UIImagePickerContr
         let userName = userNameTextField.text == nil ? "" : userNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let email = emailTextField.text == nil ? "" : emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let userPassword = passwordTextView.text == nil ? "" : passwordTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let userInfo = userDefault.data(forKey: "userDefault")
-        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
-        let user = UserInfo(0, users.userAccount, userPassword, userName, email, users.priority, users.teamInfo)
-        var requestParam = [String: String]()
-        requestParam["action"] = "userUpdate"
-        requestParam["user"] = try! String(data: JSONEncoder().encode(user), encoding: .utf8)
-        if self.image != nil {
-            requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
-        }
-        executeTask(url_server!, requestParam) { (data, response, error) in
-            if error == nil {
-                if data != nil {
-                    if let result = try? JSONDecoder().decode([String : String].self, from: data!) {
-                        DispatchQueue.main.async {
-                            if result["success"] == "Yes" {
-                                let userLogin = result["userInfo"]
-                                let login = try? JSONDecoder().decode(UserInfo.self, from: userLogin!.data(using: .utf8)!)
-                                let loginOK = try! JSONEncoder().encode(login)
-                                self.userDefault.set(loginOK, forKey: "userDefault")
-                                self.userDefault.synchronize()
-                                self.navigationController?.popViewController(animated: true)
-                            } else {
-                                showSimpleAlert(message: "修改失敗", viewController: self)
+        if userDefault.data(forKey: "userDefault") != nil {
+            let userInfo = userDefault.data(forKey: "userDefault")
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
+            let user = UserInfo(0, users.userAccount, userPassword, userName, email, users.priority, users.teamInfo)
+            var requestParam = [String: String]()
+            requestParam["action"] = "userUpdate"
+            requestParam["user"] = try! String(data: JSONEncoder().encode(user), encoding: .utf8)
+            if self.image != nil {
+                requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()
+            }
+            executeTask(url_server!, requestParam) { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        if let result = try? JSONDecoder().decode([String : String].self, from: data!) {
+                            DispatchQueue.main.async {
+                                if result["success"] == "Yes" {
+                                    let userLogin = result["userInfo"]
+                                    let login = try? JSONDecoder().decode(UserInfo.self, from: userLogin!.data(using: .utf8)!)
+                                    let loginOK = try! JSONEncoder().encode(login)
+                                    self.userDefault.set(loginOK, forKey: "userDefault")
+                                    self.userDefault.synchronize()
+                                    self.navigationController?.popViewController(animated: true)
+                                } else {
+                                    showSimpleAlert(message: "修改失敗", viewController: self)
+                                }
                             }
                         }
                     }
+                } else {
+                    print(error!.localizedDescription)
                 }
-            } else {
-                print(error!.localizedDescription)
             }
+        } else {
+            showToast(view: view, message: "請先註冊")
         }
     }
     

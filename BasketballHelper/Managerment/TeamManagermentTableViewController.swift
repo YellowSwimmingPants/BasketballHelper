@@ -34,8 +34,7 @@ class TeamManagermentTableViewController: UITableViewController {
             alertController.addAction(ok)
             /* 呼叫present()才會跳出Alert Controller */
             if userDefault.data(forKey: "userDefault") == nil {
-                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Register")
-                self.present(self.viewController, animated: true, completion: nil)
+                showToast(view: view, message: "請先註冊")
             } else {
                 self.present(alertController, animated: true, completion:nil)
             }
@@ -53,9 +52,7 @@ class TeamManagermentTableViewController: UITableViewController {
             alertController.addAction(ok)
             /* 呼叫present()才會跳出Alert Controller */
             if userDefault.data(forKey: "userDefault") == nil {
-                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Register")
-                self.present(self.viewController, animated: true, completion: nil)
-            } else {
+                showToast(view: view, message: "請先註冊")            } else {
                 self.present(alertController, animated: true, completion:nil)
             }
         }
