@@ -110,7 +110,7 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="建立球隊" image="createTeam" id="RON-TR-1Za">
-                        <color key="badgeColor" red="0.99747234579999999" green="0.47775173189999998" blue="0.18419095869999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="badgeColor" red="0.99607843137254903" green="0.47843137254901957" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <connections>
                         <outlet property="teamNameTextField" destination="5Xr-7h-646" id="DJ8-xU-jVB"/>

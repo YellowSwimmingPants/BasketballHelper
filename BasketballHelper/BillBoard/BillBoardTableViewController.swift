@@ -30,7 +30,7 @@ class BillBoardTableViewController: UITableViewController {
         dateLabel.text = billBoard.dateStr
         typeLabel.text = billBoard.type
         if typeLabel.text == "公告" {
-            typeDetailLabel.text = "🗓"
+            typeDetailLabel.text = "📜"
         } else if typeLabel.text == "球賽" {
             typeDetailLabel.text = "🏀"
         } else if typeLabel.text == "請假" {

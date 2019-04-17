@@ -160,7 +160,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="219.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="managerment" translatesAutoresizingMaskIntoConstraints="NO" id="34m-In-kex">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noimage" translatesAutoresizingMaskIntoConstraints="NO" id="34m-In-kex">
                                                     <rect key="frame" x="87.5" y="10" width="200" height="200"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="So3-TU-rss"/>
@@ -428,7 +428,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="managerment" translatesAutoresizingMaskIntoConstraints="NO" id="UyG-XI-Gfz">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noimage" translatesAutoresizingMaskIntoConstraints="NO" id="UyG-XI-Gfz">
                                                     <rect key="frame" x="87.5" y="10" width="200" height="200"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="200" id="gMW-TY-V03"/>
@@ -833,6 +833,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="join" translatesAutoresizingMaskIntoConstraints="NO" id="EF1-ex-SJB">
+                                <rect key="frame" x="8" y="68.5" width="359" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="359" id="ivI-eC-bdh"/>
+                                    <constraint firstAttribute="height" constant="95" id="nGB-vF-dfb"/>
+                                </constraints>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5hN-aK-EfA">
                                 <rect key="frame" x="37.5" y="183.5" width="300" height="300"/>
                                 <constraints>
@@ -863,6 +870,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="5hN-aK-EfA" firstAttribute="top" secondItem="EF1-ex-SJB" secondAttribute="bottom" constant="20" id="1Rb-tc-tRx"/>
+                            <constraint firstItem="EF1-ex-SJB" firstAttribute="centerX" secondItem="JN0-Tw-P1H" secondAttribute="centerX" id="Cce-az-Z7T"/>
                             <constraint firstItem="bBu-du-JLR" firstAttribute="trailing" secondItem="A8H-W8-jGf" secondAttribute="trailing" id="JQg-nh-X24"/>
                             <constraint firstItem="bBu-du-JLR" firstAttribute="bottom" secondItem="A8H-W8-jGf" secondAttribute="bottom" id="KcI-vV-8Dl"/>
                             <constraint firstItem="5hN-aK-EfA" firstAttribute="centerX" secondItem="JN0-Tw-P1H" secondAttribute="centerX" id="U2f-Ou-zoJ"/>
@@ -880,11 +889,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cnj-sV-Tsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1854" y="1067"/>
+            <point key="canvasLocation" x="1853.5999999999999" y="1066.4167916041979"/>
         </scene>
     </scenes>
     <resources>
+        <image name="join" width="940" height="180"/>
         <image name="managerment" width="36" height="36"/>
+        <image name="noimage" width="512" height="512"/>
     </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

@@ -144,7 +144,7 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
             gameLabel.isHidden = true
             gameLabel.sizeToFit()
             gameLabel.center = CGPoint(x: cell.contentView.bounds.width/1.25, y: cell.contentView.bounds.height/1.25)
-            eventLabel.text = "🗓"
+            eventLabel.text = "📜"
             eventLabel.isHidden = true
             eventLabel.sizeToFit()
             dayoffLabel.text = "🌡"

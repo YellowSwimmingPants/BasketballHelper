@@ -87,7 +87,7 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let type = types[row]
         if type == "公告" {
-            typeLabel.text = "🗓"
+            typeLabel.text = "📜"
         } else if type == "球賽" {
             typeLabel.text = "🏀"
         } else if type == "請假" {
@@ -103,7 +103,7 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
         let title = titleTextField.text == nil ? "" : titleTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         let content = contextTextView.text == nil ? "" : contextTextView.text?.trimmingCharacters(in: .whitespacesAndNewlines)
         var type = ""
-        if typeLabel.text == "🗓" {
+        if typeLabel.text == "📜" {
             type = "公告"
         } else if typeLabel.text == "🏀" {
             type = "球賽"

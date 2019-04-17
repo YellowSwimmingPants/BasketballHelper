@@ -28,11 +28,13 @@ class UserInfoTableViewController: UITableViewController {
             nameLabel.text = users.userName
             emailLabel.text = users.email
             showImage()
+        } else {
+            self.title = ""
+            accountLabel.text = ""
+            nameLabel.text = ""
+            emailLabel.text = ""
+            
         }
-        self.title = ""
-        accountLabel.text = ""
-        nameLabel.text = ""
-        emailLabel.text = ""
     }
     
     func showImage() {
