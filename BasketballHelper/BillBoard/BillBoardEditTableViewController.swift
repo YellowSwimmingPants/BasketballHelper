@@ -133,8 +133,6 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
                                     self.socket.write(string: text!)
                                 }
                                 self.dismiss(animated: true, completion: nil)
-//                                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Homepage")
-//                                self.present(self.viewController, animated: true, completion: nil)
                             } else {
                                 showSimpleAlert(message: "新增失敗", viewController: self)
                             }
@@ -147,7 +145,7 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
         }
     }
     
-    @IBAction func clickCancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func didEndOnExit(_ sender: Any) {
     }
+    
 }

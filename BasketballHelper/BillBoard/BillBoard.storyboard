@@ -420,6 +420,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="didEndOnExit:" destination="0UZ-rP-4jl" eventType="editingDidEndOnExit" id="XP8-Id-vig"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>

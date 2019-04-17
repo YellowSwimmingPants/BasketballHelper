@@ -90,7 +90,6 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                     <connections>
                                                         <action selector="didEndOnExit:" destination="54A-Si-mB6" eventType="editingDidEndOnExit" id="Ste-KI-2hK"/>
-                                                        <action selector="didEndOnExit:" destination="54A-Si-mB6" eventType="editingDidEnd" id="itA-lu-dei"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
