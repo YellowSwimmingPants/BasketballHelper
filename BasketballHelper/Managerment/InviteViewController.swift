@@ -13,7 +13,9 @@ class InviteViewController: UIViewController {
     let userDefault = UserDefaults()
     var userInfos = [UserInfo]()
     var users: UserInfo!
+    var viewController = UIViewController()
     
+    @IBOutlet weak var registerView: UIView!
     @IBOutlet weak var qrCodeImageView: UIImageView!
     
     override func viewDidLoad() {
@@ -31,7 +33,12 @@ class InviteViewController: UIViewController {
             let qrCodeImage = UIImage(ciImage: ciImage_largeQR)
             qrCodeImageView.image = qrCodeImage
         } else {
-            showToast(view: self.view, message: "沒有找到QRCode")
+            registerView.isHidden = false
         }
+    }
+    
+    @IBAction func clickRegister(_ sender: Any) {
+        viewController = storyboard!.instantiateViewController(withIdentifier: "Register")
+        present(viewController, animated: true, completion: nil)
     }
 }
