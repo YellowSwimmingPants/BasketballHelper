@@ -5,6 +5,7 @@ class PeriodFromDBTableViewController: UITableViewController {
 //    var gameDatas = [GameDataCount]()
     var gameName: String?
     var period: Int?
+    var game: Game!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +36,7 @@ class PeriodFromDBTableViewController: UITableViewController {
                 period = 5
             }
             controller.period = period
+            controller.game = game
         }
     }
     

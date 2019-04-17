@@ -8,6 +8,8 @@ class ChangePlayerViewController: UIViewController, UITableViewDataSource, UITab
     let url_server = URL(string: common_url + "PlayerServlet")
     var startingLineup: NSMutableArray?
     var count = 0
+    var users: UserInfo!
+    let userDefault = UserDefaults()
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -38,7 +40,6 @@ class ChangePlayerViewController: UIViewController, UITableViewDataSource, UITab
 //                break;
 //            }
 //        }
-        
         if isSelected[indexPath.row] {
             cell.accessoryType = .checkmark
             self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: UITableView.ScrollPosition.none)
@@ -59,34 +60,21 @@ class ChangePlayerViewController: UIViewController, UITableViewDataSource, UITab
 //        }
         return cell
     }
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableViewAddRefreshControl()
         count = (startingLineup?.count)!
         tableView.allowsMultipleSelection = true
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let userInfo = userDefault.data(forKey: "userDefault")
+        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
         showAllPlayers()
-
-        for i in 0..<startingLineup!.count {
-            let starting = startingLineup![i] as! Page_playerList
-
-            for (i, player) in players.enumerated() {
-                if player.playerID == starting.playerID {
-                    isSelected[i] = true
-                    break
-                }
-            }
-        }
     }
     
     
-    func setArrayValue() {
-        for _ in 0..<players.count {
-        isSelected.append(false)
-        }
-    }
     
     //    * tableView加上下拉更新功能
     func tableViewAddRefreshControl() {
@@ -98,7 +86,9 @@ class ChangePlayerViewController: UIViewController, UITableViewDataSource, UITab
     }
 
     @objc func showAllPlayers() {
-        let requestParam = ["action" : "getAll"]
+        var requestParam = [String:Any] ()
+        requestParam = ["action" : "getAll"]
+        requestParam["teamID"] = users.teamInfo
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -107,17 +97,30 @@ class ChangePlayerViewController: UIViewController, UITableViewDataSource, UITab
 
                     if let result = try? JSONDecoder().decode([Page_playerList].self, from: data!) {
                         self.players = result
-                        DispatchQueue.main.async {
-                            print("1+\(self.players)")
-                            if let control = self.tableView.refreshControl {
-                                if control.isRefreshing {
-                                    // 停止下拉更新動作
-                                    control.endRefreshing()
+                        // setArrayValue
+                        for _ in 0..<self.players.count {
+                            self.isSelected.append(false)
+                        }
+                        for i in 0..<self.startingLineup!.count {
+                            let starting = self.startingLineup![i] as! Page_playerList
+                            for (i, player) in self.players.enumerated() {
+                                if player.playerID == starting.playerID {
+                                    self.isSelected[i] = true
+                                    break
                                 }
                             }
-                            /* 抓到資料後重刷table view */
-                            self.tableView.reloadData()
                         }
+//                        DispatchQueue.main.async {
+//                            print("1+\(self.players)")
+//                            if let control = self.tableView.refreshControl {
+//                                if control.isRefreshing {
+//                                    // 停止下拉更新動作
+//                                    control.endRefreshing()
+//                                }
+//                            }
+//                            /* 抓到資料後重刷table view */
+//                            self.tableView.reloadData()
+//                        }
                     }
                 }
             } else {

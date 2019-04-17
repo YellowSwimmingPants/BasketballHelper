@@ -18,23 +18,30 @@ class PlayerEachPeriodDataViewController: UIViewController {
     @IBOutlet weak var defReb: UILabel!
     @IBOutlet weak var foul: UILabel!
     @IBOutlet weak var turnOver: UILabel!
-    var playerName: String!
     var playerData: GameDataCount!
     //待修改
-    let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
+    let url_server = URL(string: common_url_playerInfo + "GameServlet")
     var player: Page_playerList!
+    var game: Game!
+    var period: Int!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = playerName
+        self.title = player.name
+        showData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         showData()
     }
     
     @objc func showData(){
         var requestParam = [String : Any]()
-        requestParam["action"] = "getData"
+        requestParam["action"] = "getSinglePeriodData"
         requestParam["playerID"] = player.playerID
+        requestParam["gameID"] = game.id
+        requestParam["period"] = period
         print(player.playerID)
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
@@ -51,9 +58,17 @@ class PlayerEachPeriodDataViewController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? EditGameDataTableViewController {
+            controller.gameData = playerData
+            controller.game = game
+        }
+    }
+    
     func dataShow(_ data: Data) {
         playerData = try? JSONDecoder().decode(GameDataCount.self, from: data)
         //        print(String(describing: playdata!.Assist!))
+        totalScore.text = String(describing: (playerData!.FT! + (playerData!.FG!*2) + (playerData!.TPM!*3)))
         ft.text = String(describing: playerData!.FT!)
         ftl.text = String(describing: playerData!.FTL!)
         fg.text = String(describing: playerData!.FG!)

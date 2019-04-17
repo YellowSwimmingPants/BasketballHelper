@@ -70,8 +70,11 @@ class GameDetailTableViewController: UITableViewController {
             let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
             let player = players[indexPath!.row]
             let playerDataCountVC = segue.destination as? PlayerDataCountViewController
-            playerDataCountVC!.playerName = player.name
-            
+            playerDataCountVC!.player = player
+            playerDataCountVC?.game = game
+        } else if segue.identifier == "PeriodFromDBSegue" {
+            let PeriodFromDBTVC = segue.destination as? PeriodFromDBTableViewController
+            PeriodFromDBTVC?.game = game
         }
     }
     

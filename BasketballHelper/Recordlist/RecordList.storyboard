@@ -914,7 +914,7 @@
                     <navigationItem key="navigationItem" title="整場統計" id="1p4-Nq-Ku5">
                         <barButtonItem key="rightBarButtonItem" title="詳細資訊" id="2zG-ym-6Po">
                             <connections>
-                                <segue destination="DHQ-8K-OB1" kind="show" id="5xO-Nc-K1X"/>
+                                <segue destination="DHQ-8K-OB1" kind="show" identifier="PeriodFromDBSegue" id="5xO-Nc-K1X"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1858,6 +1858,8 @@
                                         <constraint firstItem="Vlb-bh-XJw" firstAttribute="top" secondItem="Cj2-ap-Thr" secondAttribute="topMargin" constant="25" id="zir-tn-dRz"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="lbActionCount" destination="IqZ-Ky-X0c" id="iVO-1u-ENg"/>
                                     <outlet property="lbActionName" destination="PKw-e2-TBc" id="9GN-fK-aQW"/>

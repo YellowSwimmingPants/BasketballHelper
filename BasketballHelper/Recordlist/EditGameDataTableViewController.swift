@@ -3,9 +3,10 @@ import UIKit
 class EditGameDataTableViewController: UITableViewController {
     var actions = [Action]()
     var playerName: String?
+    var game: Game!
     var gameData: GameDataCount?
-    let url_server = URL(string: common_url_user + "PlayerServlet")
-    
+    let url_server = URL(string: common_url_user + "GameServlet")
+//    let index = sender.superview?.superview?.tag
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +25,8 @@ class EditGameDataTableViewController: UITableViewController {
         actions.append(Action("助攻", gameData!.Assist!))
         actions.append(Action("阻攻", gameData!.Block!))
         tableView.reloadData()
-        showData()
     }
+
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -43,6 +44,7 @@ class EditGameDataTableViewController: UITableViewController {
         cell.lbActionName.text = actions[indexPath.row].actionName
         cell.lbActionCount.text = String(actions[indexPath.row].actionCount)
         cell.tag = indexPath.row
+        loadCountData(indexPath.row)
         return cell
     }
 
@@ -76,8 +78,8 @@ class EditGameDataTableViewController: UITableViewController {
         }
     }
     
-    func loadCountData(_ index: Int?, _ data: Data) {
-        gameData = try? JSONDecoder().decode(GameDataCount.self, from: data)
+    func loadCountData(_ index: Int?) {
+//        gameData = try? JSONDecoder().decode(GameDataCount.self, from: data)
         if actions[index!].actionName == "罰球進球" {
             actions[index!].actionCount = gameData!.FT!
         } else if actions[index!].actionName == "罰球不進"{
@@ -133,31 +135,35 @@ class EditGameDataTableViewController: UITableViewController {
     }
     
     @IBAction func clickSave(_ sender: Any) {
-        
-    }
-    
-    @objc func showData(){
-        var requestParam = [String : Any]()
-        requestParam["action"] = "getPeriodData"
-//        requestParam["playerID"] =
-//        requestParam["period"] =
-//        requestParam["game"] =
-        
-        executeTask(url_server!, requestParam) { (data, response, error) in
+        var requestParam = [String: Any]()
+        requestParam["action"] = "gameDataUpdate"
+        requestParam["gameData"] = try! String(data: JSONEncoder().encode(gameData), encoding: .utf8)
+        requestParam["gameID"] = game.id
+        executeTask(self.url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
-                    // 將輸入資料列印出來除錯用
-                    print("input: \(String(data: data!, encoding: .utf8)!)")
-                    DispatchQueue.main.async {
-//                        self.loadCountData(<#T##index: Int?##Int?#>, data)
+                    if let result = String(data: data!, encoding: .utf8) {
+                        if let count = Int(result) {
+                            DispatchQueue.main.async {
+                                if count != 0 {
+                                    self.navigationController?.popViewController(animated: true)
+                                } else {
+                                    showSimpleAlert(message: "存檔失敗，請檢察網路連線", viewController: self)
+                                }
+                                
+                            }
+                            
+                        }
+                        
                     }
                 }
+                
             } else {
                 print(error!.localizedDescription)
             }
         }
-        
     }
     
-    
 }
+    
+

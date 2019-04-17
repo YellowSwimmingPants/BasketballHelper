@@ -5,18 +5,13 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate,
     let url_server = URL(string: common_url_user + "GameServlet")
     var games = [Game]()
     var searchedGames = [Game]()
+    var searchDataList: [String] = [String]() // 搜尋結果集合
+    var isShowSearchResult: Bool = false // 是否顯示搜尋的結果
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addKeyboardObserver()
         tableViewAddRefreshControl()
-//        games.append(Game(0, "A", "a"))
-//        games.append(Game(1, "B", "b"))
-//        games.append(Game(2, "C", "c"))
-//        games.append(Game(3, "D", "d"))
-//        games.append(Game(4, "E", "e"))
-//        games.append(Game(5, "F", "f"))
-//        games.append(Game(6, "G", "g"))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,7 +61,12 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate,
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return games.count
+        if self.isShowSearchResult {
+            // 若是有查詢結果則顯示查詢結果集合裡的資料
+            return self.searchDataList.count
+        } else {
+            return games.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -76,11 +76,54 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate,
         /*如果捲動表格，表格一邊會增加一列儲存格，另一邊則會消失一列儲存格，消失的儲存格其實是被移出佇列(dequeue)，如果能重複使用消失儲存格，就能節省記憶體空間；而且可避免建立與釋放儲存格空間的動作，可以提升效能 */
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId)!
         
-        let game = games[indexPath.row]
-        cell.textLabel?.text = game.gameName
-        cell.detailTextLabel?.text = game.gameDate
+        if self.isShowSearchResult {
+            // 若是有查詢結果則顯示查詢結果集合裡的資料
+            cell.textLabel?.text = String(searchDataList[indexPath.row])
+            cell.detailTextLabel?.text = String(searchDataList[indexPath.row])
+        } else {
+            let game = games[indexPath.row]
+            cell.textLabel?.text = game.gameName
+            cell.detailTextLabel?.text = game.gameDate
+        }
         
         return cell
+    }
+    
+    // 當在searchBar上開始輸入文字時
+    // 當「準備要在searchBar輸入文字時」、「輸入文字時」、「取消時」三個事件都會觸發該delegate
+//    func updateSearchResults(for searchController: UISearchController) {
+//        // 若是沒有輸入任何文字或輸入空白則直接返回不做搜尋的動作
+//        if self.searchController.searchBar.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).characters.count == 0 {
+//            return
+//        }
+//        self.filterDataSource()
+//    }
+    
+    // 過濾被搜陣列裡的資料
+//    func filterDataSource() {
+//        // 使用高階函數來過濾掉陣列裡的資料
+//        self.filterDataList = searchedDataSource.filter({ (fruit) -> Bool in
+//            return fruit.lowercased().range(of: self.searchController.searchBar.text!.lowercased()) != nil
+//        })
+//
+//        if self.filterDataList.count > 0 {
+//            self.isShowSearchResult = true
+//            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.init(rawValue: 1)! // 顯示TableView的格線
+//        } else {
+//            self.tableView.separatorStyle = UITableViewCellSeparatorStyle.none // 移除TableView的格線
+//            // 可加入一個查找不到的資料的label來告知使用者查不到資料...
+//            // ...
+//        }
+//
+//        self.tableView.reloadData()
+//    }
+    
+    func searchGame() {
+        
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        
     }
     
     // 左滑修改與刪除資料
@@ -100,6 +143,7 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate,
             var requestParam = [String: Any]()
             requestParam["action"] = "gameDelete"
             requestParam["gameId"] = self.games[indexPath.row].id
+            requestParam["gameData"] = self.games[indexPath.row].id
             executeTask(self.url_server!, requestParam
                 , completionHandler: { (data, response, error) in
                     if error == nil {
@@ -133,14 +177,6 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate,
             gameDetailTVC!.game = game
             
         }
-    }
-    
-    func searchGame() {
-       
-    }
-    
-    func updateSearchResults(for searchController: UISearchController) {
-        
     }
     
 }
