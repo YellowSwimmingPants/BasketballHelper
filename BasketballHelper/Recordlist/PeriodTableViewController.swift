@@ -7,6 +7,9 @@ class PeriodTableViewController: UITableViewController {
     var startingLineup: NSMutableArray?
     var gameDatas = NSMutableArray()
     var period: Int?
+    let userDefault = UserDefaults()
+    var users: UserInfo!
+    var userInfo: UserInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,46 +45,50 @@ class PeriodTableViewController: UITableViewController {
     }
  
     @IBAction func clickSave(_ sender: Any) {
-        let game = Game(0, gameName!, gameDate!)
-        
-        var requestParam = [String: Any]()
-//        requestParam["action"] = "gameInsert"
-        requestParam["action"] = "gameAndGameDataInsert"
-        requestParam["game"] = try! String(data: JSONEncoder().encode(game), encoding: .utf8)
-        var gameDatasString = "["
-        
-        for i in 0..<gameDatas.count {
-            if i > 0 {
-                gameDatasString +=  ",";
+        if userDefault.data(forKey: "userDefault") != nil {
+            let game = Game(0, gameName!, gameDate!)
+            
+            var requestParam = [String: Any]()
+    //        requestParam["action"] = "gameInsert"
+            requestParam["action"] = "gameAndGameDataInsert"
+            requestParam["game"] = try! String(data: JSONEncoder().encode(game), encoding: .utf8)
+            var gameDatasString = "["
+            
+            for i in 0..<gameDatas.count {
+                if i > 0 {
+                    gameDatasString +=  ",";
+                }
+                let gameDataString = try! String(data: JSONEncoder().encode(gameDatas[i] as! GameDataCount), encoding: .utf8)
+                gameDatasString +=  gameDataString!;
             }
-            let gameDataString = try! String(data: JSONEncoder().encode(gameDatas[i] as! GameDataCount), encoding: .utf8)
-            gameDatasString +=  gameDataString!;
-        }
-        gameDatasString += "]"
-        requestParam["gameDatas"] = gameDatasString
-        executeTask(self.url_server!, requestParam) { (data, response, error) in
-            if error == nil {
-                if data != nil {
-                    if let result = String(data: data!, encoding: .utf8) {
-                        if let count = Int(result) {
-                            DispatchQueue.main.async {
-                                if count != 0 {
-                                    // 新增成功要做啥寫這
-                                    self.navigationController?.popToRootViewController(animated: true)
-                                } else {
-                                    showSimpleAlert(message: "存檔失敗，請檢察網路連線", viewController: self)
+            gameDatasString += "]"
+            requestParam["gameDatas"] = gameDatasString
+            executeTask(self.url_server!, requestParam) { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        if let result = String(data: data!, encoding: .utf8) {
+                            if let count = Int(result) {
+                                DispatchQueue.main.async {
+                                    if count != 0 {
+                                        // 新增成功要做啥寫這
+                                        self.navigationController?.popToRootViewController(animated: true)
+                                    } else {
+                                        showSimpleAlert(message: "存檔失敗，請檢察網路連線", viewController: self)
+                                    }
+                                    
                                 }
                                 
                             }
                             
                         }
-                        
                     }
+                    
+                } else {
+                    print(error!.localizedDescription)
                 }
-                
-            } else {
-                print(error!.localizedDescription)
             }
+        } else {
+            showToast(view: self.view, message: "請先註冊")
         }
     }
     

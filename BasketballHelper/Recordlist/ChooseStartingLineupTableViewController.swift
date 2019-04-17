@@ -6,8 +6,9 @@ class ChooseStartingLineupTableViewController: UITableViewController {
     var count = 0
     var startingLineup: NSMutableArray!
     var delegate: CreateGameTableViewController?
-    var users: UserInfo!
     let userDefault = UserDefaults()
+    var users: UserInfo!
+    var userInfo: UserInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +26,10 @@ class ChooseStartingLineupTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        let userInfo = userDefault.data(forKey: "userDefault")
-       
-        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
-        showAllPlayers()
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+            showAllPlayers()
+        }
     }
 
     @objc func showAllPlayers(){
@@ -107,14 +108,6 @@ class ChooseStartingLineupTableViewController: UITableViewController {
             }
         }
     }
-    
-//    func saveData() {
-//        if self.delegate != nil {
-//            delegate!.startingLineup = startingLineup
-//        }
-//        let userDefaults = UserDefaults.standard
-//        userDefaults.set(startingLineup, forKey: "startingLineup")
-//        userDefaults.synchronize()
 }
     
     

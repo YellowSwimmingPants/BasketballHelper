@@ -5,7 +5,9 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate{
     let url_server = URL(string: common_url_user + "GameServlet")
     var games = [Game]()
     var currentGames = [Game]()
-    //testtesttesttesttesttesttesttesttesttesttest
+    let userDefault = UserDefaults()
+    var users: UserInfo!
+    var userInfo: UserInfo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,8 +17,24 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate{
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        showAllGames()
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+            showAllGames()
+        }
         searchBar.text = nil
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "segueCreate" {
+            let userInfo = userDefault.data(forKey: "userDefault")
+            if userInfo != nil {
+                return true
+            } else {
+                showToast(view: self.view, message: "請先註冊")
+                return false
+            }
+        }
+        return true
     }
     
     func tableViewAddRefreshControl() {
@@ -91,9 +109,7 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate{
         })
         self.tableView.reloadData()
     }
-    
 
-    
     // 左滑修改與刪除資料
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         // 左滑時顯示Edit按鈕
@@ -138,6 +154,8 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate{
         })
         return [delete, edit]
     }
+    
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gameDetail" {
