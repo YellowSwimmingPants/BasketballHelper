@@ -428,7 +428,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UyG-XI-Gfz">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="managerment" translatesAutoresizingMaskIntoConstraints="NO" id="UyG-XI-Gfz">
                                                     <rect key="frame" x="87.5" y="10" width="200" height="200"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="200" id="gMW-TY-V03"/>

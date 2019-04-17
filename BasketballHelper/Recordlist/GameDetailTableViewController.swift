@@ -14,10 +14,10 @@ class GameDetailTableViewController: UITableViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        let userInfo = userDefault.data(forKey: "userDefault")
-        //TODO:
-//        users = UserInfo(2, "mark", "123", "mark", "k@gmail.com", 1, "CP103");
-        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+            showAllPlayers()
+        }
         showAllPlayers()
     }
 

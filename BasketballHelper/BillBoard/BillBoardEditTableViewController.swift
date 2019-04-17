@@ -29,19 +29,20 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let userInfo = userDefault.data(forKey: "userDefault")
-        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+            let teamInfo = users.teamInfo
+            socket = WebSocket(url: URL(string: url_server_ws + teamInfo)!)
+            socket.connect()
+        }
         contextTextView.text = ""
         typeLabel.text = "🗓"
         types.append("公告")
         types.append("球賽")
         types.append("請假")
         datePickerChaged()
-        let teamInfo = users.teamInfo
-        socket = WebSocket(url: URL(string: url_server_ws + teamInfo)!)
-        socket.connect()
     }
-
+    
     func datePickerChaged() {
         dateLabel.text = DateFormatter.localizedString(from: datePicker.date, dateStyle: DateFormatter.Style.short, timeStyle: DateFormatter.Style.none)
     }
@@ -113,35 +114,38 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd"
         encoder.dateEncodingStrategy = .formatted(format)
-        
-        let teamInfo = users.teamInfo
-        let billBoard = BillBoard(0, date, title!, content!, type, teamInfo)
-        var requestParam = [String: String]()
-        requestParam["action"] = "insertBillBoard"
-        requestParam["billBoard"] = try! String(data: encoder.encode(billBoard), encoding: .utf8)
-        executeTask(url_server!, requestParam) { (data, response, error) in
-            if error == nil {
-                if data != nil {
-                    if let result = try? JSONDecoder().decode([String : String].self, from: data!) {
-                        DispatchQueue.main.async {
-                            if result["success"] == "Yes" {
-                                var newBillBoard = [String: String]()
-                                newBillBoard["userAccount"] = self.users.userAccount
-                                newBillBoard["message"] = "Yes"
-                                if let jsonData = try? JSONEncoder().encode(newBillBoard) {
-                                    let text = String(data: jsonData, encoding: .utf8)
-                                    self.socket.write(string: text!)
+        if userDefault.data(forKey: "userDefault") != nil {
+            let teamInfo = users.teamInfo
+            let billBoard = BillBoard(0, date, title!, content!, type, teamInfo)
+            var requestParam = [String: String]()
+            requestParam["action"] = "insertBillBoard"
+            requestParam["billBoard"] = try! String(data: encoder.encode(billBoard), encoding: .utf8)
+            executeTask(url_server!, requestParam) { (data, response, error) in
+                if error == nil {
+                    if data != nil {
+                        if let result = try? JSONDecoder().decode([String : String].self, from: data!) {
+                            DispatchQueue.main.async {
+                                if result["success"] == "Yes" {
+                                    var newBillBoard = [String: String]()
+                                    newBillBoard["userAccount"] = self.users.userAccount
+                                    newBillBoard["message"] = "Yes"
+                                    if let jsonData = try? JSONEncoder().encode(newBillBoard) {
+                                        let text = String(data: jsonData, encoding: .utf8)
+                                        self.socket.write(string: text!)
+                                    }
+                                    self.dismiss(animated: true, completion: nil)
+                                } else {
+                                    showSimpleAlert(message: "新增失敗", viewController: self)
                                 }
-                                self.dismiss(animated: true, completion: nil)
-                            } else {
-                                showSimpleAlert(message: "新增失敗", viewController: self)
                             }
                         }
                     }
+                } else {
+                    print(error!.localizedDescription)
                 }
-            } else {
-                print(error!.localizedDescription)
             }
+        } else {
+           showToast(view: self.view, message: "請先註冊")
         }
     }
     

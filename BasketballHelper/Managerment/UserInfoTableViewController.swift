@@ -29,6 +29,10 @@ class UserInfoTableViewController: UITableViewController {
             emailLabel.text = users.email
             showImage()
         }
+        self.title = ""
+        accountLabel.text = ""
+        nameLabel.text = ""
+        emailLabel.text = ""
     }
     
     func showImage() {
