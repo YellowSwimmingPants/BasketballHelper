@@ -21,8 +21,9 @@ class InsertPlayer: UIViewController,UIImagePickerControllerDelegate, UINavigati
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let userInfo = userDefault.data(forKey: "userDefault")
-        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+        }
         addKeyboardObserver()
     }
     @IBAction func clickTackPicture(_ sender: Any) {
