@@ -7,7 +7,7 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate,
     var searchedGames = [Game]()
     var searchDataList: [String] = [String]() // 搜尋結果集合
     var isShowSearchResult: Bool = false // 是否顯示搜尋的結果
-    
+    //test
     override func viewDidLoad() {
         super.viewDidLoad()
         addKeyboardObserver()
