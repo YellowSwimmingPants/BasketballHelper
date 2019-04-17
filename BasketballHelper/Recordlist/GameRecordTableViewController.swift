@@ -16,6 +16,7 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         showAllGames()
+        searchBar.text = nil
     }
     
     func tableViewAddRefreshControl() {
@@ -98,7 +99,7 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate{
         // 左滑時顯示Edit按鈕
         let edit = UITableViewRowAction(style: .default, title: "Edit", handler: { (action, indexPath) in
             let updateGameTVC = self.storyboard?.instantiateViewController(withIdentifier: "updateGameTVC") as! UpdateGameTableViewController
-            let game = self.games[indexPath.row]
+            let game = self.currentGames[indexPath.row]
             updateGameTVC.game = game
             self.navigationController?.pushViewController(updateGameTVC, animated: true)
         })
@@ -109,8 +110,8 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate{
             // 尚未刪除server資料
             var requestParam = [String: Any]()
             requestParam["action"] = "gameDelete"
-            requestParam["gameId"] = self.games[indexPath.row].id
-            requestParam["gameData"] = self.games[indexPath.row].id
+            requestParam["gameId"] = self.currentGames[indexPath.row].id
+            requestParam["gameData"] = self.currentGames[indexPath.row].id
             executeTask(self.url_server!, requestParam
                 , completionHandler: { (data, response, error) in
                     if error == nil {
@@ -122,7 +123,9 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate{
                                         self.currentGames.remove(at: indexPath.row)
                                         DispatchQueue.main.async {
                                             tableView.deleteRows(at: [indexPath], with: .fade)
-                                            self.tableView.reloadData()
+                                            self.showAllGames()
+                                            self.searchBar.text = nil
+//                                            self.tableView.reloadData()
                                         }
                                     }
                                 }
@@ -143,8 +146,7 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate{
             let game = games[indexPath!.row]
             let gameDetailTVC = segue.destination as? GameDetailTableViewController
             gameDetailTVC!.game = game
-            
-        }
+        } 
     }
     
 }
