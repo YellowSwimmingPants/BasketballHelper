@@ -19,11 +19,12 @@ class PlayerDataCountViewController: UIViewController {
     @IBOutlet weak var foul: UILabel!
     @IBOutlet weak var turnOver: UILabel!
     
-    let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
+    let url_server = URL(string: common_url_playerInfo + "GameServlet")
     var player: Page_playerList!
     //待修改
     var playerData: GameDataCount!
     var playerName: String!
+    var game: Game!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = playerName
@@ -33,8 +34,8 @@ class PlayerDataCountViewController: UIViewController {
     @objc func showData(){
         var requestParam = [String : Any]()
         requestParam["action"] = "getSingleData"
-        requestParam["playerID"] = player.playerID
-//        requestParam["gameID"] = 
+        requestParam["playerID"] = "\(player.playerID)"
+        requestParam["gameID"] = "\(game.id)"
         print(player.playerID)
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {

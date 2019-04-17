@@ -2,8 +2,9 @@ import UIKit
 
 class PlayersEachPeriodTableViewController: UITableViewController {
     var period: Int!
-    var players: [Page_playerList]?
-    let url_server = URL(string: common_url_playerInfo + "PlayerServlet")
+    var players = [Page_playerList]()
+    let url_server = URL(string: common_url_playerInfo + "GameServlet")
+    var game: Game!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,9 +18,8 @@ class PlayersEachPeriodTableViewController: UITableViewController {
     @objc func showAllPlayers(){
         var requestParam = [String:Any] ()
         requestParam = ["action" : "getPlayerEachPeriod"]
-//        requestParam["teamID"] =
-//        requestParam["gameID"] =
-//        requestParam["period"] = 
+        requestParam["gameID"] = game.id
+        requestParam["period"] = period
         executeTask(url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {
@@ -43,7 +43,7 @@ class PlayersEachPeriodTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellId = "playerCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellId)
-        let player = players![indexPath.row]
+        let player = players[indexPath.row]
         //        cell?.textLabel?.text = player.name
         cell?.textLabel?.text = player.name
         return cell!
@@ -56,6 +56,16 @@ class PlayersEachPeriodTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return (players?.count)!
+        return (players.count)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? PlayerEachPeriodDataViewController {
+            let indexPath = self.tableView.indexPath(for: sender as! UITableViewCell)
+            let player = players[indexPath!.row]
+            controller.player = player
+            controller.game = game
+            controller.period = period
+        }
     }
 }

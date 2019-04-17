@@ -43,9 +43,22 @@ class PeriodTableViewController: UITableViewController {
  
     @IBAction func clickSave(_ sender: Any) {
         let game = Game(0, gameName!, gameDate!)
-        var requestParam = [String: String]()
-        requestParam["action"] = "gameInsert"
+        
+        var requestParam = [String: Any]()
+//        requestParam["action"] = "gameInsert"
+        requestParam["action"] = "gameAndGameDataInsert"
         requestParam["game"] = try! String(data: JSONEncoder().encode(game), encoding: .utf8)
+        var gameDatasString = "["
+        
+        for i in 0..<gameDatas.count {
+            if i > 0 {
+                gameDatasString +=  ",";
+            }
+            let gameDataString = try! String(data: JSONEncoder().encode(gameDatas[i] as! GameDataCount), encoding: .utf8)
+            gameDatasString +=  gameDataString!;
+        }
+        gameDatasString += "]"
+        requestParam["gameDatas"] = gameDatasString
         executeTask(self.url_server!, requestParam) { (data, response, error) in
             if error == nil {
                 if data != nil {

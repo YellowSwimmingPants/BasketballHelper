@@ -30,7 +30,7 @@ class StartingLineupViewController: UIViewController, UITableViewDataSource, UIT
         var didFind = false;
         for i in 0..<gameDatas!.count {
             let gameData = gameDatas![i] as! GameDataCount
-            if gameData.playerID == player.playerID && gameData.Period == period!{
+            if gameData.playerID == player.playerID && gameData.period == period!{
                 cell.detailTextLabel?.text = "已有資料"
                 didFind = true;
                 break
@@ -74,7 +74,7 @@ class StartingLineupViewController: UIViewController, UITableViewDataSource, UIT
             for i in 0..<gameDatas!.count {
                 let gameData = gameDatas![i] as! GameDataCount
                 let starting = startingLineup![index!] as! Page_playerList
-                if gameData.playerID == starting.playerID && gameData.Period == period!{
+                if gameData.playerID == starting.playerID && gameData.period == period!{
                     controller.gameData = gameData
                     didFind = true;
                     break

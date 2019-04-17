@@ -1,7 +1,7 @@
 class GameDataCount: Codable {
-    var GameDataID: Int?
-    var GameID: Int?
-    var Period: Int?
+    var gameDataID: Int?
+    var gameID: Int?
+    var period: Int?
     var playerID: Int?
     var FT: Int?
     var FTL: Int?
@@ -17,10 +17,10 @@ class GameDataCount: Codable {
     var Block: Int?
     var Assist: Int?
     
-    init(_ Period: Int, _ PlayerID: Int){
-        self.GameDataID = 0
-        self.Period = Period
-        self.playerID = PlayerID
+    init(_ period: Int, _ playerID: Int){
+        self.gameDataID = 0
+        self.period = period
+        self.playerID = playerID
         self.FT = 0
         self.FTL = 0
         self.FG = 0
@@ -36,10 +36,10 @@ class GameDataCount: Codable {
         self.Assist = 0
     }
     
-    init(_ GameDataID: Int,_ GameID: Int,_ Period: Int,_ playerID: Int,_ FT:Int,_ FTL:Int,_ FG:Int,_ FGL:Int,_ TPM:Int,_ TPL:Int,_ Foul:Int,_ OfnReb:Int,_ DefReb:Int,_ TurnOver:Int,_ Steal:Int,_ Block:Int,_ Assist:Int){
-        self.GameDataID = GameDataID
-        self.GameID = GameID
-        self.Period = Period
+    init(_ gameDataID: Int,_ gameID: Int,_ period: Int,_ playerID: Int,_ FT:Int,_ FTL:Int,_ FG:Int,_ FGL:Int,_ TPM:Int,_ TPL:Int,_ Foul:Int,_ OfnReb:Int,_ DefReb:Int,_ TurnOver:Int,_ Steal:Int,_ Block:Int,_ Assist:Int){
+        self.gameDataID = gameDataID
+        self.gameID = gameID
+        self.period = period
         self.playerID = playerID
         self.FT = FT
         self.FTL = FTL
