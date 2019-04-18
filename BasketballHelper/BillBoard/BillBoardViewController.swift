@@ -50,6 +50,7 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
             components.day = 1
             calculation()
             createGesture()
+            showBillBoard(teamInfo: "system")
         }
     }
     
@@ -265,7 +266,7 @@ class BillBoardViewController: UIViewController, UICollectionViewDelegate, UICol
                         self.showBillBoard(teamInfo: self.users.teamInfo)
                         self.calendarCollectionView.reloadData()
                         self.calendarCollectionView.layoutIfNeeded()
-                        showToast(view: self.view, message: "有新的公告")
+//                        showToast(view: self.view, message: "有新的公告")
                     }
                 }
             }

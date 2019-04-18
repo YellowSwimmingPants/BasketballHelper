@@ -322,6 +322,7 @@
                     <connections>
                         <outlet property="contentTextView" destination="Rod-wL-61b" id="ima-2A-eIi"/>
                         <outlet property="dateLabel" destination="c3E-Mk-EZN" id="SDL-na-bxS"/>
+                        <outlet property="deleteButtom" destination="agq-B1-LPc" id="6O1-6f-I8M"/>
                         <outlet property="typeDetailLabel" destination="u5X-a6-h9G" id="Njh-qi-2To"/>
                         <outlet property="typeLabel" destination="Umz-ib-pjE" id="crw-Ba-3ym"/>
                     </connections>

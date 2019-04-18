@@ -81,7 +81,7 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "退出球隊") { (action, indexPath) in
             var requestParam = [String: Any]()
-            requestParam["action"] = "quitTeam"
+            requestParam["action"] = "exitTeam"
             if self.segmentControl.selectedSegmentIndex == 0 {
                 requestParam["userAccount"] = self.managerList[indexPath.row].userAccount
             }

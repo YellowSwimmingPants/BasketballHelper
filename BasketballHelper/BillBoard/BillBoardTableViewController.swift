@@ -16,6 +16,9 @@ class BillBoardTableViewController: UITableViewController {
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var typeDetailLabel: UILabel!
     @IBOutlet weak var contentTextView: UITextView!
+    @IBOutlet weak var deleteButtom: UIBarButtonItem!
+    
+    let viewController = UIViewController()
     var users: UserInfo!
     var user = [UserInfo]()
     let userDefault = UserDefaults()
@@ -42,11 +45,14 @@ class BillBoardTableViewController: UITableViewController {
     }
     
     override func viewDidLoad() {
-        let userInfo = userDefault.data(forKey: "userDefault")
-        users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
-        let teamInfo = billBoard.teamInfo
-        socket = WebSocket(url: URL(string: url_server_ws + teamInfo)!)
-        socket.connect()
+        if let userInfo = userDefault.data(forKey: "userDefault") {
+            users = try! JSONDecoder().decode(UserInfo.self, from: userInfo)
+            let teamInfo = billBoard.teamInfo
+            socket = WebSocket(url: URL(string: url_server_ws + teamInfo)!)
+            socket.connect()
+        } else {
+            deleteButtom.isEnabled = false
+        }
     }
     
     @IBAction func clickDelete(_ sender: Any) {
@@ -77,7 +83,7 @@ class BillBoardTableViewController: UITableViewController {
                                     let text = String(data: jsonData, encoding: .utf8)
                                     self.socket.write(string: text!)
                                 }
-                                self.dismiss(animated: true, completion: nil)
+                                self.navigationController?.popViewController(animated: true)
                             } else {
                                 showSimpleAlert(message: "刪除失敗", viewController: self)
                             }
