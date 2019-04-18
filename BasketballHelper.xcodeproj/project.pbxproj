@@ -660,13 +660,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4JG9GHZH3C;
+				DEVELOPMENT_TEAM = K2NN79XCR9;
 				INFOPLIST_FILE = BasketballHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CharlesLee.BasketballHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = CharlesLee.BasketballHelper.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ENABLE_BATCH_MODE = no;
 				SWIFT_VERSION = 4.2;
@@ -680,13 +680,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4JG9GHZH3C;
+				DEVELOPMENT_TEAM = K2NN79XCR9;
 				INFOPLIST_FILE = BasketballHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = CharlesLee.BasketballHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = CharlesLee.BasketballHelper.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ENABLE_BATCH_MODE = no;
 				SWIFT_VERSION = 4.2;

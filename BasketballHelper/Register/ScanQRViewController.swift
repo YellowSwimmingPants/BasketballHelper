@@ -107,7 +107,7 @@ class ScanQRViewController: UIViewController, AVCaptureMetadataOutputObjectsDele
                                 self.present(self.viewController, animated: true, completion: nil)
                             } else {
                                 showToast(view: self.view, message: "加入失敗")
-                                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "Sign")
+                                self.viewController = self.storyboard!.instantiateViewController(withIdentifier: "JoinTeam")
                                 self.present(self.viewController, animated: true, completion: nil)
                             }
                         }

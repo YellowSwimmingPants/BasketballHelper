@@ -109,7 +109,7 @@ class UserInfoEditTableViewController: UITableViewController, UIImagePickerContr
                     image = UIImage(data: data!)
                 }
                 if image == nil {
-                    image = UIImage(named: "noImage.jpg")
+                    image = UIImage(named: "noimage.jpg")
                 }
                 DispatchQueue.main.async {
                     self.userImageView.image = image
