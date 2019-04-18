@@ -123,34 +123,42 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate{
         
         // 左滑時顯示Delete按鈕
         let delete = UITableViewRowAction(style: .destructive, title: "Delete", handler: { (action, indexPath) in
-            // 尚未刪除server資料
-            var requestParam = [String: Any]()
-            requestParam["action"] = "gameDelete"
-            requestParam["gameId"] = self.currentGames[indexPath.row].id
-            requestParam["gameData"] = self.currentGames[indexPath.row].id
-            executeTask(self.url_server!, requestParam
-                , completionHandler: { (data, response, error) in
-                    if error == nil {
-                        if data != nil {
-                            if let result = String(data: data!, encoding: .utf8) {
-                                if let count = Int(result) {
-                                    // 確定server端刪除資料後，才將client端資料刪除
-                                    if count != 0 {
-                                        self.currentGames.remove(at: indexPath.row)
-                                        DispatchQueue.main.async {
-                                            tableView.deleteRows(at: [indexPath], with: .fade)
-                                            self.showAllGames()
-                                            self.searchBar.text = nil
-//                                            self.tableView.reloadData()
+            
+            let alertController = UIAlertController(title: "注意", message: "是否要刪除此筆紀錄", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .destructive) { (_) in
+                // 尚未刪除server資料
+                var requestParam = [String: Any]()
+                requestParam["action"] = "gameDelete"
+                requestParam["gameId"] = self.currentGames[indexPath.row].id
+                requestParam["gameData"] = self.currentGames[indexPath.row].id
+                executeTask(self.url_server!, requestParam
+                    , completionHandler: { (data, response, error) in
+                        if error == nil {
+                            if data != nil {
+                                if let result = String(data: data!, encoding: .utf8) {
+                                    if let count = Int(result) {
+                                        // 確定server端刪除資料後，才將client端資料刪除
+                                        if count != 0 {
+                                            self.currentGames.remove(at: indexPath.row)
+                                            DispatchQueue.main.async {
+                                                tableView.deleteRows(at: [indexPath], with: .fade)
+                                                self.showAllGames()
+                                                self.searchBar.text = nil
+                                                //                                            self.tableView.reloadData()
+                                            }
                                         }
                                     }
                                 }
                             }
+                        } else {
+                            print(error!.localizedDescription)
                         }
-                    } else {
-                        print(error!.localizedDescription)
-                    }
-            })
+                })
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+            alertController.addAction(cancel)
+            alertController.addAction(ok)
+            self.present(alertController, animated: true, completion: nil)
         })
         return [delete, edit]
     }

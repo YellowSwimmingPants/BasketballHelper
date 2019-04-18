@@ -80,58 +80,22 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "退出球隊") { (action, indexPath) in
-            var requestParam = [String: Any]()
-            requestParam["action"] = "exitTeam"
-            if self.segmentControl.selectedSegmentIndex == 0 {
-                requestParam["userAccount"] = self.managerList[indexPath.row].userAccount
-            }
-            if self.segmentControl.selectedSegmentIndex == 1 {
-                requestParam["userAccount"] = self.memberList[indexPath.row].userAccount
-            }
-            executeTask(self.url_server_manager!, requestParam, completionHandler: { (data, response, error) in
-                if error == nil {
-                    if data != nil {
-                        if let result = String(data: data!, encoding: .utf8) {
-                            if let count = Int(result) {
-                                if count != 0 {
-                                    if self.segmentControl.selectedSegmentIndex == 0 {
-                                        self.managerList.remove(at: indexPath.row)
-                                        DispatchQueue.main.async {
-                                            tableView.deleteRows(at: [indexPath], with: .fade)
-                                        }
-                                    }
-                                    if self.segmentControl.selectedSegmentIndex == 1 {
-                                        self.memberList.remove(at: indexPath.row)
-                                        DispatchQueue.main.async {
-                                            tableView.deleteRows(at: [indexPath], with: .fade)
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    print(error!.localizedDescription)
+            
+            let alertController = UIAlertController(title: "注意", message: "是否要將成員退出球隊", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .destructive) { (_) in
+                var requestParam = [String: Any]()
+                requestParam["action"] = "exitTeam"
+                if self.segmentControl.selectedSegmentIndex == 0 {
+                    requestParam["userAccount"] = self.managerList[indexPath.row].userAccount
                 }
-            })
-        }
-        let priority = UITableViewRowAction(style: .destructive, title: "修改權限") { (action, indexPath) in
-            var requestParam = [String: Any]()
-            requestParam["action"] = "changePriority"
-            if self.segmentControl.selectedSegmentIndex == 0 {
-                requestParam["userAccount"] = self.managerList[indexPath.row].userAccount
-                requestParam["priority"] = 1
-            }
-            if self.segmentControl.selectedSegmentIndex == 1 {
-                requestParam["userAccount"] = self.memberList[indexPath.row].userAccount
-                requestParam["priority"] = 0
-            }
-            executeTask(self.url_server!, requestParam, completionHandler: { (data, response, error) in
-                if error == nil {
-                    if data != nil {
-                        if let result = String(data: data!, encoding: .utf8) {
-                            if let count = Int(result) {
-                                DispatchQueue.main.async {
+                if self.segmentControl.selectedSegmentIndex == 1 {
+                    requestParam["userAccount"] = self.memberList[indexPath.row].userAccount
+                }
+                executeTask(self.url_server_manager!, requestParam, completionHandler: { (data, response, error) in
+                    if error == nil {
+                        if data != nil {
+                            if let result = String(data: data!, encoding: .utf8) {
+                                if let count = Int(result) {
                                     if count != 0 {
                                         if self.segmentControl.selectedSegmentIndex == 0 {
                                             self.managerList.remove(at: indexPath.row)
@@ -149,11 +113,67 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                                 }
                             }
                         }
+                    } else {
+                        print(error!.localizedDescription)
                     }
-                } else {
-                    print(error!.localizedDescription)
+                })
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+            alertController.addAction(cancel)
+            alertController.addAction(ok)
+            self.present(alertController, animated: true, completion: nil)
+            
+            
+        }
+        let priority = UITableViewRowAction(style: .destructive, title: "修改權限") { (action, indexPath) in
+            
+            let alertController = UIAlertController(title: "注意", message: "是否要修改權限", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .destructive) { (_) in
+                var requestParam = [String: Any]()
+                requestParam["action"] = "changePriority"
+                if self.segmentControl.selectedSegmentIndex == 0 {
+                    requestParam["userAccount"] = self.managerList[indexPath.row].userAccount
+                    requestParam["priority"] = 1
                 }
-            })
+                if self.segmentControl.selectedSegmentIndex == 1 {
+                    requestParam["userAccount"] = self.memberList[indexPath.row].userAccount
+                    requestParam["priority"] = 0
+                }
+                executeTask(self.url_server!, requestParam, completionHandler: { (data, response, error) in
+                    if error == nil {
+                        if data != nil {
+                            if let result = String(data: data!, encoding: .utf8) {
+                                if let count = Int(result) {
+                                    DispatchQueue.main.async {
+                                        if count != 0 {
+                                            if self.segmentControl.selectedSegmentIndex == 0 {
+                                                self.managerList.remove(at: indexPath.row)
+                                                DispatchQueue.main.async {
+                                                    tableView.deleteRows(at: [indexPath], with: .fade)
+                                                }
+                                            }
+                                            if self.segmentControl.selectedSegmentIndex == 1 {
+                                                self.memberList.remove(at: indexPath.row)
+                                                DispatchQueue.main.async {
+                                                    tableView.deleteRows(at: [indexPath], with: .fade)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        print(error!.localizedDescription)
+                    }
+                })
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+            alertController.addAction(cancel)
+            alertController.addAction(ok)
+             self.present(alertController, animated: true, completion: nil)
+            
+            
         }
         priority.backgroundColor = UIColor.lightGray
         if users.priority == 1 {

@@ -114,30 +114,39 @@ class PlayerList: UITableViewController {
 
         // 左滑時顯示Delete按鈕
         let delete = UITableViewRowAction(style: .destructive, title: "\u{1f5d1}\n Delete", handler: { (action, indexPath) in
-            // 尚未刪除server資料
-            var requestParam = [String: Any]()
-            requestParam["action"] = "playerDelete"
-            requestParam["playerId"] = self.players[indexPath.row].playerID
-            executeTask(self.url_server!, requestParam
-                , completionHandler: { (data, response, error) in
-                    if error == nil {
-                        if data != nil {
-                            if let result = String(data: data!, encoding: .utf8) {
-                                if let count = Int(result) {
-                                    // 確定server端刪除資料後，才將client端資料刪除
-                                    if count != 0 {
-                                        self.players.remove(at: indexPath.row)
-                                        DispatchQueue.main.async {
-                                            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            let alertController = UIAlertController(title: "注意", message: "是否刪除", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .destructive) { (_) in
+                // 尚未刪除server資料
+                var requestParam = [String: Any]()
+                requestParam["action"] = "playerDelete"
+                requestParam["playerId"] = self.players[indexPath.row].playerID
+                executeTask(self.url_server!, requestParam
+                    , completionHandler: { (data, response, error) in
+                        if error == nil {
+                            if data != nil {
+                                if let result = String(data: data!, encoding: .utf8) {
+                                    if let count = Int(result) {
+                                        // 確定server端刪除資料後，才將client端資料刪除
+                                        if count != 0 {
+                                            self.players.remove(at: indexPath.row)
+                                            DispatchQueue.main.async {
+                                                tableView.deleteRows(at: [indexPath], with: .fade)
+                                            }
                                         }
                                     }
                                 }
                             }
+                        } else {
+                            print(error!.localizedDescription)
                         }
-                    } else {
-                        print(error!.localizedDescription)
-                    }
-            })
+                })
+            }
+            let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+            alertController.addAction(cancel)
+            alertController.addAction(ok)
+            self.present(alertController, animated: true, completion: nil)
+           
         })
         delete.backgroundColor = UIColor(red: 255/255, green: 134/255, blue: 0/255, alpha: 1)
         return [delete, edit]

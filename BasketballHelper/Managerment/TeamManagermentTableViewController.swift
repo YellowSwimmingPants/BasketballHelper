@@ -39,7 +39,7 @@ class TeamManagermentTableViewController: UITableViewController {
                 self.present(alertController, animated: true, completion:nil)
             }
         } else {
-            let alertController = UIAlertController(title: "注意", message: "請是否要解散球隊", preferredStyle: .alert)
+            let alertController = UIAlertController(title: "注意", message: "是否要解散球隊", preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .destructive) { (_) in
                 if self.users.priority == 1 {
                     self.quitTeam()
