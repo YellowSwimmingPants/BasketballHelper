@@ -246,31 +246,6 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="50" id="hVq-lj-2Og">
-                                        <rect key="frame" x="0.0" y="370" width="375" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hVq-lj-2Og" id="qvB-Iy-1h6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yZf-g2-xMV">
-                                                    <rect key="frame" x="20" y="5" width="335" height="39.5"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                                                    <connections>
-                                                        <action selector="didEndOnExit:" destination="bzs-la-acR" eventType="editingDidEndOnExit" id="WWA-Kp-MF2"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="yZf-g2-xMV" secondAttribute="bottom" constant="5" id="Jb9-bw-1t5"/>
-                                                <constraint firstItem="yZf-g2-xMV" firstAttribute="top" secondItem="qvB-Iy-1h6" secondAttribute="top" constant="5" id="Mfe-YV-d82"/>
-                                                <constraint firstAttribute="trailing" secondItem="yZf-g2-xMV" secondAttribute="trailing" constant="20" id="fid-ZD-t7D"/>
-                                                <constraint firstItem="yZf-g2-xMV" firstAttribute="leading" secondItem="qvB-Iy-1h6" secondAttribute="leading" constant="20" id="xcH-QF-4kF"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -289,7 +264,6 @@
                     </navigationItem>
                     <connections>
                         <outlet property="emailTextField" destination="NGn-dL-4AW" id="mRo-eY-a8e"/>
-                        <outlet property="passwordTextView" destination="yZf-g2-xMV" id="mKm-Bu-MfD"/>
                         <outlet property="userImageView" destination="34m-In-kex" id="60P-tT-8uo"/>
                         <outlet property="userNameTextField" destination="Yss-iZ-w7Z" id="L0V-ch-Vnx"/>
                     </connections>

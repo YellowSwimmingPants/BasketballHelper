@@ -13,7 +13,7 @@ class UserInfoEditTableViewController: UITableViewController, UIImagePickerContr
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    @IBOutlet weak var passwordTextView: UITextField!
+//    @IBOutlet weak var passwordTextView: UITextField!
     var image: UIImage?
     let url_server = URL(string: common_url_user + "UserServlet")
     let userDefault = UserDefaults()
@@ -58,11 +58,11 @@ class UserInfoEditTableViewController: UITableViewController, UIImagePickerContr
     @IBAction func clickSave(_ sender: Any) {
         let userName = userNameTextField.text == nil ? "" : userNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         let email = emailTextField.text == nil ? "" : emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let userPassword = passwordTextView.text == nil ? "" : passwordTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+//        let userPassword = passwordTextView.text == nil ? "" : passwordTextView.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         if userDefault.data(forKey: "userDefault") != nil {
             let userInfo = userDefault.data(forKey: "userDefault")
             users = try! JSONDecoder().decode(UserInfo.self, from: userInfo!)
-            let user = UserInfo(0, users.userAccount, userPassword, userName, email, users.priority, users.teamInfo)
+            let user = UserInfo(0, users.userAccount, users.userPassword, userName, email, users.priority, users.teamInfo)
             var requestParam = [String: String]()
             requestParam["action"] = "userUpdate"
             requestParam["user"] = try! String(data: JSONEncoder().encode(user), encoding: .utf8)
