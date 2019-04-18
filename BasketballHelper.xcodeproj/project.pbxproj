@@ -109,6 +109,7 @@
 		710D3678223238A3008A683C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		710D368222323AFD008A683C /* PlayerListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerListViewController.swift; sourceTree = "<group>"; };
 		711FB65722374F9000AD7483 /* GameRecordTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordTableViewController.swift; sourceTree = "<group>"; };
+		713DD4B022684C3400AF786E /* BasketballHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BasketballHelper.entitlements; sourceTree = "<group>"; };
 		713F94582252021A0011A1D7 /* UpdateGameTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateGameTableViewController.swift; sourceTree = "<group>"; };
 		7141F19F22448C6900A83C36 /* Action.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Action.swift; sourceTree = "<group>"; };
 		7141F1A12244BE8B00A83C36 /* ActionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionTableViewCell.swift; sourceTree = "<group>"; };
@@ -224,6 +225,7 @@
 		710D366B223238A3008A683C /* BasketballHelper */ = {
 			isa = PBXGroup;
 			children = (
+				713DD4B022684C3400AF786E /* BasketballHelper.entitlements */,
 				C736BB00224397A400D84AD6 /* Register */,
 				C77F5DF92240E81200BDBE42 /* Common */,
 				334E441C223FB9270055D0EC /* PlayerInfo */,
@@ -359,6 +361,11 @@
 					710D3668223238A3008A683C = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1020;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};

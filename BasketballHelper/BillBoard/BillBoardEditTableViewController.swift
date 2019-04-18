@@ -133,7 +133,7 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
                                         let text = String(data: jsonData, encoding: .utf8)
                                         self.socket.write(string: text!)
                                     }
-                                    self.dismiss(animated: true, completion: nil)
+                                    self.navigationController?.popViewController(animated: true)
                                 } else {
                                     showSimpleAlert(message: "新增失敗", viewController: self)
                                 }
