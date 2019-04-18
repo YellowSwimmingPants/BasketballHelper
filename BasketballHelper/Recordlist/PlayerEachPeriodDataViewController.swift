@@ -83,11 +83,26 @@ class PlayerEachPeriodDataViewController: UIViewController {
         block.text = String(describing: playerData!.Block!)
         assist.text = String(describing: playerData!.Assist!)
         
-        ftPercentage.text = String(format: "%.1f",((Double(playerData!.FT!) / (Double(playerData!.FT!+playerData!.FTL!))) * 100))
+        let debugFtPercentage = String(format: "%.1f",((Double(playerData!.FT!) / (Double(playerData!.FT!+playerData!.FTL!))) * 100))
+        if debugFtPercentage == "nan" {
+            ftPercentage.text = "0"
+        } else {
+            ftPercentage.text = String(format: "%.1f",((Double(playerData!.FT!) / (Double(playerData!.FT!+playerData!.FTL!))) * 100))
+        }
         
-        fgPecentage.text = String(format: "%.1f",((Double(playerData!.FG!) / (Double(playerData!.FG!+playerData!.FGL!))) * 100))
+        let debugFgPercentage = String(format: "%.1f",((Double(playerData!.FG!) / (Double(playerData!.FG!+playerData!.FGL!))) * 100))
+        if debugFgPercentage == "nan" {
+            fgPecentage.text = "0"
+        } else {
+            fgPecentage.text = String(format: "%.1f",((Double(playerData!.FG!) / (Double(playerData!.FG!+playerData!.FGL!))) * 100))
+        }
         
-        tpPercentage.text = String(format: "%.1f",((Double(playerData!.TPM!) / (Double(playerData!.TPM!+playerData!.TPL!))) * 100))
+        let debugTpPercentage = String(format: "%.1f",((Double(playerData!.TPM!) / (Double(playerData!.TPM!+playerData!.TPL!))) * 100))
+        if debugTpPercentage == "nan" {
+            tpPercentage.text = "0"
+        } else {
+            tpPercentage.text = String(format: "%.1f",((Double(playerData!.TPM!) / (Double(playerData!.TPM!+playerData!.TPL!))) * 100))
+        }
     }
     
     

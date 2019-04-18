@@ -77,12 +77,26 @@ class PlayerData: UIViewController {
         lbSteal.text = String(describing: playdata!.Steal!)
         lbBlock.text = String(describing: playdata!.Block!)
         lbAssist.text = String(describing: playdata!.Assist!)
-        //A1 = 罰球總平均
-        A1.text = String(format: "%.1f",(Double(playdata!.FT!)/(Double(playdata!.FT!+playdata!.FTL!)))*(hundred))
-        //A2 = 兩分總平均
-        A2.text = String(format: "%.1f",(Double(playdata!.FG!)/(Double(playdata!.FG!+playdata!.FGL!)))*(hundred))
-        //A3 = 三分總平均
-        A3.text = String(format: "%.1f",(Double(playdata!.TPM!)/(Double(playdata!.TPM!+playdata!.TPL!)))*(hundred))
+        let debugFtPercentage = String(format: "%.1f",((Double(playdata!.FT!) / (Double(playdata!.FT!+playdata!.FTL!))) * 100))
+        if debugFtPercentage == "nan" {
+            A1.text = "0"
+        } else {
+            A1.text = String(format: "%.1f",((Double(playdata!.FT!) / (Double(playdata!.FT!+playdata!.FTL!))) * 100))
+        }
+        
+        let debugFgPercentage = String(format: "%.1f",((Double(playdata!.FG!) / (Double(playdata!.FG!+playdata!.FGL!))) * 100))
+        if debugFgPercentage == "nan" {
+            A2.text = "0"
+        } else {
+            A2.text = String(format: "%.1f",((Double(playdata!.FG!) / (Double(playdata!.FG!+playdata!.FGL!))) * 100))
+        }
+        
+        let debugTpPercentage = String(format: "%.1f",((Double(playdata!.TPM!) / (Double(playdata!.TPM!+playdata!.TPL!))) * 100))
+        if debugTpPercentage == "nan" {
+            A3.text = "0"
+        } else {
+            A3.text = String(format: "%.1f",((Double(playdata!.TPM!) / (Double(playdata!.TPM!+playdata!.TPL!))) * 100))
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?){
