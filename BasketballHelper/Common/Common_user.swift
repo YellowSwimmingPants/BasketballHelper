@@ -39,7 +39,7 @@ func showSimpleActionSheet(message: String, viewController: UIViewController) {
 }
 
 func showToast(view: UIView, message : String) {
-    let toast_width = CGFloat(150)
+    let toast_width = CGFloat(350)
     let toast_height = CGFloat(35)
     let toast_x = (view.frame.width - toast_width) / 2
     let toast_y = (view.frame.height - toast_height) / 2
