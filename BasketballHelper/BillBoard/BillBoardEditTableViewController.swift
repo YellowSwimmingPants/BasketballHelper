@@ -36,7 +36,7 @@ class BillBoardEditTableViewController: UITableViewController, UIPickerViewDeleg
             socket.connect()
         }
         contextTextView.text = ""
-        typeLabel.text = "🗓"
+        typeLabel.text = "📜"
         types.append("公告")
         types.append("球賽")
         types.append("請假")
