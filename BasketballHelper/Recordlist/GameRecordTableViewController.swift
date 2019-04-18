@@ -11,7 +11,7 @@ class GameRecordTableViewController: UITableViewController, UISearchBarDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addKeyboardObserver()
+//        addKeyboardObserver()
         tableViewAddRefreshControl()
         self.searchBar.delegate = self
     }
