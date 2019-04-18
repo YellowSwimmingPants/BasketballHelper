@@ -55,50 +55,52 @@ class InsertPlayer: UIViewController,UIImagePickerControllerDelegate, UINavigati
     
  
     @IBAction func clickSave(_ sender: Any) {
-        let name = tfName.text == nil ? "" : tfName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let nickname = tfNickName.text == nil ? "" : tfNickName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let phone = tfPhone.text == nil ? "" : tfPhone.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let birthday = tfBirthday.text == nil ? "" : tfBirthday.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let number = tfNumber.text == nil ? "" : tfNumber.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let position = tfPosition.text == nil ? "" : tfPosition.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let email = tfEmail.text == nil ? "" : tfEmail.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-
-        
-        let player = Page_playerList(0, name, nickname, phone, birthday, number, position, email, users.teamInfo)
-        
-        var requestParam = [String: String]()
-        requestParam["action"] = "playerInsert"
-        requestParam["player"] = try! String(data: JSONEncoder().encode(player), encoding: .utf8)
-        // 有圖才上傳
-        if self.image != nil {
-            requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()//把image轉為base64字串
-        }
-        executeTask(self.url_server!, requestParam) { (data, response, error) in
-            if error == nil {
-                if data != nil {
-                    if let result = String(data: data!, encoding: .utf8) {
-                        if let count = Int(result) {
-                            DispatchQueue.main.async {
-                                // 新增成功則回前頁
-                                if count != 0 {
-                                    self.navigationController?.popViewController(animated: true)
-                                } else {
-                                    self.label.text = "insert fail"
+        let userInfo = userDefault.data(forKey: "userDefault")
+        if userInfo != nil {
+                    let name = tfName.text == nil ? "" : tfName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                    let nickname = tfNickName.text == nil ? "" : tfNickName.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                    let phone = tfPhone.text == nil ? "" : tfPhone.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                    let birthday = tfBirthday.text == nil ? "" : tfBirthday.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                    let number = tfNumber.text == nil ? "" : tfNumber.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                    let position = tfPosition.text == nil ? "" : tfPosition.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+                    let email = tfEmail.text == nil ? "" : tfEmail.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+                    let player = Page_playerList(0, name, nickname, phone, birthday, number, position, email, users.teamInfo)
+            
+                    var requestParam = [String: String]()
+                    requestParam["action"] = "playerInsert"
+                    requestParam["player"] = try! String(data: JSONEncoder().encode(player), encoding: .utf8)
+                    // 有圖才上傳
+                    if self.image != nil {
+                        requestParam["imageBase64"] = self.image!.jpegData(compressionQuality: 1.0)!.base64EncodedString()//把image轉為base64字串
+                    }
+                    executeTask(self.url_server!, requestParam) { (data, response, error) in
+                        if error == nil {
+                            if data != nil {
+                                if let result = String(data: data!, encoding: .utf8) {
+                                    if let count = Int(result) {
+                                        DispatchQueue.main.async {
+                                            // 新增成功則回前頁
+                                            if count != 0 {
+                                                self.navigationController?.popViewController(animated: true)
+                                            } else {
+                                                self.label.text = "insert fail"
+                                            }
+                                        }
+                                    }
                                 }
                             }
+                        } else {
+                            print(error!.localizedDescription)
                         }
                     }
-                }
-            } else {
-                print(error!.localizedDescription)
+            }  else {
+                showToast(view: self.view, message: "請先註冊")
             }
-        }
+
       }
     
     @IBAction func didEndOnExit(_ sender: Any) { }
-    
-    
-    
    
     func addKeyboardObserver() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
