@@ -255,7 +255,7 @@ class TeamMemberViewController: UIViewController, UITableViewDelegate, UITableVi
                     image = UIImage(data: data!)
                 }
                 if image == nil {
-                    image = UIImage(named: "managerment")
+                    image = UIImage(named: "noimage")
                 }
                 DispatchQueue.main.async {
                     userImageView.image = image
